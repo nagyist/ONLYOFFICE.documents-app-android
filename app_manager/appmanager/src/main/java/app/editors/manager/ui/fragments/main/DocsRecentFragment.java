@@ -338,22 +338,22 @@ public class DocsRecentFragment extends DocsBaseFragment implements DocsRecentVi
 
     @Override
     public void onOpenDocs(Uri uri) {
-        showEditors(uri, EditorsType.DOCS);
+        showEditors(uri, EditorsType.DOCS, null);
     }
 
     @Override
     public void onOpenCells(Uri uri) {
-        showEditors(uri, EditorsType.CELLS);
+        showEditors(uri, EditorsType.CELLS, null);
     }
 
     @Override
     public void onOpenPresentation(Uri uri) {
-        showEditors(uri, EditorsType.PRESENTATION);
+        showEditors(uri, EditorsType.PRESENTATION, null);
     }
 
     @Override
     public void onOpenPdf(Uri uri) {
-        showEditors(uri, EditorsType.PDF);
+        showEditors(uri, EditorsType.PDF, null);
     }
 
     @Override

@@ -63,6 +63,8 @@ public abstract class DocsBaseFragment extends ListFragment implements DocsBaseV
 
     private static final long CLICK_TIME_INTERVAL = 350;
 
+    private static final String KEY_DOC_SERVER = "KEY_DOC_SERVER";
+
     protected static final int REQUEST_OPEN_FILE = 10000;
     protected static final int REQUEST_DOCS = 10001;
     protected static final int REQUEST_PRESENTATION = 10002;
@@ -360,19 +362,19 @@ public abstract class DocsBaseFragment extends ListFragment implements DocsBaseV
         switch (StringUtils.getExtension(file.getFileExst())) {
             case DOC:
                 getPresenter().addRecent(file);
-                showEditors(uri, EditorsType.DOCS);
+                showEditors(uri, EditorsType.DOCS, null);
                 break;
             case SHEET:
                 getPresenter().addRecent(file);
-                showEditors(uri, EditorsType.CELLS);
+                showEditors(uri, EditorsType.CELLS, null);
                 break;
             case PRESENTATION:
                 getPresenter().addRecent(file);
-                showEditors(uri, EditorsType.PRESENTATION);
+                showEditors(uri, EditorsType.PRESENTATION, null);
                 break;
             case PDF:
                 getPresenter().addRecent(file);
-                showEditors(uri, EditorsType.PDF);
+                showEditors(uri, EditorsType.PDF, null);
                 break;
             case VIDEO_SUPPORT:
                 getPresenter().addRecent(file);
@@ -1191,10 +1193,15 @@ public abstract class DocsBaseFragment extends ListFragment implements DocsBaseV
         }
     }
 
-    protected void showEditors(Uri uri, @NonNull EditorsType type) {
+    protected void showEditors(@Nullable Uri uri, @NonNull EditorsType type, @Nullable String url) {
         try {
             final Intent intent = new Intent();
-            intent.setData(uri);
+            if (uri != null) {
+                intent.setData(uri);
+            }
+            if (url != null) {
+                intent.putExtra(KEY_DOC_SERVER, url);
+            }
             intent.setAction(Intent.ACTION_VIEW);
             intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
             switch (type) {
@@ -1222,6 +1229,36 @@ public abstract class DocsBaseFragment extends ListFragment implements DocsBaseV
 
     }
 
+    protected void showCoauthoringEditors(@Nullable String url, @NonNull EditorsType type) {
+        try {
+            final Intent intent = new Intent();
+            intent.putExtra("extra", url);
+            intent.setAction(Intent.ACTION_VIEW);
+            intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            switch (type) {
+                case DOCS:
+                    intent.setClassName(requireContext(), "lib.editors.gdocs.ui.activities.DocsActivity");
+                    startActivityForResult(intent, REQUEST_DOCS);
+                    break;
+                case CELLS:
+                    intent.setClassName(requireContext(), "lib.editors.gcells.ui.activities.CellsActivity");
+                    startActivityForResult(intent, REQUEST_SHEETS);
+                    break;
+                case PRESENTATION:
+                    intent.setClassName(requireContext(), "lib.editors.gslides.ui.activities.SlidesActivity");
+                    startActivityForResult(intent, REQUEST_PRESENTATION);
+                    break;
+                case PDF:
+                    intent.setClassName(requireContext(), "lib.editors.gbase.ui.activities.PdfActivity");
+                    startActivityForResult(intent, REQUEST_PDF);
+                    break;
+            }
+        } catch (ActivityNotFoundException e) {
+            e.printStackTrace();
+            showToast("Not found");
+        }
+
+    }
 
     private void removeCommonDialog() {
         final Fragment fragment = requireFragmentManager().findFragmentByTag(CommonDialog.TAG);

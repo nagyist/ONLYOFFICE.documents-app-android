@@ -23,6 +23,8 @@ import app.editors.manager.mvp.models.response.ResponseCapabilities;
 import app.editors.manager.mvp.models.response.ResponseCount;
 import app.editors.manager.mvp.models.response.ResponseCreateFile;
 import app.editors.manager.mvp.models.response.ResponseCreateFolder;
+import app.editors.manager.mvp.models.response.ResponseDocServer;
+import app.editors.manager.mvp.models.response.ResponseDocumentEdit;
 import app.editors.manager.mvp.models.response.ResponseDownload;
 import app.editors.manager.mvp.models.response.ResponseExplorer;
 import app.editors.manager.mvp.models.response.ResponseExternal;
@@ -567,7 +569,7 @@ public interface Api {
             HEADER_ACCEPT + ": " + VALUE_ACCEPT})
     @DELETE("api/" + API_VERSION + "/files/thirdparty/{folder_id}" + RESPONSE_FORMAT)
     Call<ResponseBody> deleteStorage(@Header(HEADER_AUTHORIZATION) String token,
-                                 @Path(value = "folder_id") String id);
+                                     @Path(value = "folder_id") String id);
 
     /*
      * Download file
@@ -591,8 +593,8 @@ public interface Api {
     @Multipart
     @POST("api/" + API_VERSION + "/files/{folder_id}/upload" + RESPONSE_FORMAT)
     Single<Response<ResponseBody>> uploadMultiFiles(@Header(HEADER_AUTHORIZATION) String token,
-                                      @Path(value = "folder_id") String folderId,
-                                      @Part MultipartBody.Part[] part);
+                                                    @Path(value = "folder_id") String folderId,
+                                                    @Part MultipartBody.Part[] part);
 
     @Multipart
     @POST("api/" + API_VERSION + "/files/@my/upload" + RESPONSE_FORMAT)
@@ -621,4 +623,16 @@ public interface Api {
             HEADER_ACCEPT + ": " + VALUE_ACCEPT})
     @GET("api/" + API_VERSION + "/settings/security" + RESPONSE_FORMAT)
     Single<ResponseModules> getModules(@Header(HEADER_AUTHORIZATION) String token, @Query("ids") List<String> modulesIds);
+
+    @Headers({HEADER_CONTENT_TYPE + ": " + VALUE_CONTENT_TYPE,
+            HEADER_ACCEPT + ": " + VALUE_ACCEPT})
+    @GET("api/" + API_VERSION + "/files/docservice" + RESPONSE_FORMAT)
+    Observable<ResponseDocServer> getDocService(@Header(HEADER_AUTHORIZATION) String token);
+
+    @Headers({HEADER_CONTENT_TYPE + ": " + VALUE_CONTENT_TYPE,
+            HEADER_ACCEPT + ": " + VALUE_ACCEPT})
+    @GET("api/" + API_VERSION + "/files/file/{file_id}/openedit" + RESPONSE_FORMAT)
+    Observable<ResponseDocumentEdit> openEdit(@Header(HEADER_AUTHORIZATION) String token,
+                                              @Path("file_id") String fileId,
+                                              @Query("value") int version);
 }

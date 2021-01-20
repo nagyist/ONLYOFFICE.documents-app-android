@@ -6,11 +6,12 @@ import app.editors.manager.mvp.models.explorer.File;
 import moxy.viewstate.strategy.OneExecutionStateStrategy;
 import moxy.viewstate.strategy.StateStrategyType;
 
+@StateStrategyType(OneExecutionStateStrategy.class)
 public interface DocsCloudView extends DocsBaseView {
 
-    @StateStrategyType(OneExecutionStateStrategy.class)
     void onFileWebView(File file);
-    @StateStrategyType(OneExecutionStateStrategy.class)
+
     void showMoveCopyDialog(ArrayList<String> names, String action, String title);
 
+    void onOpenCoauthoringFile(File file, String serverString);
 }

@@ -29,6 +29,8 @@ import app.editors.manager.mvp.models.models.ModelExplorerStack;
 import app.editors.manager.mvp.models.request.RequestCreate;
 import app.editors.manager.mvp.models.request.RequestDeleteShare;
 import app.editors.manager.mvp.models.request.RequestExternal;
+import app.editors.manager.mvp.models.response.ResponseDocServer;
+import app.editors.manager.mvp.models.response.ResponseDocument;
 import app.editors.manager.mvp.models.response.ResponseFiles;
 import app.editors.manager.mvp.views.main.DocsCloudView;
 import app.editors.manager.ui.dialogs.ContextBottomDialog;
@@ -37,6 +39,7 @@ import app.editors.manager.ui.views.custom.PlaceholderViews;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.BiFunction;
 import io.reactivex.schedulers.Schedulers;
 import lib.toolkit.base.managers.utils.KeyboardUtils;
 import lib.toolkit.base.managers.utils.StringUtils;
@@ -186,7 +189,12 @@ public class DocsCloudPresenter extends DocsBasePresenter<DocsCloudView>
     public void getFileInfo() {
         if (mItemClicked != null) {
             mDisposable.add(mFileProvider.fileInfo(mItemClicked)
-                    .subscribe(file -> onFileClickAction(), this::fetchError));
+                    .flatMap(file -> Observable.zip(((CloudFileProvider) mFileProvider).getDocument(file),
+                            mRetrofitTool.getApiWithPreferences().getDocService(mToken),
+                            (BiFunction<ResponseDocument, ResponseDocServer, String>) this::getServiceString)
+                            .subscribeOn(Schedulers.io())
+                            .observeOn(AndroidSchedulers.mainThread()))
+                    .subscribe(this::onFileClickAction, this::fetchError));
         }
     }
 
@@ -497,7 +505,7 @@ public class DocsCloudPresenter extends DocsBasePresenter<DocsCloudView>
         getViewState().showMoveCopyDialog(names, action, titleFolder);
     }
 
-    private void onFileClickAction() {
+    private void onFileClickAction(String serverString) {
         if (mItemClicked instanceof File) {
 
             final File file = (File) mItemClicked;
@@ -511,7 +519,8 @@ public class DocsCloudPresenter extends DocsBasePresenter<DocsCloudView>
                 case PDF:
                     addRecent((File) mItemClicked);
                     file.setReadOnly(true);
-                    getViewState().onFileWebView(file);
+                    getViewState().onOpenCoauthoringFile(file, serverString);
+//                    getViewState().onFileWebView(file);
                     break;
                 case IMAGE:
                 case IMAGE_GIF:
@@ -626,5 +635,13 @@ public class DocsCloudPresenter extends DocsBasePresenter<DocsCloudView>
 
     private void showDownloadFolderActivity() {
         getViewState().onDownloadActivity();
+    }
+
+    private String getServiceString(ResponseDocument responseDocument, ResponseDocServer responseDocServer) {
+        final String serverUrl = responseDocServer.getResponse().replaceFirst("/web-apps/apps/api/documents/api.js", "");
+        return serverUrl +
+                "/doc/" +
+                responseDocument.getDocument().getKey() +
+                "/c/websocket";
     }
 }

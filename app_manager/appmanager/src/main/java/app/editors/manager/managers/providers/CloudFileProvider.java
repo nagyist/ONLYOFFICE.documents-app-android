@@ -21,6 +21,8 @@ import app.editors.manager.mvp.models.request.RequestCreate;
 import app.editors.manager.mvp.models.request.RequestExternal;
 import app.editors.manager.mvp.models.request.RequestRenameFile;
 import app.editors.manager.mvp.models.request.RequestTitle;
+import app.editors.manager.mvp.models.response.ResponseDocument;
+import app.editors.manager.mvp.models.response.ResponseDocumentEdit;
 import app.editors.manager.mvp.models.response.ResponseExternal;
 import app.editors.manager.mvp.models.response.ResponseOperation;
 import io.reactivex.Observable;
@@ -311,4 +313,8 @@ public class CloudFileProvider implements BaseFileProvider {
                 });
     }
 
+    public Observable<ResponseDocument> getDocument(File file) {
+        return mApi.openEdit(mToken, file.getId(), file.getVersion()).map(ResponseDocumentEdit::getResponse);
+    }
+    
 }

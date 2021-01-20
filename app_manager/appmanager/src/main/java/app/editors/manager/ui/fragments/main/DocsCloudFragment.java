@@ -27,6 +27,7 @@ import app.editors.manager.ui.activities.main.StorageActivity;
 import app.editors.manager.ui.dialogs.ActionBottomDialog;
 import app.editors.manager.ui.dialogs.ContextBottomDialog;
 import app.editors.manager.ui.dialogs.MoveCopyDialog;
+import lib.toolkit.base.managers.utils.StringUtils;
 import lib.toolkit.base.managers.utils.TimeUtils;
 import lib.toolkit.base.managers.utils.UiUtils;
 import lib.toolkit.base.ui.dialogs.common.CommonDialog;
@@ -254,5 +255,23 @@ public abstract class DocsCloudFragment extends DocsBaseFragment implements Docs
     @Override
     protected Boolean isWebDav() {
         return false;
+    }
+
+    @Override
+    public void onOpenCoauthoringFile(File file, String serverString) {
+        switch (StringUtils.getExtension(file.getFileExst())) {
+            case DOC:
+                getPresenter().addRecent(file);
+                showEditors(null, EditorsType.DOCS, serverString);
+                break;
+            case SHEET:
+                getPresenter().addRecent(file);
+                showEditors(null, EditorsType.CELLS, serverString);
+                break;
+            case PRESENTATION:
+                getPresenter().addRecent(file);
+                showEditors(null, EditorsType.PRESENTATION, serverString);
+                break;
+        }
     }
 }
