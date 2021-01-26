@@ -4,14 +4,15 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import app.editors.manager.mvp.models.base.Document;
+import app.editors.manager.mvp.models.base.EditorConfig;
 
 public class ResponseDocument {
     @SerializedName("document")
     @Expose
     private Document document;
-//    @SerializedName("editorConfig")
-//    @Expose
-//    private EditorConfig editorConfig;
+    @SerializedName("editorConfig")
+    @Expose
+    private EditorConfig editorConfig;
     @SerializedName("token")
     @Expose
     private String token;
@@ -30,13 +31,13 @@ public class ResponseDocument {
         this.document = document;
     }
 
-//    public EditorConfig getEditorConfig() {
-//        return editorConfig;
-//    }
-//
-//    public void setEditorConfig(EditorConfig editorConfig) {
-//        this.editorConfig = editorConfig;
-//    }
+    public EditorConfig getEditorConfig() {
+        return editorConfig;
+    }
+
+    public void setEditorConfig(EditorConfig editorConfig) {
+        this.editorConfig = editorConfig;
+    }
 
     public String getToken() {
         return token;
