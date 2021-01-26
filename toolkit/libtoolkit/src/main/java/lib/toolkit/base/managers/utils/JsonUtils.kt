@@ -15,20 +15,24 @@ object JsonUtils {
     private const val JSON_EXTENSION = ".json"
     private const val DESC_SUFFIX = "_desc"
 
+    @JvmStatic
     fun jsonFromAssets(context: Context, path: String): String {
         context.assets.open(path).use {
             return String(it.readBytes())
         }
     }
 
+    @JvmStatic
     fun <T> jsonAssetsToCollection(context: Context, assets: String, clazz: Class<T>): T {
         return jsonToObject(jsonFromAssets(context, assets), clazz)
     }
 
+    @JvmStatic
     fun <T> objectToJson(data: T): String {
         return Gson().toJson(data, object : TypeToken<T>() {}.type)
     }
 
+    @JvmStatic
     fun <T> objectToJsonExpose(data: T): String {
         return GsonBuilder()
                 .excludeFieldsWithoutExposeAnnotation()
@@ -36,10 +40,12 @@ object JsonUtils {
                 .toJson(data, object : TypeToken<T>() {}.type)
     }
 
+    @JvmStatic
     fun <T> jsonToObject(json: String, clazz: Class<T>): T {
         return Gson().fromJson(json, clazz)
     }
 
+    @JvmStatic
     fun <T> jsonToObjectExpose(json: String, clazz: Class<T>): T? {
         return GsonBuilder()
                 .excludeFieldsWithoutExposeAnnotation()
@@ -47,6 +53,7 @@ object JsonUtils {
                 .fromJson(json, clazz)
     }
 
+    @JvmStatic
     fun jsonToMap(jsonObject: JSONObject): HashMap<*, *> {
         return Gson().fromJson(jsonObject.toString(), HashMap::class.java)
     }

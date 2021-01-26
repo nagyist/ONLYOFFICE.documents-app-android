@@ -4,6 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -41,6 +44,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.BiFunction;
 import io.reactivex.schedulers.Schedulers;
+import lib.toolkit.base.managers.utils.JsonUtils;
 import lib.toolkit.base.managers.utils.KeyboardUtils;
 import lib.toolkit.base.managers.utils.StringUtils;
 import lib.toolkit.base.managers.utils.TimeUtils;
@@ -191,7 +195,7 @@ public class DocsCloudPresenter extends DocsBasePresenter<DocsCloudView>
             mDisposable.add(mFileProvider.fileInfo(mItemClicked)
                     .flatMap(file -> Observable.zip(((CloudFileProvider) mFileProvider).getDocument(file),
                             mRetrofitTool.getApiWithPreferences().getDocService(mToken),
-                            (BiFunction<ResponseDocument, ResponseDocServer, String>) this::getServiceString)
+                            this::getServiceString)
                             .subscribeOn(Schedulers.io())
                             .observeOn(AndroidSchedulers.mainThread()))
                     .subscribe(this::onFileClickAction, this::fetchError));
@@ -638,10 +642,13 @@ public class DocsCloudPresenter extends DocsBasePresenter<DocsCloudView>
     }
 
     private String getServiceString(ResponseDocument responseDocument, ResponseDocServer responseDocServer) {
-        final String serverUrl = responseDocServer.getResponse().replaceFirst("/web-apps/apps/api/documents/api.js", "");
-        return serverUrl +
-                "/doc/" +
-                responseDocument.getDocument().getKey() +
-                "/c/websocket";
+        try {
+            final String document = JsonUtils.objectToJsonExpose(responseDocument);
+            final JSONObject json = new JSONObject(document);
+            json.put("URL", responseDocServer.getResponse());
+            return json.toString();
+        } catch (JSONException e) {
+            return "";
+        }
     }
 }
