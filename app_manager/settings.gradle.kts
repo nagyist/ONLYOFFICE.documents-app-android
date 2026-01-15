@@ -37,6 +37,8 @@ if (shouldIncludeEditors() == true) {
     includeEditorModule("../../document-android-editors/editors_base/libresources", ":libresources")
 //    includeEditorModule("../../document-android-editors/editors_cells/libgcells", ":libgcells")
     includeEditorModule("../../document-android-editors/editors_docs/libgdocs", ":libgdocs")
+    includeEditorModule("../../document-android-editors/editors_slides/libgslides", ":libgslides")
+    includeEditorModule("../libsnapshot", ":libsnapshot")
 //    includeEditorModule("../../document-android-editors/editors_slides/libgslides", ":libgslides")
 }
 

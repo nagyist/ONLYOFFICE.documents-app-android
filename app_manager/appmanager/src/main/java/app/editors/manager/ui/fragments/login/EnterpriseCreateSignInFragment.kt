@@ -14,7 +14,7 @@ import app.editors.manager.mvp.views.login.EnterpriseCreateSignInView
 import app.editors.manager.ui.activities.main.MainActivity
 import app.editors.manager.ui.fragments.base.BaseAppFragment
 import app.editors.manager.ui.views.edits.BaseWatcher
-import com.google.android.gms.safetynet.SafetyNet
+import com.hcaptcha.sdk.HCaptcha
 import lib.toolkit.base.ui.dialogs.common.CommonDialog.Dialogs
 import moxy.presenter.InjectPresenter
 
@@ -49,10 +49,7 @@ class EnterpriseCreateSignInFragment : BaseAppFragment(), EnterpriseCreateSignIn
 
     private var fieldsWatcher: FieldsWatcher? = null
     private var viewBinding: FragmentLoginEnterpriseCreateSigninBinding? = null
-
-    private var email: String? = null
-    private var first: String? = null
-    private var last: String? = null
+    private var hCaptcha: HCaptcha? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -69,11 +66,49 @@ class EnterpriseCreateSignInFragment : BaseAppFragment(), EnterpriseCreateSignIn
         init()
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        viewBinding = null
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        hCaptcha?.removeAllListeners()
+        hCaptcha?.destroy()
+        hCaptcha = null
+    }
+
+    private fun initHCaptcha() {
+        val portalName = arguments?.getString(TAG_PORTAL)
+        val siteKey = if (portalName?.endsWith(".info") == true) {
+            BuildConfig.CAPTCHA_PUBLIC_KEY_INFO
+        } else {
+            BuildConfig.CAPTCHA_PUBLIC_KEY_COM
+        }
+
+        hCaptcha = HCaptcha.getClient(requireActivity()).apply {
+            setup(siteKey)
+            addOnSuccessListener { result ->
+                if (result.tokenResult?.isNotEmpty() == true) {
+                    signInPortalPresenter.createPortal(
+                        password = viewBinding?.loginSigninPasswordEdit?.text.toString(),
+                        email = checkNotNull(arguments?.getString(TAG_EMAIL)),
+                        first = checkNotNull(arguments?.getString(TAG_FIRST)),
+                        last = checkNotNull(arguments?.getString(TAG_LAST)),
+                        recaptcha = checkNotNull(result.tokenResult)
+                    )
+                }
+            }
+            addOnFailureListener { error ->
+                onError(error.message)
+            }
+        }
+    }
+
     private fun onSignInClick() {
         hideKeyboard(viewBinding?.loginSigninPasswordEdit)
         val password = viewBinding?.loginSigninPasswordEdit?.text.toString()
         val repeat = viewBinding?.loginSigninRepeatEdit?.text.toString()
-        val portalName = checkNotNull(arguments?.getString(TAG_PORTAL))
 
         if (password.length < 8 || password.length > 30) {
             viewBinding?.loginSigninPasswordLayout?.error = getString(R.string.login_create_signin_passwords_length)
@@ -83,26 +118,10 @@ class EnterpriseCreateSignInFragment : BaseAppFragment(), EnterpriseCreateSignIn
             return
         }
 
-        SafetyNet.getClient(requireContext())
-            .verifyWithRecaptcha(
-                if (portalName.endsWith(".info"))
-                    BuildConfig.CAPTCHA_PUBLIC_KEY_INFO else
-                    BuildConfig.CAPTCHA_PUBLIC_KEY_COM
-            )
-            .addOnSuccessListener { result ->
-                if (result.tokenResult?.isNotEmpty() == true) {
-                    signInPortalPresenter.createPortal(
-                        password = password,
-                        email = checkNotNull(email),
-                        first = checkNotNull(first),
-                        last = checkNotNull(last),
-                        recaptcha = checkNotNull(result.tokenResult)
-                    )
-                }
-            }
-            .addOnFailureListener { error ->
-                onError(error.message)
-            }
+        if (hCaptcha == null) {
+            initHCaptcha()
+        }
+        hCaptcha?.verifyWithHCaptcha()
     }
 
     override fun onCancelClick(dialogs: Dialogs?, tag: String?) {
@@ -110,11 +129,9 @@ class EnterpriseCreateSignInFragment : BaseAppFragment(), EnterpriseCreateSignIn
         signInPortalPresenter.cancelRequest()
     }
 
-
     private fun onAgreeTerms() {
         showUrlInBrowser(getString(R.string.app_url_terms))
     }
-
 
     private fun actionKeyPress(actionId: Int): Boolean {
         if (actionId == EditorInfo.IME_ACTION_DONE) {
@@ -162,7 +179,6 @@ class EnterpriseCreateSignInFragment : BaseAppFragment(), EnterpriseCreateSignIn
             requestFocus()
             addTextChangedListener(fieldsWatcher)
         }
-        args
     }
 
     private fun initListeners() {
@@ -184,14 +200,6 @@ class EnterpriseCreateSignInFragment : BaseAppFragment(), EnterpriseCreateSignIn
             viewBinding?.loginSigninPasswordLayout?.error = null
         }
     }
-
-    private val args: Unit
-        get() {
-            val bundle = arguments
-            email = bundle?.getString(TAG_EMAIL)
-            first = bundle?.getString(TAG_FIRST)
-            last = bundle?.getString(TAG_LAST)
-        }
 
     private inner class FieldsWatcher : BaseWatcher() {
         override fun onTextChanged(text: CharSequence, start: Int, before: Int, count: Int) {
