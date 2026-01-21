@@ -43,7 +43,8 @@ fun AppStepperItem(
     buttonDownEnabled: Boolean = true,
     buttonUpEnabled: Boolean = true,
     onDownClick: () -> Unit,
-    onUpClick: () -> Unit
+    onUpClick: () -> Unit,
+    onValueClick: (() -> Unit)? = null
 ) {
     AppListItem(
         modifier = modifier,
@@ -73,8 +74,11 @@ fun AppStepperItem(
                             .widthIn(min = 56.dp)
                             .clip(RoundedCornerShape(4.dp))
                             .background(colorResource(R.color.colorBackdrop))
-                            .padding(vertical = 2.dp, horizontal = 8.dp)
-                            .clickable(onClick = { }),
+                            .clickable(
+                                enabled = onValueClick != null,
+                                onClick = { onValueClick?.invoke() }
+                            )
+                            .padding(vertical = 2.dp, horizontal = 8.dp),
                         text = value,
                         color = titleColor,
                         textAlign = TextAlign.Center
