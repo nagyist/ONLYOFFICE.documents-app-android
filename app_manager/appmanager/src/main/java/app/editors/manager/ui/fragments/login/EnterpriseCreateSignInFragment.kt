@@ -117,11 +117,31 @@ class EnterpriseCreateSignInFragment : BaseAppFragment(), EnterpriseCreateSignIn
             viewBinding?.loginSigninRepeatLayout?.error = getString(R.string.login_create_signin_passwords_mismatch)
             return
         }
-
         if (hCaptcha == null) {
             initHCaptcha()
         }
         hCaptcha?.verifyWithHCaptcha()
+
+//        FirebaseUtils.isCaptchaEnable { isCaptchaEnabled ->
+//            if (isCaptchaEnabled) {
+//
+//            } else {
+//                //TODO WARNING
+//                onError("Warning: captcha is disabled")
+//
+////                signInWithoutCaptcha()
+//            }
+//        }
+    }
+
+    private fun signInWithoutCaptcha() {
+        signInPortalPresenter.createPortal(
+            password = viewBinding?.loginSigninPasswordEdit?.text.toString(),
+            email = checkNotNull(arguments?.getString(TAG_EMAIL)),
+            first = checkNotNull(arguments?.getString(TAG_FIRST)),
+            last = checkNotNull(arguments?.getString(TAG_LAST)),
+            recaptcha = "" // API может принимать null или пустую строку
+        )
     }
 
     override fun onCancelClick(dialogs: Dialogs?, tag: String?) {
