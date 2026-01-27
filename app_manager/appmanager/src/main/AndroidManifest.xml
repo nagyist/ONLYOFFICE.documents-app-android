@@ -323,8 +323,8 @@
         <provider
             android:name=".managers.tools.AccountContentProvider"
             android:authorities="com.onlyoffice.accounts"
-            android:enabled="true"
-            android:exported="true" />
+            android:enabled="false"
+            android:exported="false" />
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
