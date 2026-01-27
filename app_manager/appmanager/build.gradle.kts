@@ -68,8 +68,8 @@ android {
         manifestPlaceholders += mapOf()
         minSdk = libs.versions.minSdk.get().toInt()
         targetSdk = libs.versions.targetSdk.get().toInt()
-        versionCode = 676
-        versionName = "9.2.1"
+        versionCode = 683
+        versionName = "9.2.2"
         multiDexEnabled = true
         applicationId = "com.onlyoffice.documents"
 
@@ -251,7 +251,8 @@ dependencies {
             ":libgeditors",
             ":libgcells",
             ":libgdocs",
-            ":libgslides"
+            ":libgslides",
+            ":libsnapshot"
         )
 
         editorModules.forEach { modulePath ->
@@ -277,7 +278,6 @@ dependencies {
     implementation(libs.google.playServiceAuth)
     implementation(libs.google.material)
     implementation(libs.google.gson)
-    implementation(libs.google.safetynet)
     implementation(libs.google.update)
 
     // Androidx
@@ -333,6 +333,7 @@ dependencies {
     implementation(libs.photoView)
     implementation(libs.androidWorkManager)
     implementation(libs.androidCustomTabs)
+    implementation(libs.hCaptcha)
 
     //TODO add to base module
     implementation(libs.lifecycle.viewmodel)
