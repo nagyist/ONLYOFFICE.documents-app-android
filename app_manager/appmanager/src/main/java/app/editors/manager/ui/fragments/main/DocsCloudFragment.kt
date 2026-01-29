@@ -27,9 +27,9 @@ import app.editors.manager.app.App.Companion.getApp
 import app.editors.manager.app.accountOnline
 import app.editors.manager.managers.tools.ActionMenuItem
 import app.editors.manager.mvp.models.filter.FilterType
-import app.editors.manager.mvp.models.list.RecentViaLink
 import app.editors.manager.mvp.models.states.OperationsState.OperationType
 import app.editors.manager.mvp.models.ui.DuplicateFilesChoice
+import app.editors.manager.mvp.models.ui.SharingType
 import app.editors.manager.mvp.presenters.main.DocsBasePresenter
 import app.editors.manager.mvp.presenters.main.DocsCloudPresenter
 import app.editors.manager.mvp.views.main.DocsCloudView
@@ -320,7 +320,15 @@ open class DocsCloudFragment : DocsBaseFragment(), DocsCloudView {
                     roomType = roomType
                 ) { bundle ->
                     if (bundle.contains(ShareSettingsFragment.KEY_RESULT_SHARED)) {
-                        val shared = bundle.getBoolean(ShareSettingsFragment.KEY_RESULT_SHARED)
+                        val shared = try {
+                            SharingType.valueOf(
+                                bundle.getString(
+                                    ShareSettingsFragment.KEY_RESULT_SHARED
+                                ).orEmpty()
+                            )
+                        } catch (_: Throwable) {
+                            SharingType.NONE
+                        }
                         presenter.updateShareBadge(shared)
                     }
                 }
@@ -378,39 +386,18 @@ open class DocsCloudFragment : DocsBaseFragment(), DocsCloudView {
 
     override fun onDocsGet(list: List<Entity>?) {
         val newList = list.orEmpty().toMutableList()
-        if (presenter.getSectionType() == ApiContract.SectionType.CLOUD_USER &&
-            context?.accountOnline.isDocSpace &&
-            presenter.isRoot &&
-            !context?.accountOnline?.portal?.version?.docSpaceVersion?.startsWith("3.5")!!
-        ) {
-            newList.add(0, RecentViaLink)
-        }
         super.onDocsGet(newList)
         setMenuFilterEnabled(true)
     }
 
     override fun onDocsRefresh(list: List<Entity>?) {
         val newList = list.orEmpty().toMutableList()
-        if (presenter.getSectionType() == ApiContract.SectionType.CLOUD_USER &&
-            context?.accountOnline.isDocSpace &&
-            presenter.isRoot &&
-            !context?.accountOnline?.portal?.version?.docSpaceVersion?.startsWith("3.5")!!
-        ) {
-            newList.add(0, RecentViaLink)
-        }
         super.onDocsRefresh(newList)
         setMenuFilterEnabled(true)
     }
 
     override fun onDocsNext(list: List<Entity>?) {
         val newList = list.orEmpty().toMutableList()
-        if (presenter.getSectionType() == ApiContract.SectionType.CLOUD_USER &&
-            context?.accountOnline.isDocSpace &&
-            presenter.isRoot &&
-            !context?.accountOnline?.portal?.version?.docSpaceVersion?.startsWith("3.5")!!
-        ) {
-            newList.add(0, RecentViaLink)
-        }
         super.onDocsNext(newList)
     }
 
