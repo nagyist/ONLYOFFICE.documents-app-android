@@ -273,7 +273,7 @@ private fun LogsContent() {
                 }
             ) {
                 Icon(
-                    painter = painterResource(id = lib.editors.gbase.R.drawable.ic_clear),
+                    painter = painterResource(lib.toolkit.base.R.drawable.ic_close),
                     contentDescription = "Clear"
                 )
             }
@@ -391,7 +391,7 @@ private fun NetworkContent() {
                 }
             ) {
                 Icon(
-                    painter = painterResource(id = lib.editors.gbase.R.drawable.ic_clear),
+                    painter = painterResource(lib.toolkit.base.R.drawable.ic_close),
                     contentDescription = "Clear"
                 )
             }
