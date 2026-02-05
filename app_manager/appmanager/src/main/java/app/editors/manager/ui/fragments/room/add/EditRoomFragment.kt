@@ -115,7 +115,7 @@ class EditRoomFragment : ComposeDialogFragment() {
                         }
 
                         is RoomSettingsEffect.Success -> {
-                            requireActivity().supportFragmentManager.setFragmentResult(
+                            parentFragmentManager.setFragmentResult(
                                 TAG_RESULT,
                                 Bundle.EMPTY
                             )
@@ -213,6 +213,7 @@ class EditRoomFragment : ComposeDialogFragment() {
                                 it.copy(value = value)
                             }
                         },
+                        isClose = false,
                         onSetQuotaMeasurementUnit = { unit ->
                             viewModel.updateStorageQuota {
                                 it.copy(unit = unit)
@@ -237,7 +238,7 @@ class EditRoomFragment : ComposeDialogFragment() {
                         onSuccess = {
                             navController.popBackStackWhenResumed()
                             viewModel.setOwner(it)
-                            requireActivity().supportFragmentManager.setFragmentResult(
+                            parentFragmentManager.setFragmentResult(
                                 TAG_RESULT,
                                 Bundle.EMPTY
                             )
