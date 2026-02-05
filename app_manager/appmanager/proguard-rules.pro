@@ -64,3 +64,5 @@
 #-keepclassmembers class lib.toolkit.base.managers.utils.JsonUtils { *; }
 
 -keep class com.google.android.material.bottomsheet.BottomSheetBehavior { *; }
+
+-keep class lib.editors.resources.R$drawable { *; }

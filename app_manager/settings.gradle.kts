@@ -35,9 +35,11 @@ if (shouldIncludeEditors() == true) {
     includeEditorModule("../../core-ext/word_android/libdocs", ":libdocs")
     includeEditorModule("../../core-ext/slide_android/libslides", ":libslides")
     includeEditorModule("../../document-android-editors/editors_base/libgeditors", ":libgeditors")
+    includeEditorModule("../../document-android-editors/editors_base/libresources", ":libresources")
     includeEditorModule("../../document-android-editors/editors_cells/libgcells", ":libgcells")
     includeEditorModule("../../document-android-editors/editors_docs/libgdocs", ":libgdocs")
     includeEditorModule("../../document-android-editors/editors_slides/libgslides", ":libgslides")
+    includeEditorModule("../libsnapshot", ":libsnapshot")
 }
 
 project(":libtoolkit").projectDir = File(settingsDir, "../toolkit/libtoolkit")

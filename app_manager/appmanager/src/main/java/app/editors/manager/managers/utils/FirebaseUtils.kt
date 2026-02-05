@@ -98,9 +98,15 @@ object FirebaseUtils {
                     if (task.isSuccessful) {
                         config.activate()
                         block(config.getBoolean(KEY_CAPTCHA))
+                    } else {
+                        block(false)
                     }
                 }
+            } ?: run {
+                block(false)
             }
+        } else {
+            block(false)
         }
     }
 

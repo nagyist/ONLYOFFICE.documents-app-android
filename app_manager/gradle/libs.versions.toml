@@ -45,7 +45,7 @@ room = "2.6.1"
 moxy = "2.2.2"
 
 #koin
-koin = "4.0.4"
+koin = "4.1.1"
 
 #firebase
 firebaseCore = "21.1.1"
@@ -61,7 +61,6 @@ playServieAuth = "21.4.0"
 playReview = "2.0.2"
 material = "1.13.0"
 gson = "2.13.2"
-safetynet = "18.1.0"
 app-update = "2.1.0"
 text-recognition = "16.0.1"
 object-detection = "17.0.2"
@@ -86,6 +85,7 @@ glideCompose = "1.0.0-beta01"
 photoView = "2.3.0"
 colorPicker = "2.3.0"
 customTabs = "1.9.0"
+hCaptcha = "4.4.0"
 
 #tests
 junit = "4.13.2"
@@ -121,7 +121,6 @@ google-playServiceAuth = { module = "com.google.android.gms:play-services-auth",
 google-playReview = { module = "com.google.android.play:review", version.ref = "playReview" }
 google-material = { module = "com.google.android.material:material", version.ref = "material" }
 google-gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
-google-safetynet = { module = "com.google.android.gms:play-services-safetynet", version.ref = "safetynet" }
 google-update = { module = "com.google.android.play:app-update-ktx", version.ref = "app-update" }
 google-ml-text-recognition = { module = "com.google.mlkit:text-recognition", version.ref = "text-recognition" }
 google-ml-text-recognitionchinese = { module = "com.google.mlkit:text-recognition-chinese", version.ref = "text-recognition" }
@@ -195,6 +194,7 @@ glideOkhttp = { module = "com.github.bumptech.glide:okhttp3-integration", versio
 glideCompose = { module = "com.github.bumptech.glide:compose", version.ref = "glideCompose" }
 photoView = { module = "com.github.chrisbanes:PhotoView", version.ref = "photoView" }
 colorPicker = { module = "com.github.skydoves:colorpickerview", version.ref = "colorPicker" }
+hCaptcha = { module = "com.github.hCaptcha.hcaptcha-android-sdk:sdk", version.ref = "hCaptcha" }
 
 #tests
 junit = { module = "junit:junit", version.ref = "junit" }
