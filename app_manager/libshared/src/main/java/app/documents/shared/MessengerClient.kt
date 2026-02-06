@@ -166,7 +166,7 @@ class MessengerClient(private val context: Context) {
 
     private fun getGlideUrl(avatarUrl: String?, accessToken: String): GlideUrl {
         return GlideUrl(
-            avatarUrl,
+            avatarUrl?.replace("//", "/"),
             LazyHeaders.Builder()
                 .addHeader(ApiContract.HEADER_AUTHORIZATION, accessToken)
                 .build()
