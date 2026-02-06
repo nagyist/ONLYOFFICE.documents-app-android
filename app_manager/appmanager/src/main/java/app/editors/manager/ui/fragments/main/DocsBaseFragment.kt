@@ -77,6 +77,7 @@ import lib.toolkit.base.managers.utils.getSendFileIntent
 import lib.toolkit.base.ui.adapters.BaseAdapter
 import lib.toolkit.base.ui.adapters.BaseAdapter.OnItemContextListener
 import lib.toolkit.base.ui.dialogs.base.BaseBottomDialog.OnBottomDialogCloseListener
+import lib.toolkit.base.ui.dialogs.base.FragmentListenerSetup
 import lib.toolkit.base.ui.dialogs.common.CommonDialog
 import lib.toolkit.base.ui.dialogs.common.CommonDialog.Dialogs
 import lib.toolkit.base.ui.dialogs.common.CommonDialog.OnCommonDialogClose
@@ -87,7 +88,7 @@ import java.io.File
 
 abstract class DocsBaseFragment : ListFragment(), DocsBaseView, BaseAdapter.OnItemClickListener,
     OnItemContextListener, BaseAdapter.OnItemLongClickListener, ExplorerContextBottomDialog.OnClickListener,
-    ActionBottomDialog.OnClickListener, DialogButtonOnClick, LifecycleObserver {
+    ActionBottomDialog.OnClickListener, DialogButtonOnClick, LifecycleObserver, FragmentListenerSetup {
 
 
     companion object {
@@ -749,28 +750,20 @@ abstract class DocsBaseFragment : ListFragment(), DocsBaseView, BaseAdapter.OnIt
 
     override fun onBatchMoveCopy(operation: OperationsState.OperationType, explorer: Explorer) {
         OperationDialogFragment.show(
-            activity = requireActivity(),
+            fragmentManager = childFragmentManager,
             operation = operation,
-            explorer = explorer
-        ) { bundle ->
-            if (OperationDialogFragment.KEY_OPERATION_RESULT_COMPLETE in bundle) {
-                showSnackBar(R.string.operation_complete_message)
-                view?.postDelayed(::onRefresh, 500)
-            }
-        }
+            explorer = explorer,
+            requestKey = OperationDialogFragment.KEY_OPERATION_MOVE_COPY_REQUEST
+        )
     }
 
     override fun onPickCloudFile(destFolderId: String) {
         OperationDialogFragment.show(
-            activity = requireActivity(),
+            fragmentManager = childFragmentManager,
             destFolderId = destFolderId,
-            explorer = Explorer()
-        ) { bundle ->
-            if (OperationDialogFragment.KEY_OPERATION_RESULT_COMPLETE in bundle) {
-                showSnackBar(R.string.operation_complete_message)
-                view?.postDelayed(::onRefresh, 500)
-            }
-        }
+            explorer = Explorer(),
+            requestKey = OperationDialogFragment.KEY_OPERATION_PICK_REQUEST
+        )
     }
 
     override fun onActionBarTitle(title: String) {
@@ -1263,6 +1256,25 @@ abstract class DocsBaseFragment : ListFragment(), DocsBaseView, BaseAdapter.OnIt
     protected fun showExplorerContextBottomDialog(state: ExplorerContextState) {
         ExplorerContextBottomDialog.newInstance(state).also { dialog ->
             dialog.show(parentFragmentManager, ExplorerContextBottomDialog.TAG)
+        }
+    }
+
+    override fun setupFragmentListener(requestKey: String) {
+        when (requestKey) {
+            OperationDialogFragment.KEY_OPERATION_MOVE_COPY_REQUEST, OperationDialogFragment.KEY_OPERATION_PICK_REQUEST -> {
+                setFragmentListenerByKey(requestKey) { bundle ->
+                    if (OperationDialogFragment.KEY_OPERATION_RESULT_COMPLETE in bundle) {
+                        showSnackBar(R.string.operation_complete_message)
+                        view?.postDelayed(::onRefresh, 500)
+                    }
+                }
+            }
+        }
+    }
+
+    protected fun setFragmentListenerByKey(requestKey: String, callback: (Bundle) -> Unit) {
+        childFragmentManager.setFragmentResultListener(requestKey, this) { _, bundle ->
+            callback(bundle)
         }
     }
 

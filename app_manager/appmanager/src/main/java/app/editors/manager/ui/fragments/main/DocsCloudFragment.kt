@@ -11,7 +11,6 @@ import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.os.bundleOf
 import androidx.fragment.app.clearFragmentResultListener
 import androidx.fragment.app.setFragmentResult
-import androidx.fragment.app.setFragmentResultListener
 import androidx.recyclerview.widget.LinearLayoutManager
 import app.documents.core.model.cloud.CloudAccount
 import app.documents.core.model.cloud.isDocSpace
@@ -19,7 +18,6 @@ import app.documents.core.network.common.contracts.ApiContract
 import app.documents.core.network.manager.models.base.Entity
 import app.documents.core.network.manager.models.explorer.CloudFile
 import app.documents.core.network.manager.models.explorer.CloudFolder
-import app.documents.core.network.manager.models.explorer.Explorer
 import app.documents.core.network.manager.models.explorer.ExportIndexOperation
 import app.documents.core.network.manager.models.explorer.Lifetime
 import app.editors.manager.R
@@ -597,26 +595,11 @@ open class DocsCloudFragment : DocsBaseFragment(), DocsCloudView {
     }
 
     override fun showAddRoomFragment(type: Int, copyItems: CopyItems?) {
-        AddRoomFragment.show(
-            parentFragmentManager,
-            viewLifecycleOwner,
-            type = type,
-            copyItems = copyItems
-        ) { bundle ->
-            if (bundle.contains("id")) {
-                openRoom(id = bundle.getString("id"), type = bundle.getInt("type"))
-            } else {
-                onRefresh()
-            }
-        }
+        AddRoomFragment.show(childFragmentManager, type, copyItems)
     }
 
     override fun showEditRoomFragment(room: CloudFolder) {
-        EditRoomFragment.show(
-            parentFragmentManager,
-            viewLifecycleOwner,
-            room.id
-        ) { onRefresh() }
+        EditRoomFragment.show(childFragmentManager, room.id)
     }
 
     override fun showFillFormChooserFragment() {
@@ -674,17 +657,6 @@ open class DocsCloudFragment : DocsBaseFragment(), DocsCloudView {
         )
     }
 
-    override fun onBatchMoveCopy(operation: OperationType, explorer: Explorer) {
-        OperationDialogFragment.show(requireActivity(), operation, explorer) { bundle ->
-            if (OperationDialogFragment.KEY_OPERATION_RESULT_COMPLETE in bundle) {
-                showSnackBar(R.string.operation_complete_message)
-                presenter.getBackStack()
-            } else if (OperationDialogFragment.KEY_OPERATION_RESULT_OPEN_FOLDER in bundle) {
-                openRoom(bundle.getString(OperationDialogFragment.KEY_OPERATION_RESULT_OPEN_FOLDER))
-            }
-        }
-    }
-
     override fun onRoomViaLinkPasswordRequired(error: Boolean, tag: String) { }
 
     override fun showRoomInfoFragment() {
@@ -713,20 +685,7 @@ open class DocsCloudFragment : DocsBaseFragment(), DocsCloudView {
     }
 
     protected fun showAddRoomBottomDialog(copyFiles: Boolean = true) {
-        setFragmentResultListener(AddRoomBottomDialog.KEY_REQUEST_TYPE) { _, bundle ->
-            onActionDialogClose()
-            if (bundle.contains(AddRoomBottomDialog.KEY_RESULT_TYPE)) {
-                val roomType = bundle.getInt(AddRoomBottomDialog.KEY_RESULT_TYPE)
-                if (roomType == 0) {
-                    showRoomFromTemplateFragment(null)
-                } else if (copyFiles) {
-                    presenter.createRoom(roomType)
-                } else {
-                    showAddRoomFragment(roomType)
-                }
-            }
-        }
-        AddRoomBottomDialog().show(parentFragmentManager, AddRoomBottomDialog.TAG)
+        AddRoomBottomDialog.show(childFragmentManager, copyFiles)
     }
 
     override fun showFillFormIncompatibleVersionsDialog() {
@@ -772,74 +731,104 @@ open class DocsCloudFragment : DocsBaseFragment(), DocsCloudView {
     }
 
     override fun showTemplateSettingsFragment(templateId: String, modeId: Int) {
-        TemplateSettingsFragment.show(
-            parentFragmentManager,
-            viewLifecycleOwner,
-            templateId,
-            modeId
-        ) { bundle ->
-            val id = bundle.getString(TemplateSettingsFragment.KEY_SAVED_ID)
-            val type = bundle.getInt(TemplateSettingsFragment.KEY_SAVED_ROOM_TYPE)
-            val title = bundle.getString(TemplateSettingsFragment.KEY_SAVED_TITLE)
-            when (modeId) {
-                TemplateSettingsMode.MODE_CREATE_TEMPLATE -> {
-                    id?.let {
-                        openRoom(id = id, type = type)
-                        showSnackBar(getString(R.string.template_created_successfully, title))
-                    }
-                }
-
-                TemplateSettingsMode.MODE_EDIT_TEMPLATE -> {
-                    onRefresh()
-                    showSnackBar(R.string.settings_saved_successfully)
-                }
-
-                TemplateSettingsMode.MODE_CREATE_ROOM -> {
-                    id?.let {
-                        openRoom(id = id, type = type, popToRoot = true)
-                        showSnackBar(R.string.room_created_successfully)
-                    }
-                }
-            }
-
-        }
+        TemplateSettingsFragment.show(childFragmentManager, templateId, modeId)
     }
 
     override fun showTemplateAccessSettingsFragment(templateId: String) {
-        TemplateAccessSettingsFragment.show(
-            parentFragmentManager,
-            viewLifecycleOwner,
-            templateId
-        ) {
-            showSnackBar(R.string.settings_saved_successfully)
-        }
+        TemplateAccessSettingsFragment.show(childFragmentManager, templateId)
     }
 
     override fun showRoomFromTemplateFragment(templateId: String?) {
-        RoomFromTemplateFragment.show(
-            parentFragmentManager,
-            viewLifecycleOwner,
-            templateId
-        ) { bundle ->
-            bundle.getString(RoomFromTemplateFragment.KEY_SAVED_ID)?.let { id ->
-                val roomType = bundle.getInt(RoomFromTemplateFragment.KEY_SAVED_ROOM_TYPE)
-                openRoom(id, roomType, popToRoot = true)
-                showSnackBar(R.string.room_created_successfully)
-            }
-        }
+        RoomFromTemplateFragment.show(childFragmentManager, templateId)
     }
 
     override fun showTemplateInfoFragment(templateId: String) {
-        TemplateInfoFragment.show(
-            parentFragmentManager,
-            viewLifecycleOwner,
-            templateId
-        ) { bundle ->
-            bundle.getString(TemplateInfoFragment.KEY_SAVED_ID)?.let { id ->
-                val roomType = bundle.getInt(TemplateInfoFragment.KEY_SAVED_ROOM_TYPE)
-                openRoom(id, roomType, popToRoot = true)
-                showSnackBar(R.string.room_created_successfully)
+        TemplateInfoFragment.show(childFragmentManager, templateId)
+    }
+
+    override fun setupFragmentListener(requestKey: String) {
+        when(requestKey) {
+            OperationDialogFragment.KEY_OPERATION_MOVE_COPY_REQUEST -> setFragmentListenerByKey(requestKey) { bundle ->
+                if (OperationDialogFragment.KEY_OPERATION_RESULT_COMPLETE in bundle) {
+                    showSnackBar(R.string.operation_complete_message)
+                    presenter.getBackStack()
+                } else if (OperationDialogFragment.KEY_OPERATION_RESULT_OPEN_FOLDER in bundle) {
+                    openRoom(bundle.getString(OperationDialogFragment.KEY_OPERATION_RESULT_OPEN_FOLDER))
+                }
             }
+
+            TemplateAccessSettingsFragment.KEY_FRAGMENT_RESULT -> setFragmentListenerByKey(requestKey) {
+                showSnackBar(R.string.settings_saved_successfully)
+            }
+
+            RoomFromTemplateFragment.KEY_FRAGMENT_RESULT -> setFragmentListenerByKey(requestKey) { bundle ->
+                bundle.getString(RoomFromTemplateFragment.KEY_SAVED_ID)?.let { id ->
+                    val roomType = bundle.getInt(RoomFromTemplateFragment.KEY_SAVED_ROOM_TYPE)
+                    openRoom(id, roomType, popToRoot = true)
+                    showSnackBar(R.string.room_created_successfully)
+                }
+            }
+
+            TemplateInfoFragment.KEY_FRAGMENT_RESULT -> setFragmentListenerByKey(requestKey) { bundle ->
+                bundle.getString(TemplateInfoFragment.KEY_SAVED_ID)?.let { id ->
+                    val roomType = bundle.getInt(TemplateInfoFragment.KEY_SAVED_ROOM_TYPE)
+                    openRoom(id, roomType, popToRoot = true)
+                    showSnackBar(R.string.room_created_successfully)
+                }
+            }
+
+            TemplateSettingsFragment.KEY_FRAGMENT_RESULT -> setFragmentListenerByKey(requestKey) { bundle ->
+                val id = bundle.getString(TemplateSettingsFragment.KEY_SAVED_ID)
+                val type = bundle.getInt(TemplateSettingsFragment.KEY_SAVED_ROOM_TYPE)
+                val title = bundle.getString(TemplateSettingsFragment.KEY_SAVED_TITLE)
+                val modeId = bundle.getInt(TemplateSettingsFragment.KEY_SETTINGS_MODE)
+                when (modeId) {
+                    TemplateSettingsMode.MODE_CREATE_TEMPLATE -> {
+                        id?.let {
+                            openRoom(id = id, type = type)
+                            showSnackBar(getString(R.string.template_created_successfully, title))
+                        }
+                    }
+
+                    TemplateSettingsMode.MODE_EDIT_TEMPLATE -> {
+                        onRefresh()
+                        showSnackBar(R.string.settings_saved_successfully)
+                    }
+
+                    TemplateSettingsMode.MODE_CREATE_ROOM -> {
+                        id?.let {
+                            openRoom(id = id, type = type, popToRoot = true)
+                            showSnackBar(R.string.room_created_successfully)
+                        }
+                    }
+                }
+            }
+
+            AddRoomBottomDialog.KEY_REQUEST_TYPE -> setFragmentListenerByKey(requestKey) { bundle ->
+                onActionDialogClose()
+                if (bundle.contains(AddRoomBottomDialog.KEY_RESULT_TYPE)) {
+                    val roomType = bundle.getInt(AddRoomBottomDialog.KEY_RESULT_TYPE)
+                    val copyFiles = bundle.getBoolean(AddRoomBottomDialog.KEY_RESULT_COPY_FILES)
+                    if (roomType == 0) {
+                        showRoomFromTemplateFragment(null)
+                    } else if (copyFiles) {
+                        presenter.createRoom(roomType)
+                    } else {
+                        showAddRoomFragment(roomType)
+                    }
+                }
+            }
+
+            AddRoomFragment.KEY_RESULT -> setFragmentListenerByKey(requestKey) { bundle ->
+                if (bundle.contains("id")) {
+                    openRoom(id = bundle.getString("id"), type = bundle.getInt("type"))
+                } else {
+                    onRefresh()
+                }
+            }
+
+            EditRoomFragment.KEY_RESULT -> setFragmentListenerByKey(requestKey) { onRefresh() }
+            else -> super.setupFragmentListener(requestKey)
         }
     }
 
