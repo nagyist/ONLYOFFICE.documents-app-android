@@ -105,12 +105,15 @@ open class DocsCloudOperationFragment : DocsCloudFragment(),
                 AddRoomFragment.show(
                     fragmentManager = parentFragmentManager,
                     lifecycleOwner = viewLifecycleOwner,
-                    type = ApiContract.RoomType.FILL_FORMS_ROOM,
                     copyItems = CopyItems(fileIds = listOf())
                 ) { bundle ->
                     bundle.getString("id")?.let { folderId ->
                         presenter.setDestFolder(folderId)
-                        presenter.openFolder(folderId, 0)
+                        presenter.openFolder(
+                            id = folderId,
+                            position = 0,
+                            roomType = bundle.getInt("type")
+                        )
                     }
                 }
             }

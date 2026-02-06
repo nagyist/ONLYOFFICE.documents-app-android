@@ -14,7 +14,6 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.viewmodel.compose.viewModel
-import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -33,6 +32,7 @@ import app.editors.manager.viewModels.main.RoomAddViewModel
 import app.editors.manager.viewModels.main.RoomSettingsEffect
 import lib.compose.ui.fragments.ComposeDialogFragment
 import lib.compose.ui.theme.ManagerTheme
+import lib.compose.ui.utils.popBackStackWhenResumed
 import lib.compose.ui.views.AppScaffold
 import lib.compose.ui.views.AppTopBar
 import lib.toolkit.base.managers.utils.UiUtils
@@ -115,7 +115,7 @@ class AddRoomFragment : ComposeDialogFragment() {
                         }
 
                         is RoomSettingsEffect.Success -> {
-                            requireActivity().supportFragmentManager.setFragmentResult(
+                            parentFragmentManager.setFragmentResult(
                                 TAG_RESULT,
                                 bundleOf("id" to effect.id, "type" to state.value.type)
                             )
@@ -125,20 +125,24 @@ class AddRoomFragment : ComposeDialogFragment() {
                 }
             }
 
-            NavHost(navController = navController, startDestination = Screens.Main.name) {
+            NavHost(
+                navController = navController,
+                startDestination = if (roomType == -1) Screens.Select.name else Screens.Main.name
+            ) {
                 composable(route = Screens.Main.name) {
                     RoomSettingsScreen(
                         isEdit = false,
                         canApplyChanges = viewModel.canApplyChangesFlow.collectAsState(false).value,
                         isRoomTypeEditable = copyItems == null,
                         state = state.value,
+                        isClose = roomType != -1,
                         logoState = logoState.value,
                         watermarkState = watermarkState.value,
                         loadingState = loadingState.value,
                         onCreateNewFolder = viewModel::setCreateNewFolder,
                         onLocationClick = { navController.navigate("${Screens.Folder.name}/$it") },
                         onApply = viewModel::applyChanges,
-                        onBack = ::dismiss,
+                        onBack = { if (roomType == -1) navController.popBackStackWhenResumed() else dismiss() },
                         onSetImage = { uri, isWatermark ->
                             if (isWatermark) {
                                 viewModel.setWatermarkImageUri(uri)
@@ -230,8 +234,18 @@ class AddRoomFragment : ComposeDialogFragment() {
                 composable(Screens.Select.name) {
                     RoomSettingsSelectRoomScreen(
                         currentType = state.value.type,
-                        navController = navController,
-                        select = viewModel::setType
+                        isClose = roomType == -1,
+                        select = {
+                            viewModel.setType(it)
+                            navController.navigate(Screens.Main.name) {
+                                if (roomType != -1) {
+                                    popUpTo(navController.graph.id) {
+                                        inclusive = true
+                                    }
+                                }
+                            }
+                        },
+                        onBack = { if (roomType == -1) dismiss() else navController.popBackStackWhenResumed() }
                     )
                 }
                 composable(
@@ -252,24 +266,21 @@ class AddRoomFragment : ComposeDialogFragment() {
 @Composable
 fun RoomSettingsSelectRoomScreen(
     currentType: Int,
-    navController: NavHostController,
+    isClose: Boolean,
+    onBack: () -> Unit,
     select: (Int) -> Unit
 ) {
     AppScaffold(topBar = {
         AppTopBar(
             title = stringResource(id = R.string.rooms_choose_room),
-            backListener = navController::popBackStack
+            isClose = isClose,
+            backListener = onBack
         )
     }, useTablePaddings = false) {
         Column {
             for (type in RoomUtils.roomTypes) {
                 AddRoomItem(roomType = type, selected = currentType == type) { newType ->
                     select(newType)
-                    navController.navigate(Screens.Main.name) {
-                        popUpTo(navController.graph.id) {
-                            inclusive = true
-                        }
-                    }
                 }
             }
         }
