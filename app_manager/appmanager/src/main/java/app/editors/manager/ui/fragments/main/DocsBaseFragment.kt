@@ -1273,7 +1273,7 @@ abstract class DocsBaseFragment : ListFragment(), DocsBaseView, BaseAdapter.OnIt
     }
 
     protected fun setFragmentListenerByKey(requestKey: String, callback: (Bundle) -> Unit) {
-        childFragmentManager.setFragmentResultListener(requestKey, this) { _, bundle ->
+        childFragmentManager.setFragmentResultListener(requestKey, viewLifecycleOwner) { _, bundle ->
             callback(bundle)
         }
     }
