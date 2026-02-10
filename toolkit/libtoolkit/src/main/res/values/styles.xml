@@ -258,6 +258,11 @@
         <item name="rippleColor">?attr/colorControlHighlight</item>
     </style>
 
+    <style name="Widget.Common.Button.IconButton.Formula" parent="Widget.Common.Button.IconButton">
+        <item name="iconTint">@null</item>
+        <item name="android:iconTint">@null</item>
+    </style>
+
     <style name="Widget.Common.Button.IconButton.Secondary">
         <item name="iconTint">@color/colorTextSecondary</item>
     </style>

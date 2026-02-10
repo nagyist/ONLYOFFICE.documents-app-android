@@ -149,6 +149,85 @@ fun AppTextField(
 @Composable
 fun AppTextField(
     modifier: Modifier = Modifier,
+    textFieldValue: TextFieldValue,
+    onValueChange: ((TextFieldValue) -> Unit),
+    hint: String = "",
+    singleLine: Boolean = true,
+    keyboardType: KeyboardType = KeyboardType.Text,
+    keyboardOptions: KeyboardOptions? = null,
+    visualTransformation: VisualTransformation = VisualTransformation.None,
+    textStyle: TextStyle = LocalTextStyle. current,
+    label: Int? = null,
+    trailingIcon: @Composable (() -> Unit)? = null,
+    leadingIcon: @Composable (() -> Unit)? = null,
+    dividerColor: Color? = null,
+    focusManager: FocusManager? = null,
+    focusRequester: FocusRequester? = null,
+    errorState: MutableState<String?>? = null,
+    onDone: (() -> Unit)? = null
+) {
+    val errorAnimation = remember { Animatable(0f) }
+
+    LaunchedEffect(errorState?.value) {
+        errorAnimation.animateTo(
+            targetValue = if (errorState?.value != null) 1f else 0f,
+            animationSpec = tween()
+        )
+    }
+
+    Column(modifier = modifier.fillMaxWidth()) {
+        TextField(
+            modifier = Modifier
+                .fillMaxWidth()
+                .addIfNotNull(focusRequester) { focusRequester(it) },
+            value = textFieldValue,
+            onValueChange = onValueChange,
+            singleLine = singleLine,
+            isError = errorState?.value != null,
+            label = { label?.let { Text(stringResource(id = label)) } },
+            placeholder = { Text(text = hint) },
+            trailingIcon = trailingIcon,
+            leadingIcon = leadingIcon,
+            visualTransformation = visualTransformation,
+            textStyle = textStyle,
+            keyboardActions = KeyboardActions(
+                onDone = { onDone?.invoke() },
+                onNext = { if (textFieldValue.text.isNotEmpty()) focusManager?.moveFocus(FocusDirection.Down) }
+            ),
+            keyboardOptions = keyboardOptions ?: KeyboardOptions(
+                imeAction = onDone?.let { ImeAction.Done } ?: ImeAction.Next,
+                keyboardType = keyboardType
+            ),
+            colors = TextFieldDefaults.textFieldColors(
+                textColor = MaterialTheme.colors.onSurface,
+                disabledTextColor = Color.Transparent,
+                backgroundColor = Color.Transparent,
+                focusedIndicatorColor = dividerColor ?: MaterialTheme.colors.primary,
+                unfocusedIndicatorColor = dividerColor ?: Color.Gray,
+                disabledIndicatorColor = Color.Gray,
+                focusedLabelColor = MaterialTheme.colors.primary
+            ),
+        )
+        AnimatedVisibilityVerticalFade(visible = !errorState?.value.isNullOrEmpty()) {
+            Text(
+                modifier = Modifier
+                    .alpha(alpha = errorAnimation.value)
+                    .padding(top = 4.dp, start = 16.dp, bottom = 8.dp),
+                text = errorState?.value.orEmpty(),
+                color = MaterialTheme.colors.error,
+                style = MaterialTheme.typography.caption,
+            )
+        }
+    }
+
+    focusRequester?.let {
+        LaunchedEffect(Unit) { it.requestFocus() }
+    }
+}
+
+@Composable
+fun AppTextField(
+    modifier: Modifier = Modifier,
     state: MutableState<String>,
     hint: String = "",
     singleLine: Boolean = true,

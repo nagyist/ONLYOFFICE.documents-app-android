@@ -36,6 +36,7 @@ import app.documents.core.network.room.models.RequestEditRoom
 import app.documents.core.network.room.models.RequestEditTemplate
 import app.documents.core.network.room.models.RequestFormRole
 import app.documents.core.network.room.models.RequestFormRoleMapping
+import app.documents.core.network.room.models.RequestMentionNotification
 import app.documents.core.network.room.models.RequestOrder
 import app.documents.core.network.room.models.RequestRoomAuthViaLink
 import app.documents.core.network.room.models.RequestRoomOwner
@@ -275,8 +276,13 @@ class RoomProvider @Inject constructor(private val roomService: RoomService) {
             body.response else throw HttpException(response)
     }
 
-    suspend fun createSharedLink(itemId: String, isFolder: Boolean, access: Int): ExternalLink {
-        val requestBody = RequestCreateSharedLink(access = access)
+    suspend fun createSharedLink(
+        itemId: String,
+        isFolder: Boolean,
+        access: Int,
+        isPrimary: Boolean
+    ): ExternalLink {
+        val requestBody = RequestCreateSharedLink(access = access, primary = isPrimary)
         val request = if (isFolder)
             roomService.createSharedFolderLink(itemId, requestBody) else
             roomService.createSharedFileLink(itemId, requestBody)
@@ -404,12 +410,23 @@ class RoomProvider @Inject constructor(private val roomService: RoomService) {
         return roomService.getGroupUsers(roomId, groupId).response
     }
 
-    suspend fun getExternalLink(id: String, isFile: Boolean = false): String {
-        return if (isFile) {
-            roomService.getPublicExternalLink(id).response.sharedTo.shareLink
-        } else {
-            roomService.getExternalLink(id).response.sharedTo.shareLink
+    suspend fun getExternalLink(
+        id: String,
+        access: Int,
+        isRoom: Boolean = false,
+        isFolder: Boolean = false
+    ): ExternalLink {
+        val body = RequestCreateExternalLink(access = access)
+        val response = when {
+            isRoom -> roomService.getExternalRoomLink(id)
+            isFolder -> roomService.getPublicExternalFolderLink(id, body)
+            else -> roomService.getPublicExternalFileLink(id, body)
         }
+        return response.response
+    }
+
+    suspend fun getExternalLink(id: String): ExternalLink {
+        return roomService.getPublicExternalFileLink(id).response
     }
 
     suspend fun copyItems(roomId: String, folderIds: List<String>, fileIds: List<String>) {
@@ -753,11 +770,11 @@ class RoomProvider @Inject constructor(private val roomService: RoomService) {
         roomService.startFilling(formId, request)
     }
 
-    suspend fun getUsersByItemId(itemId: String, isFolder: Boolean): List<User> {
+    suspend fun getUsersByItemId(itemId: String, isFolder: Boolean, filterValue: String = ""): List<User> {
         val response = if (isFolder) {
-            roomService.getUsersByFolderId(itemId)
+            roomService.getUsersByFolderId(itemId, filterValue)
         } else {
-            roomService.getUsersByFileId(itemId)
+            roomService.getUsersByFileId(itemId, filterValue)
         }
 
         return response.response
@@ -800,6 +817,20 @@ class RoomProvider @Inject constructor(private val roomService: RoomService) {
         }
 
         return response.response
+    }
+
+    suspend fun getSharedUsers(fileId: String): List<User> {
+        return roomService.getSharedUsers(fileId)
+            .response
+            .map { response ->
+                response.user
+                    .copy(avatar = roomService.getUserPhoto(response.user.id).response.max)
+            }
+    }
+
+    suspend fun sendMentionNotification(fileId: String, emails: List<String>, message: String) {
+        val request = RequestMentionNotification(emails, message)
+        roomService.sendMentionNotification(fileId, request)
     }
 
     private fun <T> handleUnitResponse(apiCall: suspend () -> Response<T>): Flow<NetworkResult<Unit>> = flow {
