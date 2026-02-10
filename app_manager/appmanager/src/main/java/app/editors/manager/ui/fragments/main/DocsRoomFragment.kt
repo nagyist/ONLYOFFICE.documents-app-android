@@ -66,6 +66,11 @@ class DocsRoomFragment : DocsCloudFragment() {
         return super.onOptionsItemSelected(item)
     }
 
+    override fun onItemSelected(position: Int, countSelected: String) {
+        super.onItemSelected(position, countSelected)
+        menu?.findItem(R.id.toolbar_selection_archive)?.isVisible = presenter.canArchiveRooms
+    }
+
     override fun onStateMenuSelection() {
         if (isRoom) {
             menuInflater?.inflate(R.menu.docs_select_room, menu)

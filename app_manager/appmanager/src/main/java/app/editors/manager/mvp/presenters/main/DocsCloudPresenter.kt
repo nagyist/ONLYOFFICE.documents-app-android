@@ -792,6 +792,9 @@ class DocsCloudPresenter(private val account: CloudAccount) : DocsBasePresenter<
     val areItemsRemovable: Boolean
         get() = modelExplorerStack.selectedFolders.none { it.security?.delete == false }
 
+    val canArchiveRooms: Boolean
+        get() = isRoot && modelExplorerStack.selectedFolders.none { it.security?.move == false }
+
     val isContextOwner: Boolean
         get() = StringUtils.equals(modelExplorerStack.currentFolderOwnerId, account.id)
 

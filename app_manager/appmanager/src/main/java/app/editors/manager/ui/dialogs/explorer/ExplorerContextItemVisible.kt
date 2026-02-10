@@ -59,7 +59,7 @@ interface ExplorerContextItemVisible {
         get() = section != ApiContract.Section.Room.Archive && item.security?.editAccess == true
 
     private val ExplorerContextState.archive: Boolean
-        get() = item.security?.moveTo == true && item.security?.editRoom == true && section !is ApiContract.Section.Room.Archive
+        get() = item.security?.move == true && section !is ApiContract.Section.Room.Archive
 
     private val ExplorerContextState.copy: Boolean
         get() = if (section.isRoom || isDocSpaceUser())
@@ -203,7 +203,8 @@ interface ExplorerContextItemVisible {
 
     private val ExplorerContextState.delete: Boolean
         get() = if (provider == PortalProvider.Cloud.DocSpace) {
-                item.security?.delete == true
+            section.isRoom && !section.isArchive && isRoot
+                    || item.security?.delete == true
             } else {
                 when (section) {
                     ApiContract.Section.Share,
