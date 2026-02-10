@@ -1,10 +1,8 @@
 package app.editors.manager.ui.fragments.template.settings
 
-import android.os.Bundle
 import androidx.compose.runtime.Composable
 import androidx.core.os.bundleOf
 import androidx.fragment.app.FragmentManager
-import androidx.lifecycle.LifecycleOwner
 import app.editors.manager.viewModels.main.TemplateSettingsMode
 import lib.compose.ui.fragments.ComposeDialogFragment
 import lib.compose.ui.theme.ManagerTheme
@@ -14,6 +12,9 @@ class TemplateAccessSettingsFragment : ComposeDialogFragment() {
 
     private val templateId: String
         get() = arguments?.getString(KEY_TEMPLATE_ID).orEmpty()
+
+    override val fragmentResultKey: String
+        get() = KEY_FRAGMENT_RESULT
 
     @Composable
     override fun Content() {
@@ -35,7 +36,7 @@ class TemplateAccessSettingsFragment : ComposeDialogFragment() {
 
     private fun setResultMsg() {
         parentFragmentManager.setFragmentResult(
-            TAG_FRAGMENT_RESULT,
+            KEY_FRAGMENT_RESULT,
             bundleOf()
         )
     }
@@ -43,19 +44,9 @@ class TemplateAccessSettingsFragment : ComposeDialogFragment() {
     companion object {
         private val TAG: String = TemplateAccessSettingsFragment::class.java.simpleName
         private const val KEY_TEMPLATE_ID = "key_template_id"
-        private const val TAG_FRAGMENT_RESULT = "TemplateAccessSettingsFragmentResult"
+        const val KEY_FRAGMENT_RESULT = "TemplateAccessSettingsFragmentResult"
 
-        fun show(
-            fragmentManager: FragmentManager,
-            lifecycleOwner: LifecycleOwner,
-            templateId: String,
-            onResult: (Bundle) -> Unit
-        ) {
-            fragmentManager.setFragmentResultListener(
-                TAG_FRAGMENT_RESULT,
-                lifecycleOwner
-            ) { _, bundle -> onResult(bundle) }
-
+        fun show(fragmentManager: FragmentManager, templateId: String) {
             newInstance(templateId).show(fragmentManager, TAG)
         }
 

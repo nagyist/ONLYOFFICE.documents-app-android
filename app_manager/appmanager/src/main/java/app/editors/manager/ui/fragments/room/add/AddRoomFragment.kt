@@ -1,7 +1,6 @@
 package app.editors.manager.ui.fragments.room.add
 
 import android.app.Activity
-import android.os.Bundle
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.Column
@@ -12,7 +11,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.res.stringResource
 import androidx.core.os.bundleOf
 import androidx.fragment.app.FragmentManager
-import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
@@ -50,7 +48,7 @@ class AddRoomFragment : ComposeDialogFragment() {
 
         const val TAG_ROOM_TYPE = "room_type"
         const val TAG_COPY_ITEMS = "files_copy"
-        const val TAG_RESULT = "add_room_result"
+        const val KEY_RESULT = "add_room_result"
 
         val TAG: String = EditRoomFragment::class.java.simpleName
 
@@ -62,18 +60,15 @@ class AddRoomFragment : ComposeDialogFragment() {
 
         fun show(
             fragmentManager: FragmentManager,
-            lifecycleOwner: LifecycleOwner,
             type: Int? = null,
             copyItems: CopyItems? = null,
-            onResult: (Bundle) -> Unit
         ) {
-            fragmentManager.setFragmentResultListener(
-                TAG_RESULT, lifecycleOwner
-            ) { _, bundle -> onResult(bundle) }
-
             newInstance(type, copyItems).show(fragmentManager, TAG)
         }
     }
+
+    override val fragmentResultKey: String
+        get() = KEY_RESULT
 
     @Composable
     override fun Content() {
@@ -116,7 +111,7 @@ class AddRoomFragment : ComposeDialogFragment() {
 
                         is RoomSettingsEffect.Success -> {
                             parentFragmentManager.setFragmentResult(
-                                TAG_RESULT,
+                                KEY_RESULT,
                                 bundleOf("id" to effect.id, "type" to state.value.type)
                             )
                             dismiss()

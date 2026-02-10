@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
-import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.lifecycleScope
 import app.documents.core.database.datasource.CloudDataSource
 import app.documents.core.model.cloud.PortalProvider
@@ -30,6 +30,7 @@ import lib.toolkit.base.managers.utils.UiUtils
 import lib.toolkit.base.managers.utils.getSerializableExt
 import lib.toolkit.base.managers.utils.putArgs
 import lib.toolkit.base.ui.activities.base.BaseActivity
+import lib.toolkit.base.ui.dialogs.base.FragmentListenerSetup
 import javax.inject.Inject
 
 class OperationDialogFragment : BaseDialogFragment() {
@@ -46,59 +47,38 @@ class OperationDialogFragment : BaseDialogFragment() {
         const val TAG_SECTION_TYPE = "tag_section_type"
         const val TAG_OPERATION_EXPLORER = "tag_operation_explorer"
         const val TAG_DEST_FOLDER_ID = "dest_folder_id"
-        const val KEY_OPERATION_REQUEST = "key_operation_request"
+        const val TAG_REQUEST_RESULT_LISTENER = "tag_request_result_listener"
+
+        const val KEY_OPERATION_MOVE_COPY_REQUEST = "key_operation_move_copy_request"
+        const val KEY_OPERATION_PICK_REQUEST = "key_operation_pick_request"
         const val KEY_OPERATION_RESULT_OPEN_FOLDER = "key_operation_result_open_folder"
         const val KEY_OPERATION_RESULT_COMPLETE = "key_operation_result_complete"
 
-        private fun newInstance(
+        fun show(
+            fragmentManager: FragmentManager,
             operation: OperationType,
-            explorer: Explorer
-        ): OperationDialogFragment {
-            return OperationDialogFragment().putArgs(
+            explorer: Explorer,
+            requestKey: String
+        ) {
+            OperationDialogFragment().putArgs(
                 TAG_OPERATION_TYPE to operation,
-                TAG_OPERATION_EXPLORER to explorer
-            )
+                TAG_OPERATION_EXPLORER to explorer,
+                TAG_REQUEST_RESULT_LISTENER to requestKey
+            ).show(fragmentManager, null)
         }
 
-        private fun newInstance(
+        fun show(
+            fragmentManager: FragmentManager,
             destFolderId: String,
-            explorer: Explorer
-        ): OperationDialogFragment {
-            return OperationDialogFragment().putArgs(
+            explorer: Explorer,
+            requestKey: String
+        ) {
+            OperationDialogFragment().putArgs(
                 TAG_OPERATION_TYPE to OperationType.PICK_PDF_FORM,
                 TAG_OPERATION_EXPLORER to explorer,
-                TAG_DEST_FOLDER_ID to destFolderId
-            )
-        }
-
-        private fun setFragmentResultListener(
-            activity: FragmentActivity,
-            onResult: (Bundle) -> Unit
-        ) {
-            activity.supportFragmentManager.setFragmentResultListener(
-                KEY_OPERATION_REQUEST,
-                activity
-            ) { _, bundle -> onResult(bundle) }
-        }
-
-        fun show(
-            activity: FragmentActivity,
-            operation: OperationType,
-            explorer: Explorer,
-            onResult: (Bundle) -> Unit
-        ) {
-            setFragmentResultListener(activity, onResult)
-            newInstance(operation, explorer).show(activity.supportFragmentManager, null)
-        }
-
-        fun show(
-            activity: FragmentActivity,
-            destFolderId: String,
-            explorer: Explorer,
-            onResult: (Bundle) -> Unit
-        ) {
-            setFragmentResultListener(activity, onResult)
-            newInstance(destFolderId, explorer).show(activity.supportFragmentManager, null)
+                TAG_DEST_FOLDER_ID to destFolderId,
+                TAG_REQUEST_RESULT_LISTENER to requestKey
+            ).show(fragmentManager, null)
         }
     }
 
@@ -113,8 +93,9 @@ class OperationDialogFragment : BaseDialogFragment() {
     }
 
     private val destFolderId: String? by lazy { arguments?.getString(TAG_DEST_FOLDER_ID) }
-
     private val explorer: Explorer? by lazy { arguments?.getSerializableExt(TAG_OPERATION_EXPLORER) }
+
+    val requestListenerKey: String? by lazy { arguments?.getString(TAG_REQUEST_RESULT_LISTENER) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -140,6 +121,9 @@ class OperationDialogFragment : BaseDialogFragment() {
         App.getApp().appComponent.inject(this)
         init(savedInstanceState)
         initListeners()
+        requestListenerKey?.let {
+            (parentFragment as? FragmentListenerSetup)?.setupFragmentListener(it)
+        }
     }
 
     override fun onDestroy() {

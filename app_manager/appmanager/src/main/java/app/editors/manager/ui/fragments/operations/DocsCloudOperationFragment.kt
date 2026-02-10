@@ -102,20 +102,7 @@ open class DocsCloudOperationFragment : DocsCloudFragment(),
     private fun setCreateFolderClickListener() {
         if (isRoomsRoot) {
             operationDialogFragment?.setCreateFolderClickListener {
-                AddRoomFragment.show(
-                    fragmentManager = parentFragmentManager,
-                    lifecycleOwner = viewLifecycleOwner,
-                    copyItems = CopyItems(fileIds = listOf())
-                ) { bundle ->
-                    bundle.getString("id")?.let { folderId ->
-                        presenter.setDestFolder(folderId)
-                        presenter.openFolder(
-                            id = folderId,
-                            position = 0,
-                            roomType = bundle.getInt("type")
-                        )
-                    }
-                }
+                AddRoomFragment.show(childFragmentManager, copyItems = CopyItems(fileIds = listOf()))
             }
         } else {
             operationDialogFragment?.setCreateFolderClickListener(null)
@@ -140,8 +127,9 @@ open class DocsCloudOperationFragment : DocsCloudFragment(),
 
     override fun onDocsBatchOperation() {
         super.onDocsBatchOperation()
-        requireActivity().supportFragmentManager.setFragmentResult(
-            OperationDialogFragment.KEY_OPERATION_REQUEST,
+        val requestKey = operationDialogFragment?.requestListenerKey ?: return
+        operationDialogFragment?.parentFragmentManager?.setFragmentResult(
+            requestKey,
             if (showFolderAfterFinish) {
                 bundleOf(OperationDialogFragment.KEY_OPERATION_RESULT_OPEN_FOLDER to presenter.destFolderId)
             } else {
@@ -244,6 +232,22 @@ open class DocsCloudOperationFragment : DocsCloudFragment(),
             )
         } else {
             operationDialogFragment?.setToolbarInfo(null)
+        }
+    }
+
+    override fun setupFragmentListener(requestKey: String) {
+        when (requestKey) {
+            AddRoomFragment.KEY_RESULT -> setFragmentListenerByKey(requestKey) { bundle ->
+                bundle.getString("id")?.let { folderId ->
+                    presenter.setDestFolder(folderId)
+                    presenter.openFolder(
+                        id = folderId,
+                        position = 0,
+                        roomType = bundle.getInt("type")
+                    )
+                }
+            }
+            else -> super.setupFragmentListener(requestKey)
         }
     }
 }
