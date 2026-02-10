@@ -825,9 +825,6 @@
     <string name="whats_new_4_desc">Cambia la dirección de los párrafos y las celdas de las tablas entre derecha a izquierda e izquierda a derecha en todos los editores.</string>
 
     <!-- Newly added translations (v9.0.0 - 2025-06-09) -->
-    <string name="access_members_me_and_title">Yo y %s</string>
-    <string name="access_members_me_subtitle">(Yo)</string>
-    <string name="access_members_me_users_groups_title">Yo, %1$s y %2$s</string>
     <string name="cloud_create_account">Crear cuenta gratis</string>
     <string name="context_menu_desc">Más</string>
     <string name="desc_create_from_template">Crear una sala basada en una plantilla. Todos los ajustes, usuarios, carpetas y archivos se tomarán de la plantilla de sala seleccionada.</string>
@@ -955,14 +952,6 @@
     <plurals name="dialogs_question_delete_template_title">
         <item quantity="one">Eliminar plantilla</item>
         <item quantity="other">Eliminar plantillas</item>
-    </plurals>
-    <plurals name="access_members_users_title">
-        <item quantity="one">%d usuario</item>
-        <item quantity="other">%d usuarios</item>
-    </plurals>
-    <plurals name="access_members_groups_title">
-        <item quantity="one">%d grupo</item>
-        <item quantity="other">%d grupos</item>
     </plurals>
 
     <!-- Newly added translations (v9.1.0 - 2025-10-24) -->
