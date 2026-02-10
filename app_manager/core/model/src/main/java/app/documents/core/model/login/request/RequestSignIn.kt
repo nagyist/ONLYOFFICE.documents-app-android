@@ -10,5 +10,6 @@ data class RequestSignIn(
     val code: String = "",
     val portal: String = "",
     val accessToken: String? = null,
-    val codeOauth: String? = null
+    val codeOauth: String? = null,
+    val passwordHash: String? = null
 )
