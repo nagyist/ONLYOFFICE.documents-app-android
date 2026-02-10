@@ -2,6 +2,8 @@ package app.documents.core.network.room
 
 import app.documents.core.model.login.Group
 import app.documents.core.model.login.User
+import app.documents.core.model.login.UserPhoto
+import app.documents.core.model.login.response.SharedUserResponse
 import app.documents.core.network.common.contracts.ApiContract
 import app.documents.core.network.common.models.BaseResponse
 import app.documents.core.network.manager.models.explorer.CloudFolder
@@ -26,6 +28,7 @@ import app.documents.core.network.room.models.RequestDeleteRoom
 import app.documents.core.network.room.models.RequestEditRoom
 import app.documents.core.network.room.models.RequestEditTemplate
 import app.documents.core.network.room.models.RequestFormRoleMapping
+import app.documents.core.network.room.models.RequestMentionNotification
 import app.documents.core.network.room.models.RequestOrder
 import app.documents.core.network.room.models.RequestRoomAuthViaLink
 import app.documents.core.network.room.models.RequestRoomOwner
@@ -64,6 +67,7 @@ import retrofit2.http.POST
 import retrofit2.http.PUT
 import retrofit2.http.Part
 import retrofit2.http.Path
+import retrofit2.http.Query
 import retrofit2.http.QueryMap
 
 interface RoomService {
@@ -568,12 +572,14 @@ interface RoomService {
 
     @GET("api/" + ApiContract.API_VERSION + "/people/file/{fileId}?employeestatus=1&area=people")
     suspend fun getUsersByFileId(
-        @Path(value = "fileId") fileId: String
+        @Path(value = "fileId") fileId: String,
+        @Query("filterValue") filterValue: String = ""
     ): app.documents.core.network.BaseResponse<List<User>>
 
     @GET("api/" + ApiContract.API_VERSION + "/people/folder/{folderId}?employeestatus=1&area=people")
     suspend fun getUsersByFolderId(
-        @Path(value = "folderId") folderId: String
+        @Path(value = "folderId") folderId: String,
+        @Query("filterValue") filterValue: String = ""
     ): app.documents.core.network.BaseResponse<List<User>>
 
     @GET("api/" + ApiContract.API_VERSION + "/group/file/{fileId}?employeestatus=1&area=guests")
@@ -615,4 +621,25 @@ interface RoomService {
         @Path(value = "fileId") fileId: String,
         @Body body: RequestShare
     ): ResponseShare
+
+    @GET("api/" + ApiContract.API_VERSION + "/people/{userId}")
+    suspend fun getUserProfile(
+        @Path(value = "userId") userId: String,
+    ): app.documents.core.network.BaseResponse<User>
+
+    @GET("api/" + ApiContract.API_VERSION + "/files/file/{fileId}/sharedusers")
+    suspend fun getSharedUsers(
+        @Path(value = "fileId") fileId: String,
+    ): app.documents.core.network.BaseResponse<List<SharedUserResponse>>
+
+    @GET("api/" + ApiContract.API_VERSION + "/people/{userId}/photo")
+    suspend fun getUserPhoto(
+        @Path(value = "userId") userId: String,
+    ): app.documents.core.network.BaseResponse<UserPhoto>
+
+    @POST("api/" + ApiContract.API_VERSION + "/files/file/{fileId}/sendeditornotify")
+    suspend fun sendMentionNotification(
+        @Path(value = "fileId") fileId: String,
+        @Body request: RequestMentionNotification,
+    ): BaseResponse
 }

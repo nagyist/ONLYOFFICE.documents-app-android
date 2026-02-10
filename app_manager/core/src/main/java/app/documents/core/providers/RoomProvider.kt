@@ -36,6 +36,7 @@ import app.documents.core.network.room.models.RequestEditRoom
 import app.documents.core.network.room.models.RequestEditTemplate
 import app.documents.core.network.room.models.RequestFormRole
 import app.documents.core.network.room.models.RequestFormRoleMapping
+import app.documents.core.network.room.models.RequestMentionNotification
 import app.documents.core.network.room.models.RequestOrder
 import app.documents.core.network.room.models.RequestRoomAuthViaLink
 import app.documents.core.network.room.models.RequestRoomOwner
@@ -769,11 +770,11 @@ class RoomProvider @Inject constructor(private val roomService: RoomService) {
         roomService.startFilling(formId, request)
     }
 
-    suspend fun getUsersByItemId(itemId: String, isFolder: Boolean): List<User> {
+    suspend fun getUsersByItemId(itemId: String, isFolder: Boolean, filterValue: String = ""): List<User> {
         val response = if (isFolder) {
-            roomService.getUsersByFolderId(itemId)
+            roomService.getUsersByFolderId(itemId, filterValue)
         } else {
-            roomService.getUsersByFileId(itemId)
+            roomService.getUsersByFileId(itemId, filterValue)
         }
 
         return response.response
@@ -816,6 +817,20 @@ class RoomProvider @Inject constructor(private val roomService: RoomService) {
         }
 
         return response.response
+    }
+
+    suspend fun getSharedUsers(fileId: String): List<User> {
+        return roomService.getSharedUsers(fileId)
+            .response
+            .map { response ->
+                response.user
+                    .copy(avatar = roomService.getUserPhoto(response.user.id).response.max)
+            }
+    }
+
+    suspend fun sendMentionNotification(fileId: String, emails: List<String>, message: String) {
+        val request = RequestMentionNotification(emails, message)
+        roomService.sendMentionNotification(fileId, request)
     }
 
     private fun <T> handleUnitResponse(apiCall: suspend () -> Response<T>): Flow<NetworkResult<Unit>> = flow {

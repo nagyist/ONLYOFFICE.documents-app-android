@@ -241,6 +241,7 @@ dependencies {
     implementation(project(":core:network"))
     implementation(project(":libcompose"))
     implementation(project(":libtoolkit"))
+    implementation(project(":libshared"))
     // Dynamic connection of editors
     if (withEditors) {
         val editorModules = listOf(
