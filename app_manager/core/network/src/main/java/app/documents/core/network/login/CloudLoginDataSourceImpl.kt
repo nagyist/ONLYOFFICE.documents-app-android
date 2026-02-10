@@ -5,9 +5,11 @@ import app.documents.core.model.cloud.PortalProvider
 import app.documents.core.model.cloud.PortalVersion
 import app.documents.core.model.login.AllSettings
 import app.documents.core.model.login.Capabilities
+import app.documents.core.model.login.PasswordHashSettings
 import app.documents.core.model.login.RequestDeviceToken
 import app.documents.core.model.login.RequestPushSubscribe
 import app.documents.core.model.login.Settings
+import app.documents.core.model.login.SettingsResponse
 import app.documents.core.model.login.Token
 import app.documents.core.model.login.User
 import app.documents.core.model.login.request.RequestNumber
@@ -38,6 +40,7 @@ import retrofit2.http.Headers
 import retrofit2.http.POST
 import retrofit2.http.PUT
 import retrofit2.http.Path
+import retrofit2.http.Query
 import retrofit2.http.Url
 
 private interface LoginApi {
@@ -70,6 +73,15 @@ private interface LoginApi {
     )
     @GET("api/$API_VERSION/settings")
     suspend fun getAllSettings(@Header(HEADER_AUTHORIZATION) accessToken: String): BaseResponse<AllSettings>
+
+    @Headers(
+        "$HEADER_CONTENT_OPERATION_TYPE: $VALUE_CONTENT_TYPE",
+        "$HEADER_ACCEPT: $VALUE_ACCEPT"
+    )
+    @GET("api/$API_VERSION/settings")
+    suspend fun getSettingsWithPassword(
+        @Query("withPassword") withPassword: Boolean = true
+    ): BaseResponse<SettingsResponse>
 
     @Headers(
         "$HEADER_CONTENT_OPERATION_TYPE: $VALUE_CONTENT_TYPE",
@@ -184,6 +196,10 @@ internal class CloudLoginDataSourceImpl(
 
     override suspend fun getAllSettings(accessToken: String): AllSettings {
         return api.getAllSettings(accessToken).response
+    }
+
+    override suspend fun getPasswordHashSettings(): PasswordHashSettings? {
+        return api.getSettingsWithPassword().response.passwordHash
     }
 
     override suspend fun smsSignIn(request: RequestSignIn, smsCode: String): Token {

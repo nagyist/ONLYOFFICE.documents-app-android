@@ -12,14 +12,14 @@ import app.editors.manager.managers.tools.FontManager
 import app.editors.manager.managers.tools.PreferenceTool
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.launch
+import lib.toolkit.base.managers.tools.BaseEvent
+import lib.toolkit.base.managers.tools.BaseEventSender
+import lib.toolkit.base.managers.tools.EventSender
 import lib.toolkit.base.managers.tools.ResourcesProvider
 import lib.toolkit.base.managers.tools.ThemePreferencesTools
 import lib.toolkit.base.managers.utils.FileUtils
@@ -38,11 +38,10 @@ data class AppSettingsState(
     val developerMode: Boolean = false
 )
 
-sealed class AppSettingsEffect {
-    data class Error(val message: String) : AppSettingsEffect()
-    data class Progress(val value: Int) : AppSettingsEffect()
-    data object ShowDialog : AppSettingsEffect()
-    data object HideDialog : AppSettingsEffect()
+sealed interface AppSettingsEffect : BaseEvent {
+    data class Progress(val value: Int) : AppSettingsEffect
+    data object ShowDialog : AppSettingsEffect
+    data object HideDialog : AppSettingsEffect
 }
 
 class AppSettingsViewModelFactory @Inject constructor(
@@ -66,7 +65,7 @@ class AppSettingsViewModel(
     private val resourcesProvider: ResourcesProvider,
     private val preferenceTool: PreferenceTool,
     private val fontManager: FontManager
-) : ViewModel() {
+) : ViewModel(), EventSender by BaseEventSender(resourcesProvider) {
 
     private val _settingsState: MutableStateFlow<AppSettingsState> = flow {
         emit(
@@ -83,13 +82,7 @@ class AppSettingsViewModel(
         )
     }.mutableStateIn(viewModelScope, AppSettingsState())
 
-    private val _effect: MutableSharedFlow<AppSettingsEffect> = MutableSharedFlow(1)
-    val effect: SharedFlow<AppSettingsEffect> = _effect.asSharedFlow()
-
     val settingsState: StateFlow<AppSettingsState> = _settingsState.asStateFlow()
-
-    private val _message: MutableSharedFlow<String> = MutableSharedFlow(1)
-    val message: SharedFlow<String> = _message.asSharedFlow()
 
     private var addFontsJob: Job? = null
 
@@ -128,7 +121,7 @@ class AppSettingsViewModel(
         viewModelScope.launch {
             resourcesProvider.getCacheDir(true)?.let(FileUtils::deletePath)
             resourcesProvider.getCacheDir(false)?.let(FileUtils::deletePath)
-            _message.emit(resourcesProvider.getString(R.string.setting_cache_cleared))
+            sendMessage(R.string.setting_cache_cleared)
             _settingsState.value = _settingsState.value.copy(cache = cache)
         }
     }
@@ -152,22 +145,22 @@ class AppSettingsViewModel(
         addFontsJob?.cancel()
 
         addFontsJob = viewModelScope.launch {
-            _effect.emit(AppSettingsEffect.ShowDialog)
+            sendEvent(AppSettingsEffect.ShowDialog)
             fontManager.addFonts(
                 fonts = fonts,
                 onProgress = { value ->
-                    _effect.emit(AppSettingsEffect.Progress(value))
+                    sendEvent(AppSettingsEffect.Progress(value))
                     fetchFonts()
                 },
                 onError = { e ->
                     if (e !is CancellationException) {
-                        _effect.emit(AppSettingsEffect.Error(resourcesProvider.context.getString(R.string.upload_manager_error)))
+                        sendMessage(R.string.upload_manager_error)
                     } else {
-                        _effect.emit(AppSettingsEffect.HideDialog)
+                        sendEvent(AppSettingsEffect.HideDialog)
                     }
                 }
             )
-            _effect.emit(AppSettingsEffect.HideDialog)
+            sendEvent(AppSettingsEffect.HideDialog)
         }
     }
 
