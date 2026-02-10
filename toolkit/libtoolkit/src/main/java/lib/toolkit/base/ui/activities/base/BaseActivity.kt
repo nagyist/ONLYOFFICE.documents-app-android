@@ -12,6 +12,7 @@ import android.view.View
 import android.view.WindowManager
 import android.widget.EditText
 import android.widget.FrameLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.ColorRes
 import androidx.annotation.RequiresPermission
@@ -289,11 +290,16 @@ abstract class BaseActivity : MvpAppCompatActivity(), FragmentManager.OnBackStac
         button: String? = null,
         action: View.OnClickListener? = null,
         anchor: View? = null,
+        multiline: Boolean = false
     ): Snackbar {
         return UiUtils.getSnackBar(this).apply {
             anchor?.let { anchorView = anchor }
             setText(string)
             setAction(button, action)
+            if (multiline) {
+                view.findViewById<TextView>(com.google.android.material.R.id.snackbar_text)
+                    ?.maxLines = 10
+            }
             show()
             snackBar = this
         }
