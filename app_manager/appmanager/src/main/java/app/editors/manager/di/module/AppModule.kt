@@ -54,24 +54,31 @@ object AppModule {
             private var _isCoauthoring: Boolean? = null
 
             override suspend fun isCoauthoring(): Boolean {
-                _isCoauthoring?.let { enabled ->
-                    return enabled
-                }
-                val isCoauthoring = suspendCancellableCoroutine { continuation ->
-                    if (cloudAccount == null) {
+                _isCoauthoring?.let { enabled -> return enabled }
+
+                return checkSdkVersion(cloudAccount?.portalSdkVersion)
+                    .also { _isCoauthoring = it }
+            }
+
+            override suspend fun checkCoauthoring(sdkVersion: String?): Boolean {
+                return checkSdkVersion(sdkVersion)
+            }
+
+            private suspend fun checkSdkVersion(webSdkVersion: String?): Boolean {
+                return suspendCancellableCoroutine { continuation ->
+                    if (webSdkVersion == null) {
                         continuation.resume(false)
                         return@suspendCancellableCoroutine
                     }
                     FirebaseUtils.checkSdkVersion(
                         context = context,
-                        account = cloudAccount,
+                        webSdk = webSdkVersion,
                         onResult = { enabled ->
                             _isCoauthoring = enabled
                             continuation.resume(enabled)
                         }
                     )
                 }
-                return isCoauthoring
             }
         }
     }
