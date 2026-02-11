@@ -15,6 +15,8 @@ data class CloudAccount(
     val portal: CloudPortal = CloudPortal()
 ) {
 
+    var unsubToken: String = ""
+
     val isWebDav: Boolean
         get() = portal.provider is PortalProvider.Webdav
 
@@ -33,9 +35,13 @@ data class CloudAccount(
     val accountName: String
         get() = "$login@${portal.url}"
 
-    fun isPersonal(): Boolean = portal.isPersonal
+    val portalSdkVersion: String
+        get() = portal
+            .version
+            .documentServerVersion
+            .replace(".", "")
 
-    var unsubToken: String = ""
+    fun isPersonal(): Boolean = portal.isPersonal
 }
 
 val CloudAccount?.isDocSpace: Boolean
