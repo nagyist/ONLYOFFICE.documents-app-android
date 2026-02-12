@@ -351,7 +351,9 @@ tasks.register("extractTranslations") {
  * - Appending to existing files while preserving their content
  *
  * Input:
- * - XML files in the translations directory with naming pattern [lang]-missing-translations.xml
+ * - XML files in the translations directory with naming patterns:
+ *   - [lang]-missing-translations.xml
+ *   - [lang]-original-strings.xml
  */
 tasks.register("importXmlTranslations") {
     group = "translations"
@@ -367,12 +369,14 @@ tasks.register("importXmlTranslations") {
             return@doLast
         }
 
+        // Support both naming patterns: *-missing-translations.xml and *-original-strings.xml
         val xmlFiles = translationsDir.listFiles { file ->
-            file.isFile && file.name.endsWith("-missing-translations.xml")
+            file.isFile && (file.name.endsWith("-missing-translations.xml") || file.name.endsWith("-original-strings.xml"))
         } ?: emptyArray()
 
         if (xmlFiles.isEmpty()) {
             println("No XML translation files found in directory: $inputDir")
+            println("Expected file patterns: [lang]-missing-translations.xml or [lang]-original-strings.xml")
             return@doLast
         }
 
@@ -380,9 +384,14 @@ tasks.register("importXmlTranslations") {
         println("Current app version: $appVersion")
 
         xmlFiles.forEach { xmlFile ->
-            val lang = xmlFile.name.substringBefore("-missing-translations.xml")
+            // Extract language code from filename
+            val lang = when {
+                xmlFile.name.endsWith("-missing-translations.xml") -> xmlFile.name.substringBefore("-missing-translations.xml")
+                xmlFile.name.endsWith("-original-strings.xml") -> xmlFile.name.substringBefore("-original-strings.xml")
+                else -> return@forEach
+            }
 
-            println("Processing language: $lang")
+            println("Processing language: $lang (file: ${xmlFile.name})")
             val translations = parseModuleTranslations(xmlFile)
 
             translations.forEach { (module, strings) ->
