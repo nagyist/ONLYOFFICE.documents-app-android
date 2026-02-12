@@ -70,7 +70,6 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.text.isDigitsOnly
-import androidx.navigation.compose.rememberNavController
 import app.documents.core.network.common.contracts.ApiContract
 import app.documents.core.network.manager.models.explorer.Lifetime
 import app.documents.core.network.manager.models.explorer.Watermark
@@ -126,6 +125,7 @@ fun RoomSettingsScreen(
     isRoomTypeEditable: Boolean,
     state: RoomSettingsState,
     loadingState: Boolean,
+    isClose: Boolean,
     watermarkState: RoomSettingsWatermarkState,
     logoState: RoomSettingsLogoState,
     onApply: () -> Unit,
@@ -202,7 +202,7 @@ fun RoomSettingsScreen(
                     title = if (isEdit)
                         stringResource(id = R.string.list_context_edit_room) else
                         stringResource(id = R.string.dialog_create_room),
-                    isClose = true,
+                    isClose = isClose,
                     actions = {
                         TextButton(
                             enabled = canApplyChanges,
@@ -1090,6 +1090,7 @@ private fun MainScreenPreview() {
             canApplyChanges = true,
             isRoomTypeEditable = false,
             state = remember { RoomSettingsState(type = ApiContract.RoomType.VIRTUAL_ROOM) },
+            isClose = true,
             logoState = remember { RoomSettingsLogoState() },
             watermarkState = remember { RoomSettingsWatermarkState() },
             loadingState = remember { false },
@@ -1128,7 +1129,7 @@ private fun MainScreenPreview() {
 @Composable
 private fun SelectScreenPreview() {
     ManagerTheme {
-        RoomSettingsSelectRoomScreen(2, navController = rememberNavController()) {}
+        RoomSettingsSelectRoomScreen(2, isClose = false, onBack = {}) {}
     }
 }
 

@@ -1,10 +1,8 @@
 package app.editors.manager.ui.fragments.template.createroom
 
-import android.os.Bundle
 import androidx.compose.runtime.Composable
 import androidx.core.os.bundleOf
 import androidx.fragment.app.FragmentManager
-import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -24,6 +22,9 @@ class RoomFromTemplateFragment : ComposeDialogFragment() {
 
     private val templateId: String?
         get() = arguments?.getString(KEY_TEMPLATE_ID)
+
+    override val fragmentResultKey: String
+        get() = KEY_FRAGMENT_RESULT
 
     @Composable
     override fun Content() {
@@ -79,7 +80,7 @@ class RoomFromTemplateFragment : ComposeDialogFragment() {
 
     private fun setResult(id: String?, roomType: Int?) {
         parentFragmentManager.setFragmentResult(
-            TAG_FRAGMENT_RESULT,
+            KEY_FRAGMENT_RESULT,
             bundleOf(
                 KEY_SAVED_ID to id,
                 KEY_SAVED_ROOM_TYPE to roomType
@@ -97,21 +98,12 @@ class RoomFromTemplateFragment : ComposeDialogFragment() {
 
     companion object {
         private val TAG: String = RoomFromTemplateFragment::class.java.simpleName
-        private const val TAG_FRAGMENT_RESULT = "RoomFromTemplateFragmentResult"
         private const val KEY_TEMPLATE_ID = "key_template_id"
+        const val KEY_FRAGMENT_RESULT = "RoomFromTemplateFragmentResult"
         const val KEY_SAVED_ID = "key_saved_room_id"
         const val KEY_SAVED_ROOM_TYPE = "key_saved_room_type"
 
-        fun show(
-            fragmentManager: FragmentManager,
-            lifecycleOwner: LifecycleOwner,
-            templateId: String?,
-            onResult: (Bundle) -> Unit
-        ) {
-            fragmentManager.setFragmentResultListener(
-                TAG_FRAGMENT_RESULT,
-                lifecycleOwner
-            ) { _, bundle -> onResult(bundle) }
+        fun show(fragmentManager: FragmentManager, templateId: String?) {
             newInstance(templateId).show(fragmentManager, TAG)
         }
 
