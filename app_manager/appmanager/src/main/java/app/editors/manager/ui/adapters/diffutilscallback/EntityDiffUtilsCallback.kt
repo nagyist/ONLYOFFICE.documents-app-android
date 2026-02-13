@@ -36,7 +36,6 @@ class EntityDiffUtilsCallback(
 
             oldEntity is CloudFile && newEntity is CloudFile ->
                 newEntity.title == oldEntity.title
-                        && newEntity.version == oldEntity.version
                         && newEntity.updated == oldEntity.updated
                         && newEntity.thumbnailUrl == oldEntity.thumbnailUrl
                         && newEntity.customFilterEnabled == oldEntity.customFilterEnabled
