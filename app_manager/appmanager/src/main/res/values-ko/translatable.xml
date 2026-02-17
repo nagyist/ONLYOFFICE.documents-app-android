@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Translations added in version 9.3.0 - 2026-02-12 -->
-    <string name="app_name">Documents</string>
+    <string name="app_name">문서</string>
     <string name="app_name_full">ONLYOFFICE Documents</string>
     <string name="app_versions_title">버전 3.0 출시</string>
     <string name="app_versions_cancel">나중에</string>
@@ -576,7 +576,12 @@
     <string name="app_internal_error">내부 오류</string>
     <string name="app_fragment_crash_error">앱을 닫고 다시 시도해 주세요</string>
     <string name="item_owner_self">나</string>
-    <string name="sign_in_terms_and_policy_text"><![CDATA[ 계속 진행하면 <a href="%1$s">개인정보 처리방침</a> 및 <a href="%2$s">이용약관</a>에 동의하는 것입니다 ]]></string>
+    <string name="sign_in_terms_and_policy_text"><![CDATA[
+ 계속 진행하면
+ <a href="%1$s">개인정보 처리방침</a>
+ 및
+ <a href="%2$s">이용약관</a>에 동의하는 것입니다
+ ]]></string>
     <string name="app_settings_color_theme">테마</string>
     <string name="app_settings_follow_the_system">시스템 설정과 동일</string>
     <string name="app_settings_light_theme">라이트 테마</string>
