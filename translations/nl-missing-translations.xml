@@ -55,7 +55,7 @@
     <string name="cells_sheet_protect_options_desc">Allow all users of this sheet to</string>
     <string name="cells_workbook_protect_desc">To prevent other users from viewing hidden worksheets, adding, moving, deleting, or hiding worksheets and renaming worksheets, you can protect the structure of your workbook with a password.</string>
 
-    <!-- Module: libgdocs - 20 strings -->
+    <!-- Module: libgdocs - 22 strings -->
     <string name="review_track_changes_on_me">ON for me</string>
     <string name="review_track_changes_off_me">OFF for me</string>
     <string name="review_track_changes_on_everyone">ON for me &amp; everyone</string>
@@ -66,6 +66,7 @@
     <string name="review_track_changes_dialog_enable">Enable</string>
     <string name="review_accept_change">Accept change</string>
     <string name="review_reject_change">Reject change</string>
+    <string name="word_counter">Word counter</string>
     <string name="docs_line_numbers_title">Line numbers</string>
     <string name="docs_line_numbers_options">Options</string>
     <string name="docs_line_numbers_type_none">None</string>
@@ -76,8 +77,12 @@
     <string name="docs_line_numbers_count_by">Count by</string>
     <string name="docs_line_numbers_suppress">Suppress line numbers</string>
     <string name="docs_toc_delete">Delete Table of contents</string>
+    <plurals name="word_counter_words">
+        <item quantity="one">%d word</item>
+                <item quantity="other">%d words</item>
+    </plurals>
 
-    <!-- Module: libgeditors - 125 strings -->
+    <!-- Module: libgeditors - 136 strings -->
     <string name="error_protection_sheet">Sheet is protected, changes are blocked. Unlock the sheet to edit.</string>
     <string name="error_formula_argument">Found an error in the formula entered. Invalid number of arguments.</string>
     <string name="error_form_field_format">The value entered does not match the format of the field.</string>
@@ -203,4 +208,15 @@
     <string name="settings_delete_link">Delete Link</string>
     <string name="settings_delete_chart">Delete Chart</string>
     <string name="settings_delete">Delete</string>
+    <string name="comment_add_label">Comment or mention with + or @</string>
+    <string name="charts_group_recommended">Recommended</string>
+    <string name="charts_group_column">Column</string>
+    <string name="charts_group_line">Line</string>
+    <string name="charts_group_pie">Pie</string>
+    <string name="charts_group_bar">Bar</string>
+    <string name="charts_group_area">Area</string>
+    <string name="charts_group_stock">Stock</string>
+    <string name="charts_group_scatter">XY (Scatter)</string>
+    <string name="charts_group_radar">Radar</string>
+    <string name="charts_group_combo">Combo</string>
 </resources>

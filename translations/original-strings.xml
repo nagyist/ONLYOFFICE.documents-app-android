@@ -2,7 +2,7 @@
 <resources>
     <!-- Original strings for reference -->
 
-    <!-- Module: appmanager - 965 strings -->
+    <!-- Module: appmanager - 960 strings -->
     <string name="app_name">Documents</string>
     <string name="app_name_full">ONLYOFFICE Documents</string>
     <string name="app_versions_title">Version 3.0 released</string>
@@ -888,9 +888,6 @@
     <string name="title_access_settings">Access settings</string>
     <string name="desc_create_from_template">Create a room based on a template. All settings, users, folders and files will be taken from the selected room template.</string>
     <string name="desc_info_template">Room template. Use this template to quickly create a new room.</string>
-    <string name="access_members_me_and_title">Me and %s</string>
-    <string name="access_members_me_users_groups_title">Me, %1$s and %2$s</string>
-    <string name="access_members_me_subtitle">(Me)</string>
     <string name="settings_saved_successfully">Template settings saved</string>
     <string name="template_created_successfully">Template «%s» saved</string>
     <string name="room_created_successfully">Room created successfully</string>
@@ -1001,14 +998,6 @@
     <plurals name="rooms_restore_desc">
         <item quantity="one">All shared links in room will become active, and its contents will be available to everyone with the link. Do you want to restore room?</item>
                 <item quantity="other">All shared links in rooms will become active, and its contents will be available to everyone with the link. Do you want to restore rooms?</item>
-    </plurals>
-    <plurals name="access_members_users_title">
-        <item quantity="one">%d user</item>
-                <item quantity="other">%d users</item>
-    </plurals>
-    <plurals name="access_members_groups_title">
-        <item quantity="one">%d group</item>
-                <item quantity="other">%d groups</item>
     </plurals>
 
     <!-- Module: libgcells - 217 strings -->
@@ -1230,7 +1219,7 @@
     <string name="cells_formulas_description">Formula description</string>
     <string name="cells_sheet_right_to_left">Sheet Right to left</string>
 
-    <!-- Module: libgdocs - 255 strings -->
+    <!-- Module: libgdocs - 257 strings -->
     <string name="docs_title">Documents</string>
     <string name="docs_intent_title">ONLYOFFICE Documents</string>
     <string name="docs_open_format">DOCX format is needed</string>
@@ -1476,6 +1465,7 @@
     <string name="docs_margins_multiple_pages">Multiple Pages</string>
     <string name="docs_margins_mirror">Mirror margins</string>
     <string name="docs_filling_is_not_available">Form filling is in progress. File editing is not currently available.</string>
+    <string name="word_counter">Word counter</string>
     <string name="docs_line_numbers_title">Line numbers</string>
     <string name="docs_line_numbers_options">Options</string>
     <string name="docs_line_numbers_type_none">None</string>
@@ -1486,8 +1476,12 @@
     <string name="docs_line_numbers_count_by">Count by</string>
     <string name="docs_line_numbers_suppress">Suppress line numbers</string>
     <string name="docs_toc_delete">Delete Table of contents</string>
+    <plurals name="word_counter_words">
+        <item quantity="one">%d word</item>
+                <item quantity="other">%d words</item>
+    </plurals>
 
-    <!-- Module: libgeditors - 693 strings -->
+    <!-- Module: libgeditors - 704 strings -->
     <string name="app_name_editors">Editors</string>
     <string name="error_internal_unknown">Unknown internal error :(</string>
     <string name="error_connection">Connection lost. The viewer mode is enabled</string>
@@ -2181,6 +2175,17 @@
     <string name="settings_delete_link">Delete Link</string>
     <string name="settings_delete_chart">Delete Chart</string>
     <string name="settings_delete">Delete</string>
+    <string name="comment_add_label">Comment or mention with + or @</string>
+    <string name="charts_group_recommended">Recommended</string>
+    <string name="charts_group_column">Column</string>
+    <string name="charts_group_line">Line</string>
+    <string name="charts_group_pie">Pie</string>
+    <string name="charts_group_bar">Bar</string>
+    <string name="charts_group_area">Area</string>
+    <string name="charts_group_stock">Stock</string>
+    <string name="charts_group_scatter">XY (Scatter)</string>
+    <string name="charts_group_radar">Radar</string>
+    <string name="charts_group_combo">Combo</string>
 
     <!-- Module: libgslides - 88 strings -->
     <string name="slides_title">Presentations</string>
@@ -2272,7 +2277,18 @@
     <string name="slides_plate">%1$d of %2$d</string>
     <string name="slides_slide_show_count">Slide %1$d of %2$d</string>
 
-    <!-- Module: libtoolkit - 28 strings -->
+    <!-- Module: libtoolkit - 33 strings -->
+    <string name="access_members_me_and_title">Me and %s</string>
+    <string name="access_members_me_users_groups_title">Me, %1$s and %2$s</string>
+    <string name="access_members_me_subtitle">(Me)</string>
+    <plurals name="access_members_users_title">
+        <item quantity="one">%d user</item>
+                <item quantity="other">%d users</item>
+    </plurals>
+    <plurals name="access_members_groups_title">
+        <item quantity="one">%d group</item>
+                <item quantity="other">%d groups</item>
+    </plurals>
     <string name="dialogs_edit_forbidden_symbols">Do not use these symbols\u0020</string>
     <string name="dialogs_edit_forbidden_name">Invalid name</string>
     <string name="sizes_bytes">Bytes</string>
