@@ -62,6 +62,7 @@ import org.json.JSONObject
 import retrofit2.HttpException
 import retrofit2.Response
 import java.io.InputStream
+import java.time.Instant
 import javax.inject.Inject
 import kotlin.coroutines.resume
 
@@ -533,10 +534,13 @@ class CloudFileProvider @Inject constructor(
                     .replace(STATIC_DOC_URL, "")
             }
 
+            val file = fileJson.getJSONObject("file")
             val result = fileJson
                 .put("url", docService)
                 .put("fileId", id)
-                .put("canShareable", false)
+                .put("canShareable", file.getBoolean("canShare"))
+                .put("size", file.getInt("pureContentLength"))
+                .put("updated", Instant.parse(fileJson.getJSONObject("file").getString("updated")).toEpochMilli())
 
             val notFormPdf = fileJson.getString("documentType") == "pdf" && (!fileJson
                 .getJSONObject("document")
