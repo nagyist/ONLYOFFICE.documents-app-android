@@ -555,24 +555,17 @@ class CloudFileProvider @Inject constructor(
 
             // opening not form pdf locally
             if (notFormPdf || !isCoauthoring) {
+                val token = token.ifEmpty { accountRepository.getOnlineToken() ?: error("no token") }
+
+                val response = managerService.suspendDownloadFile(
+                    url = fileJson.getJSONObject("file").getString("viewUrl"),
+                    cookie = ApiContract.COOKIE_HEADER + token
+                )
+
                 val cloudFile = CloudFile().apply { this.id = id; this.title = title }
-                val file = if (notFormPdf) {
-                    suspendGetCachedFile(
-                        context = context,
-                        cloudFile = cloudFile,
-                        token = accountRepository.getOnlineToken() ?: token
-                    )
-                } else {
-                    val downloadUrl = fileJson.getJSONObject("file").getString("webUrl")
-                    val response = managerService.suspendDownloadFile(
-                        url = downloadUrl,
-                        cookie = ApiContract.COOKIE_HEADER + token
-                    )
-                    mapDownloadResponse(context, cloudFile, response)
-                }
                 emit(
                     FileOpenResult.OpenLocally(
-                        file = file,
+                        file = mapDownloadResponse(context, cloudFile, response),
                         fileId = cloudFile.id,
                         editType = EditType.View(),
                         access = Access.None
