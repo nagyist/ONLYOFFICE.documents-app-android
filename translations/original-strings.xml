@@ -10,9 +10,9 @@
     <string name="app_versions_without_release_accept">Install official app</string>
     <string name="app_versions_without_release_info">Thanks for beta testing! ONLYOFFICE Documents 3.0 is now released, and beta version is no longer supported. Switch to the official app to receive further updates.</string>
     <string name="app_versions_update_accept">Update official app</string>
-    <string name="app_versions_update_info">Thanks for beta testing! ONLYOFFICE Documents 3.0 is now released, and beta version is no longer supported. Please, switch to official app to receive further updates.</string>
+    <string name="app_versions_update_info">Thanks for beta testing! ONLYOFFICE Documents 3.0 is now released, and beta version is no longer supported. Please switch to official app to receive further updates.</string>
     <string name="app_versions_actual_release_accept">Open official app</string>
-    <string name="app_versions_actual_release_info">Thanks for beta testing! ONLYOFFICE Documents 3.0 is now released, and beta version is no longer supported. Please, switch to the official app.</string>
+    <string name="app_versions_actual_release_info">Thanks for beta testing! ONLYOFFICE Documents 3.0 is now released, and beta version is no longer supported. Please switch to the official app.</string>
     <string name="snackbar_copied">Copied</string>
     <string name="snackbar_undo">UNDO</string>
     <string name="about_title">About</string>
@@ -545,7 +545,7 @@
     <string name="cloud_accounts_title">Accounts</string>
     <string name="error_long_file_name">File name is too long</string>
     <string name="dialog_remove_account_title">Delete from device</string>
-    <string name="dialog_remove_account_description">User with %1$s from the %2$s portal will be logged out and removed from the account list. \n\nPlease, note: to log in, you\'ll need to enter portal address, email and password. All your files will be safe.</string>
+    <string name="dialog_remove_account_description">User with %1$s from the %2$s portal will be logged out and removed from the account list. \n\nPlease note: to log in, you\'ll need to enter portal address, email and password. All your files will be safe.</string>
     <string name="dialog_logout_account_title">Are you sure to log out?</string>
     <string name="dialog_logout_account_description">After you log out, you won\'t need to enter your portal address or email, only the password. Don\'t worry, all the files will be safe in the cloud.</string>
     <string name="profile_username_title">Username</string>
@@ -1369,7 +1369,7 @@
     <string name="forms_choose_option">Choose an option</string>
     <string name="forms_choose_image">Choose an image</string>
     <string name="forms_signature_title">Signatures</string>
-    <string name="forms_signatures_empty_placeholder">Please, add new signature</string>
+    <string name="forms_signatures_empty_placeholder">Please add new signature</string>
     <string name="forms_signatures_error_placeholder">Failed to load signatures</string>
     <string name="forms_new_signature">New signature</string>
     <string name="forms_signature_draw_title">Draw</string>
@@ -1509,10 +1509,10 @@
     <string name="error_args_range">Found an error in the formula entered.\nIncorrect arguments range.</string>
     <string name="error_operand_expected">The entered function syntax is not correct. Please check if you are missing one of the parentheses - \'(\' or \')\'.</string>
     <string name="error_frml_wrong_references">The function refers to a sheet that does not exist.\nPlease check the data and try again.</string>
-    <string name="error_unexpected_guid">External error.\nUnexpected Guid. Please, contact support.</string>
-    <string name="error_database_connection">External error.\nDatabase connection error. Please, contact support.</string>
-    <string name="error_file_request">External error.\nFile Request. Please, contact support.</string>
-    <string name="error_file_vkey">External error.\nIncorrect security key. Please, contact support.</string>
+    <string name="error_unexpected_guid">External error.\nUnexpected Guid. Please contact support.</string>
+    <string name="error_database_connection">External error.\nDatabase connection error. Please contact support.</string>
+    <string name="error_file_request">External error.\nFile Request. Please contact support.</string>
+    <string name="error_file_vkey">External error.\nIncorrect security key. Please contact support.</string>
     <string name="error_stock_chart">Incorrect row order. To build a stock chart place the data on the sheet in the following order:\nopening price, max price, min price, closing price.</string>
     <string name="error_max_data_series">ERROR! The maximum number of data series per chart is 255.</string>
     <string name="error_combo_series">To create a combination chart, select at least two series of data.</string>
