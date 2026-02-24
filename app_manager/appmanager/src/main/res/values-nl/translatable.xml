@@ -1018,4 +1018,37 @@
     <string name="rooms_info_fill_form_desc">Deze kamer is voor iedereen met de link beschikbaar. Externe gebruikers hebben rechten voor het invullen van formulieren voor alle bestanden.</string>
     <string name="share_popup_access_editing">Bewerken</string>
     <string name="share_popup_access_remove">Verwijder</string>
+
+    <!-- Newly added translations (v9.3.0 - 2026-02-24) -->
+    <string name="placeholder_empty_folder_common">Er zijn hier nog geen documenten</string>
+    <string name="placeholder_empty_folder_desc_creator">Nieuwe bestanden aanmaken of uploaden</string>
+    <string name="placeholder_empty_form_folder">Hier zijn nog geen formulieren</string>
+    <string name="placeholder_empty_form_folder_viewer">Nog geen formulieren in deze map</string>
+    <string name="placeholder_empty_form_done">Nog geen voltooide formulieren</string>
+    <string name="placeholder_empty_form_subfolder">Nog geen bestanden in deze map</string>
+    <string name="placeholder_empty_form_in_progress">Er is hier nog niets</string>
+    <string name="placeholder_empty_form_folder_desc">Upload een kant-en-klaar PDF-formulier</string>
+    <string name="placeholder_empty_form_folder_viewer_desc">De formulieren die door de beheerders zijn geüpload, worden hier weergegeven.</string>
+    <string name="placeholder_empty_form_done_desc">In dit gedeelte worden alle formulieren weergegeven die compleet zijn.</string>
+    <string name="placeholder_empty_form_done_folder_desc">Hier vindt u formulieren die volledig door andere gebruikers zijn ingevuld.</string>
+    <string name="placeholder_empty_form_in_progress_desc">Dit gedeelte toont de formulieren die in behandeling zijn.</string>
+    <string name="placeholder_empty_form_in_progress_folder_desc">Hier vindt u formulieren die nog in behandeling zijn, d.w.z. formulieren die gebruikers zijn begonnen in te vullen maar nog niet hebben voltooid.</string>
+    <string name="placeholder_empty_trash">Er zijn hier nog geen items</string>
+    <string name="placeholder_no_rooms_visitor">Er zijn hier nog geen kamers</string>
+    <string name="placeholder_empty_archive_visitor_desc">Kamers die zijn gearchiveerd verschijnen hier.</string>
+    <string name="placeholder_empty_from_template">Geen sjablonen gevonden</string>
+    <string name="placeholder_empty_from_template_desc">Maak uw eerste kamer sjabloon en vervolgens kunt u op basis hiervan nieuwe kamers maken.</string>
+    <string name="operation_cancel_message">Handeling geannuleerd</string>
+    <string name="cloud_vpn_warning">Voor de beste ervaring raden wij u aan VPN uit te schakelen. Sommige serverfuncties werken mogelijk niet naar behoren.</string>
+    <string name="room_placeholder_public_room_creator_title">Welkom in de Openbare kamer</string>
+    <string name="room_placeholder_public_room_creator_subtitle">Maak of upload nieuwe bestanden of mappen om te beginnen.</string>
+    <string name="room_placeholder_empty_viewer_title">De kamer is leeg</string>
+    <string name="room_placeholder_empty_viewer_subtitle">Bestanden en mappen die door beheerders zijn gemaakt of geüpload, verschijnen hier.</string>
+    <string name="room_placeholder_form_room_creator_title">Welkom in de kamer voor het invullen van Formulieren</string>
+    <string name="room_placeholder_form_room_creator_subtitle">Upload een kant-en-klaar PDF-formulier om te beginnen.</string>
+    <string name="room_placeholder_form_room_viewer_subtitle">PDF-formulieren die door beheerders zijn geüpload, verschijnen hier.</string>
+    <string name="room_placeholder_vdr_room_creator_title">Welkom bij de Virtuele Data Kamer</string>
+    <string name="room_placeholder_creator_subtitle">Maak of upload nieuwe bestanden om te beginnen.</string>
+    <string name="room_placeholder_collab_room_creator_title">Welkom in de Samenwerkingskamer</string>
+    <string name="room_placeholder_custom_room_creator_title">Welkom in de Aangepaste kamer</string>
 </resources>

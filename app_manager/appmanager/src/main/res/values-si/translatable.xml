@@ -974,4 +974,43 @@
     <string name="rooms_info_fill_form_desc">මෙම කාමරය සබැඳිය ඇති ඕනෑම කෙනෙකුට ලබා ගත හැකිය. බාහිර පරිශීලකයින්ට සියලුම ගොනු සඳහා පෝරම පිරවුම් අවසරය ඇත.</string>
     <string name="share_popup_access_editing">සංස්කරණය කිරීම</string>
     <string name="share_popup_access_remove">ඉවත් කරන්න</string>
+
+    <!-- Newly added translations (v9.3.0 - 2026-02-24) -->
+    <string name="placeholder_empty_folder">මෙහි තවම ගොනු නොමැත</string>
+    <string name="placeholder_empty_folder_common">මෙහි තවම ලේඛන නොමැත</string>
+    <string name="placeholder_empty_folder_desc_creator">නව ගොනු සාදන්න හෝ උඩුගත කරන්න</string>
+    <string name="placeholder_empty_form_folder">මෙහි තවම පෝරම නොමැත</string>
+    <string name="placeholder_empty_form_folder_viewer">මෙම ෆෝල්ඩරයේ තවමත් පෝරම නොමැත</string>
+    <string name="placeholder_empty_form_done">තවම පෝරම අවසන් කර නොමැත</string>
+    <string name="placeholder_empty_form_subfolder">මෙම ෆෝල්ඩරයේ තවමත් ගොනු නොමැත</string>
+    <string name="placeholder_empty_form_in_progress">මෙතන තවම කිසිවක් නැත</string>
+    <string name="placeholder_empty_form_folder_desc">සූදානම් PDF පෝරමයක් උඩුගත කරන්න</string>
+    <string name="placeholder_empty_form_folder_viewer_desc">පරිපාලකයින් විසින් උඩුගත කරන ලද පෝරම මෙහි දිස්වනු ඇත.</string>
+    <string name="placeholder_empty_form_done_desc">මෙම කොටසේ සම්පූර්ණ වූ සියලුම පෝරම පෙන්වනු ඇත.</string>
+    <string name="placeholder_empty_form_done_folder_desc">මෙහිදී ඔබට අනෙකුත් පරිශීලකයින් විසින් සම්පූර්ණයෙන්ම පුරවා ඇති පෝරම සොයාගත හැකිය.</string>
+    <string name="placeholder_empty_form_in_progress_desc">මෙම කොටසේ ක්‍රියාත්මක වෙමින් පවතින පෝරම පෙන්වනු ඇත.</string>
+    <string name="placeholder_empty_form_in_progress_folder_desc">මෙහිදී ඔබට ක්‍රියාත්මක වෙමින් පවතින පෝරම සොයාගත හැකිය, එනම්, පරිශීලකයින් පිරවීමට පටන් ගත් නමුත් සම්පූර්ණ කර නොමැති පෝරම.</string>
+    <string name="placeholder_empty_trash">මෙහි තවමත් අයිතම නොමැත</string>
+    <string name="placeholder_empty_trash_desc">මකා දැමූ ගොනු සහ ෆෝල්ඩර කුණු කූඩයට යන අතර, එහිදී ඔබට ඒවා ප්‍රතිසාධනය කිරීමට හෝ ස්ථිරවම මකා දැමීමට හැකිය. අයිතම දින 30 කට පසු ස්වයංක්‍රීයව මකා දමනු ලබන අතර කුණු කූඩයෙන් ඉවත් කළ පසු නැවත ලබා ගත නොහැක.</string>
+    <string name="placeholder_no_rooms_desc">ආරම්භ කිරීමට ඔබේ පළමු කාමරය සාදන්න.</string>
+    <string name="placeholder_no_rooms_visitor">මෙහි තවමත් කාමර නොමැත</string>
+    <string name="placeholder_no_rooms_visitor_desc">බෙදාගත් කාමර මෙහි දිස්වනු ඇත.</string>
+    <string name="placeholder_empty_archive_desc">භාවිතයට නොගත් කාමර ඔබගේ DocSpace හි ඕනෑම වේලාවක සංරක්ෂණය කර ප්‍රතිසාධනය කරන්න, නැතහොත් ස්ථිරවම මකා දමන්න. සංරක්ෂණය කළ කාමර මෙහි දිස්වනු ඇත.</string>
+    <string name="placeholder_empty_archive_visitor_desc">සංරක්ෂණය කර ඇති කාමර මෙහි දිස්වනු ඇත.</string>
+    <string name="placeholder_empty_templates_folder_desc">කාමර කොටසේ කාමරයකින් අච්චුවක් සාදන්න.</string>
+    <string name="placeholder_empty_from_template">සැකිලි හමු නොවීය</string>
+    <string name="placeholder_empty_from_template_desc">ඔබේ පළමු කාමර සැකිල්ල සාදන්න, ඉන්පසු ඔබට එය මත පදනම්ව නව කාමර නිර්මාණය කළ හැකිය.</string>
+    <string name="placeholder_empty_recent_via_link_desc">බාහිර සබැඳි හරහා ඔබ සමඟ බෙදාගත් මෑතකදී විවෘත කරන ලද ගොනු මෙතැනින් බලන්න.</string>
+    <string name="operation_cancel_message">මෙහෙයුම අවලංගු කරන ලදී</string>
+    <string name="cloud_vpn_warning">හොඳම අත්දැකීම සඳහා, VPN අක්‍රිය කිරීමට උත්සාහ කරන්න. සමහර සේවාදායක විශේෂාංග නිසි ලෙස ක්‍රියා නොකරනු ඇත.</string>
+    <string name="room_placeholder_public_room_creator_title">පොදු කාමරයට සාදරයෙන් පිළිගනිමු</string>
+    <string name="room_placeholder_public_room_creator_subtitle">ආරම්භ කිරීමට නව ගොනු හෝ ෆෝල්ඩර සාදන්න හෝ උඩුගත කරන්න.</string>
+    <string name="room_placeholder_empty_viewer_title">කාමරය හිස්</string>
+    <string name="room_placeholder_empty_viewer_subtitle">පරිපාලකයින් විසින් නිර්මාණය කරන ලද හෝ උඩුගත කරන ලද ගොනු සහ ෆෝල්ඩර මෙහි පෙන්වනු ඇත.</string>
+    <string name="room_placeholder_form_room_creator_subtitle">ආරම්භ කිරීමට සූදානම් PDF පෝරමයක් උඩුගත කරන්න.</string>
+    <string name="room_placeholder_form_room_viewer_subtitle">පරිපාලකයින් විසින් උඩුගත කරන ලද PDF පෝරම මෙහි පෙන්වනු ඇත.</string>
+    <string name="room_placeholder_vdr_room_creator_title">අථත්‍ය දත්ත කාමරයට සාදරයෙන් පිළිගනිමු</string>
+    <string name="room_placeholder_creator_subtitle">ආරම්භ කිරීමට නව ගොනු සාදන්න හෝ උඩුගත කරන්න.</string>
+    <string name="room_placeholder_collab_room_creator_title">සහයෝගීතා කාමරයට සාදරයෙන් පිළිගනිමු</string>
+    <string name="room_placeholder_custom_room_creator_title">අභිරුචි කාමරයට සාදරයෙන් පිළිගනිමු</string>
 </resources>

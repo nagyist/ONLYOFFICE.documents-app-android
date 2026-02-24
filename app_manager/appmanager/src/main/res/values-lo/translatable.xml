@@ -281,7 +281,6 @@
     <string name="list_context_delete">ລຶບ </string>
     <string name="list_context_delete_storage">ຕັດການເຊື່ອມຕໍ່ບ່ອນຈັດເກັບຂໍ້ມູນ </string>
     <string name="list_context_delete_success">ຖືກລຶບອອກສຳເລັດ</string>
-    <string name="list_context_remove_from_list" translatable="false">@string/toolbar_menu_main_remove_from_list</string>
     <string name="list_context_delete_recent">ເອົາອອກຈາກຫຼ້າສຸດ</string>
 
     <!-- List action menu -->
@@ -1114,4 +1113,44 @@
     <string name="rooms_info_fill_form_desc">ຫ້ອງນີ້ສາມາດໃຊ້ໄດ້ສຳລັບທຸກຄົນທີ່ມີລິ້ງ. ຜູ້ໃຊ້ພາຍນອກຈະມີສິດອະນຸຍາດຕື່ມແບບຟອມສຳລັບທຸກໄຟລ໌.</string>
     <string name="share_popup_access_editing">ການແກ້ໄຂ</string>
     <string name="share_popup_access_remove">ລຶບອອກ</string>
+
+    <!-- Newly added translations (v9.3.0 - 2026-02-24) -->
+    <string name="list_context_remove_from_list">@string/toolbar_menu_main_remove_from_list</string>
+    <string name="placeholder_empty_folder">ຍັງບໍ່ມີໄຟລ໌ຢູ່ບ່ອນນີ້ເທື່ອ</string>
+    <string name="placeholder_empty_folder_common">ຍັງບໍ່ມີເອກະສານຢູ່ບ່ອນນີ້ເທື່ອ</string>
+    <string name="placeholder_empty_folder_desc_creator">ສ້າງ ຫຼື ອັບໂຫຼດໄຟລ໌ໃໝ່</string>
+    <string name="placeholder_empty_form_folder">ຍັງບໍ່ມີແບບຟອມຢູ່ບ່ອນນີ້ເທື່ອ</string>
+    <string name="placeholder_empty_form_folder_viewer">ຍັງບໍ່ມີແບບຟອມຢູ່ໃນໂຟນເດີນີ້ເທື່ອ</string>
+    <string name="placeholder_empty_form_done">ຍັງບໍ່ທັນມີແບບຟອມທີ່ສຳເລັດແລ້ວເທື່ອ</string>
+    <string name="placeholder_empty_form_subfolder">ຍັງບໍ່ມີໄຟລ໌ຢູ່ໃນໂຟນເດີນີ້ເທື່ອ</string>
+    <string name="placeholder_empty_form_in_progress">ບໍ່ມີຫຍັງຢູ່ບ່ອນນີ້ເທື່ອ</string>
+    <string name="placeholder_empty_form_folder_desc">ອັບໂຫຼດແບບຟອມ PDF ທີ່ພ້ອມແລ້ວ</string>
+    <string name="placeholder_empty_form_folder_viewer_desc">ແບບຟອມທີ່ອັບໂຫຼດໂດຍຜູ້ເບິ່ງແຍງລະບົບຈະປາກົດຢູ່ທີ່ນີ້.</string>
+    <string name="placeholder_empty_form_done_desc">ພາກນີ້ຈະສະແດງແບບຟອມທັງໝົດທີ່ຄົບຖ້ວນແລ້ວ.</string>
+    <string name="placeholder_empty_form_done_folder_desc">ທີ່ນີ້ທ່ານຈະພົບເຫັນແບບຟອມທີ່ຜູ້ໃຊ້ອື່ນໆໄດ້ຕື່ມຄົບຖ້ວນແລ້ວ.</string>
+    <string name="placeholder_empty_form_in_progress_desc">ພາກນີ້ຈະສະແດງແບບຟອມທີ່ກຳລັງດຳເນີນການຢູ່.</string>
+    <string name="placeholder_empty_form_in_progress_folder_desc">ໃນທີ່ນີ້ທ່ານຈະພົບເຫັນແບບຟອມທີ່ກຳລັງດຳເນີນການຢູ່, ເຊັ່ນ: ແບບຟອມທີ່ຜູ້ໃຊ້ໄດ້ເລີ່ມຕື່ມຂໍ້ມູນແລ້ວແຕ່ຍັງບໍ່ທັນໄດ້ເຮັດສຳເລັດ.</string>
+    <string name="placeholder_empty_trash">ຍັງບໍ່ມີລາຍການຢູ່ທີ່ນີ້ເທື່ອ</string>
+    <string name="placeholder_empty_trash_desc">ໄຟລ໌ ແລະ ໂຟນເດີທີ່ຖືກລຶບຈະໄປທີ່ຖັງຂີ້ເຫຍື້ອ, ບ່ອນທີ່ທ່ານສາມາດກູ້ຄືນ ຫຼື ລຶບພວກມັນອອກຢ່າງຖາວອນ. ລາຍການຕ່າງໆຈະຖືກລຶບໂດຍອັດຕະໂນມັດຫຼັງຈາກ 30 ມື້ ແລະ ບໍ່ສາມາດກູ້ຄືນໄດ້ເມື່ອຖືກລຶບອອກຈາກຖັງຂີ້ເຫຍື້ອ.</string>
+    <string name="placeholder_no_rooms_desc">ສ້າງຫ້ອງທຳອິດຂອງທ່ານເພື່ອເລີ່ມຕົ້ນ.</string>
+    <string name="placeholder_no_rooms_visitor">ຍັງບໍ່ມີຫ້ອງຢູ່ທີ່ນີ້ເທື່ອ</string>
+    <string name="placeholder_no_rooms_visitor_desc">ຫ້ອງທີ່ໃຊ້ຮ່ວມກັນຈະປາກົດຢູ່ທີ່ນີ້.</string>
+    <string name="placeholder_empty_archive_desc">ເກັບຫ້ອງທີ່ບໍ່ໄດ້ໃຊ້ໄວ້ ແລະ ກູ້ຄືນພວກມັນໄດ້ທຸກເວລາໃນ DocSpace ຂອງທ່ານ, ຫຼື ລຶບພວກມັນອອກຢ່າງຖາວອນ. ຫ້ອງທີ່ເກັບໄວ້ແລ້ວຈະປາກົດຢູ່ທີ່ນີ້.</string>
+    <string name="placeholder_empty_archive_visitor_desc">ຫ້ອງທີ່ເກັບໄວ້ແລ້ວຈະປາກົດຢູ່ທີ່ນີ້.</string>
+    <string name="placeholder_empty_templates_folder_desc">ສ້າງແມ່ແບບຈາກຫ້ອງໃນພາກສ່ວນຫ້ອງ.</string>
+    <string name="placeholder_empty_from_template">ບໍ່ພົບແມ່ແບບ</string>
+    <string name="placeholder_empty_from_template_desc">ສ້າງແມ່ແບບຫ້ອງທຳອິດຂອງທ່ານ ແລະ ຫຼັງຈາກນັ້ນທ່ານສາມາດສ້າງຫ້ອງໃໝ່ໂດຍອີງໃສ່ມັນໄດ້.</string>
+    <string name="placeholder_empty_recent_via_link_desc">ເບິ່ງໄຟລ໌ທີ່ເປີດບໍ່ດົນມານີ້ທີ່ແບ່ງປັນກັບທ່ານຜ່ານລິ້ງພາຍນອກທີ່ນີ້.</string>
+    <string name="operation_cancel_message">ການດຳເນີນງານຖືກຍົກເລີກແລ້ວ</string>
+    <string name="cloud_vpn_warning">ເພື່ອປະສົບການທີ່ດີທີ່ສຸດ, ລອງປິດ VPN. ຄຸນສົມບັດເຊີບເວີບາງຢ່າງອາດຈະເຮັດວຽກບໍ່ຖືກຕ້ອງ.</string>
+    <string name="room_placeholder_public_room_creator_title">ຍິນດີຕ້ອນຮັບສູ່ຫ້ອງສາທາລະນະ</string>
+    <string name="room_placeholder_public_room_creator_subtitle">ສ້າງ ຫຼື ອັບໂຫຼດໄຟລ໌ ຫຼື ໂຟນເດີໃໝ່ເພື່ອເລີ່ມຕົ້ນ.</string>
+    <string name="room_placeholder_empty_viewer_title">ຫ້ອງຫວ່າງເປົ່າ</string>
+    <string name="room_placeholder_empty_viewer_subtitle">ໄຟລ໌ ແລະ ໂຟນເດີທີ່ສ້າງ ຫຼື ອັບໂຫຼດໂດຍຜູ້ເບິ່ງແຍງລະບົບຈະສະແດງຢູ່ທີ່ນີ້.</string>
+    <string name="room_placeholder_form_room_creator_subtitle">ອັບໂຫຼດແບບຟອມ PDF ທີ່ພ້ອມແລ້ວເພື່ອເລີ່ມຕົ້ນ.</string>
+    <string name="room_placeholder_form_room_viewer_subtitle">ແບບຟອມ PDF ທີ່ອັບໂຫຼດໂດຍຜູ້ເບິ່ງແຍງລະບົບຈະປາກົດຢູ່ທີ່ນີ້.</string>
+    <string name="room_placeholder_vdr_room_creator_title">ຍິນດີຕ້ອນຮັບສູ່ຫ້ອງຂໍ້ມູນສະເໝືອນ</string>
+    <string name="room_placeholder_creator_subtitle">ສ້າງ ຫຼື ອັບໂຫຼດໄຟລ໌ໃໝ່ເພື່ອເລີ່ມຕົ້ນ.</string>
+    <string name="room_placeholder_collab_room_creator_title">ຍິນດີຕ້ອນຮັບສູ່ຫ້ອງຮ່ວມມື</string>
+    <string name="room_placeholder_custom_room_creator_title">ຍິນດີຕ້ອນຮັບສູ່ຫ້ອງກຳນົດເອງ</string>
 </resources>

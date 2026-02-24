@@ -986,4 +986,43 @@
     <string name="rooms_info_fill_form_desc">Questa stanza è disponibile a chiunque abbia il link. Gli utenti esterni avranno il permesso di Compilazione Moduli per tutti i file.</string>
     <string name="share_popup_access_editing">Modifica</string>
     <string name="share_popup_access_remove">Rimuovi</string>
+
+    <!-- Newly added translations (v9.3.0 - 2026-02-24) -->
+    <string name="placeholder_empty_folder">Ancora nessun file qui</string>
+    <string name="placeholder_empty_folder_common">Ancora nessun documento qui</string>
+    <string name="placeholder_empty_folder_desc_creator">Crea o carica nuovi file</string>
+    <string name="placeholder_empty_form_folder">Ancora nessun modulo qui</string>
+    <string name="placeholder_empty_form_folder_viewer">Ancora nessun modulo in questa cartella</string>
+    <string name="placeholder_empty_form_done">Ancora nessun modulo completato</string>
+    <string name="placeholder_empty_form_subfolder">Ancora nessun file in questa cartella</string>
+    <string name="placeholder_empty_form_in_progress">Ancora niente qui</string>
+    <string name="placeholder_empty_form_folder_desc">Carica un modulo PDF già pronto</string>
+    <string name="placeholder_empty_form_folder_viewer_desc">I moduli caricati dagli amministratori appariranno qui.</string>
+    <string name="placeholder_empty_form_done_desc">Questa sezione mostra tutti i moduli completati.</string>
+    <string name="placeholder_empty_form_done_folder_desc">Qui trovi i moduli compilati completamente da altri utenti.</string>
+    <string name="placeholder_empty_form_in_progress_desc">Questa sezione mostra i moduli in corso.</string>
+    <string name="placeholder_empty_form_in_progress_folder_desc">Qui trovi i moduli in corso, cioè quelli che gli utenti hanno iniziato a compilare ma non hanno completato.</string>
+    <string name="placeholder_empty_trash">Ancora nessun elemento qui</string>
+    <string name="placeholder_empty_trash_desc">File e cartelle eliminati finiscono nel Cestino, dove puoi ripristinarli o eliminarli definitivamente. Gli elementi vengono eliminati automaticamente dopo 30 giorni e non possono essere recuperati una volta rimossi dal Cestino.</string>
+    <string name="placeholder_no_rooms_desc">Crea la tua prima stanza per iniziare.</string>
+    <string name="placeholder_no_rooms_visitor">Ancora nessuna stanza qui</string>
+    <string name="placeholder_no_rooms_visitor_desc">Le stanze condivise appariranno qui.</string>
+    <string name="placeholder_empty_archive_desc">Archivia le stanze inutilizzate e ripristinale in qualsiasi momento nel tuo DocSpace, oppure eliminale definitivamente. Le stanze archiviate appariranno qui.</string>
+    <string name="placeholder_empty_archive_visitor_desc">Le stanze archiviate appariranno qui.</string>
+    <string name="placeholder_empty_templates_folder_desc">Crea un modello a partire da una stanza nella sezione Stanze.</string>
+    <string name="placeholder_empty_from_template">Nessun modello trovato</string>
+    <string name="placeholder_empty_from_template_desc">Crea il tuo primo modello di stanza, poi potrai creare nuove stanze basate su di esso.</string>
+    <string name="placeholder_empty_recent_via_link_desc">Visualizza qui i file aperti di recente e condivisi con te tramite link esterni.</string>
+    <string name="operation_cancel_message">Operazione annullata</string>
+    <string name="cloud_vpn_warning">Per la migliore esperienza, prova a disattivare la VPN. Alcune funzionalità del server potrebbero non funzionare correttamente.</string>
+    <string name="room_placeholder_public_room_creator_title">Benvenuto nella Stanza pubblica</string>
+    <string name="room_placeholder_public_room_creator_subtitle">Crea o carica nuovi file o cartelle per iniziare.</string>
+    <string name="room_placeholder_empty_viewer_title">La stanza è vuota</string>
+    <string name="room_placeholder_empty_viewer_subtitle">File e cartelle creati o caricati dagli amministratori appariranno qui.</string>
+    <string name="room_placeholder_form_room_creator_subtitle">Carica un modulo PDF già pronto per iniziare.</string>
+    <string name="room_placeholder_form_room_viewer_subtitle">I moduli PDF caricati dagli amministratori appariranno qui.</string>
+    <string name="room_placeholder_vdr_room_creator_title">Benvenuto nella Virtual Data Room</string>
+    <string name="room_placeholder_creator_subtitle">Crea o carica nuovi file per iniziare.</string>
+    <string name="room_placeholder_collab_room_creator_title">Benvenuto nella Stanza di collaborazione</string>
+    <string name="room_placeholder_custom_room_creator_title">Benvenuto nella Stanza personalizzata</string>
 </resources>

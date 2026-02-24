@@ -987,4 +987,43 @@
     <string name="rooms_info_fill_form_desc">Esta sala está disponível para qualquer pessoa com o link. Os usuários externos terão permissão para preencher formulários em todos os arquivos..</string>
     <string name="share_popup_access_editing">Edição</string>
     <string name="share_popup_access_remove">Remover</string>
+
+    <!-- Newly added translations (v9.3.0 - 2026-02-24) -->
+    <string name="placeholder_empty_folder">Ainda não há arquivos aqui</string>
+    <string name="placeholder_empty_folder_common">Ainda não há documentos aqui</string>
+    <string name="placeholder_empty_folder_desc_creator">Criar ou carregar novos arquivos</string>
+    <string name="placeholder_empty_form_folder">Ainda não há formulários aqui</string>
+    <string name="placeholder_empty_form_folder_viewer">Ainda não há formulários nesta pasta</string>
+    <string name="placeholder_empty_form_done">Ainda não há formulários finalizados</string>
+    <string name="placeholder_empty_form_subfolder">Ainda não há arquivos nesta pasta</string>
+    <string name="placeholder_empty_form_in_progress">Nada por aqui ainda</string>
+    <string name="placeholder_empty_form_folder_desc">Faça o upload de um formulário em PDF pronto</string>
+    <string name="placeholder_empty_form_folder_viewer_desc">Os formulários enviados pelos administradores aparecerão aqui.</string>
+    <string name="placeholder_empty_form_done_desc">Esta seção exibirá todos os formulários que foram preenchidos.</string>
+    <string name="placeholder_empty_form_done_folder_desc">Aqui você encontrará formulários que foram preenchidos integralmente por outros usuários.</string>
+    <string name="placeholder_empty_form_in_progress_desc">Esta seção exibirá os formulários em andamento.</string>
+    <string name="placeholder_empty_form_in_progress_folder_desc">Aqui você encontrará formulários em andamento, ou seja, formulários que os usuários começaram a preencher, mas ainda não concluíram.</string>
+    <string name="placeholder_empty_trash">Ainda não há itens aqui.</string>
+    <string name="placeholder_empty_trash_desc">Arquivos e pastas excluídos vão para a Lixeira, onde você pode restaurá-los ou excluí-los permanentemente. Os itens são excluídos automaticamente após 30 dias e não podem ser recuperados depois de removidos da Lixeira.</string>
+    <string name="placeholder_no_rooms_desc">Crie seu primeiro cômodo para começar.</string>
+    <string name="placeholder_no_rooms_visitor">Ainda não há quartos disponíveis aqui.</string>
+    <string name="placeholder_no_rooms_visitor_desc">Os quartos compartilhados aparecerão aqui.</string>
+    <string name="placeholder_empty_archive_desc">Arquive salas não utilizadas e restaure-as a qualquer momento no seu DocSpace, ou exclua-as permanentemente. As salas arquivadas aparecerão aqui.</string>
+    <string name="placeholder_empty_archive_visitor_desc">As salas que foram arquivadas aparecerão aqui.</string>
+    <string name="placeholder_empty_templates_folder_desc">Crie um modelo a partir de uma sala na seção Salas.</string>
+    <string name="placeholder_empty_from_template">Nenhum modelo encontrado</string>
+    <string name="placeholder_empty_from_template_desc">Crie seu primeiro modelo de quarto e, em seguida, você poderá criar novos quartos com base nele.</string>
+    <string name="placeholder_empty_recent_via_link_desc">Veja aqui os arquivos abertos recentemente que foram compartilhados com você por meio de links externos.</string>
+    <string name="operation_cancel_message">Operação cancelada</string>
+    <string name="cloud_vpn_warning">Para uma melhor experiência, tente desativar a VPN. Algumas funcionalidades do servidor podem não funcionar corretamente..</string>
+    <string name="room_placeholder_public_room_creator_title">Bem-vindo à sala pública.</string>
+    <string name="room_placeholder_public_room_creator_subtitle">Crie ou carregue novos arquivos ou pastas para começar.</string>
+    <string name="room_placeholder_empty_viewer_title">A sala está vazia</string>
+    <string name="room_placeholder_empty_viewer_subtitle">Arquivos e pastas criados ou carregados por administradores aparecerão aqui.</string>
+    <string name="room_placeholder_form_room_creator_subtitle">Faça o upload de um formulário PDF pronto para começar.</string>
+    <string name="room_placeholder_form_room_viewer_subtitle">Os formulários em PDF enviados pelos administradores aparecerão aqui.</string>
+    <string name="room_placeholder_vdr_room_creator_title">Bem vindo à Virtual Data Room</string>
+    <string name="room_placeholder_creator_subtitle">Crie ou carregue novos arquivos para começar.</string>
+    <string name="room_placeholder_collab_room_creator_title">Bem-vindo(a) à sala de colaboração</string>
+    <string name="room_placeholder_custom_room_creator_title">Bem-vindo à Sala Personalizada</string>
 </resources>

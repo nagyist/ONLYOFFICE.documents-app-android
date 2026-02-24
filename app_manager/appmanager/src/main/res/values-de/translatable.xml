@@ -989,4 +989,43 @@ Wir empfehlen Ihnen, auf die kostenlose ONLYOFFICE DocSpace Cloud umzusteigen.</
     <string name="rooms_info_fill_form_desc">Dieser Raum ist für alle mit dem Link zugänglich. Externe Benutzer haben die Berechtigung, Formulare auszufüllen, für alle Dateien.</string>
     <string name="share_popup_access_editing">Bearbeiten</string>
     <string name="share_popup_access_remove">Entfernen</string>
+
+    <!-- Newly added translations (v9.3.0 - 2026-02-24) -->
+    <string name="placeholder_empty_folder">Hier gibt es noch keine Dateien</string>
+    <string name="placeholder_empty_folder_common">Hier gibt es noch keine Dokumente</string>
+    <string name="placeholder_empty_folder_desc_creator">Neue Dateien erstellen oder hochladen</string>
+    <string name="placeholder_empty_form_folder">Hier gibt es noch keine Formulare</string>
+    <string name="placeholder_empty_form_folder_viewer">Noch keine Formulare in diesem Ordner</string>
+    <string name="placeholder_empty_form_done">Noch keine ausgefüllten Formulare</string>
+    <string name="placeholder_empty_form_subfolder">Noch keine Dateien in diesem Ordner</string>
+    <string name="placeholder_empty_form_in_progress">Noch nichts vorhanden</string>
+    <string name="placeholder_empty_form_folder_desc">Ein fertiges PDF-Formular hochladen</string>
+    <string name="placeholder_empty_form_folder_viewer_desc">Die von den Administratoren hochgeladenen Formulare werden hier angezeigt.</string>
+    <string name="placeholder_empty_form_done_desc">In diesem Abschnitt werden alle ausgefüllten Formulare angezeigt.</string>
+    <string name="placeholder_empty_form_done_folder_desc">Hier finden Sie Formulare, die von anderen Nutzern vollständig ausgefüllt wurden.</string>
+    <string name="placeholder_empty_form_in_progress_desc">In diesem Abschnitt werden die aktuell bearbeiteten Formulare angezeigt.</string>
+    <string name="placeholder_empty_form_in_progress_folder_desc">Hier finden Sie Formulare, die noch nicht ausgefüllt sind, d.h. Formulare, die Benutzer begonnen, aber noch nicht fertiggestellt haben.</string>
+    <string name="placeholder_empty_trash">Hier gibt es noch keine Elemente</string>
+    <string name="placeholder_empty_trash_desc">Gelöschte Dateien und Ordner landen im Papierkorb, wo Sie sie wiederherstellen oder endgültig löschen können. Elemente werden nach 30 Tagen automatisch gelöscht und können nach dem Entfernen aus dem Papierkorb nicht wiederhergestellt werden.</string>
+    <string name="placeholder_no_rooms_desc">Erstellen Sie Ihren ersten Raum, um loszulegen.</string>
+    <string name="placeholder_no_rooms_visitor">Hier gibt es noch keine Räume</string>
+    <string name="placeholder_no_rooms_visitor_desc">Die geteilten Räume werden hier angezeigt.</string>
+    <string name="placeholder_empty_archive_desc">Nicht verwendete Räume können archiviert und jederzeit in Ihrem DocSpace wiederhergestellt oder endgültig gelöscht werden. Archivierte Räume werden hier angezeigt.</string>
+    <string name="placeholder_empty_archive_visitor_desc">Archivierte Räume werden hier angezeigt.</string>
+    <string name="placeholder_empty_templates_folder_desc">Erstellen Sie eine Vorlage aus einem Raum im Bereich "Räume".</string>
+    <string name="placeholder_empty_from_template">Keine Vorlagen gefunden</string>
+    <string name="placeholder_empty_from_template_desc">Erstellen Sie Ihre erste Raumvorlage und darauf aufbauend können Sie neue Räume erstellen.</string>
+    <string name="placeholder_empty_recent_via_link_desc">Hier können Sie die zuletzt geöffneten Dateien ansehen, die Ihnen über externe Links zugewiesen wurden.</string>
+    <string name="operation_cancel_message">Operation abgesagt</string>
+    <string name="cloud_vpn_warning">Für ein optimales Nutzungserlebnis sollten Sie das VPN deaktivieren. Einige Serverfunktionen funktionieren möglicherweise nicht einwandfrei.</string>
+    <string name="room_placeholder_public_room_creator_title">Willkommen im öffentlichen Raum</string>
+    <string name="room_placeholder_public_room_creator_subtitle">Erstellen oder laden Sie neue Dateien oder Ordner hoch, um loszulegen.</string>
+    <string name="room_placeholder_empty_viewer_title">Der Raum ist leer</string>
+    <string name="room_placeholder_empty_viewer_subtitle">Hier werden Dateien und Ordner angezeigt, die von Administratoren erstellt oder hochgeladen wurden.</string>
+    <string name="room_placeholder_form_room_creator_subtitle">Laden Sie ein fertiges PDF-Formular hoch, um loszulegen.</string>
+    <string name="room_placeholder_form_room_viewer_subtitle">Von Administratoren hochgeladene PDF-Formulare werden hier angezeigt.</string>
+    <string name="room_placeholder_vdr_room_creator_title">Willkommen im virtuellen Datenraum</string>
+    <string name="room_placeholder_creator_subtitle">Erstellen oder laden Sie neue Dateien hoch, um loszulegen.</string>
+    <string name="room_placeholder_collab_room_creator_title">Willkommen im Raum für Zusammenarbeit</string>
+    <string name="room_placeholder_custom_room_creator_title">Willkommen im benutzerdefinierten Raum</string>
 </resources>

@@ -1141,4 +1141,43 @@
     <string name="rooms_info_fill_form_desc">Այս սենյակը հասանելի է հղում ունեցող յուրաքանչյուրի համար: Արտաքին օգտատերերը կունենան ձևաթղթերի լրացման թույլտվություն բոլոր ֆայլերի համար:</string>
     <string name="share_popup_access_editing">Խմբագրում</string>
     <string name="share_popup_access_remove">Հեռացնել</string>
+
+    <!-- Newly added translations (v9.3.0 - 2026-02-24) -->
+    <string name="placeholder_empty_folder">Այստեղ դեռևս ֆայլեր չկան</string>
+    <string name="placeholder_empty_folder_common">Այստեղ դեռևս փաստաթղթեր չկան</string>
+    <string name="placeholder_empty_folder_desc_creator">Ստեղծեք կամ վերբեռնեք նոր ֆայլեր</string>
+    <string name="placeholder_empty_form_folder">Դեռևս ձևաթղթեր չկան այստեղ</string>
+    <string name="placeholder_empty_form_folder_viewer">Այս թղթապանակում դեռևս ձևաթղթեր չկան</string>
+    <string name="placeholder_empty_form_done">Ձևաթղթերը դեռ ավարտված չեն</string>
+    <string name="placeholder_empty_form_subfolder">Այս թղթապանակում դեռ ֆայլեր չկան</string>
+    <string name="placeholder_empty_form_in_progress">Այստեղ դեռ ոչինչ չկա</string>
+    <string name="placeholder_empty_form_folder_desc">Վերբեռնել պատրաստի PDF ձևաթուղթ</string>
+    <string name="placeholder_empty_form_folder_viewer_desc">Ադմինիստրատորների կողմից վերբեռնված ձևաթղթերը կհայտնվեն այստեղ։</string>
+    <string name="placeholder_empty_form_done_desc">Այս բաժնում կցուցադրվեն բոլոր ավարտված ձևաթղթերը։</string>
+    <string name="placeholder_empty_form_done_folder_desc">Այստեղ դուք կգտնեք այլ օգտատերերի կողմից ամբողջությամբ լրացված ձևաթղթերը։</string>
+    <string name="placeholder_empty_form_in_progress_desc">Այս բաժնում կցուցադրվեն ընթացքի մեջ գտնվող ձևաթղթերը։</string>
+    <string name="placeholder_empty_form_in_progress_folder_desc">Այստեղ դուք կգտնեք ընթացքի մեջ գտնվող ձևաթղթեր, այսինքն՝ ձևաթղթեր, որոնց լրացումն օգտատերերը սկսել են, բայց դեռ չեն ավարտել։</string>
+    <string name="placeholder_empty_trash">Այստեղ դեռ տարրեր չկան</string>
+    <string name="placeholder_empty_trash_desc">Ջնջված ֆայլերն ու թղթապանակները տեղափոխվում են աղբարկղ, որտեղ կարող եք վերականգնել կամ մշտապես ջնջել դրանք։ Տարրերն ավտոմատ կերպով ջնջվում են 30 օր հետո և չեն կարող վերականգնվել աղբարկղից հեռացնելուց հետո։</string>
+    <string name="placeholder_no_rooms_desc">Սկսելու համար ստեղծեք ձեր առաջին սենյակը</string>
+    <string name="placeholder_no_rooms_visitor">Այստեղ դեռ սենյակներ չկան</string>
+    <string name="placeholder_no_rooms_visitor_desc">Կիսված սենյակները կհայտնվեն այստեղ։</string>
+    <string name="placeholder_empty_archive_desc">Արխիվացրեք չօգտագործված սենյակները և վերականգնեք դրանք ցանկացած ժամանակ ձեր DocSpace-ում, կամ ջնջեք դրանք մշտապես։ Արխիվացված սենյակները կհայտնվեն այստեղ։</string>
+    <string name="placeholder_empty_archive_visitor_desc">Արխիվացված սենյակները կհայտնվեն այստեղ։</string>
+    <string name="placeholder_empty_templates_folder_desc">Ստեղծեք ձևանմուշ սենյակից Սենյակներ բաժնում։</string>
+    <string name="placeholder_empty_from_template">Ձևանմուշները չեն գտնվել</string>
+    <string name="placeholder_empty_from_template_desc">Ստեղծեք ձեր առաջին սենյակի ձևանմուշը, ապա կարող եք ստեղծել նոր սենյակներ դրա հիման վրա։</string>
+    <string name="placeholder_empty_recent_via_link_desc">Այստեղ կարող եք դիտել վերջերս բացված ֆայլերը, որոնք ձեզ հետ կիսվել են արտաքին հղումերով։</string>
+    <string name="operation_cancel_message">Գործողությունը չեղարկված է</string>
+    <string name="cloud_vpn_warning">Լավագույն փորձի համար փորձեք անջատել VPN-ը։ Որոշ սերվերային ֆունկցիաներ կարող են ճիշտ չաշխատել։</string>
+    <string name="room_placeholder_public_room_creator_title">Բարի գալուստ Հանրային սենյակ</string>
+    <string name="room_placeholder_public_room_creator_subtitle">Սկսելու համար ստեղծեք կամ վերբեռնեք նոր ֆայլեր կամ թղթապանակներ։</string>
+    <string name="room_placeholder_empty_viewer_title">Սենյակը դատարկ է</string>
+    <string name="room_placeholder_empty_viewer_subtitle">Ադմինիստրատորների կողմից ստեղծված կամ վերբեռնված ֆայլերն ու թղթապանակները կհայտնվեն այստեղ։</string>
+    <string name="room_placeholder_form_room_creator_subtitle">Սկսելու համար վերբեռնեք պատրաստի PDF ձևաթուղթ։</string>
+    <string name="room_placeholder_form_room_viewer_subtitle">Ադմինիստրատորների կողմից վերբեռնված PDF ձևաթղթերը կհայտնվեն այստեղ։</string>
+    <string name="room_placeholder_vdr_room_creator_title">Բարի գալուստ Վիրտուալ Տվյալների Սենյակ</string>
+    <string name="room_placeholder_creator_subtitle">Սկսելու համար ստեղծեք կամ վերբեռնեք նոր ֆայլեր։</string>
+    <string name="room_placeholder_collab_room_creator_title">Բարի գալուստ Համագործակցության սենյակ</string>
+    <string name="room_placeholder_custom_room_creator_title">Բարի գալուստ Հարմարեցված սենյակ</string>
 </resources>

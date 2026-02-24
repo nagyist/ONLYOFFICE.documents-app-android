@@ -981,4 +981,43 @@
     <string name="rooms_info_fill_form_desc">Тази стая е достъпна за всеки с линка. Външните потребители ще имат разрешение за Попълване на формуляр за всичките файлове.</string>
     <string name="share_popup_access_editing">Редактиране</string>
     <string name="share_popup_access_remove">Премахни</string>
+
+    <!-- Newly added translations (v9.3.0 - 2026-02-24) -->
+    <string name="placeholder_empty_folder">Тук все още няма файлове</string>
+    <string name="placeholder_empty_folder_common">Тук все още няма документи</string>
+    <string name="placeholder_empty_folder_desc_creator">Създай или качи нови файлове</string>
+    <string name="placeholder_empty_form_folder">Тук все още няма формуляри</string>
+    <string name="placeholder_empty_form_folder_viewer">Все още няма формуляри в тази папка</string>
+    <string name="placeholder_empty_form_done">Все още няма завършени формуляри</string>
+    <string name="placeholder_empty_form_subfolder">Все още няма файлове в тази папка</string>
+    <string name="placeholder_empty_form_in_progress">Тук все още няма нищо</string>
+    <string name="placeholder_empty_form_folder_desc">Качи готов PDF формуляр</string>
+    <string name="placeholder_empty_form_folder_viewer_desc">Формулярите, качени от администраторите, ще бъдат показвани тук.</string>
+    <string name="placeholder_empty_form_done_desc">Този раздел ще показва всички завършени формуляри.</string>
+    <string name="placeholder_empty_form_done_folder_desc">Тук ще откриете формуляри, които са били изцяло попълнени от други потребители.</string>
+    <string name="placeholder_empty_form_in_progress_desc">Този раздел ще показва формулярите в ход.</string>
+    <string name="placeholder_empty_form_in_progress_folder_desc">Тук ще откриете формулярите в ход, т.е. формулярите, които потребителите са започнали да попълват, но не са завършили.</string>
+    <string name="placeholder_empty_trash">Тук все още няма елементи</string>
+    <string name="placeholder_empty_trash_desc">Изтритите файлове и папки отиват в Кошчето, откъдето можете да ги възстановите или изтриете окончателно. Елементите се изтриват автоматично след 30 дни и не могат да бъдат възстановени след премахване от Кошчето.</string>
+    <string name="placeholder_no_rooms_desc">Създайте първата си стая, за да започнете.</string>
+    <string name="placeholder_no_rooms_visitor">Тук все още няма стаи</string>
+    <string name="placeholder_no_rooms_visitor_desc">Споделената стая ще се появи тук.</string>
+    <string name="placeholder_empty_archive_desc">Архивирайте и възстановявайте неупотребяваните стаи по всяко време в своя DocSpace, или ги изтрийте окончателно. Архивираните стаи ще се показват тук.</string>
+    <string name="placeholder_empty_archive_visitor_desc">Стаите, които са били архивирани, ще се показват тук.</string>
+    <string name="placeholder_empty_templates_folder_desc">Създайте шаблон от стая в раздела Стаи.</string>
+    <string name="placeholder_empty_from_template">Няма открити шаблони</string>
+    <string name="placeholder_empty_from_template_desc">Създайте първия си шаблон за стая и след това можете да създавате нови стаи по негов модел.</string>
+    <string name="placeholder_empty_recent_via_link_desc">Преглеждайте наскоро отваряни файлове, споделени с вас чрез външни линкове тук.</string>
+    <string name="operation_cancel_message">Операцията е отказана</string>
+    <string name="cloud_vpn_warning">За най-добро преживяване, опитайте да изключите VPN. Някои характеристики на сървъра може да не работят правилно.</string>
+    <string name="room_placeholder_public_room_creator_title">Добре дошли в Обществената стая</string>
+    <string name="room_placeholder_public_room_creator_subtitle">Създайте или качете нови файлове или папки, за да започнете.</string>
+    <string name="room_placeholder_empty_viewer_title">Стаята е празна</string>
+    <string name="room_placeholder_empty_viewer_subtitle">Файловете и папките, създадени или качени от администратори, ще се показват тук.</string>
+    <string name="room_placeholder_form_room_creator_subtitle">Качете готов PDF формуляр, за да започнете.</string>
+    <string name="room_placeholder_form_room_viewer_subtitle">PDF формулярите, качени от администратори, ще се показват тук.</string>
+    <string name="room_placeholder_vdr_room_creator_title">Добре дошли в Стаята за Виртуални Данни</string>
+    <string name="room_placeholder_creator_subtitle">Създайте или качете нови файлове, за да започнете.</string>
+    <string name="room_placeholder_collab_room_creator_title">Добре дошли в Стаята за съвместна работа</string>
+    <string name="room_placeholder_custom_room_creator_title">Добре дошли в Персонализираната стая</string>
 </resources>

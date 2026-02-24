@@ -1122,4 +1122,43 @@
     <string name="rooms_info_fill_form_desc">Tato místnost je přístupná všem, kteří mají odkaz. Externí uživatelé budou mít oprávnění k vyplňování formulářů pro všechny soubory.</string>
     <string name="share_popup_access_editing">Úprava</string>
     <string name="share_popup_access_remove">Odstranit</string>
+
+    <!-- Newly added translations (v9.3.0 - 2026-02-24) -->
+    <string name="placeholder_empty_folder">Zatím zde nejsou žádné soubory</string>
+    <string name="placeholder_empty_folder_common">Zatím zde nejsou žádné dokumenty</string>
+    <string name="placeholder_empty_folder_desc_creator">Vytvořte nebo nahrajte nové soubory</string>
+    <string name="placeholder_empty_form_folder">Zatím zde nejsou žádné formuláře</string>
+    <string name="placeholder_empty_form_folder_viewer">V této složce zatím nejsou žádné formuláře</string>
+    <string name="placeholder_empty_form_done">Zatím nejsou žádné vyplněné formuláře</string>
+    <string name="placeholder_empty_form_subfolder">V této složce zatím nejsou žádné soubory</string>
+    <string name="placeholder_empty_form_in_progress">Zatím zde nic není</string>
+    <string name="placeholder_empty_form_folder_desc">Nahrajte hotový formulář ve formátu PDF</string>
+    <string name="placeholder_empty_form_folder_viewer_desc">Formuláře nahrané administrátory se zobrazí zde.</string>
+    <string name="placeholder_empty_form_done_desc">V této sekci se zobrazí všechny vyplněné formuláře.</string>
+    <string name="placeholder_empty_form_done_folder_desc">Zde najdete formuláře, které byly vyplněny jinými uživateli.</string>
+    <string name="placeholder_empty_form_in_progress_desc">V této sekci se zobrazí formuláře, které jsou právě vyplňovány.</string>
+    <string name="placeholder_empty_form_in_progress_folder_desc">Zde najdete formuláře, které jsou v procesu vyplňování, tj. formuláře, které uživatelé začali vyplňovat, ale ještě nedokončili.</string>
+    <string name="placeholder_empty_trash">Zatím zde nejsou žádné položky</string>
+    <string name="placeholder_empty_trash_desc">Smazané soubory a složky se přesouvají do koše, odkud je můžete obnovit nebo trvale smazat. Položky se automaticky smažou po 30 dnech a po odstranění z koše je nelze obnovit.</string>
+    <string name="placeholder_no_rooms_desc">Vytvořte svou první místnost a můžete začít.</string>
+    <string name="placeholder_no_rooms_visitor">Zatím zde nejsou žádné místnosti</string>
+    <string name="placeholder_no_rooms_visitor_desc">Sdílené místnosti se zobrazí zde.</string>
+    <string name="placeholder_empty_archive_desc">Archivujte nepoužívané místnosti a kdykoli je obnovte ve svém DocSpace nebo je trvale smažte. Archivované místnosti se zobrazí zde.</string>
+    <string name="placeholder_empty_archive_visitor_desc">Archivované místnosti se zobrazí zde.</string>
+    <string name="placeholder_empty_templates_folder_desc">Vytvořte šablonu z místnosti v sekci Místnosti.</string>
+    <string name="placeholder_empty_from_template">Nebyly nalezeny žádné šablony</string>
+    <string name="placeholder_empty_from_template_desc">Vytvořte svou první šablonu místnosti a poté můžete na jejím základě vytvářet nové místnosti.</string>
+    <string name="placeholder_empty_recent_via_link_desc">Zde si můžete prohlédnout soubory, které byly s vámi sdíleny prostřednictvím externích odkazů a které jste nedávno otevřeli.</string>
+    <string name="operation_cancel_message">Operace byla zrušena</string>
+    <string name="cloud_vpn_warning">Pro nejlepší zážitek zkuste vypnout VPN. Některé funkce serveru nemusí fungovat správně.</string>
+    <string name="room_placeholder_public_room_creator_title">Vítejte ve veřejné místnosti</string>
+    <string name="room_placeholder_public_room_creator_subtitle">Chcete-li začít, vytvořte nebo nahrajte nové soubory nebo složky.</string>
+    <string name="room_placeholder_empty_viewer_title">Místnost je prázdná</string>
+    <string name="room_placeholder_empty_viewer_subtitle">Soubory a složky vytvořené nebo nahrané správci se zobrazí zde.</string>
+    <string name="room_placeholder_form_room_creator_subtitle">Nahrajte připravený formulář PDF a můžete začít.</string>
+    <string name="room_placeholder_form_room_viewer_subtitle">de se zobrazí PDF formuláře nahrané administrátory.</string>
+    <string name="room_placeholder_vdr_room_creator_title">Vítejte ve virtuální datové místnosti</string>
+    <string name="room_placeholder_creator_subtitle">Vytvořte nebo nahrajte nové soubory a můžete začít.</string>
+    <string name="room_placeholder_collab_room_creator_title">Vítejte v místnosti pro spolupráci</string>
+    <string name="room_placeholder_custom_room_creator_title">Vítejte v místnosti pro vlastní použití</string>
 </resources>

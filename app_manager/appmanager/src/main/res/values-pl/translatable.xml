@@ -992,4 +992,43 @@ Aplikacja korzysta teraz z języka angielskiego, ponieważ zmieniono język syst
     <string name="rooms_info_fill_form_desc">Ten pokój jest dostępny dla każdego, kto ma link. Użytkownicy zewnętrzni będą mieli uprawnienie umożliwiające wypełnienie formularza dla wszystkich plików.</string>
     <string name="share_popup_access_editing">Edycja</string>
     <string name="share_popup_access_remove">Usuń</string>
+
+    <!-- Newly added translations (v9.3.0 - 2026-02-24) -->
+    <string name="placeholder_empty_folder">Nie ma tu jeszcze żadnych plików</string>
+    <string name="placeholder_empty_folder_common">Nie ma tu jeszcze żadnych dokumentów</string>
+    <string name="placeholder_empty_folder_desc_creator">Utwórz lub prześlij nowy plik</string>
+    <string name="placeholder_empty_form_folder">Nie ma tu jeszcze żadnych formularzy</string>
+    <string name="placeholder_empty_form_folder_viewer">Brak formularzy w tym katalogu</string>
+    <string name="placeholder_empty_form_done">Brak wypełnionych formularzy</string>
+    <string name="placeholder_empty_form_subfolder">Brak plików w tym katalogu</string>
+    <string name="placeholder_empty_form_in_progress">Nic tu nie ma</string>
+    <string name="placeholder_empty_form_folder_desc">Prześlij gotowy formularz PDF</string>
+    <string name="placeholder_empty_form_folder_viewer_desc">Tutaj pojawią się formularze przesłane przez administratorów.</string>
+    <string name="placeholder_empty_form_done_desc">W tej sekcji znajdziesz wszystkie wypełnione formularze.</string>
+    <string name="placeholder_empty_form_done_folder_desc">Tutaj znajdziesz formularze, które zostały w całości wypełnione przez innych użytkowników.</string>
+    <string name="placeholder_empty_form_in_progress_desc">W tej sekcji znajdziesz wszystkie formularze w trakcie wypełniania.</string>
+    <string name="placeholder_empty_form_in_progress_folder_desc">Tutaj znajdziesz formularze w trakcie wypełniania, czyli formularze, których użytkownicy jeszcze nie ukończyli.</string>
+    <string name="placeholder_empty_trash">Nie ma tu jeszcze żadnych pozycji</string>
+    <string name="placeholder_empty_trash_desc">Usunięte pliki i katalogi są przenoszone do Kosza, skąd można je przywrócić lub trwale usunąć. Pozycje są usuwane automatycznie po 30 dniach i nie mogą zostać przywrócone po usunięciu z Kosza.</string>
+    <string name="placeholder_no_rooms_desc">Utwórz swój pierwszy pokój, aby rozpocząć.</string>
+    <string name="placeholder_no_rooms_visitor">Nie ma tu jeszcze żadnych pokoi.</string>
+    <string name="placeholder_no_rooms_visitor_desc">Pokoje współdzielone pojawią się tutaj.</string>
+    <string name="placeholder_empty_archive_desc">Archiwizuj nieużywane pokoje i przywracaj je lub trwale usuwaj z DocSpace w dowolnej chwili. Zarchiwizowane pokoje pojawią się tutaj.</string>
+    <string name="placeholder_empty_archive_visitor_desc">Zarchiwizowane pokoje pojawią się tutaj.</string>
+    <string name="placeholder_empty_templates_folder_desc">Utwórz szablon z pokoju w sekcji Pokój.</string>
+    <string name="placeholder_empty_from_template">Nie znaleziono żadnych szablonów</string>
+    <string name="placeholder_empty_from_template_desc">Utwórz swój pierwszy szablon pokoju, aby móc tworzyć na jego podstawie nowe pokoje.</string>
+    <string name="placeholder_empty_recent_via_link_desc">Tutaj wyświetlisz ostatnio otwierane pliki udostępnione Ci przez linki zewnętrzne.</string>
+    <string name="operation_cancel_message">Operacja została anulowana</string>
+    <string name="cloud_vpn_warning">Dla najlepszych wrażeń, spróbuj wyłączyć VPN. Niektóre funkcje serwera mogą działać nieprawidłowo.</string>
+    <string name="room_placeholder_public_room_creator_title">Witaj w pokoju publicznym</string>
+    <string name="room_placeholder_public_room_creator_subtitle">Utwórz lub prześlij nowe pliki bądź katalogi, aby rozpocząć.</string>
+    <string name="room_placeholder_empty_viewer_title">Pokój jest pusty</string>
+    <string name="room_placeholder_empty_viewer_subtitle">Tutaj pojawią się pliki i katalogi utworzone lub przesłane przez administratorów.</string>
+    <string name="room_placeholder_form_room_creator_subtitle">Prześlij gotowy formularz PDF, aby rozpocząć.</string>
+    <string name="room_placeholder_form_room_viewer_subtitle">Formularze PDF przesłane przez administratorów pojawią się tutaj.</string>
+    <string name="room_placeholder_vdr_room_creator_title">Witaj w Wirtualnym pokoju danych</string>
+    <string name="room_placeholder_creator_subtitle">Utwórz lub prześlij nowe pliki, aby rozpocząć.</string>
+    <string name="room_placeholder_collab_room_creator_title">Witaj w Pokoju do współpracy</string>
+    <string name="room_placeholder_custom_room_creator_title">Witaj w Pokoju niestandardowym</string>
 </resources>
