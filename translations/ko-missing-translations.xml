@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Missing translations for language: ko -->
+
+    <!-- Module: libgdocs - 2 strings -->
+    <string name="word_counter">Word counter</string>
+    <plurals name="word_counter_words">
+        <item quantity="one">%d word</item>
+                <item quantity="other">%d words</item>
+    </plurals>
+
+    <!-- Module: libgeditors - 11 strings -->
+    <string name="comment_add_label">Comment or mention with + or @</string>
+    <string name="charts_group_recommended">Recommended</string>
+    <string name="charts_group_column">Column</string>
+    <string name="charts_group_line">Line</string>
+    <string name="charts_group_pie">Pie</string>
+    <string name="charts_group_bar">Bar</string>
+    <string name="charts_group_area">Area</string>
+    <string name="charts_group_stock">Stock</string>
+    <string name="charts_group_scatter">XY (Scatter)</string>
+    <string name="charts_group_radar">Radar</string>
+    <string name="charts_group_combo">Combo</string>
+
+    <!-- Module: libtoolkit - 5 strings -->
+    <string name="access_members_me_and_title">Me and %s</string>
+    <string name="access_members_me_users_groups_title">Me, %1$s and %2$s</string>
+    <string name="access_members_me_subtitle">(Me)</string>
+    <plurals name="access_members_users_title">
+        <item quantity="one">%d user</item>
+                <item quantity="other">%d users</item>
+    </plurals>
+    <plurals name="access_members_groups_title">
+        <item quantity="one">%d group</item>
+                <item quantity="other">%d groups</item>
+    </plurals>
+</resources>
