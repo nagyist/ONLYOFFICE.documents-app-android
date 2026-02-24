@@ -812,15 +812,15 @@
     <string name="rooms_invite_access_description">Convidados, usuários e grupos não podem ser designados como gerentes de sala. Somente os administradores da sala e do DocSpace são adequados para a função especificada.</string>
     <string name="whats_new_title">O que há de novo?</string>
     <string name="whats_new_next">Começar</string>
-    <string name="whats_new">Novidades na v9.1</string>
-    <string name="whats_new_1">Novas seções do DocSpace</string>
-    <string name="whats_new_1_desc">Acesse seus arquivos mais rápido com áreas DocSpace dedicadas: Compartilhado comigo, Favoritos e Recentes.</string>
-    <string name="whats_new_2">Compartilhamento de arquivos aprimorado no DocSpace</string>
-    <string name="whats_new_2_desc">Compartilhe arquivos com mais facilidade e gerencie o acesso com fluxos de trabalho de compartilhamento aprimorados no DocSpace 3.5.</string>
-    <string name="whats_new_3">Opções de login social</string>
-    <string name="whats_new_3_desc">Inicie sessão com LinkedIn ou Zoom para criar e aceder à sua conta DocSpace mais facilmente.</string>
-    <string name="whats_new_4">Direção do parágrafo e da célula (RTL)</string>
-    <string name="whats_new_4_desc">Alternar a direção do parágrafo e da célula da tabela entre da direita para a esquerda e da esquerda para a direita em todos os editores.</string>
+    <string name="whats_new">Novidades na v9.3</string>
+    <string name="whats_new_1">Menções nos comentários</string>
+    <string name="whats_new_1_desc">Marque seus colegas de equipe nos comentários para notificá-los e melhorar a colaboração.</string>
+    <string name="whats_new_2">Contador de palavras em documentos</string>
+    <string name="whats_new_2_desc">Acompanhe instantaneamente o tamanho do documento com o contador de palavras integrado.</string>
+    <string name="whats_new_3">Busca aprimorada no Editors</string>
+    <string name="whats_new_3_desc">Encontre texto mais rapidamente em documentos, planilhas e apresentações com a pesquisa atualizada integrada ao editor.</string>
+    <string name="whats_new_4">Interface atualizada</string>
+    <string name="whats_new_4_desc">Aproveite os ícones do editor renovados e o menu de contexto redesenhado para uma aparência mais limpa e acesso mais rápido às ações principais.</string>
 
     <!-- Newly added translations (v9.0.0 - 2025-06-09) -->
     <string name="cloud_create_account">Criar conta gratuita</string>

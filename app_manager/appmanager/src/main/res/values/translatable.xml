@@ -1199,15 +1199,15 @@ In online mode, use real-time co-editing features of ONLYOFFICE to work on docum
     <string name="dev_mode_system_logs">System logs</string>
     <string name="dev_mode_network_requests">Network requests</string>
     <!--    Wats new-->
-    <string name="whats_new">What\'s new in v9.1</string>
-    <string name="whats_new_1">New DocSpace sections</string>
-    <string name="whats_new_1_desc">Access your files faster with dedicated DocSpace areas: Shared with me, Favorites, and Recent.</string>
-    <string name="whats_new_2">Enhanced file sharing in DocSpace</string>
-    <string name="whats_new_2_desc">Share files more easily and manage access with improved sharing workflows in DocSpace 3.5.</string>
-    <string name="whats_new_3">Social sign-in options</string>
-    <string name="whats_new_3_desc">Sign in with LinkedIn, or Zoom to create and access your DocSpace account more easily.</string>
-    <string name="whats_new_4">Paragraph and cell direction (RTL)</string>
-    <string name="whats_new_4_desc">Switch paragraph and table cell direction between Right-to-left and Left-to-right across all editors.</string>
+    <string name="whats_new">What\'s new in v9.3</string>
+    <string name="whats_new_1">Mentions in comments</string>
+    <string name="whats_new_1_desc">Tag teammates in comments to notify them and improve collaboration</string>
+    <string name="whats_new_2">Word counter in documents</string>
+    <string name="whats_new_2_desc">Track document length instantly with the built-in word counter</string>
+    <string name="whats_new_3">Enhanced search in editors</string>
+    <string name="whats_new_3_desc">Find text faster in documents, spreadsheets, and presentations with the updated in-editor search</string>
+    <string name="whats_new_4">Updated interface</string>
+    <string name="whats_new_4_desc">Enjoy refreshed editor icons and a redesigned context menu for a cleaner look and faster access to key actions</string>
 
     <string name="start_filling_title">Start filling</string>
     <string name="start_filling_start">Start</string>

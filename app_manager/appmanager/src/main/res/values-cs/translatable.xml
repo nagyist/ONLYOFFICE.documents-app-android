@@ -947,15 +947,15 @@
     <string name="rooms_invite_access_description">Hosté, uživatelé a skupiny nemohou být přiřazeni jako správci místností. Pro zadanou roli jsou vhodní pouze správci místnosti a prostoru DocSpace.</string>
     <string name="whats_new_title">Co je nového</string>
     <string name="whats_new_next">Začít</string>
-    <string name="whats_new">Novinky ve verzi 9.1</string>
-    <string name="whats_new_1">Nové sekce New DocSpace</string>
-    <string name="whats_new_1_desc">Rychlejší přístup k souborům díky vyhrazeným oblastem DocSpace: Sdílené se mnou, Oblíbené a Nedávné.</string>
-    <string name="whats_new_2">Vylepšené sdílení souborů v DocSpace</string>
-    <string name="whats_new_2_desc">Sdílejte soubory snadněji a spravujte přístup pomocí vylepšených pracovních postupů pro sdílení v DocSpace 3.5.</string>
-    <string name="whats_new_3">Možnosti přihlášení přes sociální sítě</string>
-    <string name="whats_new_3_desc">Zaregistrujte se pomocí LinkedIn nebo Zoom, abyste mohli snadněji vytvořit a přistupovat ke svému účtu DocSpace.</string>
-    <string name="whats_new_4">Směr odstavců a buněk (RTL)</string>
-    <string name="whats_new_4_desc">Přepínejte směr odstavců a buněk tabulek mezi zprava doleva a zleva doprava ve všech editorech.</string>
+    <string name="whats_new">Novinky ve verzi 9.3</string>
+    <string name="whats_new_1">Zmínky v komentářích</string>
+    <string name="whats_new_1_desc">Označte kolegy v komentářích, abyste je upozornili a zlepšili spolupráci</string>
+    <string name="whats_new_2">Počítadlo slov v dokumentech</string>
+    <string name="whats_new_2_desc">Sledujte délku dokumentu okamžitě pomocí vestavěného počítadla slov</string>
+    <string name="whats_new_3">Vylepšené vyhledávání v editorech</string>
+    <string name="whats_new_3_desc">Najděte text v dokumentech, tabulkách a prezentacích rychleji díky aktualizovanému vyhledávání v editoru</string>
+    <string name="whats_new_4">Aktualizované rozhraní</string>
+    <string name="whats_new_4_desc">Užijte si obnovené ikony editoru a přepracované kontextové menu pro přehlednější vzhled a rychlejší přístup k klíčovým akcím</string>
 
     <!-- Newly added translations (v9.0.0 - 2025-06-09) -->
     <string name="cloud_create_account">Vytvořit bezplatný účet</string>

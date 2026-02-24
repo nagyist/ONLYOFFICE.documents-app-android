@@ -805,15 +805,15 @@
     <string name="rooms_invite_access_description">Гости, Потребители и Групи не могат да бъдат назначени като Управител на стая. Само администраторите на Стаята и на DocSpace са подходящи за посочената роля.</string>
     <string name="whats_new_title">Какво ново</string>
     <string name="whats_new_next">Първи стъпки</string>
-    <string name="whats_new">Нови във v9.1</string>
-    <string name="whats_new_1">Нови DocSpace раздели</string>
-    <string name="whats_new_1_desc">Получавайте по-бърз достъп до файловете си със специализираните DocSpace зони: Споделени с мен, Любими и Скорошни.</string>
-    <string name="whats_new_2">Разширено търсене на файлове в DocSpace</string>
-    <string name="whats_new_2_desc">Споделяйте по-лесно файлове и управлявайте достъпа с подобрените работни процеси за споделяне в DocSpace 3.5.</string>
-    <string name="whats_new_3">Социални опции за вход</string>
-    <string name="whats_new_3_desc">Влизайте с LinkedIn или Zoom за по-лесно създаване или достъп до вашия DocSpace профил.</string>
-    <string name="whats_new_4">Посока на абзаци и клетки (RTL)</string>
-    <string name="whats_new_4_desc">Сменяйте посоката на абзаците и на клетките в таблиците между Отдясно-наляво и Отляво-надясно във всички редактори.</string>
+    <string name="whats_new">Нови във v9.3</string>
+    <string name="whats_new_1">Споменавания в коментари</string>
+    <string name="whats_new_1_desc">Отбелязвайте хора от екипа в коментари, за да ги известявате и да подобрите съвместната работа</string>
+    <string name="whats_new_2">Брояч на думи в документите</string>
+    <string name="whats_new_2_desc">Проследявайте дължината на документа незабавно с вградения брояч за думи</string>
+    <string name="whats_new_3">Подобрено търсене в редакторите</string>
+    <string name="whats_new_3_desc">Откривайте по-бързо текст в документи, електронни таблици и презентации с актуализираната вградена в редактора търсачка</string>
+    <string name="whats_new_4">Актуализиран интерфейс</string>
+    <string name="whats_new_4_desc">Насладете се на обновени редакторски иконки и контекстно меню с нов дизайн за по-изчистена визия и по-бърз достъп до ключови действия</string>
 
     <!-- Newly added translations (v9.0.0 - 2025-06-09) -->
 

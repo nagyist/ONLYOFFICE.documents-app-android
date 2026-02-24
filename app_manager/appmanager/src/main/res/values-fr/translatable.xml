@@ -818,15 +818,15 @@ Nous vous recommandons de passer au service gratuit ONLYOFFICE DocSpace Cloud.</
     <string name="rooms_invite_access_description">Les invités, les utilisateurs et les groupes ne peuvent pas être assignés en tant que responsables de salle. Seuls les administrateurs de salle et de DocSpace peuvent jouer ce rôle.</string>
     <string name="whats_new_title">Quoi de neuf ?</string>
     <string name="whats_new_next">Commencer !</string>
-    <string name="whats_new">Nouveautés de la v9.1</string>
-    <string name="whats_new_1">Nouvelles sections DocSpace</string>
-    <string name="whats_new_1_desc">Accédez plus rapidement à vos fichiers grâce aux sections dédiées de DocSpace : Partagés avec moi, Favoris et Récents.</string>
-    <string name="whats_new_2">Partage de fichiers amélioré dans DocSpace</string>
-    <string name="whats_new_2_desc">Partagez vos fichiers plus facilement et gérez les accès grâce aux flux de travail optimisés dans DocSpace 3.5.</string>
-    <string name="whats_new_3">Options de connexion via les réseaux sociaux</string>
-    <string name="whats_new_3_desc">Connectez-vous avec LinkedIn ou Zoom pour créer et accéder plus facilement à votre compte DocSpace.</string>
-    <string name="whats_new_4">Direction du texte et des cellules (RTL)</string>
-    <string name="whats_new_4_desc">Changez la direction des paragraphes et des cellules de tableau entre de droite à gauche et de gauche à droite dans tous les éditeurs.</string>
+    <string name="whats_new">Nouveautés de la v9.3</string>
+    <string name="whats_new_1">Mentions dans les commentaires</string>
+    <string name="whats_new_1_desc">Mentionnez vos collègues dans les commentaires pour les avertir et améliorer la collaboration</string>
+    <string name="whats_new_2">Compteur de mots dans les documents</string>
+    <string name="whats_new_2_desc">Suivez instantanément la longueur de vos documents grâce au compteur de mots intégré</string>
+    <string name="whats_new_3">Recherche améliorée dans les éditeurs</string>
+    <string name="whats_new_3_desc">Trouvez plus rapidement du texte dans vos documents, feuilles de calcul et présentations grâce à la recherche mise à jour dans l\'éditeur</string>
+    <string name="whats_new_4">Interface mise à jour</string>
+    <string name="whats_new_4_desc">Profitez d\'icônes d\'éditeur rafraîchies et d\'un menu contextuel repensé pour un look plus épuré et un accès plus rapide aux actions clés</string>
 
     <!-- Newly added translations (v9.0.0 - 2025-06-09) -->
     <string name="cloud_create_account">Créer un compte gratuit</string>

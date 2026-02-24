@@ -966,15 +966,15 @@
     <string name="rooms_invite_access_description">Հյուրերը, օգտատերերը և խմբերը չեն կարող նշանակվել որպես Սենյակի մենեջերներ: Միայն Սենյակի և DocSpace-ի ադմինները հարմար են նշված դերի համար:</string>
     <string name="whats_new_title">Ինչ նորություն կա</string>
     <string name="whats_new_next">Սկսել!</string>
-    <string name="whats_new">Նորություններ v9.1-ում</string>
-    <string name="whats_new_1">Նոր DocSpace բաժիններ</string>
-    <string name="whats_new_1_desc">Ավելի արագ մուտք գործեք ձեր ֆայլեր՝ օգտագործելով DocSpace-ի համար նախատեսված բաժինները՝ Ինձ հետ համաօգտագործված, Նախընտրելիներ և Վերջերս դիտված։</string>
-    <string name="whats_new_2">Բարելավված ֆայլերի համաօգտագործում DocSpace-ում</string>
-    <string name="whats_new_2_desc">Հեշտությամբ կիսվեք ֆայլերով և կառավարեք մուտքը՝ DocSpace 3.5-ում բարելավված համաօգտագոործման աշխատանքային հոսքերի միջոցով:</string>
-    <string name="whats_new_3">Սոցիալական մուտքի տարբերակներ</string>
-    <string name="whats_new_3_desc">Մուտք գործեք LinkedIn-ով-ով կամ Zoom-ով՝ ձեր DocSpace հաշիվն հեշտությամբ ստեղծելու և մուտք գործելու համար։</string>
-    <string name="whats_new_4">Պարբերության և վանդակների ուղղություն (Աջից-Ձախ)</string>
-    <string name="whats_new_4_desc">Փոխեք պարբերությունների և աղյուսակի վանդակների ուղղությունն աջից ձախ և ձախից աջ բոլոր խմբագիրներում։</string>
+    <string name="whats_new">Նորություններ v9.3-ում</string>
+    <string name="whats_new_1">Հիշատակումներ մեկնաբանություններում</string>
+    <string name="whats_new_1_desc">Մեկնաբանություններում նշեք թիմակիցներին՝ տեղեկացնելու և համագործակցությունը բարելավելու համար</string>
+    <string name="whats_new_2">Բառերի հաշվիչ փաստաթղթերում</string>
+    <string name="whats_new_2_desc">Հետևեք փաստաթղթի երկարությանն անմիջապես, ներառված բառերի հաշվիչի միջոցով</string>
+    <string name="whats_new_3">Բարելավված որոնում խմբագրերում</string>
+    <string name="whats_new_3_desc">Գտեք տեքստն ավելի արագ փաստաթղթերում, աղյուսակներում և ներկայացումներում՝ նորացված խմբագրի ներսում որոնման միջոցով։</string>
+    <string name="whats_new_4">Թարմացված ինտերֆեյս</string>
+    <string name="whats_new_4_desc">Վայելեք թարմացված խմբագրի պատկերակները և մշակված համատեքստային մենյուն՝ ավելի պարզ տեսքի և հիմնական գործողություններին արագ հասանելիության ունենալու համար։</string>
 
     <!-- Newly added translations (v9.0.0 - 2025-06-09) -->
     <string name="cloud_create_account">Ստեղծել անվճար հաշիվ</string>
