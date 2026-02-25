@@ -1,10 +1,8 @@
 package app.editors.manager.ui.fragments.template.settings
 
-import android.os.Bundle
 import androidx.compose.runtime.Composable
 import androidx.core.os.bundleOf
 import androidx.fragment.app.FragmentManager
-import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -24,6 +22,9 @@ class TemplateSettingsFragment : ComposeDialogFragment() {
 
     private val settingsMode: Int
         get() = arguments?.getInt(KEY_SETTINGS_MODE) ?: TemplateSettingsMode.MODE_CREATE_TEMPLATE
+
+    override val fragmentResultKey: String
+        get() = KEY_FRAGMENT_RESULT
 
     @Composable
     override fun Content() {
@@ -74,11 +75,12 @@ class TemplateSettingsFragment : ComposeDialogFragment() {
 
     private fun setResult(id: String?, title: String?, roomType: Int?) {
         parentFragmentManager.setFragmentResult(
-            TAG_FRAGMENT_RESULT,
+            KEY_FRAGMENT_RESULT,
             bundleOf(
                 KEY_SAVED_ID to id,
                 KEY_SAVED_TITLE to title,
-                KEY_SAVED_ROOM_TYPE to roomType
+                KEY_SAVED_ROOM_TYPE to roomType,
+                KEY_SETTINGS_MODE to settingsMode
             )
         )
     }
@@ -93,25 +95,18 @@ class TemplateSettingsFragment : ComposeDialogFragment() {
 
     companion object {
         private val TAG: String = TemplateSettingsFragment::class.java.simpleName
-        private const val TAG_FRAGMENT_RESULT = "TemplateSettingsFragmentResult"
-        private const val KEY_SETTINGS_MODE = "key_settings_mode"
         private const val KEY_TEMPLATE_ID = "key_template_id"
+        const val KEY_FRAGMENT_RESULT = "TemplateSettingsFragmentResult"
         const val KEY_SAVED_ID = "key_saved_id"
         const val KEY_SAVED_TITLE = "key_saved_title"
         const val KEY_SAVED_ROOM_TYPE = "key_saved_room_type"
+        const val KEY_SETTINGS_MODE = "key_settings_mode"
 
         fun show(
             fragmentManager: FragmentManager,
-            lifecycleOwner: LifecycleOwner,
             templateId: String,
-            settingsMode: Int,
-            onResult: (Bundle) -> Unit
+            settingsMode: Int
         ) {
-            fragmentManager.setFragmentResultListener(
-                TAG_FRAGMENT_RESULT,
-                lifecycleOwner
-            ) { _, bundle -> onResult(bundle) }
-
             newInstance(templateId, settingsMode).show(fragmentManager, TAG)
         }
 

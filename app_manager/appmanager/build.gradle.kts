@@ -15,6 +15,7 @@ plugins {
     kotlin("android")
     kotlin("kapt")
     alias(libs.plugins.kotlin.ksp)
+    alias(libs.plugins.kotlin.compose)
 //    id("org.owasp.dependencycheck")
 }
 
@@ -68,8 +69,8 @@ android {
         manifestPlaceholders += mapOf()
         minSdk = libs.versions.minSdk.get().toInt()
         targetSdk = libs.versions.targetSdk.get().toInt()
-        versionCode = 683
-        versionName = "9.2.2"
+        versionCode = 695
+        versionName = "9.3.0"
         multiDexEnabled = true
         applicationId = "com.onlyoffice.documents"
 
@@ -240,6 +241,7 @@ dependencies {
     implementation(project(":core:network"))
     implementation(project(":libcompose"))
     implementation(project(":libtoolkit"))
+    implementation(project(":libshared"))
     // Dynamic connection of editors
     if (withEditors) {
         val editorModules = listOf(

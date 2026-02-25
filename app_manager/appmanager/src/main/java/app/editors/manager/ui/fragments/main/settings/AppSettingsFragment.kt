@@ -22,8 +22,8 @@ import app.editors.manager.viewModels.main.AppSettingsViewModel
 import app.editors.manager.viewModels.main.AppSettingsViewModelFactory
 import app.editors.manager.viewModels.main.PasscodeViewModel
 import app.editors.manager.viewModels.main.PasscodeViewModelFactory
-import kotlinx.coroutines.flow.collectLatest
 import lib.compose.ui.theme.ManagerTheme
+import lib.toolkit.base.managers.tools.BaseEvent
 import lib.toolkit.base.managers.utils.FontPicker
 import lib.toolkit.base.managers.utils.UiUtils
 import lib.toolkit.base.managers.utils.suspendLaunchAfterResume
@@ -149,9 +149,9 @@ class AppSettingsFragment : BaseFragment() {
                 navController = rememberNavController()
 
                 LaunchedEffect(Unit) {
-                    viewModel.effect.collect {
+                    viewModel.events.collect {
                         when (it) {
-                            is AppSettingsEffect.Error -> showSnackBar(it.message)
+                            is BaseEvent.ShowMessage -> showSnackBar(it.msg)
                             is AppSettingsEffect.Progress -> updateProgressDialog(100, it.value)
                             AppSettingsEffect.HideDialog -> hideDialog()
                             AppSettingsEffect.ShowDialog -> {
@@ -163,12 +163,6 @@ class AppSettingsFragment : BaseFragment() {
                                 )
                             }
                         }
-                    }
-                }
-
-                LaunchedEffect(Unit) {
-                    viewModel.message.collectLatest { message ->
-                        showSnackBar(message)
                     }
                 }
 

@@ -2,6 +2,7 @@ package app.editors.manager.mvp.presenters.main
 
 import android.net.Uri
 import android.os.Build
+import android.util.Log
 import androidx.core.net.toUri
 import app.documents.core.account.AccountPreferences
 import app.documents.core.account.AccountRepository
@@ -11,6 +12,7 @@ import app.documents.core.login.PortalResult
 import app.documents.core.model.cloud.CloudPortal
 import app.documents.core.model.cloud.Recent
 import app.documents.core.model.cloud.Scheme
+import app.documents.core.model.cloud.isDocSpace
 import app.documents.core.network.common.NetworkResult
 import app.documents.core.providers.FileOpenResult
 import app.editors.manager.BuildConfig
@@ -31,6 +33,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.Json
+import lib.bootstrap.snapshot.SnapshotCreator
 import lib.toolkit.base.managers.utils.CryptUtils
 import lib.toolkit.base.managers.utils.FileUtils
 import moxy.InjectViewState
@@ -70,6 +73,8 @@ class MainActivityPresenter : BasePresenter<MainActivityView>() {
         private set
 
     var isDialogOpen: Boolean = false
+    val isVPNChecked: Boolean
+        get() = preferenceTool.isVpnChecked
 
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
@@ -80,6 +85,8 @@ class MainActivityPresenter : BasePresenter<MainActivityView>() {
 
     private fun checkSdk() {
         presenterScope.launch(Dispatchers.IO) {
+            createSnapshots()
+
             val version = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
                 context.packageManager.getPackageInfo(context.packageName, 0).longVersionCode
             } else {
@@ -95,6 +102,15 @@ class MainActivityPresenter : BasePresenter<MainActivityView>() {
         }
     }
 
+    private fun createSnapshots() {
+        val assetsPath = SnapshotCreator.unpackAssets(context)
+        try {
+            SnapshotCreator.start("${assetsPath}/../snapshots", assetsPath)
+        } catch (error: UnsatisfiedLinkError) {
+            Log.e(TAG, "createSnapshots: ", error)
+        }
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         disposable.dispose()
@@ -105,6 +121,12 @@ class MainActivityPresenter : BasePresenter<MainActivityView>() {
             context.accountOnline?.let { account ->
                 if (isAppColdStart) {
                     App.getApp().refreshLoginComponent(account.portal)
+                    if (account.isDocSpace) {
+                        val isRegular = App.getApp().loginComponent.cloudLoginRepository.checkUserRegular()
+                        accountPreferences.isRegularUser = isRegular
+                    } else {
+                        accountPreferences.isRegularUser = false
+                    }
                     App.getApp().loginComponent.cloudLoginRepository.updatePortalSettings()
                     isAppColdStart = false
                 }
@@ -337,4 +359,9 @@ class MainActivityPresenter : BasePresenter<MainActivityView>() {
             else -> Unit
         }
     }
+
+    fun setCheckVPN(checked: Boolean) {
+        preferenceTool.isVpnChecked = checked
+    }
+
 }

@@ -3,7 +3,7 @@
 plugins {
     id("com.android.library")
     kotlin("android")
-    kotlin("kapt")
+    alias(libs.plugins.kotlin.compose)
 }
 
 android {
@@ -57,4 +57,6 @@ dependencies {
     implementation(libs.compose.uiToolingPreview)
     implementation(libs.compose.navigation)
     debugImplementation(libs.compose.uiTooling)
+
+    implementation(libs.glideCompose)
 }

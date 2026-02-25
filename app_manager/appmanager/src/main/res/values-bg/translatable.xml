@@ -627,21 +627,15 @@
     <string name="main_pager_docs_virtual_room">Стаи</string>
     <string name="main_pager_docs_archive_room">Архив</string>
     <string name="errors_sign_in_ldap_checkbox">Влезте като LDAP потребител</string>
-    <string name="placeholder_empty_folder">Все още няма документи тук</string>
-    <string name="placeholder_empty_trash_desc">Всички изтрити файлове се преместват в \'Кошче\'. Възстановете изтритите по погрешка файлове или ги изтрийте за постоянно. Файловете в \'Кошче\' се изтриват автоматично след 30 дни. Моля, обърнете внимание, че файловете, изтрити от \'Кошче\', вече не могат да бъдат възстановени</string>
     <string name="placeholder_no_users_found">Не са открити потребители</string>
     <string name="placeholder_no_users_found_desc">Няма потребители, отговарящи на вашето търсене. Моля, коригирайте вашите параметри за търсене или изчистете полето за търсене, за да видите пълния списък с потребители</string>
     <string name="placeholder_no_members_found">Не са открити членове</string>
     <string name="placeholder_no_members_found_desc">Можете да добавите нови членове на екипа ръчно или да ги поканите чрез линк</string>
     <string name="placeholder_no_rooms">Добре дошли в DocSpace!</string>
-    <string name="placeholder_no_rooms_desc"> Моля, създайте първата стая</string>
-    <string name="placeholder_no_rooms_visitor_desc">Споделените с вас стаи ще се показват тук</string>
     <string name="placeholder_empty_archive">Тук все още няма архивирани стаи</string>
-    <string name="placeholder_empty_archive_desc">Можете да архивирате стаи, които не използвате, и да ги възстановите в своя DocSpace по всяко време или да ги изтриете за постоянно. Тези стаи ще се появят тук</string>
     <string name="placeholder_no_search_result">Няма резултат от търсенето</string>
     <string name="placeholder_no_search_result_desc">Няма резултати, отговарящи на вашето търсене. Моля, опитайте с друга фраза</string>
     <string name="placeholder_empty_room_visitor_desc">Тук ще се показват файлове и папки, качени от администратори</string>
-    <string name="placeholder_empty_recent_via_link_desc">Тук ще намерите списък с наскоро отворените файлове, споделени с вас чрез външен линк</string>
     <string name="placeholder_payment_required">Бизнес абонаментът е изтекъл</string>
     <string name="placeholder_payment_required_desc">Текущият Ви тарифен план "Бизнес" е изтекъл. Моля, подновете абонамента си в настройките на профила, за да можете да използвате своя DocSpace. Ако имате някакви въпроси, моля, свържете се с поддръжката</string>
     <string name="placeholder_payment_required_button">Поднови Бизнес план</string>
@@ -708,7 +702,7 @@
     <string name="room_duplicate_progress_hide_button">Скрий</string>
     <string name="rooms_add_fill_forms">Стая за попълване на формуляри</string>
     <string name="rooms_add_fill_forms_des">Качете PDF формуляри в стаята. Поканете потребителите да попълнят PDF формуляр. Преглеждайте попълнените формуляри и анализирайте данните, събрани автоматично в електронна таблица.</string>
-    <string name="room_placeholder_created_filling_form_room_title">Добре дошли в стаята за попълване на формуляри</string>
+    <string name="room_placeholder_form_room_creator_title">Добре дошли в стаята за попълване на формуляри</string>
     <string name="room_placeholder_created_filling_form_room_subtitle">Качете готов PDF формуляр или създайте нови папки, за да организирате файловете си</string>
     <string name="context_protection_title">Защита</string>
     <string name="rooms_upload_pdf_from_docspace">Качи PDF формуляр от DocSpace</string>
@@ -811,20 +805,18 @@
     <string name="rooms_invite_access_description">Гости, Потребители и Групи не могат да бъдат назначени като Управител на стая. Само администраторите на Стаята и на DocSpace са подходящи за посочената роля.</string>
     <string name="whats_new_title">Какво ново</string>
     <string name="whats_new_next">Първи стъпки</string>
-    <string name="whats_new">Нови във v9.1</string>
-    <string name="whats_new_1">Нови DocSpace раздели</string>
-    <string name="whats_new_1_desc">Получавайте по-бърз достъп до файловете си със специализираните DocSpace зони: Споделени с мен, Любими и Скорошни.</string>
-    <string name="whats_new_2">Разширено търсене на файлове в DocSpace</string>
-    <string name="whats_new_2_desc">Споделяйте по-лесно файлове и управлявайте достъпа с подобрените работни процеси за споделяне в DocSpace 3.5.</string>
-    <string name="whats_new_3">Социални опции за вход</string>
-    <string name="whats_new_3_desc">Влизайте с LinkedIn или Zoom за по-лесно създаване или достъп до вашия DocSpace профил.</string>
-    <string name="whats_new_4">Посока на абзаци и клетки (RTL)</string>
-    <string name="whats_new_4_desc">Сменяйте посоката на абзаците и на клетките в таблиците между Отдясно-наляво и Отляво-надясно във всички редактори.</string>
+    <string name="whats_new">Нови във v9.3</string>
+    <string name="whats_new_1">Споменавания в коментари</string>
+    <string name="whats_new_1_desc">Отбелязвайте хора от екипа в коментари, за да ги известявате и да подобрите съвместната работа</string>
+    <string name="whats_new_2">Брояч на думи в документите</string>
+    <string name="whats_new_2_desc">Проследявайте дължината на документа незабавно с вградения брояч за думи</string>
+    <string name="whats_new_3">Подобрено търсене в редакторите</string>
+    <string name="whats_new_3_desc">Откривайте по-бързо текст в документи, електронни таблици и презентации с актуализираната вградена в редактора търсачка</string>
+    <string name="whats_new_4">Актуализиран интерфейс</string>
+    <string name="whats_new_4_desc">Насладете се на обновени редакторски иконки и контекстно меню с нов дизайн за по-изчистена визия и по-бърз достъп до ключови действия</string>
 
     <!-- Newly added translations (v9.0.0 - 2025-06-09) -->
-    <string name="access_members_me_and_title">Аз и %s</string>
-    <string name="access_members_me_subtitle">(Аз)</string>
-    <string name="access_members_me_users_groups_title">Аз, %1$s и %2$s</string>
+
     <string name="cloud_create_account">Създай безплатен профил</string>
     <string name="context_menu_desc">Повече</string>
     <string name="desc_create_from_template">Създайте стая на базата на шаблон. Всички настройки, потребители, папки и файлове ще бъдат взети от избрания шаблон за стая.</string>
@@ -900,7 +892,6 @@
     <string name="placeholder_connection_button">Презареди</string>
     <string name="placeholder_connection_desc">Не е открита мрежова връзка. Моля, проверете връзката си и опитайте отново</string>
     <string name="placeholder_empty_templates_folder">Тук все още няма шаблони</string>
-    <string name="placeholder_empty_templates_folder_desc">Можете да създадете шаблон от стая в раздел Стая</string>
     <string name="room_access_via_link_title">Достъп чрез линк</string>
     <string name="room_created_successfully">Стаята е създадена успешно</string>
     <string name="room_placeholder_created_template_title">Шаблонът е създаден!</string>
@@ -954,14 +945,6 @@
         <item quantity="one">Изтриване на шаблон</item>
         <item quantity="other">Изтриване на шаблони</item>
     </plurals>
-    <plurals name="access_members_users_title">
-        <item quantity="one">%d потребител</item>
-        <item quantity="other">%d потребители</item>
-    </plurals>
-    <plurals name="access_members_groups_title">
-        <item quantity="one">%d група</item>
-        <item quantity="other">%d групи</item>
-    </plurals>
 
     <!-- Newly added translations (v9.1.0 - 2025-10-24) -->
     <string name="dev_mode_system_logs">Влизания в системата</string>
@@ -998,4 +981,43 @@
     <string name="rooms_info_fill_form_desc">Тази стая е достъпна за всеки с линка. Външните потребители ще имат разрешение за Попълване на формуляр за всичките файлове.</string>
     <string name="share_popup_access_editing">Редактиране</string>
     <string name="share_popup_access_remove">Премахни</string>
+
+    <!-- Newly added translations (v9.3.0 - 2026-02-24) -->
+    <string name="placeholder_empty_folder">Тук все още няма файлове</string>
+    <string name="placeholder_empty_folder_common">Тук все още няма документи</string>
+    <string name="placeholder_empty_folder_desc_creator">Създай или качи нови файлове</string>
+    <string name="placeholder_empty_form_folder">Тук все още няма формуляри</string>
+    <string name="placeholder_empty_form_folder_viewer">Все още няма формуляри в тази папка</string>
+    <string name="placeholder_empty_form_done">Все още няма завършени формуляри</string>
+    <string name="placeholder_empty_form_subfolder">Все още няма файлове в тази папка</string>
+    <string name="placeholder_empty_form_in_progress">Тук все още няма нищо</string>
+    <string name="placeholder_empty_form_folder_desc">Качи готов PDF формуляр</string>
+    <string name="placeholder_empty_form_folder_viewer_desc">Формулярите, качени от администраторите, ще бъдат показвани тук.</string>
+    <string name="placeholder_empty_form_done_desc">Този раздел ще показва всички завършени формуляри.</string>
+    <string name="placeholder_empty_form_done_folder_desc">Тук ще откриете формуляри, които са били изцяло попълнени от други потребители.</string>
+    <string name="placeholder_empty_form_in_progress_desc">Този раздел ще показва формулярите в ход.</string>
+    <string name="placeholder_empty_form_in_progress_folder_desc">Тук ще откриете формулярите в ход, т.е. формулярите, които потребителите са започнали да попълват, но не са завършили.</string>
+    <string name="placeholder_empty_trash">Тук все още няма елементи</string>
+    <string name="placeholder_empty_trash_desc">Изтритите файлове и папки отиват в Кошчето, откъдето можете да ги възстановите или изтриете окончателно. Елементите се изтриват автоматично след 30 дни и не могат да бъдат възстановени след премахване от Кошчето.</string>
+    <string name="placeholder_no_rooms_desc">Създайте първата си стая, за да започнете.</string>
+    <string name="placeholder_no_rooms_visitor">Тук все още няма стаи</string>
+    <string name="placeholder_no_rooms_visitor_desc">Споделената стая ще се появи тук.</string>
+    <string name="placeholder_empty_archive_desc">Архивирайте и възстановявайте неупотребяваните стаи по всяко време в своя DocSpace, или ги изтрийте окончателно. Архивираните стаи ще се показват тук.</string>
+    <string name="placeholder_empty_archive_visitor_desc">Стаите, които са били архивирани, ще се показват тук.</string>
+    <string name="placeholder_empty_templates_folder_desc">Създайте шаблон от стая в раздела Стаи.</string>
+    <string name="placeholder_empty_from_template">Няма открити шаблони</string>
+    <string name="placeholder_empty_from_template_desc">Създайте първия си шаблон за стая и след това можете да създавате нови стаи по негов модел.</string>
+    <string name="placeholder_empty_recent_via_link_desc">Преглеждайте наскоро отваряни файлове, споделени с вас чрез външни линкове тук.</string>
+    <string name="operation_cancel_message">Операцията е отказана</string>
+    <string name="cloud_vpn_warning">За най-добро преживяване, опитайте да изключите VPN. Някои характеристики на сървъра може да не работят правилно.</string>
+    <string name="room_placeholder_public_room_creator_title">Добре дошли в Обществената стая</string>
+    <string name="room_placeholder_public_room_creator_subtitle">Създайте или качете нови файлове или папки, за да започнете.</string>
+    <string name="room_placeholder_empty_viewer_title">Стаята е празна</string>
+    <string name="room_placeholder_empty_viewer_subtitle">Файловете и папките, създадени или качени от администратори, ще се показват тук.</string>
+    <string name="room_placeholder_form_room_creator_subtitle">Качете готов PDF формуляр, за да започнете.</string>
+    <string name="room_placeholder_form_room_viewer_subtitle">PDF формулярите, качени от администратори, ще се показват тук.</string>
+    <string name="room_placeholder_vdr_room_creator_title">Добре дошли в Стаята за Виртуални Данни</string>
+    <string name="room_placeholder_creator_subtitle">Създайте или качете нови файлове, за да започнете.</string>
+    <string name="room_placeholder_collab_room_creator_title">Добре дошли в Стаята за съвместна работа</string>
+    <string name="room_placeholder_custom_room_creator_title">Добре дошли в Персонализираната стая</string>
 </resources>

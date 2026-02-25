@@ -634,21 +634,15 @@
     <string name="main_pager_docs_virtual_room">Salas</string>
     <string name="main_pager_docs_archive_room">Arquivo</string>
     <string name="errors_sign_in_ldap_checkbox">Faça login como usuário LDAP</string>
-    <string name="placeholder_empty_folder">Nenhum documento aqui ainda</string>
-    <string name="placeholder_empty_trash_desc">Todos os arquivos excluídos são movidos para a \'Lixeira\'. Restaure arquivos excluídos por engano ou exclua-os permanentemente. Os arquivos na \'Lixeira\' são excluídos automaticamente após 30 dias. Observe que os arquivos excluídos da \'Lixeira\' não podem mais ser restaurados</string>
     <string name="placeholder_no_users_found">Usuários não encontrados</string>
     <string name="placeholder_no_users_found_desc">Nenhum usuário corresponde à sua pesquisa. Ajuste seus parâmetros de pesquisa ou limpe o campo de pesquisa para ver a lista completa de usuários</string>
     <string name="placeholder_no_members_found">Nenhum membro encontrado</string>
     <string name="placeholder_no_members_found_desc">Você pode adicionar novos membros à equipe manualmente ou convidá-los via link</string>
     <string name="placeholder_no_rooms">Bem-vindo ao DocSpace!</string>
-    <string name="placeholder_no_rooms_desc">Por favor crie a primeira sala</string>
-    <string name="placeholder_no_rooms_visitor_desc">As salas compartilhadas com você aparecerão aqui</string>
     <string name="placeholder_empty_archive">Ainda não há salas arquivadas aqui</string>
-    <string name="placeholder_empty_archive_desc">Você pode arquivar salas que não utiliza e restaurá-las em seu DocSpace a qualquer momento ou excluí-las permanentemente. Estas salas aparecerão aqui</string>
     <string name="placeholder_no_search_result">Nenhum resultado de pesquisa</string>
     <string name="placeholder_no_search_result_desc">Nenhum resultado correspondente à sua pesquisa foi encontrado. Por favor, tente outra frase</string>
     <string name="placeholder_empty_room_visitor_desc">Arquivos e pastas enviados por administradores aparecerão aqui</string>
-    <string name="placeholder_empty_recent_via_link_desc">Aqui você encontrará uma lista dos arquivos abertos recentemente compartilhados com você através de um link externo</string>
     <string name="placeholder_payment_required">A assinatura comercial expirou</string>
     <string name="placeholder_payment_required_desc">O seu atual plano tarifário "Business" expirou. Por favor, renove sua assinatura nas configurações da conta para poder usar seu DocSpace. Se você tiver alguma dúvida, entre em contato com o suporte</string>
     <string name="placeholder_payment_required_button">Renovar plano de negócios</string>
@@ -715,7 +709,7 @@
     <string name="room_duplicate_progress_hide_button">Esconder</string>
     <string name="rooms_add_fill_forms">Sala de preenchimento de formulários</string>
     <string name="rooms_add_fill_forms_des">Faça upload de formulários em PDF na sala. Convide os usuários a preencherem um formulário em PDF. Revise os formulários preenchidos e analise os dados coletados automaticamente em uma planilha.</string>
-    <string name="room_placeholder_created_filling_form_room_title">Bem-vindo à sala de preenchimento de formulários</string>
+    <string name="room_placeholder_form_room_creator_title">Bem-vindo à sala de preenchimento de formulários</string>
     <string name="room_placeholder_created_filling_form_room_subtitle">Carregue um formulário PDF pronto ou crie novas pastas para organizar seus arquivos</string>
     <string name="context_protection_title">Proteção</string>
     <string name="rooms_upload_pdf_from_docspace">Carregar formulário PDF do DocSpace</string>
@@ -818,20 +812,17 @@
     <string name="rooms_invite_access_description">Convidados, usuários e grupos não podem ser designados como gerentes de sala. Somente os administradores da sala e do DocSpace são adequados para a função especificada.</string>
     <string name="whats_new_title">O que há de novo?</string>
     <string name="whats_new_next">Começar</string>
-    <string name="whats_new">Novidades na v9.1</string>
-    <string name="whats_new_1">Novas seções do DocSpace</string>
-    <string name="whats_new_1_desc">Acesse seus arquivos mais rápido com áreas DocSpace dedicadas: Compartilhado comigo, Favoritos e Recentes.</string>
-    <string name="whats_new_2">Compartilhamento de arquivos aprimorado no DocSpace</string>
-    <string name="whats_new_2_desc">Compartilhe arquivos com mais facilidade e gerencie o acesso com fluxos de trabalho de compartilhamento aprimorados no DocSpace 3.5.</string>
-    <string name="whats_new_3">Opções de login social</string>
-    <string name="whats_new_3_desc">Inicie sessão com LinkedIn ou Zoom para criar e aceder à sua conta DocSpace mais facilmente.</string>
-    <string name="whats_new_4">Direção do parágrafo e da célula (RTL)</string>
-    <string name="whats_new_4_desc">Alternar a direção do parágrafo e da célula da tabela entre da direita para a esquerda e da esquerda para a direita em todos os editores.</string>
+    <string name="whats_new">Novidades na v9.3</string>
+    <string name="whats_new_1">Menções nos comentários</string>
+    <string name="whats_new_1_desc">Marque seus colegas de equipe nos comentários para notificá-los e melhorar a colaboração.</string>
+    <string name="whats_new_2">Contador de palavras em documentos</string>
+    <string name="whats_new_2_desc">Acompanhe instantaneamente o tamanho do documento com o contador de palavras integrado.</string>
+    <string name="whats_new_3">Busca aprimorada no Editors</string>
+    <string name="whats_new_3_desc">Encontre texto mais rapidamente em documentos, planilhas e apresentações com a pesquisa atualizada integrada ao editor.</string>
+    <string name="whats_new_4">Interface atualizada</string>
+    <string name="whats_new_4_desc">Aproveite os ícones do editor renovados e o menu de contexto redesenhado para uma aparência mais limpa e acesso mais rápido às ações principais.</string>
 
     <!-- Newly added translations (v9.0.0 - 2025-06-09) -->
-    <string name="access_members_me_and_title">Eu e %s</string>
-    <string name="access_members_me_subtitle">(Eu)</string>
-    <string name="access_members_me_users_groups_title">Eu, %1$s e %2$s</string>
     <string name="cloud_create_account">Criar conta gratuita</string>
     <string name="context_menu_desc">Mais</string>
     <string name="desc_create_from_template">Crie uma sala com base em um modelo. Todas as configurações, usuários, pastas e arquivos serão obtidos do modelo de sala selecionado.</string>
@@ -907,7 +898,6 @@
     <string name="placeholder_connection_button">Recarregar</string>
     <string name="placeholder_connection_desc">Nenhuma conexão de rede detectada. Verifique sua conexão e tente novamente</string>
     <string name="placeholder_empty_templates_folder">Ainda não há modelos aqui</string>
-    <string name="placeholder_empty_templates_folder_desc">Você pode criar um modelo a partir de uma sala na seção Sala</string>
     <string name="room_access_via_link_title">Acesso via link</string>
     <string name="room_created_successfully">Sala criada com sucesso</string>
     <string name="room_placeholder_created_template_title">Modelo criado!</string>
@@ -961,14 +951,6 @@
         <item quantity="one">Excluir modelo</item>
         <item quantity="other">Excluir modelos</item>
     </plurals>
-    <plurals name="access_members_users_title">
-        <item quantity="one">%d usuário</item>
-        <item quantity="other">%d usuários</item>
-    </plurals>
-    <plurals name="access_members_groups_title">
-        <item quantity="one">%d grupo</item>
-        <item quantity="other">%d grupos</item>
-    </plurals>
 
     <!-- Newly added translations (v9.1.0 - 2025-10-24) -->
     <string name="dev_mode_system_logs">Logs do sistema</string>
@@ -1005,4 +987,43 @@
     <string name="rooms_info_fill_form_desc">Esta sala está disponível para qualquer pessoa com o link. Os usuários externos terão permissão para preencher formulários em todos os arquivos..</string>
     <string name="share_popup_access_editing">Edição</string>
     <string name="share_popup_access_remove">Remover</string>
+
+    <!-- Newly added translations (v9.3.0 - 2026-02-24) -->
+    <string name="placeholder_empty_folder">Ainda não há arquivos aqui</string>
+    <string name="placeholder_empty_folder_common">Ainda não há documentos aqui</string>
+    <string name="placeholder_empty_folder_desc_creator">Criar ou carregar novos arquivos</string>
+    <string name="placeholder_empty_form_folder">Ainda não há formulários aqui</string>
+    <string name="placeholder_empty_form_folder_viewer">Ainda não há formulários nesta pasta</string>
+    <string name="placeholder_empty_form_done">Ainda não há formulários finalizados</string>
+    <string name="placeholder_empty_form_subfolder">Ainda não há arquivos nesta pasta</string>
+    <string name="placeholder_empty_form_in_progress">Nada por aqui ainda</string>
+    <string name="placeholder_empty_form_folder_desc">Faça o upload de um formulário em PDF pronto</string>
+    <string name="placeholder_empty_form_folder_viewer_desc">Os formulários enviados pelos administradores aparecerão aqui.</string>
+    <string name="placeholder_empty_form_done_desc">Esta seção exibirá todos os formulários que foram preenchidos.</string>
+    <string name="placeholder_empty_form_done_folder_desc">Aqui você encontrará formulários que foram preenchidos integralmente por outros usuários.</string>
+    <string name="placeholder_empty_form_in_progress_desc">Esta seção exibirá os formulários em andamento.</string>
+    <string name="placeholder_empty_form_in_progress_folder_desc">Aqui você encontrará formulários em andamento, ou seja, formulários que os usuários começaram a preencher, mas ainda não concluíram.</string>
+    <string name="placeholder_empty_trash">Ainda não há itens aqui.</string>
+    <string name="placeholder_empty_trash_desc">Arquivos e pastas excluídos vão para a Lixeira, onde você pode restaurá-los ou excluí-los permanentemente. Os itens são excluídos automaticamente após 30 dias e não podem ser recuperados depois de removidos da Lixeira.</string>
+    <string name="placeholder_no_rooms_desc">Crie seu primeiro cômodo para começar.</string>
+    <string name="placeholder_no_rooms_visitor">Ainda não há quartos disponíveis aqui.</string>
+    <string name="placeholder_no_rooms_visitor_desc">Os quartos compartilhados aparecerão aqui.</string>
+    <string name="placeholder_empty_archive_desc">Arquive salas não utilizadas e restaure-as a qualquer momento no seu DocSpace, ou exclua-as permanentemente. As salas arquivadas aparecerão aqui.</string>
+    <string name="placeholder_empty_archive_visitor_desc">As salas que foram arquivadas aparecerão aqui.</string>
+    <string name="placeholder_empty_templates_folder_desc">Crie um modelo a partir de uma sala na seção Salas.</string>
+    <string name="placeholder_empty_from_template">Nenhum modelo encontrado</string>
+    <string name="placeholder_empty_from_template_desc">Crie seu primeiro modelo de quarto e, em seguida, você poderá criar novos quartos com base nele.</string>
+    <string name="placeholder_empty_recent_via_link_desc">Veja aqui os arquivos abertos recentemente que foram compartilhados com você por meio de links externos.</string>
+    <string name="operation_cancel_message">Operação cancelada</string>
+    <string name="cloud_vpn_warning">Para uma melhor experiência, tente desativar a VPN. Algumas funcionalidades do servidor podem não funcionar corretamente..</string>
+    <string name="room_placeholder_public_room_creator_title">Bem-vindo à sala pública.</string>
+    <string name="room_placeholder_public_room_creator_subtitle">Crie ou carregue novos arquivos ou pastas para começar.</string>
+    <string name="room_placeholder_empty_viewer_title">A sala está vazia</string>
+    <string name="room_placeholder_empty_viewer_subtitle">Arquivos e pastas criados ou carregados por administradores aparecerão aqui.</string>
+    <string name="room_placeholder_form_room_creator_subtitle">Faça o upload de um formulário PDF pronto para começar.</string>
+    <string name="room_placeholder_form_room_viewer_subtitle">Os formulários em PDF enviados pelos administradores aparecerão aqui.</string>
+    <string name="room_placeholder_vdr_room_creator_title">Bem vindo à Virtual Data Room</string>
+    <string name="room_placeholder_creator_subtitle">Crie ou carregue novos arquivos para começar.</string>
+    <string name="room_placeholder_collab_room_creator_title">Bem-vindo(a) à sala de colaboração</string>
+    <string name="room_placeholder_custom_room_creator_title">Bem-vindo à Sala Personalizada</string>
 </resources>

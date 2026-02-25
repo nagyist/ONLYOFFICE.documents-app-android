@@ -647,21 +647,15 @@
     <string name="main_pager_docs_virtual_room">Комнаты</string>
     <string name="main_pager_docs_archive_room">Архив</string>
     <string name="errors_sign_in_ldap_checkbox">Войти как пользователь LDAP</string>
-    <string name="placeholder_empty_folder">Здесь пока нет документов</string>
-    <string name="placeholder_empty_trash_desc">Все удаленные файлы перемещены в \'Корзину\'. Восстановите файлы, удаленные по ошибке, или удалите их навсегда. Файлы в \'Корзине\' автоматически удаляются через 30 дней. Внимание: файлы, удаленные из \'Корзины\', не могут быть восстановлены</string>
     <string name="placeholder_no_users_found">Пользователи не найдены</string>
     <string name="placeholder_no_users_found_desc">Не найдены пользователи, отвечающие параметрам поиска. Пожалуйста, измените параметры поиска или очистите поле поиска, чтобы просмотреть весь список пользователей.</string>
     <string name="placeholder_no_members_found">Участники не найдены</string>
     <string name="placeholder_no_members_found_desc">Вы можете добавить новых участников команды или пригласить их с помощью ссылки</string>
     <string name="placeholder_no_rooms">Добро пожаловать в DocSpace!</string>
-    <string name="placeholder_no_rooms_desc">Пожалуйста, создайте первую комнату</string>
-    <string name="placeholder_no_rooms_visitor_desc">Комнаты, в которые у вас есть доступ, будут отображаться здесь.</string>
     <string name="placeholder_empty_archive">Здесь пока нет заархивированных комнат</string>
-    <string name="placeholder_empty_archive_desc">Вы можете заархивировать комнаты, которые не используете, и в любой момент восстановить их в своем DocSpace или удалить навсегда. Эти комнаты будут отображаться здесь.</string>
     <string name="placeholder_no_search_result">Не найдено результатов поиска</string>
     <string name="placeholder_no_search_result_desc">Не найдено результатов, отвечающих параметрам поиска. Пожалуйста, задайте другую фразу</string>
     <string name="placeholder_empty_room_visitor_desc">Файлы и папки, загружаемые администраторами, будут отображаться здесь</string>
-    <string name="placeholder_empty_recent_via_link_desc">Здесь отображается список недавно открытых файлов, к которым вам был предоставлен доступ с помощью внешней ссылки</string>
     <string name="placeholder_payment_required">Срок подписки на тарифный план Business истек</string>
     <string name="placeholder_payment_required_desc">Срок действия вашего текущего тарифного плана Business истек. Пожалуйста, возобновите подписку в настройках учетной записи, чтобы продолжать использовать DocSpace. Если у вас возникли вопросы, обратитесь в службу поддержки</string>
     <string name="placeholder_payment_required_button">Возобновить тарифный план Business</string>
@@ -729,7 +723,7 @@
     <string name="room_duplicate_progress_hide_button">Скрыть</string>
     <string name="rooms_add_fill_forms">Комната для заполнения форм</string>
     <string name="rooms_add_fill_forms_des">Загружайте PDF-формы в комнату. Приглашайте пользователей к заполнению PDF-форм. Просматривайте заполненные формы и анализируйте данные, собираемые в электронную таблицу автоматически.</string>
-    <string name="room_placeholder_created_filling_form_room_title">Добро пожаловать в Комнату для заполнения форм</string>
+    <string name="room_placeholder_form_room_creator_title">Добро пожаловать в Комнату для заполнения форм</string>
     <string name="room_placeholder_created_filling_form_room_subtitle">Загрузите готовую PDF-форму или создайте новые папки для организации ваших файлов</string>
     <string name="context_protection_title">Защита</string>
     <string name="rooms_upload_pdf_from_docspace">Загрузить PDF-форму из DocSpace</string>
@@ -833,20 +827,17 @@
     <string name="rooms_invite_access_description">Гости, Пользователи и Группы не могут быть назначены менеджерами комнат. Для указанной роли подходят только администраторы комнат и DocSpace.</string>
     <string name="whats_new_title">Новые возможности</string>
     <string name="whats_new_next">Начать</string>
-    <string name="whats_new">Что нового в v9.1</string>
-    <string name="whats_new_1">Новые разделы DocSpace</string>
-    <string name="whats_new_1_desc">Быстро получайте доступ к файлам с помощью специальных разделов DocSpace: Shared with me, Favorites и Recent.</string>
-    <string name="whats_new_2">Улучшенный шаринг файлов в DocSpace</string>
-    <string name="whats_new_2_desc">Делитесь файлами проще и управляйте доступом с помощью обновлённых рабочих процессов в DocSpace 3.5.</string>
-    <string name="whats_new_3">Новые опции входа</string>
-    <string name="whats_new_3_desc">Входите с помощью LinkedIn или Zoom, чтобы быстрее создавать и использовать аккаунт DocSpace.</string>
-    <string name="whats_new_4">Настройка направления текста (RTL)</string>
-    <string name="whats_new_4_desc">Переключайте направление текста в абзацах и ячеек таблиц между справа налево и слева направо во всех редакторах.</string>
+    <string name="whats_new">Что нового в v9.3</string>
+    <string name="whats_new_1">Упоминания в комментариях</string>
+    <string name="whats_new_1_desc">Отмечайте коллег в комментариях, чтобы проинформировать их и улучшить совместную работу</string>
+    <string name="whats_new_2">Счетчик слов в документах</string>
+    <string name="whats_new_2_desc">Мгновенно отслеживайте объем документа с помощью встроенного счетчика слов</string>
+    <string name="whats_new_3">Улучшенный поиск в редакторах</string>
+    <string name="whats_new_3_desc">Быстрее находите текст в документах, таблицах и презентациях с помощью обновленного поиска</string>
+    <string name="whats_new_4">Обновленный интерфейс</string>
+    <string name="whats_new_4_desc">Наслаждайтесь обновленными значками редактора и переработанным контекстным меню, которые обеспечивают более чистый вид и быстрый доступ к ключевым действиям</string>
 
     <!-- Newly added translations (v9.0.0 - 2025-06-09) -->
-    <string name="access_members_me_and_title">Я и %s</string>
-    <string name="access_members_me_subtitle">(Я)</string>
-    <string name="access_members_me_users_groups_title">Я, %1$s и %2$s</string>
     <string name="cloud_create_account">Создать бесплатную учетную запись</string>
     <string name="context_menu_desc">Больше</string>
     <string name="desc_create_from_template">Создать комнату на основе шаблона. Все настройки, пользователи, папки и файлы будут взяты из выбранного шаблона комнаты.</string>
@@ -922,7 +913,6 @@
     <string name="placeholder_connection_button">Перезагрузить</string>
     <string name="placeholder_connection_desc">Соединение не обнаружено. Проверьте соединение и попробуйте еще раз.</string>
     <string name="placeholder_empty_templates_folder">Шаблонов пока нет</string>
-    <string name="placeholder_empty_templates_folder_desc">Вы можете создать шаблон из комнаты в разделе «Комната».</string>
     <string name="room_access_via_link_title">Доступ по ссылке</string>
     <string name="room_created_successfully">Комната успешно создана</string>
     <string name="room_placeholder_created_template_title">Шаблон создан!</string>
@@ -976,14 +966,6 @@
         <item quantity="one">Удалить шаблон</item>
         <item quantity="other">Удалить шаблоны</item>
     </plurals>
-    <plurals name="access_members_users_title">
-        <item quantity="one">%d пользователь</item>
-        <item quantity="other">%d пользователей</item>
-    </plurals>
-    <plurals name="access_members_groups_title">
-        <item quantity="one">%d группа</item>
-        <item quantity="other">%d групп</item>
-    </plurals>
 
     <!-- Newly added translations (v9.1.0 - 2025-10-24) -->
     <string name="dev_mode_system_logs">Системные журналы</string>
@@ -1020,4 +1002,43 @@
     <string name="rooms_info_fill_form_desc">Эта комната доступна всем, у кого есть ссылка. Внешние пользователи получат разрешение на заполнение форм для всех файлов.</string>
     <string name="share_popup_access_editing">Редактирование</string>
     <string name="share_popup_access_remove">Удалить</string>
+
+    <!-- Newly added translations (v9.3.0 - 2026-02-24) -->
+    <string name="placeholder_empty_folder">Здесь пока нет файлов</string>
+    <string name="placeholder_empty_folder_common">Здесь пока нет документов</string>
+    <string name="placeholder_empty_folder_desc_creator">Создайте или загрузите новые файлы</string>
+    <string name="placeholder_empty_form_folder">Здесь пока нет форм</string>
+    <string name="placeholder_empty_form_folder_viewer">В этой папке пока нет форм</string>
+    <string name="placeholder_empty_form_done">Пока нет завершенных форм</string>
+    <string name="placeholder_empty_form_subfolder">В этой папке пока нет файлов</string>
+    <string name="placeholder_empty_form_in_progress">Здесь пока ничего нет</string>
+    <string name="placeholder_empty_form_folder_desc">Загрузите готовую PDF-форму</string>
+    <string name="placeholder_empty_form_folder_viewer_desc">Здесь будут отображаться формы, загруженные администраторами.</string>
+    <string name="placeholder_empty_form_done_desc">В этом разделе будут отображаться все заполненные формы.</string>
+    <string name="placeholder_empty_form_done_folder_desc">Здесь будут отображаться формы, заполненные другими пользователями.</string>
+    <string name="placeholder_empty_form_in_progress_desc">В этом разделе будут отображаться формы в процессе заполнения.</string>
+    <string name="placeholder_empty_form_in_progress_folder_desc">Здесь будут отображаться формы в процессе заполнения, то есть формы, которые пользователи начали заполнять, но еще не завершили.</string>
+    <string name="placeholder_empty_trash">Здесь пока нет элементов</string>
+    <string name="placeholder_empty_trash_desc">Удаленные файлы и папки попадают в Корзину, где их можно восстановить или удалить навсегда. Элементы автоматически удаляются через 30 дней и не могут быть восстановлены после удаления из Корзины.</string>
+    <string name="placeholder_no_rooms_desc">Чтобы начать, создайте свою первую комнату.</string>
+    <string name="placeholder_no_rooms_visitor">Здесь пока нет комнат</string>
+    <string name="placeholder_no_rooms_visitor_desc">Здесь появятся комнаты, к которым предоставлен доступ.</string>
+    <string name="placeholder_empty_archive_desc">Архивируйте неиспользуемые комнаты и восстанавливайте их в любое время в своем DocSpace, или удаляйте их навсегда. Заархивированные комнаты будут отображаться здесь.</string>
+    <string name="placeholder_empty_archive_visitor_desc">Здесь будут отображаться комнаты, которые были заархивированы.</string>
+    <string name="placeholder_empty_templates_folder_desc">Создайте шаблон на основе комнаты в разделе «Комнаты».</string>
+    <string name="placeholder_empty_from_template">Шаблоны не найдены</string>
+    <string name="placeholder_empty_from_template_desc">Создайте свой первый шаблон комнаты, затем вы сможете создавать на его основе новые комнаты.</string>
+    <string name="placeholder_empty_recent_via_link_desc">Здесь вы можете просматривать недавно открытые файлы, доступ к которым был предоставлен вам с помощью сторонних ссылок.</string>
+    <string name="operation_cancel_message">Операция отменена</string>
+    <string name="cloud_vpn_warning">Для лучшего результата попробуйте отключить VPN. Некоторые функции сервера могут работать некорректно.</string>
+    <string name="room_placeholder_public_room_creator_title">Добро пожаловать в Публичную комнату!</string>
+    <string name="room_placeholder_public_room_creator_subtitle">Чтобы начать, создайте или загрузите новые файлы или папки.</string>
+    <string name="room_placeholder_empty_viewer_title">Комната пуста</string>
+    <string name="room_placeholder_empty_viewer_subtitle">Здесь будут отображаться файлы и папки, созданные или загруженные администраторами.</string>
+    <string name="room_placeholder_form_room_creator_subtitle">Чтобы начать, загрузите готовую PDF-форму.</string>
+    <string name="room_placeholder_form_room_viewer_subtitle">Здесь будут отображаться PDF-формы, загруженные администраторами.</string>
+    <string name="room_placeholder_vdr_room_creator_title">Добро пожаловать в Виртуальную комнату данных!</string>
+    <string name="room_placeholder_creator_subtitle">Чтобы начать, создайте или загрузите новые файлы.</string>
+    <string name="room_placeholder_collab_room_creator_title">Добро пожаловать в Комнату для совместной работы!</string>
+    <string name="room_placeholder_custom_room_creator_title">Добро пожаловать в Пользовательскую комнату!</string>
 </resources>

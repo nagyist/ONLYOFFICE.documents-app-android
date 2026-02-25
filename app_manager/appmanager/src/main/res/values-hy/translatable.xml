@@ -792,21 +792,15 @@
     <string name="conversion_dialog_converting_to">Փոխակերպվում է %1s-ի</string>
 
     <string name="errors_sign_in_ldap_checkbox">Մուտք գործեl որպես LDAP Օգտատեր</string>
-    <string name="placeholder_empty_folder">Այստեղ դեռ փաստաթղթեր չկան</string>
-    <string name="placeholder_empty_trash_desc">Բոլոր ջնջված ֆայլերը տեղափոխվում են \'Աղբարկղ\': Վերականգնել սխալմամբ ջնջված ֆայլերը կամ ընդմիշտ ջնջել դրանք: \'Աղբարկղի\' ֆայլերն ավտոմատ կերպով ջնջվում են 30 օր հետո: Խնդրում ենք նկատի ունենալ, որ \'Աղբարկղից\' ջնջված ֆայլերն այլևս չեն կարող վերականգնվել</string>
     <string name="placeholder_no_users_found">Ոչ մի օգտատեր չի գտնվել</string>
     <string name="placeholder_no_users_found_desc">Ոչ մի օգտատեր չի համապատասխանում ձեր որոնմանը: Խնդրում ենք կարգավորել ձեր որոնման պարամետրերը կամ մաքրել որոնման դաշտը՝ օգտատերերի ամբողջական ցանկը դիտելու համար</string>
     <string name="placeholder_no_members_found">Անդամները չեն գտնվել</string>
     <string name="placeholder_no_members_found_desc">Դուք կարող եք ձեռքով ավելացնել թիմի նոր անդամներ կամ հրավիրել նրանց հղման միջոցով</string>
     <string name="placeholder_no_rooms">Բարի գալուստ DocSpace:</string>
-    <string name="placeholder_no_rooms_desc">Խնդրում ենք ստեղծել առաջին սենյակը</string>
-    <string name="placeholder_no_rooms_visitor_desc">Ձեզ հետ կիսված սենյակները կհայտնվեն այստեղ</string>
     <string name="placeholder_empty_archive">Այստեղ դեռ արխիվացված սենյակներ չկան</string>
-    <string name="placeholder_empty_archive_desc">Դուք կարող եք արխիվացնել այն սենյակները, որոնք չեք օգտագործում և ցանկացած պահի վերականգնել դրանք ձեր DocSpace-ում կամ ընդմիշտ ջնջել դրանք: Այս սենյակները կհայտնվեն այստեղ</string>
     <string name="placeholder_no_search_result">Որոնման արդյունք չկա</string>
     <string name="placeholder_no_search_result_desc">Ձեր որոնմանը համապատասխանող արդյունքներ չեն գտնվել: Խնդրում ենք փորձել մեկ այլ արտահայտություն</string>
     <string name="placeholder_empty_room_visitor_desc">Ադմինիստրատորների կողմից վերբեռնված ֆայլերը և թղթապանակները կհայտնվեն այստեղ</string>
-    <string name="placeholder_empty_recent_via_link_desc">Այստեղ դուք կգտնեք վերջերս բացված ֆայլերի ցանկը, որոնցով ձեզ հետ կիսվել են արտաքին հղման միջոցով</string>
     <string name="placeholder_payment_required">Բիզնես բաժանորդագրության ժամկետը սպառվել է</string>
     <string name="placeholder_payment_required_desc">Ձեր ընթացիկ սակագնային «Բիզնես» պլանի ժամկետը լրացել է: Խնդրում ենք թարմացնել ձեր բաժանորդագրությունը հաշվի կարգավորումներում, որպեսզի կարողանաք օգտագործել ձեր DocSpace-ը: Եթե ​​ունեք հարցեր, կարող եք դիմել աջակցության ծառայությունը</string>
     <string name="placeholder_payment_required_button">Բիզնես պլանի թարմացում</string>
@@ -883,7 +877,7 @@
     <string name="rooms_add_fill_forms">Ձևաթղթերի լրացման սենյակ</string>
     <string name="rooms_add_fill_forms_des">Վերբեռնեք PDF ձևերը սենյակ: Հրավիրեք օգտատերերին լրացնել PDF ձևը: Վերանայեք լրացված ձևերը և վերլուծեք աղյուսակում ավտոմատ հավաքագրված տվյալները:</string>
     <string name="rooms_error_logo_size_exceed">Նկարի առավելագույն չափը գերազանցված է (1 ՄԲ)</string>
-    <string name="room_placeholder_created_filling_form_room_title">Բարի գալուստ Ձևաթղթերի լրացման սենյակ</string>
+    <string name="room_placeholder_form_room_creator_title">Բարի գալուստ Ձևաթղթերի լրացման սենյակ</string>
     <string name="room_placeholder_created_filling_form_room_subtitle">Վերբեռնեք պատրաստ PDF ձև կամ ստեղծեք նոր թղթապանակներ՝ ձեր ֆայլերը կազմակերպելու համար</string>
     <string name="room_placeholder_created_virtual_room_title">Բարի գալուստ Վիրտուալ Տվյալների Սենյակ</string>
     <string name="room_placeholder_created_virtual_room_subtitle">Սկսեք արագ գործողություններով.\nՍտեղծեք նոր ֆայլ</string>
@@ -972,20 +966,17 @@
     <string name="rooms_invite_access_description">Հյուրերը, օգտատերերը և խմբերը չեն կարող նշանակվել որպես Սենյակի մենեջերներ: Միայն Սենյակի և DocSpace-ի ադմինները հարմար են նշված դերի համար:</string>
     <string name="whats_new_title">Ինչ նորություն կա</string>
     <string name="whats_new_next">Սկսել!</string>
-    <string name="whats_new">Նորություններ v9.1-ում</string>
-    <string name="whats_new_1">Նոր DocSpace բաժիններ</string>
-    <string name="whats_new_1_desc">Ավելի արագ մուտք գործեք ձեր ֆայլեր՝ օգտագործելով DocSpace-ի համար նախատեսված բաժինները՝ Ինձ հետ համաօգտագործված, Նախընտրելիներ և Վերջերս դիտված։</string>
-    <string name="whats_new_2">Բարելավված ֆայլերի համաօգտագործում DocSpace-ում</string>
-    <string name="whats_new_2_desc">Հեշտությամբ կիսվեք ֆայլերով և կառավարեք մուտքը՝ DocSpace 3.5-ում բարելավված համաօգտագոործման աշխատանքային հոսքերի միջոցով:</string>
-    <string name="whats_new_3">Սոցիալական մուտքի տարբերակներ</string>
-    <string name="whats_new_3_desc">Մուտք գործեք LinkedIn-ով-ով կամ Zoom-ով՝ ձեր DocSpace հաշիվն հեշտությամբ ստեղծելու և մուտք գործելու համար։</string>
-    <string name="whats_new_4">Պարբերության և վանդակների ուղղություն (Աջից-Ձախ)</string>
-    <string name="whats_new_4_desc">Փոխեք պարբերությունների և աղյուսակի վանդակների ուղղությունն աջից ձախ և ձախից աջ բոլոր խմբագիրներում։</string>
+    <string name="whats_new">Նորություններ v9.3-ում</string>
+    <string name="whats_new_1">Հիշատակումներ մեկնաբանություններում</string>
+    <string name="whats_new_1_desc">Մեկնաբանություններում նշեք թիմակիցներին՝ տեղեկացնելու և համագործակցությունը բարելավելու համար</string>
+    <string name="whats_new_2">Բառերի հաշվիչ փաստաթղթերում</string>
+    <string name="whats_new_2_desc">Հետևեք փաստաթղթի երկարությանն անմիջապես, ներառված բառերի հաշվիչի միջոցով</string>
+    <string name="whats_new_3">Բարելավված որոնում խմբագրերում</string>
+    <string name="whats_new_3_desc">Գտեք տեքստն ավելի արագ փաստաթղթերում, աղյուսակներում և ներկայացումներում՝ նորացված խմբագրի ներսում որոնման միջոցով։</string>
+    <string name="whats_new_4">Թարմացված ինտերֆեյս</string>
+    <string name="whats_new_4_desc">Վայելեք թարմացված խմբագրի պատկերակները և մշակված համատեքստային մենյուն՝ ավելի պարզ տեսքի և հիմնական գործողություններին արագ հասանելիության ունենալու համար։</string>
 
     <!-- Newly added translations (v9.0.0 - 2025-06-09) -->
-    <string name="access_members_me_and_title">Ես և %s-ը</string>
-    <string name="access_members_me_subtitle">(Ես)</string>
-    <string name="access_members_me_users_groups_title">Ես, %1$s-ը և %2$s-ը</string>
     <string name="cloud_create_account">Ստեղծել անվճար հաշիվ</string>
     <string name="context_menu_desc">Ավելին</string>
     <string name="desc_create_from_template">Ստեղծեք սենյակ՝ հիմնվելով ձևանմուշի վրա: Բոլոր կարգավորումները, օգտատերերը, թղթապանակները և ֆայլերը կվերցվեն ընտրված սենյակի ձևանմուշից:</string>
@@ -1061,7 +1052,6 @@
     <string name="placeholder_connection_button">Վերաբեռնել</string>
     <string name="placeholder_connection_desc">Ցանցային կապ չի հայտնաբերվել։ Ստուգեք ձեր կապը և կրկին փորձեք։</string>
     <string name="placeholder_empty_templates_folder">Այստեղ դեռևս ձևանմուշներ չկան</string>
-    <string name="placeholder_empty_templates_folder_desc">Դուք կարող եք ստեղծել ձևանմուշ սենյակից՝ Սենյակ բաժնում։</string>
     <string name="room_access_via_link_title">Մուտք հղումով</string>
     <string name="room_created_successfully">Սենյակը հաջողությամբ ստեղծվեց</string>
     <string name="room_placeholder_created_template_title">Ձևանմուշը ստեղծված է։</string>
@@ -1115,14 +1105,6 @@
         <item quantity="one">Ջնջել ձևանմուշը</item>
         <item quantity="other">Ջնջել ձևանմուշները</item>
     </plurals>
-    <plurals name="access_members_users_title">
-        <item quantity="one">%d օգտատեր</item>
-        <item quantity="other">%d օգտատերեր</item>
-    </plurals>
-    <plurals name="access_members_groups_title">
-        <item quantity="one">%d խումբ</item>
-        <item quantity="other">%d խմբեր</item>
-    </plurals>
 
     <!-- Newly added translations (v9.1.0 - 2025-10-24) -->
     <string name="dev_mode_system_logs">Համակարգի մուտքեր</string>
@@ -1159,4 +1141,43 @@
     <string name="rooms_info_fill_form_desc">Այս սենյակը հասանելի է հղում ունեցող յուրաքանչյուրի համար: Արտաքին օգտատերերը կունենան ձևաթղթերի լրացման թույլտվություն բոլոր ֆայլերի համար:</string>
     <string name="share_popup_access_editing">Խմբագրում</string>
     <string name="share_popup_access_remove">Հեռացնել</string>
+
+    <!-- Newly added translations (v9.3.0 - 2026-02-24) -->
+    <string name="placeholder_empty_folder">Այստեղ դեռևս ֆայլեր չկան</string>
+    <string name="placeholder_empty_folder_common">Այստեղ դեռևս փաստաթղթեր չկան</string>
+    <string name="placeholder_empty_folder_desc_creator">Ստեղծեք կամ վերբեռնեք նոր ֆայլեր</string>
+    <string name="placeholder_empty_form_folder">Դեռևս ձևաթղթեր չկան այստեղ</string>
+    <string name="placeholder_empty_form_folder_viewer">Այս թղթապանակում դեռևս ձևաթղթեր չկան</string>
+    <string name="placeholder_empty_form_done">Ձևաթղթերը դեռ ավարտված չեն</string>
+    <string name="placeholder_empty_form_subfolder">Այս թղթապանակում դեռ ֆայլեր չկան</string>
+    <string name="placeholder_empty_form_in_progress">Այստեղ դեռ ոչինչ չկա</string>
+    <string name="placeholder_empty_form_folder_desc">Վերբեռնել պատրաստի PDF ձևաթուղթ</string>
+    <string name="placeholder_empty_form_folder_viewer_desc">Ադմինիստրատորների կողմից վերբեռնված ձևաթղթերը կհայտնվեն այստեղ։</string>
+    <string name="placeholder_empty_form_done_desc">Այս բաժնում կցուցադրվեն բոլոր ավարտված ձևաթղթերը։</string>
+    <string name="placeholder_empty_form_done_folder_desc">Այստեղ դուք կգտնեք այլ օգտատերերի կողմից ամբողջությամբ լրացված ձևաթղթերը։</string>
+    <string name="placeholder_empty_form_in_progress_desc">Այս բաժնում կցուցադրվեն ընթացքի մեջ գտնվող ձևաթղթերը։</string>
+    <string name="placeholder_empty_form_in_progress_folder_desc">Այստեղ դուք կգտնեք ընթացքի մեջ գտնվող ձևաթղթեր, այսինքն՝ ձևաթղթեր, որոնց լրացումն օգտատերերը սկսել են, բայց դեռ չեն ավարտել։</string>
+    <string name="placeholder_empty_trash">Այստեղ դեռ տարրեր չկան</string>
+    <string name="placeholder_empty_trash_desc">Ջնջված ֆայլերն ու թղթապանակները տեղափոխվում են աղբարկղ, որտեղ կարող եք վերականգնել կամ մշտապես ջնջել դրանք։ Տարրերն ավտոմատ կերպով ջնջվում են 30 օր հետո և չեն կարող վերականգնվել աղբարկղից հեռացնելուց հետո։</string>
+    <string name="placeholder_no_rooms_desc">Սկսելու համար ստեղծեք ձեր առաջին սենյակը</string>
+    <string name="placeholder_no_rooms_visitor">Այստեղ դեռ սենյակներ չկան</string>
+    <string name="placeholder_no_rooms_visitor_desc">Կիսված սենյակները կհայտնվեն այստեղ։</string>
+    <string name="placeholder_empty_archive_desc">Արխիվացրեք չօգտագործված սենյակները և վերականգնեք դրանք ցանկացած ժամանակ ձեր DocSpace-ում, կամ ջնջեք դրանք մշտապես։ Արխիվացված սենյակները կհայտնվեն այստեղ։</string>
+    <string name="placeholder_empty_archive_visitor_desc">Արխիվացված սենյակները կհայտնվեն այստեղ։</string>
+    <string name="placeholder_empty_templates_folder_desc">Ստեղծեք ձևանմուշ սենյակից Սենյակներ բաժնում։</string>
+    <string name="placeholder_empty_from_template">Ձևանմուշները չեն գտնվել</string>
+    <string name="placeholder_empty_from_template_desc">Ստեղծեք ձեր առաջին սենյակի ձևանմուշը, ապա կարող եք ստեղծել նոր սենյակներ դրա հիման վրա։</string>
+    <string name="placeholder_empty_recent_via_link_desc">Այստեղ կարող եք դիտել վերջերս բացված ֆայլերը, որոնք ձեզ հետ կիսվել են արտաքին հղումերով։</string>
+    <string name="operation_cancel_message">Գործողությունը չեղարկված է</string>
+    <string name="cloud_vpn_warning">Լավագույն փորձի համար փորձեք անջատել VPN-ը։ Որոշ սերվերային ֆունկցիաներ կարող են ճիշտ չաշխատել։</string>
+    <string name="room_placeholder_public_room_creator_title">Բարի գալուստ Հանրային սենյակ</string>
+    <string name="room_placeholder_public_room_creator_subtitle">Սկսելու համար ստեղծեք կամ վերբեռնեք նոր ֆայլեր կամ թղթապանակներ։</string>
+    <string name="room_placeholder_empty_viewer_title">Սենյակը դատարկ է</string>
+    <string name="room_placeholder_empty_viewer_subtitle">Ադմինիստրատորների կողմից ստեղծված կամ վերբեռնված ֆայլերն ու թղթապանակները կհայտնվեն այստեղ։</string>
+    <string name="room_placeholder_form_room_creator_subtitle">Սկսելու համար վերբեռնեք պատրաստի PDF ձևաթուղթ։</string>
+    <string name="room_placeholder_form_room_viewer_subtitle">Ադմինիստրատորների կողմից վերբեռնված PDF ձևաթղթերը կհայտնվեն այստեղ։</string>
+    <string name="room_placeholder_vdr_room_creator_title">Բարի գալուստ Վիրտուալ Տվյալների Սենյակ</string>
+    <string name="room_placeholder_creator_subtitle">Սկսելու համար ստեղծեք կամ վերբեռնեք նոր ֆայլեր։</string>
+    <string name="room_placeholder_collab_room_creator_title">Բարի գալուստ Համագործակցության սենյակ</string>
+    <string name="room_placeholder_custom_room_creator_title">Բարի գալուստ Հարմարեցված սենյակ</string>
 </resources>

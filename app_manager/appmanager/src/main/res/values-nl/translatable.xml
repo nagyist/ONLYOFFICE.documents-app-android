@@ -630,7 +630,6 @@
     <string name="room_placeholder_created_room_title">Ruimte aangemaakt!</string>
     <string name="room_placeholder_created_template_title">Template created!</string>
     <string name="room_placeholder_created_room_subtitle">Maak nieuwe mappen om uw bestanden te ordenen.</string>
-    <string name="room_placeholder_created_filling_form_room_title">Welkom in de formulieren invul-ruimte</string>
     <string name="room_placeholder_created_filling_form_room_subtitle">Upload een kant-en-klaar PDF-formulier of maak nieuwe mappen om uw bestanden te ordenen</string>
     <string name="room_placeholder_created_virtual_room_title">Welkom bij de virtuele data-ruimte</string>
     <string name="room_placeholder_created_virtual_room_subtitle">Aan de slag met snelle acties:\nMaak een nieuw bestand</string>
@@ -878,9 +877,6 @@
     <string name="desc_create_from_template">Create a room based on a template. All settings, users, folders and files will be taken from the selected room
  template.</string>
     <string name="desc_info_template">Room template. Use this template to quickly create a new room.</string>
-    <string name="access_members_me_and_title">Me and %s</string>
-    <string name="access_members_me_users_groups_title">Me, %1$s and %2$s</string>
-    <string name="access_members_me_subtitle">(Me)</string>
     <string name="settings_saved_successfully">Template settings saved</string>
     <string name="template_created_successfully">Template «%s» saved</string>
     <string name="room_created_successfully">Room created successfully</string>
@@ -985,14 +981,6 @@
         Alle gedeelde links in ruimtes worden actief en de inhoud ervan is beschikbaar voor iedereen met de link. Wilt u ruimtes herstellen?
         </item>
     </plurals>
-    <plurals name="access_members_users_title">
-        <item quantity="one">%d Gebruiker</item>
-        <item quantity="other">%d Gebruikers</item>
-    </plurals>
-    <plurals name="access_members_groups_title">
-        <item quantity="one">%d Groep</item>
-        <item quantity="other">%d Groepen</item>
-    </plurals>
 
     <!-- Newly added translations (v9.1.0 - 2025-10-24) -->
     <string name="list_context_upload_to_cloud">Uploaden naar cloud</string>
@@ -1030,4 +1018,37 @@
     <string name="rooms_info_fill_form_desc">Deze kamer is voor iedereen met de link beschikbaar. Externe gebruikers hebben rechten voor het invullen van formulieren voor alle bestanden.</string>
     <string name="share_popup_access_editing">Bewerken</string>
     <string name="share_popup_access_remove">Verwijder</string>
+
+    <!-- Newly added translations (v9.3.0 - 2026-02-24) -->
+    <string name="placeholder_empty_folder_common">Er zijn hier nog geen documenten</string>
+    <string name="placeholder_empty_folder_desc_creator">Nieuwe bestanden aanmaken of uploaden</string>
+    <string name="placeholder_empty_form_folder">Hier zijn nog geen formulieren</string>
+    <string name="placeholder_empty_form_folder_viewer">Nog geen formulieren in deze map</string>
+    <string name="placeholder_empty_form_done">Nog geen voltooide formulieren</string>
+    <string name="placeholder_empty_form_subfolder">Nog geen bestanden in deze map</string>
+    <string name="placeholder_empty_form_in_progress">Er is hier nog niets</string>
+    <string name="placeholder_empty_form_folder_desc">Upload een kant-en-klaar PDF-formulier</string>
+    <string name="placeholder_empty_form_folder_viewer_desc">De formulieren die door de beheerders zijn geüpload, worden hier weergegeven.</string>
+    <string name="placeholder_empty_form_done_desc">In dit gedeelte worden alle formulieren weergegeven die compleet zijn.</string>
+    <string name="placeholder_empty_form_done_folder_desc">Hier vindt u formulieren die volledig door andere gebruikers zijn ingevuld.</string>
+    <string name="placeholder_empty_form_in_progress_desc">Dit gedeelte toont de formulieren die in behandeling zijn.</string>
+    <string name="placeholder_empty_form_in_progress_folder_desc">Hier vindt u formulieren die nog in behandeling zijn, d.w.z. formulieren die gebruikers zijn begonnen in te vullen maar nog niet hebben voltooid.</string>
+    <string name="placeholder_empty_trash">Er zijn hier nog geen items</string>
+    <string name="placeholder_no_rooms_visitor">Er zijn hier nog geen kamers</string>
+    <string name="placeholder_empty_archive_visitor_desc">Kamers die zijn gearchiveerd verschijnen hier.</string>
+    <string name="placeholder_empty_from_template">Geen sjablonen gevonden</string>
+    <string name="placeholder_empty_from_template_desc">Maak uw eerste kamer sjabloon en vervolgens kunt u op basis hiervan nieuwe kamers maken.</string>
+    <string name="operation_cancel_message">Handeling geannuleerd</string>
+    <string name="cloud_vpn_warning">Voor de beste ervaring raden wij u aan VPN uit te schakelen. Sommige serverfuncties werken mogelijk niet naar behoren.</string>
+    <string name="room_placeholder_public_room_creator_title">Welkom in de Openbare kamer</string>
+    <string name="room_placeholder_public_room_creator_subtitle">Maak of upload nieuwe bestanden of mappen om te beginnen.</string>
+    <string name="room_placeholder_empty_viewer_title">De kamer is leeg</string>
+    <string name="room_placeholder_empty_viewer_subtitle">Bestanden en mappen die door beheerders zijn gemaakt of geüpload, verschijnen hier.</string>
+    <string name="room_placeholder_form_room_creator_title">Welkom in de kamer voor het invullen van Formulieren</string>
+    <string name="room_placeholder_form_room_creator_subtitle">Upload een kant-en-klaar PDF-formulier om te beginnen.</string>
+    <string name="room_placeholder_form_room_viewer_subtitle">PDF-formulieren die door beheerders zijn geüpload, verschijnen hier.</string>
+    <string name="room_placeholder_vdr_room_creator_title">Welkom bij de Virtuele Data Kamer</string>
+    <string name="room_placeholder_creator_subtitle">Maak of upload nieuwe bestanden om te beginnen.</string>
+    <string name="room_placeholder_collab_room_creator_title">Welkom in de Samenwerkingskamer</string>
+    <string name="room_placeholder_custom_room_creator_title">Welkom in de Aangepaste kamer</string>
 </resources>

@@ -10,10 +10,11 @@
         android:pathData="M20,20m-20,0a20,20 0,1 1,40 0a20,20 0,1 1,-40 0"
         android:fillColor="#0177F0"/>
     <path
-        android:pathData="M20,20.818C22.122,20.818 24.157,21.68 25.657,23.214C26.692,24.273 27.414,25.591 27.762,27.019C28.024,28.092 27.105,29 26,29H14C12.895,29 11.976,28.092 12.238,27.019C12.586,25.591 13.308,24.273 14.343,23.214C15.843,21.68 17.878,20.818 20,20.818Z"
-        android:fillColor="#ffffff"/>
-    <path
-        android:pathData="M20,11C22.209,11 24,12.832 24,15.091C24,17.35 22.209,19.182 20,19.182C17.791,19.182 16,17.35 16,15.091C16,12.832 17.791,11 20,11Z"
-        android:fillColor="#ffffff"/>
+        android:pathData="M29.5,29L23.5,23M25.5,18C25.5,21.866 22.366,25 18.5,25C14.634,25 11.5,21.866 11.5,18C11.5,14.134 14.634,11 18.5,11C22.366,11 25.5,14.134 25.5,18Z"
+        android:strokeLineJoin="round"
+        android:strokeWidth="2"
+        android:fillColor="#00000000"
+        android:strokeColor="#ffffff"
+        android:strokeLineCap="round"/>
   </group>
 </vector>

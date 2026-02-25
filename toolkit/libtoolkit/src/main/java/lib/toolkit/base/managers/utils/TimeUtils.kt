@@ -233,4 +233,11 @@ object TimeUtils {
     fun isDateAfter(date: String): Boolean {
         return Date().after(SimpleDateFormat("dd MM yyyy").parse(date))
     }
+
+    fun isTimeOnlyFormat(dateFormat: String): Boolean {
+        val hasTimeComponent = dateFormat.contains('h') || dateFormat.contains('H')
+        val hasDateComponent = dateFormat.contains('d') || dateFormat.contains('M') || dateFormat.contains('y')
+        return hasTimeComponent && !hasDateComponent
+    }
+
 }

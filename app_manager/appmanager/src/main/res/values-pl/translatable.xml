@@ -635,21 +635,15 @@ Aplikacja korzysta teraz z języka angielskiego, ponieważ zmieniono język syst
     <string name="main_pager_docs_virtual_room">Pokoje</string>
     <string name="main_pager_docs_archive_room">Archiwum</string>
     <string name="errors_sign_in_ldap_checkbox">Zaloguj się jako Użytkownik LDAP</string>
-    <string name="placeholder_empty_folder">Brak dokumentów</string>
-    <string name="placeholder_empty_trash_desc">Wszystkie usunięte pliki są przenoszone do katalogu \'Kosz\'. Przywróć pliki usunięte przez pomyłkę lub usuń je permanentnie. Pliki w katalogu \'Kosz\' są usuwane automatycznie po 30 dniach. Należy pamiętać, że pliki usunięte z katalogu \'Kosz\' nie będą mogły zostać przywrócone</string>
     <string name="placeholder_no_users_found">Nie znaleziono użytkowników</string>
     <string name="placeholder_no_users_found_desc">Nie znaleziono użytkownika pasującego do wyszukiwanej frazy. Dostosuj parametry wyszukiwania lub wyczyść pole wyszukiwania, aby zobaczyć pełną listę użytkowników</string>
     <string name="placeholder_no_members_found">Nie znaleziono członków</string>
     <string name="placeholder_no_members_found_desc">Możesz dodać nowych członków zespołu ręcznie lub zaprosić ich za pomocą linku</string>
     <string name="placeholder_no_rooms">Witaj w DocSpace!</string>
-    <string name="placeholder_no_rooms_desc">Utwórz pierwszy pokój</string>
-    <string name="placeholder_no_rooms_visitor_desc">Pokoje, do których masz dostęp, będą widoczne tutaj</string>
     <string name="placeholder_empty_archive">Brak zarchiwizowanych pokoi</string>
-    <string name="placeholder_empty_archive_desc">Możesz archiwizować pokoje, których nie używasz i przywracać je do DocSpace w dowolnej chwili lub usuwać na stałe. Pokoje te pojawią się tutaj</string>
     <string name="placeholder_no_search_result">Brak wyników wyszukiwania</string>
     <string name="placeholder_no_search_result_desc">Nie znaleziono wyników pasujących do Twojego wyszukiwania. Spróbuj wyszukać inną frazę</string>
     <string name="placeholder_empty_room_visitor_desc">Tutaj pojawią się pliki i katalogi przesłane przez adminów</string>
-    <string name="placeholder_empty_recent_via_link_desc">Tutaj znajdziesz listę otwartych ostatnio plików udostępnionych Ci za pośrednictwem linku zewnętrznego</string>
     <string name="placeholder_payment_required">Plan Biznes wygasł</string>
     <string name="placeholder_payment_required_desc">Twój obecny plan Biznes wygasł. Odnów subskrypcję w ustawieniach konta, aby nadal móc korzystać z DocSpace. Jeśli masz jakiekolwiek pytania, skontaktuj się z działem obsługi</string>
     <string name="placeholder_payment_required_button">Odnów plan Biznes</string>
@@ -717,7 +711,7 @@ Aplikacja korzysta teraz z języka angielskiego, ponieważ zmieniono język syst
     <string name="room_duplicate_progress_hide_button">Ukryj</string>
     <string name="rooms_add_fill_forms">Pokój do wypełniania formularzy</string>
     <string name="rooms_add_fill_forms_des">Przesyłaj do pokoju formularze PDF. Zapraszaj użytkowników do wypełniania formularzy PDF. Sprawdzaj wypełnione formularze i analizuj dane automatycznie zebrane w arkuszu kalkulacyjnym.</string>
-    <string name="room_placeholder_created_filling_form_room_title">Witaj w pokoju do wypełniania formularzy</string>
+    <string name="room_placeholder_form_room_creator_title">Witaj w pokoju do wypełniania formularzy</string>
     <string name="room_placeholder_created_filling_form_room_subtitle">Prześlij gotowy formularz PDF lub utwórz nowe katalogi, aby uporządkować swoje pliki</string>
     <string name="context_protection_title">Ochrona</string>
     <string name="rooms_upload_pdf_from_docspace">Prześlij formularz PDF z DocSpace</string>
@@ -825,9 +819,6 @@ Aplikacja korzysta teraz z języka angielskiego, ponieważ zmieniono język syst
     <string name="whats_new_next">Rozpocznij</string>
 
     <!-- Newly added translations (v9.0.0 - 2025-06-09) -->
-    <string name="access_members_me_and_title">Ja i %s</string>
-    <string name="access_members_me_subtitle">(Ja)</string>
-    <string name="access_members_me_users_groups_title">Ja, %1$s i %2$s</string>
     <string name="cloud_create_account">Załóż darmowe konto</string>
     <string name="context_menu_desc">Więcej</string>
     <string name="desc_create_from_template">Utwórz pokój na podstawie szablonu. Wszystkie ustawienia, użytkownicy, katalogi i pliki zostaną wzięte z wybranego szablonu pokoju.</string>
@@ -903,7 +894,6 @@ Aplikacja korzysta teraz z języka angielskiego, ponieważ zmieniono język syst
     <string name="placeholder_connection_button">Załaduj ponownie</string>
     <string name="placeholder_connection_desc">Nie wykryto połączenia sieciowego. Sprawdź połączenie i spróbuj ponownie</string>
     <string name="placeholder_empty_templates_folder">Brak szablonów</string>
-    <string name="placeholder_empty_templates_folder_desc">Możesz utworzyć szablon z pokoju w sekcji Pokój</string>
     <string name="room_access_via_link_title">Dostęp przez link</string>
     <string name="room_created_successfully">Pokój został pomyślnie utworzony</string>
     <string name="room_placeholder_created_template_title">Szablon został utworzony!</string>
@@ -965,14 +955,6 @@ Aplikacja korzysta teraz z języka angielskiego, ponieważ zmieniono język syst
         <item quantity="one">Usuń szablon</item>
         <item quantity="other">Usuń szablony</item>
     </plurals>
-    <plurals name="access_members_users_title">
-        <item quantity="one">%d użytkownik</item>
-        <item quantity="other">%d użytkowników</item>
-    </plurals>
-    <plurals name="access_members_groups_title">
-        <item quantity="one">%d grupa</item>
-        <item quantity="other">%d grup</item>
-    </plurals>
 
     <!-- Newly added translations (v9.1.0 - 2025-10-24) -->
     <string name="dev_mode_system_logs">Logi systemowe</string>
@@ -1010,4 +992,43 @@ Aplikacja korzysta teraz z języka angielskiego, ponieważ zmieniono język syst
     <string name="rooms_info_fill_form_desc">Ten pokój jest dostępny dla każdego, kto ma link. Użytkownicy zewnętrzni będą mieli uprawnienie umożliwiające wypełnienie formularza dla wszystkich plików.</string>
     <string name="share_popup_access_editing">Edycja</string>
     <string name="share_popup_access_remove">Usuń</string>
+
+    <!-- Newly added translations (v9.3.0 - 2026-02-24) -->
+    <string name="placeholder_empty_folder">Nie ma tu jeszcze żadnych plików</string>
+    <string name="placeholder_empty_folder_common">Nie ma tu jeszcze żadnych dokumentów</string>
+    <string name="placeholder_empty_folder_desc_creator">Utwórz lub prześlij nowy plik</string>
+    <string name="placeholder_empty_form_folder">Nie ma tu jeszcze żadnych formularzy</string>
+    <string name="placeholder_empty_form_folder_viewer">Brak formularzy w tym katalogu</string>
+    <string name="placeholder_empty_form_done">Brak wypełnionych formularzy</string>
+    <string name="placeholder_empty_form_subfolder">Brak plików w tym katalogu</string>
+    <string name="placeholder_empty_form_in_progress">Nic tu nie ma</string>
+    <string name="placeholder_empty_form_folder_desc">Prześlij gotowy formularz PDF</string>
+    <string name="placeholder_empty_form_folder_viewer_desc">Tutaj pojawią się formularze przesłane przez administratorów.</string>
+    <string name="placeholder_empty_form_done_desc">W tej sekcji znajdziesz wszystkie wypełnione formularze.</string>
+    <string name="placeholder_empty_form_done_folder_desc">Tutaj znajdziesz formularze, które zostały w całości wypełnione przez innych użytkowników.</string>
+    <string name="placeholder_empty_form_in_progress_desc">W tej sekcji znajdziesz wszystkie formularze w trakcie wypełniania.</string>
+    <string name="placeholder_empty_form_in_progress_folder_desc">Tutaj znajdziesz formularze w trakcie wypełniania, czyli formularze, których użytkownicy jeszcze nie ukończyli.</string>
+    <string name="placeholder_empty_trash">Nie ma tu jeszcze żadnych pozycji</string>
+    <string name="placeholder_empty_trash_desc">Usunięte pliki i katalogi są przenoszone do Kosza, skąd można je przywrócić lub trwale usunąć. Pozycje są usuwane automatycznie po 30 dniach i nie mogą zostać przywrócone po usunięciu z Kosza.</string>
+    <string name="placeholder_no_rooms_desc">Utwórz swój pierwszy pokój, aby rozpocząć.</string>
+    <string name="placeholder_no_rooms_visitor">Nie ma tu jeszcze żadnych pokoi.</string>
+    <string name="placeholder_no_rooms_visitor_desc">Pokoje współdzielone pojawią się tutaj.</string>
+    <string name="placeholder_empty_archive_desc">Archiwizuj nieużywane pokoje i przywracaj je lub trwale usuwaj z DocSpace w dowolnej chwili. Zarchiwizowane pokoje pojawią się tutaj.</string>
+    <string name="placeholder_empty_archive_visitor_desc">Zarchiwizowane pokoje pojawią się tutaj.</string>
+    <string name="placeholder_empty_templates_folder_desc">Utwórz szablon z pokoju w sekcji Pokój.</string>
+    <string name="placeholder_empty_from_template">Nie znaleziono żadnych szablonów</string>
+    <string name="placeholder_empty_from_template_desc">Utwórz swój pierwszy szablon pokoju, aby móc tworzyć na jego podstawie nowe pokoje.</string>
+    <string name="placeholder_empty_recent_via_link_desc">Tutaj wyświetlisz ostatnio otwierane pliki udostępnione Ci przez linki zewnętrzne.</string>
+    <string name="operation_cancel_message">Operacja została anulowana</string>
+    <string name="cloud_vpn_warning">Dla najlepszych wrażeń, spróbuj wyłączyć VPN. Niektóre funkcje serwera mogą działać nieprawidłowo.</string>
+    <string name="room_placeholder_public_room_creator_title">Witaj w pokoju publicznym</string>
+    <string name="room_placeholder_public_room_creator_subtitle">Utwórz lub prześlij nowe pliki bądź katalogi, aby rozpocząć.</string>
+    <string name="room_placeholder_empty_viewer_title">Pokój jest pusty</string>
+    <string name="room_placeholder_empty_viewer_subtitle">Tutaj pojawią się pliki i katalogi utworzone lub przesłane przez administratorów.</string>
+    <string name="room_placeholder_form_room_creator_subtitle">Prześlij gotowy formularz PDF, aby rozpocząć.</string>
+    <string name="room_placeholder_form_room_viewer_subtitle">Formularze PDF przesłane przez administratorów pojawią się tutaj.</string>
+    <string name="room_placeholder_vdr_room_creator_title">Witaj w Wirtualnym pokoju danych</string>
+    <string name="room_placeholder_creator_subtitle">Utwórz lub prześlij nowe pliki, aby rozpocząć.</string>
+    <string name="room_placeholder_collab_room_creator_title">Witaj w Pokoju do współpracy</string>
+    <string name="room_placeholder_custom_room_creator_title">Witaj w Pokoju niestandardowym</string>
 </resources>

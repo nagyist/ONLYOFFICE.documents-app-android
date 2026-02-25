@@ -25,6 +25,7 @@ import app.documents.core.network.manager.models.request.RequestCreate
 import app.documents.core.network.manager.models.request.RequestCreateThumbnails
 import app.documents.core.network.manager.models.request.RequestDeleteRecent
 import app.documents.core.network.manager.models.request.RequestFavorites
+import app.documents.core.network.manager.models.request.RequestMarkAsRead
 import app.documents.core.network.manager.models.request.RequestRenameFile
 import app.documents.core.network.manager.models.request.RequestStopFilling
 import app.documents.core.network.manager.models.request.RequestTitle
@@ -61,6 +62,7 @@ import org.json.JSONObject
 import retrofit2.HttpException
 import retrofit2.Response
 import java.io.InputStream
+import java.time.Instant
 import javax.inject.Inject
 import kotlin.coroutines.resume
 
@@ -230,7 +232,7 @@ class CloudFileProvider @Inject constructor(
     }
 
     override fun delete(items: List<Item>, from: CloudFolder?): Observable<List<Operation>> {
-        return managerService.deleteBatch(getDeleteRequest(items))
+        return managerService.deleteBatch(getDeleteRequest(items, from))
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .map { responseOperationResponse: Response<ResponseOperation> ->
@@ -242,8 +244,11 @@ class CloudFileProvider @Inject constructor(
             }
     }
 
-    private fun getDeleteRequest(items: List<Item>): RequestBatchBase {
+    private fun getDeleteRequest(items: List<Item>, from: CloudFolder?): RequestBatchBase {
         val isArchive = roomCallback?.isArchive() == true
+        val isTemplate = from?.let {
+            roomCallback?.isTemplatesRoot(from.id) == true || from.isTemplate
+        } ?: false
         val filesId: MutableList<String> = mutableListOf()
         val foldersId: MutableList<String> = mutableListOf()
 
@@ -263,7 +268,7 @@ class CloudFileProvider @Inject constructor(
 
         return RequestBatchBase().apply {
             isDeleteAfter = isArchive
-            isImmediately = isArchive
+            isImmediately = isArchive || isTemplate
             fileIds = filesId
             folderIds = foldersId
         }
@@ -529,33 +534,53 @@ class CloudFileProvider @Inject constructor(
                     .replace(STATIC_DOC_URL, "")
             }
 
+            val file = fileJson.getJSONObject("file")
             val result = fileJson
                 .put("url", docService)
                 .put("fileId", id)
-                .put("canShareable", false)
+                .put("canShareable", file.getBoolean("canShare"))
+                .put("size", file.getInt("pureContentLength"))
+                .put("updated", Instant.parse(fileJson.getJSONObject("file").getString("updated")).toEpochMilli())
+
+            val notFormPdf = fileJson.getString("documentType") == "pdf" && (!fileJson
+                .getJSONObject("document")
+                .getBoolean("isForm") || !fileJson
+                .getJSONObject("document")
+                .getJSONObject("permissions")
+                .getBoolean("fillForms"))
+
+            val sdkVersion = api.getSettings().response.documentServer
+            val isCoauthoring = firebaseTool.checkCoauthoring(sdkVersion)
+            val mode = fileJson.getJSONObject("editorConfig").getString("mode")
 
             // opening not form pdf locally
-            if (fileJson.getString("documentType") == "pdf" && (!fileJson
-                    .getJSONObject("document")
-                    .getBoolean("isForm") || !fileJson
-                    .getJSONObject("document")
-                    .getJSONObject("permissions")
-                    .getBoolean("fillForms"))
-            ) {
+            if (notFormPdf || !isCoauthoring) {
+                val token = token.ifEmpty { accountRepository.getOnlineToken() ?: error("no token") }
+
+                val response = managerService.suspendDownloadFile(
+                    url = fileJson.getJSONObject("file").getString("viewUrl"),
+                    cookie = ApiContract.COOKIE_HEADER + token
+                )
+
                 val cloudFile = CloudFile().apply { this.id = id; this.title = title }
                 emit(
                     FileOpenResult.OpenLocally(
-                        file = suspendGetCachedFile(
-                            context = context,
-                            cloudFile = cloudFile,
-                            token = accountRepository.getOnlineToken() ?: token
-                        ),
+                        file = mapDownloadResponse(context, cloudFile, response),
                         fileId = cloudFile.id,
                         editType = EditType.View(),
                         access = Access.None
                     )
                 )
                 return@flow
+            }
+
+            val documentType = fileJson.getString("documentType")
+            val isForm = fileJson.getJSONObject("document").getBoolean("isForm")
+
+            val editType = when {
+                mode == "view" -> EditType.View()
+                documentType == "pdf" -> if (isForm) EditType.Fill() else EditType.View()
+                else -> EditType.Edit()
             }
 
             emit(
@@ -566,19 +591,7 @@ class CloudFileProvider @Inject constructor(
                         this.fileExst = extension
                     },
                     info = result.toString(),
-                    editType = if (fileJson.getJSONObject("editorConfig")
-                            .getString("mode") == "view"
-                    ) {
-                        EditType.View()
-                    } else if (fileJson.getString("documentType") == "pdf") {
-                        if (fileJson.getJSONObject("document").getBoolean("isForm")) {
-                            EditType.Fill()
-                        } else {
-                            EditType.View()
-                        }
-                    } else {
-                        EditType.Edit()
-                    }
+                    editType = editType
                 )
             )
         }
@@ -619,53 +632,55 @@ class CloudFileProvider @Inject constructor(
     ): Flow<NetworkResult<FileOpenResult>> {
         return flow {
             emit(FileOpenResult.Loading())
+
+            if (cloudFile.isNew) {
+                managerService.markAsRead(RequestMarkAsRead(filesIds = listOf(cloudFile.id)))
+            }
+
             val token = checkNotNull(accountRepository.getOnlineToken())
             when {
                 StringUtils.isDocument(cloudFile.fileExst) -> {
-                    if (firebaseTool.isCoauthoring()) {
-                        val document = checkPdfForm(
-                            cloudFile = cloudFile,
-                            token = token,
-                            canShareable = canBeShared,
-                            editType = editType
+
+                    if (!firebaseTool.isCoauthoring()) {
+                        emit(
+                            FileOpenResult.OpenLocally(
+                                file = suspendGetCachedFile(context, cloudFile, token),
+                                fileId = cloudFile.id,
+                                editType = editType,
+                                access = access
+                            )
                         )
+                        return@flow
+                    }
 
-                        if (editType is EditType.StartFilling && document.info != null) {
-                            emit(
-                                FileOpenResult.OpenDocumentServer(
-                                    cloudFile = cloudFile,
-                                    info = document.info,
-                                    editType = editType
-                                )
-                            )
-                            return@flow
-                        }
+                    val document = checkPdfForm(
+                        cloudFile = cloudFile,
+                        token = token,
+                        canShareable = canBeShared,
+                        editType = editType
+                    )
 
-                        val isNotFillableForm = document.isForm &&
-                                if (cloudFile.security != null) {
-                                    cloudFile.security?.fillForms != true
-                                } else {
-                                    false
-                                }
+                    // opening not editable pdf locally
+                    val adjustedEditType = adjustEditType(document.info) ?: editType
+                    if (document.isPdf || document.isForm && adjustedEditType is EditType.View) {
+                        emit(
+                            FileOpenResult.OpenLocally(
+                                file = suspendGetCachedFile(context, cloudFile, token),
+                                fileId = cloudFile.id,
+                                editType = EditType.View()
+                            )
+                        )
+                        return@flow
+                    }
 
-                        if (document.isPdf || document.info == null || isNotFillableForm) {
-                            emit(
-                                FileOpenResult.OpenLocally(
-                                    file = suspendGetCachedFile(context, cloudFile, token),
-                                    fileId = cloudFile.id,
-                                    editType = if (isNotFillableForm) EditType.View() else editType,
-                                    access = access
-                                )
+                    if (document.info != null) {
+                        emit(
+                            FileOpenResult.OpenDocumentServer(
+                                cloudFile = cloudFile,
+                                info = document.info,
+                                editType = editType
                             )
-                        } else {
-                            emit(
-                                FileOpenResult.OpenDocumentServer(
-                                    cloudFile = cloudFile,
-                                    info = document.info,
-                                    editType = editType
-                                )
-                            )
-                        }
+                        )
                     } else {
                         emit(
                             FileOpenResult.OpenLocally(
@@ -687,6 +702,13 @@ class CloudFileProvider @Inject constructor(
         }
             .flowOn(Dispatchers.IO)
             .asResult()
+    }
+
+    private fun adjustEditType(documentInfo: String?): EditType? {
+        val mode = JSONObject(documentInfo ?: return null)
+            .getJSONObject("editorConfig")
+            .getString("mode")
+        return EditType.from(mode)
     }
 
     @OptIn(InternalCoroutinesApi::class)

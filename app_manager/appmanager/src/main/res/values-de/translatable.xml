@@ -635,21 +635,15 @@
     <string name="main_pager_docs_virtual_room">Räume</string>
     <string name="main_pager_docs_archive_room">Archiv</string>
     <string name="errors_sign_in_ldap_checkbox">Als LDAP-Benutzer anmelden</string>
-    <string name="placeholder_empty_folder">Noch keine Dokumente vorhanden</string>
-    <string name="placeholder_empty_trash_desc">Alle gelöschten Dateien werden in den \'Papierkorb\' verschoben. Stellen Sie versehentlich gelöschte Dateien wieder her oder löschen Sie sie endgültig. Dateien im \'Papierkorb\' werden nach 30 Tagen automatisch gelöscht. Bitte beachten Sie, dass die aus dem \'Papierkorb\' gelöschten Dateien nicht mehr wiederhergestellt werden können</string>
     <string name="placeholder_no_users_found">Keine Benutzer gefunden</string>
     <string name="placeholder_no_users_found_desc">Keine Benutzer entsprechen Ihrer Suche. Bitte passen Sie Ihre Suchparameter an oder löschen Sie das Suchfeld, um die vollständige Liste der Benutzer anzuzeigen</string>
     <string name="placeholder_no_members_found">Keine Mitglieder gefunden</string>
     <string name="placeholder_no_members_found_desc">Sie können neue Teammitglieder manuell hinzufügen oder sie über einen Link einladen</string>
     <string name="placeholder_no_rooms">Willkommen bei DocSpace!</string>
-    <string name="placeholder_no_rooms_desc">Bitte erstellen Sie den ersten Raum</string>
-    <string name="placeholder_no_rooms_visitor_desc">Mit Ihnen geteilte Räume werden hier angezeigt</string>
     <string name="placeholder_empty_archive">Noch keine archivierten Räume hier</string>
-    <string name="placeholder_empty_archive_desc">Sie können Räume, die Sie nicht benutzen, archivieren und jederzeit in Ihrem DocSpace wiederherstellen oder dauerhaft löschen. Diese Räume werden hier angezeigt</string>
     <string name="placeholder_no_search_result">Kein Suchergebnis</string>
     <string name="placeholder_no_search_result_desc">Es konnten keine Ergebnisse gefunden werden, die Ihrer Suche entsprechen. Bitte versuchen Sie einen anderen Ausdruck</string>
     <string name="placeholder_empty_room_visitor_desc">Von Administratoren hochgeladene Dateien und Ordner werden hier angezeigt</string>
-    <string name="placeholder_empty_recent_via_link_desc">Hier finden Sie eine Liste der zuletzt geöffneten Dateien, die Sie über einen externen Link erhalten haben</string>
     <string name="placeholder_payment_required">Business-Abonnement ist abgelaufen</string>
     <string name="placeholder_payment_required_desc">Ihr aktueller Tarifplan "Business" ist abgelaufen. Bitte erneuern Sie Ihr Abonnement in den Kontoeinstellungen, um Ihren DocSpace nutzen zu können. Wenn Sie Fragen haben, wenden Sie sich bitte an den Support</string>
     <string name="placeholder_payment_required_button">Business-Abonnement erneuern</string>
@@ -717,7 +711,7 @@ Wir empfehlen Ihnen, auf die kostenlose ONLYOFFICE DocSpace Cloud umzusteigen.</
     <string name="room_duplicate_progress_hide_button">Ausblenden</string>
     <string name="rooms_add_fill_forms">Raum zum Ausfüllen von Formularen</string>
     <string name="rooms_add_fill_forms_des">Laden Sie PDF-Formulare in den Raum hoch. Fordern Sie Benutzer auf, ein PDF-Formular auszufüllen. Überprüfen Sie ausgefüllte Formulare und analysieren Sie automatisch erfasste Daten in einer Tabelle.</string>
-    <string name="room_placeholder_created_filling_form_room_title">Willkommen im Raum zum Ausfüllen von Formularen</string>
+    <string name="room_placeholder_form_room_creator_title">Willkommen im Raum zum Ausfüllen von Formularen</string>
     <string name="room_placeholder_created_filling_form_room_subtitle">Laden Sie ein fertiges PDF-Formular hoch oder erstellen Sie neue Ordner, um Ihre Dateien zu organisieren</string>
     <string name="context_protection_title">Schutz</string>
     <string name="rooms_upload_pdf_from_docspace">PDF-Formular aus DocSpace hochladen</string>
@@ -820,20 +814,17 @@ Wir empfehlen Ihnen, auf die kostenlose ONLYOFFICE DocSpace Cloud umzusteigen.</
     <string name="rooms_invite_access_description">Gäste, Benutzer und Gruppen können nicht als Raummanager zugewiesen werden. Nur Raum- und DocSpace-Admins sind für die angegebene Rolle geeignet.</string>
     <string name="whats_new_title">Was gibt\'s Neues</string>
     <string name="whats_new_next">Erste Schritte</string>
-    <string name="whats_new">Neuigkeiten in v9.1</string>
-    <string name="whats_new_1">Neue DocSpace-Bereiche</string>
-    <string name="whats_new_1_desc">Greifen Sie schneller auf Ihre Dateien zu mit speziellen DocSpace-Bereichen: Für mich freigegeben, Favoriten und Zuletzt verwendet.</string>
-    <string name="whats_new_2">Verbesserte Dateifreigabe in DocSpace</string>
-    <string name="whats_new_2_desc">Dateien lassen sich mit den optimierten Freigabe-Workflows in DocSpace 3.5 einfacher freigeben und der Zugriff verwalten.</string>
-    <string name="whats_new_3">Mehr Anmeldeoptionen</string>
-    <string name="whats_new_3_desc">Melden Sie sich mit LinkedIn, Ihrer Apple-ID oder Zoom an, um Ihr DocSpace-Konto einfacher zu erstellen und darauf zuzugreifen.</string>
-    <string name="whats_new_4">Absatz- und Zellenrichtung (RTL)</string>
-    <string name="whats_new_4_desc">Wechseln Sie die Absatz- und Tabellenzellenrichtung in allen Editoren zwischen Rechts nach links und Links nach rechts.</string>
+    <string name="whats_new">Neuigkeiten in v9.3</string>
+    <string name="whats_new_1">Erwähnungen in Kommentaren</string>
+    <string name="whats_new_1_desc">Markieren Sie Teammitglieder in den Kommentaren, um sie zu benachrichtigen und die Zusammenarbeit zu verbessern.</string>
+    <string name="whats_new_2">Wortzähler in Dokumenten</string>
+    <string name="whats_new_2_desc">Verfolgen Sie die Dokumentlänge sofort mit dem integrierten Wortzähler.</string>
+    <string name="whats_new_3">Erweiterte Suche in den Editoren</string>
+    <string name="whats_new_3_desc">Finden Sie Texte in Dokumenten, Tabellen und Präsentationen schneller mit der aktualisierten Suchfunktion im Editor.</string>
+    <string name="whats_new_4">Aktualisierte Benutzeroberfläche</string>
+    <string name="whats_new_4_desc">Profitieren Sie von aktualisierten Editor-Symbolen und einem neu gestalteten Kontextmenü für eine übersichtlichere Darstellung und einen schnelleren Zugriff auf wichtige Aktionen.</string>
 
     <!-- Newly added translations (v9.0.0 - 2025-06-09) -->
-    <string name="access_members_me_and_title">Ich und %s</string>
-    <string name="access_members_me_subtitle">(Ich)</string>
-    <string name="access_members_me_users_groups_title">Ich, %1$s und %2$s</string>
     <string name="cloud_create_account">Kostenloses Konto erstellen</string>
     <string name="context_menu_desc">Mehr</string>
     <string name="desc_create_from_template">Erstellen Sie einen Raum basierend auf einer Vorlage. Alle Einstellungen, Benutzer, Ordner und Dateien werden aus der ausgewählten Raumvorlage übernommen.</string>
@@ -909,7 +900,6 @@ Wir empfehlen Ihnen, auf die kostenlose ONLYOFFICE DocSpace Cloud umzusteigen.</
     <string name="placeholder_connection_button">Neu laden</string>
     <string name="placeholder_connection_desc">Keine Netzwerkverbindung. Bitte überprüfen Sie Ihre Verbindung und versuchen Sie es erneut.</string>
     <string name="placeholder_empty_templates_folder">Noch keine Vorlagen vorhanden</string>
-    <string name="placeholder_empty_templates_folder_desc">Sie können eine Vorlage aus einem Raum im Bereich Räume erstellen.</string>
     <string name="room_access_via_link_title">Zugang über Link</string>
     <string name="room_created_successfully">Raum erfolgreich erstellt</string>
     <string name="room_placeholder_created_template_title">Vorlage erstellt!</string>
@@ -963,14 +953,6 @@ Wir empfehlen Ihnen, auf die kostenlose ONLYOFFICE DocSpace Cloud umzusteigen.</
         <item quantity="one">Vorlage löschen</item>
         <item quantity="other">Vorlagen löschen</item>
     </plurals>
-    <plurals name="access_members_users_title">
-        <item quantity="one">%d Benutzer</item>
-        <item quantity="other">%d Benutzer</item>
-    </plurals>
-    <plurals name="access_members_groups_title">
-        <item quantity="one">%d Gruppe</item>
-        <item quantity="other">%d Gruppen</item>
-    </plurals>
 
     <!-- Newly added translations (v9.1.0 - 2025-10-24) -->
     <string name="dev_mode_system_logs">Systemprotokolle</string>
@@ -1007,4 +989,43 @@ Wir empfehlen Ihnen, auf die kostenlose ONLYOFFICE DocSpace Cloud umzusteigen.</
     <string name="rooms_info_fill_form_desc">Dieser Raum ist für alle mit dem Link zugänglich. Externe Benutzer haben die Berechtigung, Formulare auszufüllen, für alle Dateien.</string>
     <string name="share_popup_access_editing">Bearbeiten</string>
     <string name="share_popup_access_remove">Entfernen</string>
+
+    <!-- Newly added translations (v9.3.0 - 2026-02-24) -->
+    <string name="placeholder_empty_folder">Hier gibt es noch keine Dateien</string>
+    <string name="placeholder_empty_folder_common">Hier gibt es noch keine Dokumente</string>
+    <string name="placeholder_empty_folder_desc_creator">Neue Dateien erstellen oder hochladen</string>
+    <string name="placeholder_empty_form_folder">Hier gibt es noch keine Formulare</string>
+    <string name="placeholder_empty_form_folder_viewer">Noch keine Formulare in diesem Ordner</string>
+    <string name="placeholder_empty_form_done">Noch keine ausgefüllten Formulare</string>
+    <string name="placeholder_empty_form_subfolder">Noch keine Dateien in diesem Ordner</string>
+    <string name="placeholder_empty_form_in_progress">Noch nichts vorhanden</string>
+    <string name="placeholder_empty_form_folder_desc">Ein fertiges PDF-Formular hochladen</string>
+    <string name="placeholder_empty_form_folder_viewer_desc">Die von den Administratoren hochgeladenen Formulare werden hier angezeigt.</string>
+    <string name="placeholder_empty_form_done_desc">In diesem Abschnitt werden alle ausgefüllten Formulare angezeigt.</string>
+    <string name="placeholder_empty_form_done_folder_desc">Hier finden Sie Formulare, die von anderen Nutzern vollständig ausgefüllt wurden.</string>
+    <string name="placeholder_empty_form_in_progress_desc">In diesem Abschnitt werden die aktuell bearbeiteten Formulare angezeigt.</string>
+    <string name="placeholder_empty_form_in_progress_folder_desc">Hier finden Sie Formulare, die noch nicht ausgefüllt sind, d.h. Formulare, die Benutzer begonnen, aber noch nicht fertiggestellt haben.</string>
+    <string name="placeholder_empty_trash">Hier gibt es noch keine Elemente</string>
+    <string name="placeholder_empty_trash_desc">Gelöschte Dateien und Ordner landen im Papierkorb, wo Sie sie wiederherstellen oder endgültig löschen können. Elemente werden nach 30 Tagen automatisch gelöscht und können nach dem Entfernen aus dem Papierkorb nicht wiederhergestellt werden.</string>
+    <string name="placeholder_no_rooms_desc">Erstellen Sie Ihren ersten Raum, um loszulegen.</string>
+    <string name="placeholder_no_rooms_visitor">Hier gibt es noch keine Räume</string>
+    <string name="placeholder_no_rooms_visitor_desc">Die geteilten Räume werden hier angezeigt.</string>
+    <string name="placeholder_empty_archive_desc">Nicht verwendete Räume können archiviert und jederzeit in Ihrem DocSpace wiederhergestellt oder endgültig gelöscht werden. Archivierte Räume werden hier angezeigt.</string>
+    <string name="placeholder_empty_archive_visitor_desc">Archivierte Räume werden hier angezeigt.</string>
+    <string name="placeholder_empty_templates_folder_desc">Erstellen Sie eine Vorlage aus einem Raum im Bereich "Räume".</string>
+    <string name="placeholder_empty_from_template">Keine Vorlagen gefunden</string>
+    <string name="placeholder_empty_from_template_desc">Erstellen Sie Ihre erste Raumvorlage und darauf aufbauend können Sie neue Räume erstellen.</string>
+    <string name="placeholder_empty_recent_via_link_desc">Hier können Sie die zuletzt geöffneten Dateien ansehen, die Ihnen über externe Links zugewiesen wurden.</string>
+    <string name="operation_cancel_message">Operation abgesagt</string>
+    <string name="cloud_vpn_warning">Für ein optimales Nutzungserlebnis sollten Sie das VPN deaktivieren. Einige Serverfunktionen funktionieren möglicherweise nicht einwandfrei.</string>
+    <string name="room_placeholder_public_room_creator_title">Willkommen im öffentlichen Raum</string>
+    <string name="room_placeholder_public_room_creator_subtitle">Erstellen oder laden Sie neue Dateien oder Ordner hoch, um loszulegen.</string>
+    <string name="room_placeholder_empty_viewer_title">Der Raum ist leer</string>
+    <string name="room_placeholder_empty_viewer_subtitle">Hier werden Dateien und Ordner angezeigt, die von Administratoren erstellt oder hochgeladen wurden.</string>
+    <string name="room_placeholder_form_room_creator_subtitle">Laden Sie ein fertiges PDF-Formular hoch, um loszulegen.</string>
+    <string name="room_placeholder_form_room_viewer_subtitle">Von Administratoren hochgeladene PDF-Formulare werden hier angezeigt.</string>
+    <string name="room_placeholder_vdr_room_creator_title">Willkommen im virtuellen Datenraum</string>
+    <string name="room_placeholder_creator_subtitle">Erstellen oder laden Sie neue Dateien hoch, um loszulegen.</string>
+    <string name="room_placeholder_collab_room_creator_title">Willkommen im Raum für Zusammenarbeit</string>
+    <string name="room_placeholder_custom_room_creator_title">Willkommen im benutzerdefinierten Raum</string>
 </resources>

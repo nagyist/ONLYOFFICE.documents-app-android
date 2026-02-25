@@ -15,6 +15,7 @@ import androidx.core.net.toFile
 import androidx.work.Data
 import androidx.work.OneTimeWorkRequest
 import androidx.work.WorkManager
+import app.documents.core.account.AccountPreferences
 import app.documents.core.database.datasource.CloudDataSource
 import app.documents.core.database.datasource.RecentDataSource
 import app.documents.core.model.cloud.Access
@@ -50,7 +51,6 @@ import app.editors.manager.managers.works.UploadWork
 import app.editors.manager.mvp.models.filter.FilterType
 import app.editors.manager.mvp.models.filter.RoomFilterType
 import app.editors.manager.mvp.models.filter.joinToString
-import app.editors.manager.mvp.models.list.RecentViaLink
 import app.editors.manager.mvp.models.list.Templates
 import app.editors.manager.mvp.models.models.ExplorerStackMap
 import app.editors.manager.mvp.models.models.ModelExplorerStack
@@ -82,9 +82,9 @@ import lib.toolkit.base.managers.utils.TimeUtils
 import moxy.InjectViewState
 import moxy.MvpPresenter
 import moxy.presenterScope
-import okhttp3.MediaType
+import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MultipartBody
-import okhttp3.RequestBody
+import okhttp3.RequestBody.Companion.asRequestBody
 import okhttp3.ResponseBody
 import org.json.JSONException
 import retrofit2.HttpException
@@ -133,6 +133,9 @@ abstract class DocsBasePresenter<V : DocsBaseView, FP : BaseFileProvider> : MvpP
     lateinit var preferenceTool: PreferenceTool
 
     @Inject
+    lateinit var accountPreferences: AccountPreferences
+
+    @Inject
     lateinit var operationsState: OperationsState
 
     @Inject
@@ -177,6 +180,9 @@ abstract class DocsBasePresenter<V : DocsBaseView, FP : BaseFileProvider> : MvpP
 
     val keepScreenOnSetting: Boolean
         get() = preferenceTool.keepScreenOn
+
+    val isRegularUser: Boolean
+        get() = accountPreferences.isRegularUser
 
     /**
      * Modes
@@ -641,7 +647,6 @@ abstract class DocsBasePresenter<V : DocsBaseView, FP : BaseFileProvider> : MvpP
             do {
                 try {
                     if (isTerminate && batchDisposable?.isDisposed == true) {
-                        terminateOperation()
                         break
                     }
                     val response = fileProvider.getStatusOperation()?.response
@@ -666,8 +671,9 @@ abstract class DocsBasePresenter<V : DocsBaseView, FP : BaseFileProvider> : MvpP
                 provider
                     .doOnSubscribe { showDialogProgress(true, TAG_DIALOG_BATCH_TERMINATE) }
                     .subscribe({
-                        isTerminate = false
                         onBatchOperations()
+                        isTerminate = false
+                        refresh()
                     }, this::fetchError)
             )
         }
@@ -693,8 +699,8 @@ abstract class DocsBasePresenter<V : DocsBaseView, FP : BaseFileProvider> : MvpP
         batchDisposable?.let { disposable ->
             isTerminate = true
             disposable.dispose()
+            terminateOperation()
             viewState.onDialogClose()
-            refresh()
         }
     }
 
@@ -1090,10 +1096,10 @@ abstract class DocsBasePresenter<V : DocsBaseView, FP : BaseFileProvider> : MvpP
                 PlaceholderViews.Type.SEARCH
             } else {
                 if (ApiContract.SectionType.isRoom(currentSectionType) && isRoot) {
-                    if (itemClicked?.security?.editRoom == true) {
-                        PlaceholderViews.Type.NO_ROOMS
+                    if (isRegularUser) {
+                        PlaceholderViews.Type.NO_ROOMS_VIEWER
                     } else {
-                        PlaceholderViews.Type.VISITOR_NO_ROOMS
+                        PlaceholderViews.Type.NO_ROOMS
                     }
                 } else {
                     PlaceholderViews.Type.EMPTY
@@ -1237,12 +1243,12 @@ abstract class DocsBasePresenter<V : DocsBaseView, FP : BaseFileProvider> : MvpP
     }
 
     fun selectAll() {
-        viewState.onItemsSelection(modelExplorerStack.setSelection(true).toString())
+        viewState.onItemsSelection(modelExplorerStack.setSelection(true))
         setSelection(true)
     }
 
     fun deselectAll() {
-        viewState.onItemsSelection(modelExplorerStack.setSelection(false).toString())
+        viewState.onItemsSelection(modelExplorerStack.setSelection(false))
         viewState.onStateUpdateSelection(false)
         getBackStack()
     }
@@ -1256,7 +1262,7 @@ abstract class DocsBasePresenter<V : DocsBaseView, FP : BaseFileProvider> : MvpP
 
     fun onClickEvent(item: Item?, position: Int, isContext: Boolean = false) {
         itemClickedPosition = position
-        itemClicked = if (item is RecentViaLink || item is Templates) item else modelExplorerStack.getItemById(item)
+        itemClicked = item as? Templates ?: modelExplorerStack.getItemById(item)
         if (item is CloudFolder && item.isRoom) roomClicked = item
         isContextClick = isContext
     }
@@ -1382,6 +1388,7 @@ abstract class DocsBasePresenter<V : DocsBaseView, FP : BaseFileProvider> : MvpP
     }
 
     protected fun showDialogProgress(isHideButtons: Boolean, tag: String?) {
+        viewState.onDialogProgress(1, 0)
         viewState.onDialogProgress(context.getString(R.string.dialogs_wait_title), isHideButtons, tag)
     }
 
@@ -1391,7 +1398,15 @@ abstract class DocsBasePresenter<V : DocsBaseView, FP : BaseFileProvider> : MvpP
 
     protected fun onBatchOperations() {
         viewState.onDialogClose()
-        viewState.onSnackBar(context.getString(R.string.operation_complete_message))
+        viewState.onSnackBar(
+            context.getString(
+                if (isTerminate) {
+                    R.string.operation_cancel_message
+                } else {
+                    R.string.operation_complete_message
+                }
+            )
+        )
         viewState.onDocsBatchOperation()
     }
 
@@ -1596,7 +1611,12 @@ abstract class DocsBasePresenter<V : DocsBaseView, FP : BaseFileProvider> : MvpP
                 }
 
                 ApiContract.HttpCodes.CLIENT_NOT_FOUND -> {
-                    viewState.onError(context.getString(R.string.errors_client_host_not_found))
+                    if (currentFolder?.isTemplate == true) {
+                        getBackStack()
+                        refresh()
+                    } else {
+                        viewState.onError(context.getString(R.string.errors_client_host_not_found))
+                    }
                 }
 
                 ApiContract.HttpCodes.CLIENT_PAYMENT_REQUIRED -> {
@@ -1868,10 +1888,7 @@ abstract class DocsBasePresenter<V : DocsBaseView, FP : BaseFileProvider> : MvpP
             val body = MultipartBody.Part.createFormData(
                 file.name,
                 file.name,
-                RequestBody.create(
-                    MediaType.parse(ContentResolverUtils.getMimeType(context, uri)),
-                    file
-                )
+                file.asRequestBody(ContentResolverUtils.getMimeType(context, uri).toMediaType())
             )
             disposable.add(
                 provider.updateDocument(id, body)

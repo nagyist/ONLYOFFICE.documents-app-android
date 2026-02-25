@@ -66,6 +66,11 @@ class DocsRoomFragment : DocsCloudFragment() {
         return super.onOptionsItemSelected(item)
     }
 
+    override fun onItemSelected(position: Int, countSelected: String) {
+        super.onItemSelected(position, countSelected)
+        menu?.findItem(R.id.toolbar_selection_archive)?.isVisible = presenter.canArchiveRooms
+    }
+
     override fun onStateMenuSelection() {
         if (isRoom) {
             menuInflater?.inflate(R.menu.docs_select_room, menu)
@@ -194,7 +199,9 @@ class DocsRoomFragment : DocsCloudFragment() {
 
     private fun prepareDocsList(list: List<Entity>?): List<Entity> {
         val newList = list.orEmpty().toMutableList()
-        if (ApiContract.SectionType.isRoom(presenter.getSectionType()) && presenter.isRoot) {
+        if (ApiContract.SectionType.isRoom(presenter.getSectionType()) && presenter.isRoot
+            && (!presenter.isRegularUser || presenter.currentFolder?.security?.create == true)
+        ) {
             newList.add(0, Templates)
         }
         return newList

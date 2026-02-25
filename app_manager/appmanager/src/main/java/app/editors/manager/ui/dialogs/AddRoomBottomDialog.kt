@@ -7,10 +7,8 @@ import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import android.os.Bundle
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
@@ -24,24 +22,42 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.os.bundleOf
+import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.setFragmentResult
 import app.editors.manager.managers.utils.RoomUtils
 import lib.compose.ui.theme.ManagerTheme
 import lib.compose.ui.views.AppMultilineArrowItem
+import lib.compose.ui.views.NestedColumn
+import lib.toolkit.base.managers.utils.putArgs
 import lib.toolkit.base.ui.dialogs.base.BaseBottomDialog
+import lib.toolkit.base.ui.dialogs.base.FragmentListenerSetup
 
 class AddRoomBottomDialog : BaseBottomDialog() {
 
     companion object {
         const val KEY_RESULT_TYPE = "key_result_type"
+        const val KEY_RESULT_COPY_FILES = "key_result_copy_files"
         const val KEY_REQUEST_TYPE = "key_request_type"
 
         val TAG: String = AddRoomBottomDialog::class.java.simpleName
+
+        fun show(fragmentManager: FragmentManager, copyFiles: Boolean) {
+            AddRoomBottomDialog().putArgs(KEY_RESULT_COPY_FILES to copyFiles)
+                .show(fragmentManager, TAG)
+        }
     }
+
+    private val copyFiles: Boolean
+        get() = arguments?.getBoolean(KEY_RESULT_COPY_FILES) ?: false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setStyle(STYLE_NO_FRAME, lib.toolkit.base.R.style.Theme_Common_BottomSheetDialog)
+    }
+
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        (parentFragment as? FragmentListenerSetup)?.setupFragmentListener(KEY_REQUEST_TYPE)
+        return super.onCreateDialog(savedInstanceState)
     }
 
     override fun onDismiss(dialog: DialogInterface) {
@@ -61,7 +77,13 @@ class AddRoomBottomDialog : BaseBottomDialog() {
                 ManagerTheme {
                     Surface(shape = RoundedCornerShape(topStart = 10.dp, topEnd = 10.dp)) {
                         AddRoomBottomDialogContent { type ->
-                            setFragmentResult(KEY_REQUEST_TYPE, bundleOf(KEY_RESULT_TYPE to type))
+                            setFragmentResult(
+                                KEY_REQUEST_TYPE,
+                                bundleOf(
+                                    KEY_RESULT_TYPE to type,
+                                    KEY_RESULT_COPY_FILES to copyFiles
+                                )
+                            )
                             dismiss()
                         }
                     }
@@ -75,10 +97,9 @@ class AddRoomBottomDialog : BaseBottomDialog() {
 
 @Composable
 private fun AddRoomBottomDialogContent(onClick: (type: Int) -> Unit) {
-    Column(
+    NestedColumn(
         modifier = Modifier
             .background(color = MaterialTheme.colors.surface)
-            .wrapContentHeight()
             .padding(bottom = 8.dp)
     ) {
         Image(
