@@ -193,6 +193,7 @@ class EnterprisePortalFragment : BaseAppFragment(),
     }
 
     private fun nextClick() {
+        if (viewBinding?.terms?.termsCheckbox?.isChecked != true) return
         hideKeyboard(requireContext(), view?.windowToken)
         viewModel.checkPortal(viewBinding?.loginEnterprisePortalEdit?.text?.trim().toString())
     }
