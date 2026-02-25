@@ -83,9 +83,8 @@ class OneDriveFileProvider(
 
     override fun getFiles(id: String?, filter: Map<String, String>?): Observable<Explorer> {
         val searchValue = filter?.get(ApiContract.Parameters.ARG_FILTER_VALUE)?.trim().orEmpty()
-        val mapWithSearchValue = OneDriveUtils.getSortBy(filter).plus(
-            "\$filter" to "startswith(name, '$searchValue')"
-        )
+        val mapWithSearchValue = mapOf("\$filter" to "startswith(name, '$searchValue')")
+
         return if (id.isNullOrEmpty()) {
             api.getFiles(mapWithSearchValue)
         } else {
@@ -96,13 +95,13 @@ class OneDriveFileProvider(
             .observeOn(AndroidSchedulers.mainThread())
             .map { response ->
                 when (response) {
-                    is OneDriveResponse.Success -> getExplorer(response.response as DriveItemCloudTree)
+                    is OneDriveResponse.Success -> getExplorer(response.response as DriveItemCloudTree, filter)
                     is OneDriveResponse.Error -> throw response.error
                 }
             }
     }
 
-    private fun getExplorer(response: DriveItemCloudTree): Explorer {
+    private fun getExplorer(response: DriveItemCloudTree, filter: Map<String, String>?): Explorer {
         val explorer = Explorer()
         val files: MutableList<CloudFile> = mutableListOf()
         val folders: MutableList<CloudFolder> = mutableListOf()
@@ -127,6 +126,7 @@ class OneDriveFileProvider(
                 } else if (item.file != null) {
                     val file = CloudFile()
                     file.id = item.id
+                    file.fileType = item.file.mimeType
                     file.title = item.name
                     file.folderId = item.parentReference.id
                     file.pureContentLength = item.size.toLong()
@@ -136,11 +136,12 @@ class OneDriveFileProvider(
                     files.add(file)
                 }
             }
+            sortItems(files, folders, filter)
 
             val current = Current()
             current.id = parentFolder.id
             current.filesCount = files.size.toString()
-            current.foldersCount = files.size.toString()
+            current.foldersCount = folders.size.toString()
             current.title = parentFolder.title
 
             explorer.current = current
@@ -159,6 +160,35 @@ class OneDriveFileProvider(
             }
         }
         return explorer
+    }
+
+    private fun sortItems(
+        files: MutableList<CloudFile>,
+        folders: MutableList<CloudFolder>,
+        filter: Map<String, String>?
+    ) {
+        val sortBy = filter?.get(ApiContract.Parameters.ARG_SORT_BY)
+        val isAsc = filter?.get(ApiContract.Parameters.ARG_SORT_ORDER) == ApiContract.Parameters.VAL_SORT_ORDER_ASC
+
+        val foldersComparator = when (sortBy) {
+            ApiContract.Parameters.VAL_SORT_BY_UPDATED -> compareBy<CloudFolder> { it.updated }
+                .let { if (isAsc) it else it.reversed() }
+
+            ApiContract.Parameters.VAL_SORT_BY_TITLE -> compareBy<CloudFolder> { it.title.lowercase() }
+                .let { if (isAsc) it else it.reversed() }
+
+            else -> compareBy { it.title.lowercase() }
+        }
+
+        val filesComparator = when (sortBy) {
+            ApiContract.Parameters.VAL_SORT_BY_SIZE -> compareBy { it.pureContentLength }
+            ApiContract.Parameters.VAL_SORT_BY_UPDATED -> compareBy { it.updated }
+            ApiContract.Parameters.VAL_SORT_BY_TYPE -> compareBy { it.fileType }
+            else -> compareBy<CloudFile> { it.title.lowercase() }
+        }.let { if (isAsc) it else it.reversed() }
+
+        folders.sortWith(foldersComparator)
+        files.sortWith(filesComparator)
     }
 
     @SuppressLint("MissingPermission")

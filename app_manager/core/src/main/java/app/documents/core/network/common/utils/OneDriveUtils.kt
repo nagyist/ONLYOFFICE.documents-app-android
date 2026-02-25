@@ -40,24 +40,4 @@ object OneDriveUtils {
         app.documents.core.network.BuildConfig.ONE_DRIVE_COM_CLIENT_ID,
         app.documents.core.network.BuildConfig.ONE_DRIVE_COM_REDIRECT_URL
     )
-
-    fun getSortBy(filter: Map<String, String>?): Map<String, String> {
-        val resultMap = mutableMapOf(KEY_SORT to "")
-        when (filter?.get(ApiContract.Parameters.ARG_SORT_BY)) {
-            ApiContract.Parameters.VAL_SORT_BY_TITLE -> resultMap[KEY_SORT] = VAL_SORT_NAME + " ${getSortOrder(filter)}"
-            ApiContract.Parameters.VAL_SORT_BY_SIZE -> resultMap[KEY_SORT] = VAL_SORT_SIZE + " ${getSortOrder(filter)}"
-            ApiContract.Parameters.VAL_SORT_BY_UPDATED -> resultMap[KEY_SORT] =
-                VAL_SORT_UPDATED + " ${getSortOrder(filter)}"
-        }
-        return resultMap
-    }
-
-    private fun getSortOrder(filter: Map<String, String>?): String {
-        return when (filter?.get(ApiContract.Parameters.ARG_SORT_ORDER)) {
-            ApiContract.Parameters.VAL_SORT_ORDER_ASC -> VAL_SORT_ASC
-            ApiContract.Parameters.VAL_SORT_ORDER_DESC -> VAL_SORT_DESC
-            else -> VAL_SORT_ASC
-        }
-    }
-
 }
