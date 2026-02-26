@@ -41,4 +41,15 @@
         <item quantity="one">년</item>
         <item quantity="other">년</item>
     </plurals>
+    <string name="access_members_me_and_title">나와 %s</string>
+    <string name="access_members_me_users_groups_title">나, %1$s 및 %2$s</string>
+    <string name="access_members_me_subtitle">(나)</string>
+    <plurals name="access_members_users_title">
+        <item quantity="one">%d 사용자</item>
+        <item quantity="other">%d 사용자</item>
+    </plurals>
+    <plurals name="access_members_groups_title">
+        <item quantity="one">%d 그룹</item>
+        <item quantity="other">%d 그룹</item>
+    </plurals>
 </resources>
