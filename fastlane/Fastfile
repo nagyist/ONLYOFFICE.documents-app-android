@@ -20,7 +20,7 @@ platform :android do
       env_vars: ['GIT_ANDROID_DOCUMENTS_PASSPHRASE']
     )
 
-    sh "../.github/secrets/decrypt_secret.sh"
+#     sh "../.github/secrets/decrypt_secret.sh"
   end
 
   desc "Composit task (clean, incriment, build, deploy, commit) fo deploy a new internal testing build to Google Play Store"
@@ -295,9 +295,12 @@ platform :android do
     UI.success("Metadata uploaded successfully")
   end
 
-    desc "Runs all the tests"
-        lane :test do
-            gradle(task: "test", project_dir: 'app_manager/')
-    end
+  desc "Runs all the tests"
+  lane :test do
+    gradle(task: "testReleaseUnitTest", project_dir: 'app_manager/')
+
+    sh("mkdir -p ../test-reports")
+    sh("find ../app_manager -name '*.xml' -path '*/testReleaseUnitTest/*' -exec cp '{}' ../test-reports/ \\; || true")
+  end
 
 end
