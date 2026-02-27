@@ -265,11 +265,11 @@ platform :android do
 
   desc "Build the application as APK files for all platforms"
   lane :apk do |options|
-    # Build
     gradle(
       task: 'assemble',
       build_type: 'Release',
       project_dir: 'app_manager/',
+      flags: "--max-workers 2"
     )
 
   end
