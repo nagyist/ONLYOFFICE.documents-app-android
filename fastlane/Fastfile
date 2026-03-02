@@ -265,11 +265,11 @@ platform :android do
 
   desc "Build the application as APK files for all platforms"
   lane :apk do |options|
-    # Build
     gradle(
       task: 'assemble',
       build_type: 'Release',
       project_dir: 'app_manager/',
+      flags: "--max-workers 2"
     )
 
   end
@@ -295,9 +295,12 @@ platform :android do
     UI.success("Metadata uploaded successfully")
   end
 
-    desc "Runs all the tests"
-        lane :test do
-            gradle(task: "test", project_dir: 'app_manager/')
-    end
+  desc "Runs all the tests"
+  lane :test do
+    gradle(task: "testReleaseUnitTest", project_dir: 'app_manager/')
+
+    sh("mkdir -p ../test-reports")
+    sh("find ../app_manager -name '*.xml' -path '*/testReleaseUnitTest/*' -exec cp '{}' ../test-reports/ \\; || true")
+  end
 
 end
