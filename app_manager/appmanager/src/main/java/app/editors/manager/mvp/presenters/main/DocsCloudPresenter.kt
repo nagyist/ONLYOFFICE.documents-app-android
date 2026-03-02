@@ -10,7 +10,6 @@ import app.documents.core.model.cloud.CloudAccount
 import app.documents.core.model.cloud.isDocSpace
 import app.documents.core.network.common.NetworkResult
 import app.documents.core.network.common.contracts.ApiContract
-import app.documents.core.network.common.extensions.request
 import app.documents.core.network.manager.ManagerService
 import app.documents.core.network.manager.models.explorer.CloudFile
 import app.documents.core.network.manager.models.explorer.CloudFolder
@@ -33,7 +32,6 @@ import app.editors.manager.app.api
 import app.editors.manager.app.cloudFileProvider
 import app.editors.manager.app.roomApi
 import app.editors.manager.app.roomProvider
-import app.editors.manager.app.shareApi
 import app.editors.manager.managers.receivers.DownloadReceiver
 import app.editors.manager.managers.receivers.DownloadReceiver.OnDownloadListener
 import app.editors.manager.managers.receivers.RoomDuplicateReceiver
@@ -42,8 +40,10 @@ import app.editors.manager.managers.receivers.UploadReceiver.OnUploadListener
 import app.editors.manager.managers.utils.FirebaseUtils
 import app.editors.manager.managers.works.RoomDuplicateWork
 import app.editors.manager.mvp.models.list.RecentViaLink
+import app.editors.manager.mvp.models.filter.Filter
 import app.editors.manager.mvp.models.list.Templates
 import app.editors.manager.mvp.models.states.OperationsState
+import app.editors.manager.mvp.models.ui.SharingType
 import app.editors.manager.mvp.views.main.DocsCloudView
 import app.editors.manager.ui.dialogs.MoveCopyDialog
 import app.editors.manager.ui.fragments.main.DocsRoomFragment.Companion.TAG_DELETE_TEMPLATE
@@ -156,58 +156,60 @@ class DocsCloudPresenter(private val account: CloudAccount) : DocsBasePresenter<
 
     override fun onItemClick(item: Item, position: Int) {
         onClickEvent(item, position)
-        itemClicked?.let { itemClicked ->
-            if (isSelectionMode) {
-                val pickerMode = this.pickerMode
-                if (pickerMode is PickerMode.Files) {
-                    if (itemClicked is CloudFolder) {
-                        openFolder(itemClicked.id, position)
-                    } else if (itemClicked is CloudFile) {
-                        if (itemClicked.isPdfForm) pickerMode.selectId(itemClicked.id)
-                        modelExplorerStack.setSelectById(item, !itemClicked.isSelected)
-                        viewState.onStateUpdateSelection(true)
-                        viewState.onItemSelected(
-                            position,
-                            pickerMode.selectedIds.size.toString()
-                        )
-                    }
-                    return
-                }
-                modelExplorerStack.setSelectById(item, !itemClicked.isSelected)
-                if (!isSelectedItemsEmpty) {
-                    viewState.onItemSelected(
-                        position,
-                        modelExplorerStack.countSelectedItems.toString()
-                    )
-                }
-            } else if (isTrashMode && currentSectionType != ApiContract.SectionType.CLOUD_ARCHIVE_ROOM) {
+        val clickedItem = itemClicked ?: return
+
+        when {
+            isSelectionMode -> handleSelectionModeClick(clickedItem, position)
+            isTrashMode && currentSectionType != ApiContract.SectionType.CLOUD_ARCHIVE_ROOM -> {
                 viewState.onSnackBarWithAction(
                     context.getString(R.string.trash_snackbar_move_text),
                     context.getString(R.string.trash_snackbar_move_button)
                 ) { moveCopySelected(OperationsState.OperationType.RESTORE) }
-            } else {
-                if (itemClicked is CloudFolder) {
-                    if (itemClicked.isRoom && itemClicked.passwordProtected) {
-                        viewState.onRoomViaLinkPasswordRequired(false, TAG_PROTECTED_ROOM_OPEN_FOLDER)
-                    } else {
-                        openFolder(itemClicked.id, position)
-                    }
-                } else if (itemClicked is CloudFile) {
-                    if (FileExtensions.isOpenFormat(itemClicked.clearExt)) {
-                        viewState.onConversionQuestion()
-                    } else {
-                        if (StringUtils.getExtension(itemClicked.fileExst) == Extension.PDF) {
-                            openFillFormFile()
-                        } else {
-                            openFile(EditType.Edit())
-                        }
-                    }
-                } else if (itemClicked is RecentViaLink) {
-                    openRecentViaLink()
-                } else if (itemClicked is Templates){
-                    openTemplates()
+            }
+            else -> handleNormalModeClick(clickedItem, position)
+        }
+    }
+
+    private fun handleSelectionModeClick(item: Item, position: Int) {
+        val picker = pickerMode
+        if (picker is PickerMode.Files) {
+            when (item) {
+                is CloudFolder -> openFolder(item.id, position)
+                is CloudFile -> {
+                    if (item.isPdfForm) picker.selectId(item.id)
+                    modelExplorerStack.setSelectById(item, !item.isSelected)
+                    viewState.onStateUpdateSelection(true)
+                    viewState.onItemSelected(position, picker.selectedIds.size.toString())
                 }
             }
+            return
+        }
+
+        modelExplorerStack.setSelectById(item, !item.isSelected)
+        if (!isSelectedItemsEmpty) {
+            viewState.onItemSelected(position, modelExplorerStack.countSelectedItems.toString())
+        }
+    }
+
+    private fun handleNormalModeClick(item: Item, position: Int) {
+        when (item) {
+            is CloudFolder -> {
+                if (item.isRoom && item.passwordProtected) {
+                    viewState.onRoomViaLinkPasswordRequired(false, TAG_PROTECTED_ROOM_OPEN_FOLDER)
+                } else {
+                    openFolder(item.id, position)
+                }
+            }
+            is CloudFile -> {
+                if (FileExtensions.isOpenFormat(item.clearExt)) {
+                    viewState.onConversionQuestion()
+                } else if (StringUtils.getExtension(item.fileExst) == Extension.PDF) {
+                    openFillFormFile()
+                } else {
+                    openFile(EditType.Edit())
+                }
+            }
+            is Templates -> openTemplates()
         }
     }
 
@@ -574,19 +576,20 @@ class DocsCloudPresenter(private val account: CloudAccount) : DocsBasePresenter<
 
     fun saveExternalLinkToClipboard() {
         itemClicked?.let { item ->
-            presenterScope.launch {
-                request(
-                    func = { context.shareApi.getShareFile(item.id) },
-                    map = { response ->
-                        response.response.find { it.sharedTo.shareLink.isNotEmpty() }?.sharedTo?.shareLink ?: ""
-                    },
-                    onSuccess = { externalLink ->
-                        if (externalLink.isNotEmpty()) {
-                            setDataToClipboard(externalLink, (item as? CloudFile)?.customFilterEnabled)
-                        } else {
-                            viewState.onSnackBar(context.getString(R.string.share_access_denied))
-                        }
-                    }, onError = ::fetchError
+            if (item.isCanShare) {
+                handleExternalLink(
+                    id = item.id,
+                    access = item.linkAccess,
+                    isRoom = false,
+                    isFolder = item is CloudFolder
+                )
+            } else {
+                setDataToClipboard(
+                    getInternalLink(
+                        id = item.id,
+                        isRoom = false,
+                        extension = (item as? CloudFile)?.fileExst
+                    )
                 )
             }
         }
@@ -617,10 +620,21 @@ class DocsCloudPresenter(private val account: CloudAccount) : DocsBasePresenter<
         }
     }
 
-    fun updateShareBadge(shared: Boolean) {
+    fun updateShareBadge(sharedType: SharingType) {
         itemClicked?.let { item ->
-            if (item.shared != shared) {
+            val (shared, forUser) = sharedType.toFlags()
+            if (item.shared != shared || (isUserSection && item.sharedForUser != forUser)) {
                 item.shared = shared
+                if (isUserSection) item.sharedForUser = forUser
+                viewState.onUpdateItemState()
+            }
+        }
+    }
+
+    private fun updateShareBadge() {
+        itemClicked?.let { item ->
+            if (!item.shared && !item.showShareBadge) {
+                item.shared = true
                 viewState.onUpdateItemState()
             }
         }
@@ -778,6 +792,9 @@ class DocsCloudPresenter(private val account: CloudAccount) : DocsBasePresenter<
     val areItemsRemovable: Boolean
         get() = modelExplorerStack.selectedFolders.none { it.security?.delete == false }
 
+    val canArchiveRooms: Boolean
+        get() = isRoot && modelExplorerStack.selectedFolders.none { it.security?.move == false }
+
     val isContextOwner: Boolean
         get() = StringUtils.equals(modelExplorerStack.currentFolderOwnerId, account.id)
 
@@ -904,17 +921,15 @@ class DocsCloudPresenter(private val account: CloudAccount) : DocsBasePresenter<
         if (isRoom) {
             copyRoomLink()
         } else {
-            (itemClicked as? CloudFolder)?.let { saveLink(getInternalLink(it)) }
+            saveExternalLinkToClipboard()
         }
     }
 
     fun copyLinkFromContextMenu() {
-        val item = itemClicked
-        when {
-            item is CloudFile && currentFolder?.roomType == ApiContract.RoomType.PUBLIC_ROOM -> copyRoomLink(item.id)
-            (item as? CloudFolder)?.isRoom == true -> copyRoomLink()
-            item is CloudFolder -> saveLink(getInternalLink(item))
-            else -> saveExternalLinkToClipboard()
+        if ((itemClicked as? CloudFolder)?.isRoom == true) {
+            copyRoomLink()
+        } else {
+            saveExternalLinkToClipboard()
         }
     }
 
@@ -1102,28 +1117,46 @@ class DocsCloudPresenter(private val account: CloudAccount) : DocsBasePresenter<
     fun deleteTemplate() {
         showDialogProgress(true, TAG_DIALOG_CANCEL_BATCH_OPERATIONS)
         fun onSuccess(msgId: Int) {
-            viewState.onDialogProgress(100, 100)
             viewState.onDialogClose()
             viewState.onSnackBar(context.getString(msgId))
             if (currentFolder?.isTemplate == true) getBackStack()
             refresh()
         }
 
-        if (isSelectionMode && modelExplorerStack.countSelectedItems > 0) {
-            disposable.add(
-                fileProvider.delete(modelExplorerStack.selectedFolders, null)
-                    .subscribe({
-                        deselectAll()
-                        onSuccess(R.string.templates_delete_success)
-                    }, ::fetchError)
+        val currentFolder = CloudFolder().apply {
+            id = modelExplorerStack.currentId.orEmpty()
+            rootFolderType = modelExplorerStack.rootFolderType.toString()
+            roomType = currentFolder?.roomType ?: -1
+        }
+
+        val deleteDisposable = if (isSelectionMode && modelExplorerStack.countSelectedItems > 0) {
+            fileProvider.delete(
+                items = modelExplorerStack.selectedFolders,
+                from = currentFolder
             )
         } else {
             roomClicked?.let { template ->
-                disposable.add(
-                    fileProvider.delete(listOf(template), null)
-                        .subscribe({ onSuccess(R.string.template_delete_success) }, ::fetchError)
-                )
+                fileProvider.delete(listOf(template), currentFolder)
             }
+        }
+
+        deleteDisposable?.let {
+            batchDisposable = deleteDisposable.switchMap { status }
+                .subscribe(
+                    { progress: Int? ->
+                        viewState.onDialogProgress(
+                            FileUtils.LOAD_MAX_PROGRESS,
+                            progress ?: 0
+                        )
+                    }, ::fetchError
+                ) {
+                    if (isSelectionMode) {
+                        deselectAll()
+                        onSuccess(R.string.templates_delete_success)
+                    } else {
+                        onSuccess(R.string.template_delete_success)
+                    }
+                }
         }
     }
 
@@ -1273,30 +1306,42 @@ class DocsCloudPresenter(private val account: CloudAccount) : DocsBasePresenter<
         )
     }
 
-    private fun copyRoomLink(itemId: String? = null) {
-        if (itemId != null) {
-            handleExternalLink(id = itemId, isFile = true)
-        } else {
-            roomClicked?.let { room ->
-                if (isTemplatesFolder || room.roomType == ApiContract.RoomType.COLLABORATION_ROOM
-                    || room.roomType == ApiContract.RoomType.VIRTUAL_ROOM
-                ) {
-                    setDataToClipboard(getInternalLink(room))
-                } else {
-                    handleExternalLink(room.id)
-                }
+    private fun copyRoomLink() {
+        roomClicked?.let { room ->
+            if (isTemplatesFolder || room.roomType == ApiContract.RoomType.COLLABORATION_ROOM
+                || room.roomType == ApiContract.RoomType.VIRTUAL_ROOM
+            ) {
+                setDataToClipboard(getInternalLink(room.id, isRoom = true))
+            } else {
+                handleExternalLink(room.id)
             }
         }
     }
 
-    private fun handleExternalLink(id: String, isFile: Boolean = false) {
+    private fun handleExternalLink(
+        id: String,
+        access: Int = Access.Read.code,
+        isRoom: Boolean = true,
+        isFolder: Boolean = false
+    ) {
         presenterScope.launch {
             try {
-                val externalLink = roomProvider?.getExternalLink(id = id, isFile = isFile)
+                val externalLink = if (isRoom || checkDocSpaceVersion("3.0.0")) {
+                    roomProvider?.getExternalLink(
+                        id = id,
+                        access = access,
+                        isRoom = isRoom,
+                        isFolder = isFolder
+                    )
+                } else {
+                    roomProvider?.getExternalLink(id)
+                }?.sharedTo?.shareLink
+
                 withContext(Dispatchers.Main) {
                     if (externalLink.isNullOrEmpty()) {
                         viewState.onError(context.getString(R.string.errors_unknown_error))
                     } else {
+                        if (!isRoom) updateShareBadge()
                         saveLink(externalLink)
                     }
                 }
@@ -1311,12 +1356,15 @@ class DocsCloudPresenter(private val account: CloudAccount) : DocsBasePresenter<
         viewState.onSnackBar(context.getString(R.string.rooms_info_copy_link_to_clipboard))
     }
 
-    private fun getInternalLink(folder: CloudFolder): String {
-        return "${context.accountOnline?.portal?.urlWithScheme}" + if (folder.isRoom) {
-            "/rooms/shared/filter?folder=${folder.id}"
-        } else {
-            "rooms/shared/${folder.id}/filter?folder=${folder.id}"
-        }
+    private fun getInternalLink(id: String, isRoom: Boolean, extension: String? = null): String {
+        return "${context.accountOnline?.portal?.urlWithScheme}" +
+                when {
+                    isRoom -> "/rooms/shared/filter?folder=$id"
+                    extension == null -> "/rooms/shared/$id/filter?folder=$id"
+                    StringUtils.isDocument(extension) -> "/doceditor?fileId=$id"
+                    StringUtils.isMedia(extension) -> "/media/view/$id"
+                    else -> ""
+                }
     }
 
     fun muteRoomNotifications(muted: Boolean) {

@@ -4,7 +4,6 @@ import android.content.Context
 import android.os.Bundle
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import app.documents.core.model.cloud.CloudAccount
 import app.editors.manager.BuildConfig
 import app.editors.manager.R
 import app.editors.manager.app.App.Companion.getApp
@@ -98,9 +97,15 @@ object FirebaseUtils {
                     if (task.isSuccessful) {
                         config.activate()
                         block(config.getBoolean(KEY_CAPTCHA))
+                    } else {
+                        block(false)
                     }
                 }
+            } ?: run {
+                block(false)
             }
+        } else {
+            block(false)
         }
     }
 
@@ -120,7 +125,7 @@ object FirebaseUtils {
 
     fun checkSdkVersion(
         context: Context,
-        account: CloudAccount,
+        webSdk: String,
         onResult: (isCoauthoring: Boolean) -> Unit
     ) {
         getSdk { allowCoauthoring, checkSdkFully ->
@@ -128,12 +133,6 @@ object FirebaseUtils {
                 onResult(false)
                 return@getSdk
             }
-
-            val webSdk = account
-                .portal
-                .version
-                .documentServerVersion
-                .replace(".", "")
 
             if (webSdk.isEmpty()) {
                 onResult(false)

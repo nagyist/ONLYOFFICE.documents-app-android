@@ -32,6 +32,7 @@
     <color name="colorOnBottomBarInActive">#8E8E93</color>
     <color name="colorFileThumbnailBorder">#E4E4E4</color>
     <color name="colorBottomDialogBorder">@color/colorOutline</color>
+    <color name="colorIconBorder">#444444</color>
 
     <!-- Editors -->
     <color name="colorDocTint">#446995</color>

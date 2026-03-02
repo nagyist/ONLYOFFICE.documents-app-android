@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Translations added in version 9.3.0 - 2026-02-12 -->
+    <string name="dialogs_edit_forbidden_symbols">다음 기호는 사용하지 마세요\u0020</string>
+    <string name="dialogs_edit_forbidden_name">잘못된 이름</string>
+    <string name="sizes_bytes">바이트</string>
+    <string name="sizes_kilobytes">KB</string>
+    <string name="sizes_megabytes">MB</string>
+    <string name="sizes_gigabytes">GB</string>
+    <string name="sizes_terabytes">TB</string>
+    <string name="chooser_email_client">이메일 클라이언트 선택…</string>
+    <string name="about_email_subject">Android용 ONLYOFFICE Documents 피드백</string>
+    <string name="about_feedback">피드백 및 지원</string>
+    <string name="text_hint_required">필수</string>
+    <string name="help_and_feedback_title">도움말 &amp; 피드백</string>
+    <string name="help_and_feedback_suggest_a_feature">기능 제안</string>
+    <string name="help_and_feedback_contact_support">지원 문의</string>
+    <string name="help_and_feedback_help_center">도움말 센터</string>
+    <string name="export_send_copy">사본 보내기</string>
+    <string name="common_accept">수락</string>
+    <string name="common_cancel">취소</string>
+    <string name="common_next">다음</string>
+    <string name="common_previous">이전</string>
+    <string name="common_done">완료</string>
+    <string name="common_ok">확인</string>
+    <string name="settings_fonts_title">글꼴</string>
+    <string name="settings_view">보기</string>
+    <plurals name="days">
+        <item quantity="one">일</item>
+        <item quantity="other">일</item>
+    </plurals>
+    <plurals name="hours">
+        <item quantity="one">시간</item>
+        <item quantity="other">시간</item>
+    </plurals>
+    <plurals name="months">
+        <item quantity="one">개월</item>
+        <item quantity="other">개월</item>
+    </plurals>
+    <plurals name="years">
+        <item quantity="one">년</item>
+        <item quantity="other">년</item>
+    </plurals>
+    <string name="access_members_me_and_title">나와 %s</string>
+    <string name="access_members_me_users_groups_title">나, %1$s 및 %2$s</string>
+    <string name="access_members_me_subtitle">(나)</string>
+    <plurals name="access_members_users_title">
+        <item quantity="one">%d 사용자</item>
+        <item quantity="other">%d 사용자</item>
+    </plurals>
+    <plurals name="access_members_groups_title">
+        <item quantity="one">%d 그룹</item>
+        <item quantity="other">%d 그룹</item>
+    </plurals>
+</resources>

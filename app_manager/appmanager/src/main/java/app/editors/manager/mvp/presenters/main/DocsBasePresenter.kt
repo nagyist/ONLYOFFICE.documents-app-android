@@ -52,7 +52,6 @@ import app.editors.manager.managers.works.UploadWork
 import app.editors.manager.mvp.models.filter.FilterType
 import app.editors.manager.mvp.models.filter.RoomFilterType
 import app.editors.manager.mvp.models.filter.joinToString
-import app.editors.manager.mvp.models.list.RecentViaLink
 import app.editors.manager.mvp.models.list.Templates
 import app.editors.manager.mvp.models.models.ExplorerStackMap
 import app.editors.manager.mvp.models.models.ModelExplorerStack
@@ -652,7 +651,6 @@ abstract class DocsBasePresenter<V : DocsBaseView, FP : BaseFileProvider> : MvpP
             do {
                 try {
                     if (isTerminate && batchDisposable?.isDisposed == true) {
-                        terminateOperation()
                         break
                     }
                     val response = fileProvider.getStatusOperation()?.response
@@ -677,8 +675,9 @@ abstract class DocsBasePresenter<V : DocsBaseView, FP : BaseFileProvider> : MvpP
                 provider
                     .doOnSubscribe { showDialogProgress(true, TAG_DIALOG_BATCH_TERMINATE) }
                     .subscribe({
-                        isTerminate = false
                         onBatchOperations()
+                        isTerminate = false
+                        refresh()
                     }, this::fetchError)
             )
         }
@@ -704,8 +703,8 @@ abstract class DocsBasePresenter<V : DocsBaseView, FP : BaseFileProvider> : MvpP
         batchDisposable?.let { disposable ->
             isTerminate = true
             disposable.dispose()
+            terminateOperation()
             viewState.onDialogClose()
-            refresh()
         }
     }
 
@@ -1270,7 +1269,7 @@ abstract class DocsBasePresenter<V : DocsBaseView, FP : BaseFileProvider> : MvpP
 
     fun onClickEvent(item: Item?, position: Int, isContext: Boolean = false) {
         itemClickedPosition = position
-        itemClicked = if (item is RecentViaLink || item is Templates) item else modelExplorerStack.getItemById(item)
+        itemClicked = item as? Templates ?: modelExplorerStack.getItemById(item)
         if (item is CloudFolder && item.isRoom) roomClicked = item
         isContextClick = isContext
     }
@@ -1396,6 +1395,7 @@ abstract class DocsBasePresenter<V : DocsBaseView, FP : BaseFileProvider> : MvpP
     }
 
     protected fun showDialogProgress(isHideButtons: Boolean, tag: String?) {
+        viewState.onDialogProgress(1, 0)
         viewState.onDialogProgress(context.getString(R.string.dialogs_wait_title), isHideButtons, tag)
     }
 
@@ -1405,7 +1405,15 @@ abstract class DocsBasePresenter<V : DocsBaseView, FP : BaseFileProvider> : MvpP
 
     protected fun onBatchOperations() {
         viewState.onDialogClose()
-        viewState.onSnackBar(context.getString(R.string.operation_complete_message))
+        viewState.onSnackBar(
+            context.getString(
+                if (isTerminate) {
+                    R.string.operation_cancel_message
+                } else {
+                    R.string.operation_complete_message
+                }
+            )
+        )
         viewState.onDocsBatchOperation()
     }
 
@@ -1610,7 +1618,12 @@ abstract class DocsBasePresenter<V : DocsBaseView, FP : BaseFileProvider> : MvpP
                 }
 
                 ApiContract.HttpCodes.CLIENT_NOT_FOUND -> {
-                    viewState.onError(context.getString(R.string.errors_client_host_not_found))
+                    if (currentFolder?.isTemplate == true) {
+                        getBackStack()
+                        refresh()
+                    } else {
+                        viewState.onError(context.getString(R.string.errors_client_host_not_found))
+                    }
                 }
 
                 ApiContract.HttpCodes.CLIENT_PAYMENT_REQUIRED -> {

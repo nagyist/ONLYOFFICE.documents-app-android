@@ -3,6 +3,7 @@ package app.documents.core.network.login
 import app.documents.core.model.cloud.CloudPortal
 import app.documents.core.model.login.AllSettings
 import app.documents.core.model.login.Capabilities
+import app.documents.core.model.login.PasswordHashSettings
 import app.documents.core.model.login.Settings
 import app.documents.core.model.login.Token
 import app.documents.core.model.login.User
@@ -22,6 +23,8 @@ interface CloudLoginDataSource {
     suspend fun getSettings(accessToken: String): Settings
 
     suspend fun getAllSettings(accessToken: String): AllSettings
+
+    suspend fun getPasswordHashSettings(): PasswordHashSettings?
 
     suspend fun smsSignIn(request: RequestSignIn, smsCode: String): Token
 

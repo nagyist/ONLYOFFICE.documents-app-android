@@ -870,20 +870,17 @@
     <string name="rooms_invite_access_description">无法将访客、用户和群组指定为房间管理员。只有房间和协作空间管理员才适合指定角色。</string>
     <string name="whats_new_title">新增功能</string>
     <string name="whats_new_next">开始</string>
-    <string name="whats_new">v9.1 新功能</string>
-    <string name="whats_new_1">全新协作空间板块</string>
-    <string name="whats_new_1_desc">使用协作空间专属板块（包括“共享”、“收藏”和“最近”），更便捷访问文件。</string>
-    <string name="whats_new_2">增强的协作空间文件共享功能</string>
-    <string name="whats_new_2_desc">协作空间 3.5 改进了共享工作流程，让您更轻松地共享文件并管理访问权限。</string>
-    <string name="whats_new_3">社交媒体登录选项</string>
-    <string name="whats_new_3_desc">使用 LinkedIn、Apple ID 或 Zoom 登录，更轻松地创建和访问您的协作空间帐户。</string>
-    <string name="whats_new_4">段落和单元格方向（从右到左）</string>
-    <string name="whats_new_4_desc">在所有编辑器中切换段落和表格单元格的从右到左和从左到右方向。</string>
+    <string name="whats_new">v9.3 新功能</string>
+    <string name="whats_new_1">评论中提及成员</string>
+    <string name="whats_new_1_desc">在评论中提及团队成员，及时通知并提升协作效率</string>
+    <string name="whats_new_2">文档字数统计</string>
+    <string name="whats_new_2_desc">内置字数统计，随时查看文档长度</string>
+    <string name="whats_new_3">编辑器搜索优化</string>
+    <string name="whats_new_3_desc">在文档、表格和演示中更快速查找内容</string>
+    <string name="whats_new_4">界面更新</string>
+    <string name="whats_new_4_desc">全新图标与重设计的上下文菜单，操作更直观高效</string>
 
     <!-- Newly added translations (v9.0.0 - 2025-06-09) -->
-    <string name="access_members_me_and_title">我和%s</string>
-    <string name="access_members_me_subtitle">（我）</string>
-    <string name="access_members_me_users_groups_title">我、%1$s和%2$s</string>
     <string name="cloud_create_account">创建免费帐户</string>
     <string name="context_menu_desc">更多</string>
     <string name="desc_create_from_template">基于模板创建房间。所有设置、用户、文件夹和文件都将取自所选的房间模板。</string>
@@ -1012,14 +1009,6 @@
         <item quantity="one">删除模板</item>
         <item quantity="other">删除模板</item>
     </plurals>
-    <plurals name="access_members_users_title">
-        <item quantity="one">%d 用户</item>
-        <item quantity="other">%d 用户</item>
-    </plurals>
-    <plurals name="access_members_groups_title">
-        <item quantity="one">%d 群组</item>
-        <item quantity="other">%d 群组</item>
-    </plurals>
 
     <!-- Newly added translations (v9.1.0 - 2025-10-24) -->
     <string name="dev_mode_system_logs">系统日志</string>
@@ -1056,4 +1045,43 @@
     <string name="rooms_info_fill_form_desc">任何拥有链接的人都可以访问此房间。外部用户将对所有文件拥有"可填写表单"权限。</string>
     <string name="share_popup_access_editing">编辑</string>
     <string name="share_popup_access_remove">移除</string>
+
+    <!-- Newly added translations (v9.3.0 - 2026-02-24) -->
+    <string name="placeholder_empty_folder">此处还没有文件</string>
+    <string name="placeholder_empty_folder_common">此处还没有文档</string>
+    <string name="placeholder_empty_folder_desc_creator">创建或上传新文件</string>
+    <string name="placeholder_empty_form_folder">这里还没有表单</string>
+    <string name="placeholder_empty_form_folder_viewer">此文件夹中还没有表单</string>
+    <string name="placeholder_empty_form_done">还没有已完成的表单</string>
+    <string name="placeholder_empty_form_subfolder">此文件夹中还没有文件</string>
+    <string name="placeholder_empty_form_in_progress">这里还没有内容</string>
+    <string name="placeholder_empty_form_folder_desc">上传现成的 PDF 表单</string>
+    <string name="placeholder_empty_form_folder_viewer_desc">管理员上传的表单将显示在这里。</string>
+    <string name="placeholder_empty_form_done_desc">此部分将显示所有已完成的表单。</string>
+    <string name="placeholder_empty_form_done_folder_desc">这里将显示其他用户已填写完成的表单。</string>
+    <string name="placeholder_empty_form_in_progress_desc">此部分将显示进行中的表单。</string>
+    <string name="placeholder_empty_form_in_progress_folder_desc">这里将显示进行中的表单，即用户已开始填写但尚未完成的表单。</string>
+    <string name="placeholder_empty_trash">这里还没有内容</string>
+    <string name="placeholder_empty_trash_desc">删除的文件和文件夹会进入回收站，您可以恢复或永久删除。项目将在 30 天后自动删除，一旦从回收站移除将无法恢复。</string>
+    <string name="placeholder_no_rooms_desc">创建您的第一个房间以开始使用。</string>
+    <string name="placeholder_no_rooms_visitor">这里还没有房间</string>
+    <string name="placeholder_no_rooms_visitor_desc">共享的房间将显示在这里。</string>
+    <string name="placeholder_empty_archive_desc">将未使用的房间归档，并可随时在您的协作空间中恢复，或永久删除。已归档的房间将显示在这里。</string>
+    <string name="placeholder_empty_archive_visitor_desc">已归档的房间将显示在这里。</string>
+    <string name="placeholder_empty_templates_folder_desc">在房间模块中从房间创建模板。</string>
+    <string name="placeholder_empty_from_template">未找到模板</string>
+    <string name="placeholder_empty_from_template_desc">创建您的第一个房间模板，然后即可基于它创建新房间。</string>
+    <string name="placeholder_empty_recent_via_link_desc">在这里查看通过外部链接与您共享的最近打开的文件。</string>
+    <string name="operation_cancel_message">操作已取消</string>
+    <string name="cloud_vpn_warning">为获得最佳体验，请尝试关闭 VPN。某些服务器功能可能无法正常工作。</string>
+    <string name="room_placeholder_public_room_creator_title">欢迎使用公共房间</string>
+    <string name="room_placeholder_public_room_creator_subtitle">创建或上传新文件或文件夹以开始使用。</string>
+    <string name="room_placeholder_empty_viewer_title">房间为空</string>
+    <string name="room_placeholder_empty_viewer_subtitle">管理员创建或上传的文件和文件夹将显示在这里。</string>
+    <string name="room_placeholder_form_room_creator_subtitle">上传现成的 PDF 表单以开始使用。</string>
+    <string name="room_placeholder_form_room_viewer_subtitle">管理员上传的 PDF 表单将显示在这里。</string>
+    <string name="room_placeholder_vdr_room_creator_title">欢迎使用虚拟数据房间</string>
+    <string name="room_placeholder_creator_subtitle">创建或上传新文件以开始使用。</string>
+    <string name="room_placeholder_collab_room_creator_title">欢迎使用协作房间</string>
+    <string name="room_placeholder_custom_room_creator_title">欢迎使用自定义房间</string>
 </resources>

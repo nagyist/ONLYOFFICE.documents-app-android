@@ -2,12 +2,15 @@ package app.editors.manager.mvp.presenters.main
 
 import android.net.Uri
 import android.os.Build
+import android.util.Log
 import androidx.core.net.toUri
 import app.documents.core.account.AccountPreferences
 import app.documents.core.account.AccountRepository
+import app.documents.core.database.datasource.RecentDataSource
 import app.documents.core.login.CheckLoginResult
 import app.documents.core.login.PortalResult
 import app.documents.core.model.cloud.CloudPortal
+import app.documents.core.model.cloud.Recent
 import app.documents.core.model.cloud.Scheme
 import app.documents.core.model.cloud.isDocSpace
 import app.documents.core.network.common.NetworkResult
@@ -29,6 +32,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.Json
+import lib.bootstrap.snapshot.SnapshotCreator
 import lib.toolkit.base.managers.utils.CryptUtils
 import lib.toolkit.base.managers.utils.FileUtils
 import moxy.InjectViewState
@@ -58,6 +62,9 @@ class MainActivityPresenter : BasePresenter<MainActivityView>() {
     @Inject
     lateinit var accountRepository: AccountRepository
 
+    @Inject
+    lateinit var recentDataSource: RecentDataSource
+
     private val disposable = CompositeDisposable()
 
     private var reviewInfo: ReviewInfo? = null
@@ -76,6 +83,8 @@ class MainActivityPresenter : BasePresenter<MainActivityView>() {
 
     private fun checkSdk() {
         presenterScope.launch(Dispatchers.IO) {
+            createSnapshots()
+
             val version = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
                 context.packageManager.getPackageInfo(context.packageName, 0).longVersionCode
             } else {
@@ -88,6 +97,15 @@ class MainActivityPresenter : BasePresenter<MainActivityView>() {
                 context.cacheDir?.let(FileUtils::deletePath)
             }
             preferenceTool.appVersion = BuildConfig.VERSION_NAME + "." + version
+        }
+    }
+
+    private fun createSnapshots() {
+        val assetsPath = SnapshotCreator.unpackAssets(context)
+        try {
+            SnapshotCreator.start("${assetsPath}/../snapshots", assetsPath)
+        } catch (error: UnsatisfiedLinkError) {
+            Log.e(TAG, "createSnapshots: ", error)
         }
     }
 
@@ -222,7 +240,8 @@ class MainActivityPresenter : BasePresenter<MainActivityView>() {
         val data = Json.decodeFromString<OpenDataModel>(CryptUtils.decodeUri(uri.query))
         val hasToken = data.share.isNotEmpty()
         val account = context.accountOnline
-        val isAccountOnline = account?.portal?.urlWithScheme == data.portal &&
+
+        val isAccountOnline = account?.portal?.urlWithScheme == data.getCorrectPortal() &&
                 account?.login == data.email
 
         presenterScope.launch(Dispatchers.Default) {
@@ -231,7 +250,7 @@ class MainActivityPresenter : BasePresenter<MainActivityView>() {
                 return@launch
             }
 
-            when (val result = accountRepository.checkLoginWithEmailAndPortal(email = data.email.orEmpty(), portalUrl = data.portal)) {
+            when (val result = accountRepository.checkLoginWithEmailAndPortal(email = data.email.orEmpty(), portalUrl = data.getCorrectPortal())) {
                 is CheckLoginResult.Success -> {
                     viewState.restartActivity(deeplink = uri)
                 }
@@ -250,12 +269,13 @@ class MainActivityPresenter : BasePresenter<MainActivityView>() {
             ?: data.originalUrl?.toUri()?.scheme?.let { Scheme.valueOf("$it://") }
             ?: Scheme.Https
 
+        val portalUrl = portalUri.host.takeIf { !it.isNullOrEmpty() } ?: portalUri.toString()
         App.getApp().refreshLoginComponent(
-            CloudPortal(url = portalUri.host.takeIf { it.isNullOrEmpty() } ?: portalUri.toString(), scheme = portalScheme)
+            CloudPortal(url = portalUrl, scheme = portalScheme)
         )
 
         App.getApp().loginComponent.cloudLoginRepository
-            .checkPortal(portalUri.host.orEmpty(), portalScheme)
+            .checkPortal(portalUrl, portalScheme)
             .collect { result ->
                 withContext(Dispatchers.Main) {
                     when (result) {
@@ -279,9 +299,20 @@ class MainActivityPresenter : BasePresenter<MainActivityView>() {
     }
 
     private suspend fun openFile(data: OpenDataModel) {
+        presenterScope.launch {
+//            if (data.folder != null) return@launch
+
+            recentDataSource.insertOrUpdate(Recent(
+                fileId = data.file?.id.orEmpty(),
+                name = data.file?.title.orEmpty(),
+                source = data.portal,
+                token = data.share
+            ))
+        }
+
         context.cloudFileProvider
             .openDeeplink(
-                portal = data.portal.orEmpty(),
+                portal = data.getCorrectPortal().orEmpty(),
                 token = data.share,
                 login = data.email.orEmpty(),
                 id = data.file?.id.orEmpty(),

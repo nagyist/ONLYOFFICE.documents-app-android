@@ -46,13 +46,13 @@ import androidx.annotation.DimenRes
 import androidx.annotation.DrawableRes
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.BlendModeColorFilterCompat
 import androidx.core.graphics.BlendModeCompat
 import androidx.core.view.updatePadding
 import androidx.core.widget.doAfterTextChanged
-import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSmoothScroller
 import androidx.recyclerview.widget.RecyclerView
@@ -61,7 +61,11 @@ import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.timepicker.MaterialTimePicker
+import com.google.android.material.timepicker.TimeFormat
 import lib.toolkit.base.R
+import lib.toolkit.base.managers.utils.TimeUtils.isTimeOnlyFormat
+import lib.toolkit.base.ui.dialogs.base.DialogAnchorAlignment
 import java.lang.ref.WeakReference
 import java.nio.IntBuffer
 import java.text.SimpleDateFormat
@@ -185,11 +189,30 @@ object UiUtils {
     }
 
     @JvmStatic
-    fun getOverlapViewRect(anchor: Rect, view: Rect, restrict: Rect, offset: Point): Rect {
+    fun getOverlapViewRect(
+        anchor: Rect,
+        view: Rect,
+        restrict: Rect,
+        offset: Point,
+        alignment: DialogAnchorAlignment = DialogAnchorAlignment.Start
+    ): Rect {
         val position = Rect().apply {
-            left = anchor.left
+            when (alignment) {
+                DialogAnchorAlignment.Start -> {
+                    left = anchor.left
+                    right = anchor.left + view.width()
+                }
+                DialogAnchorAlignment.Center -> {
+                    val anchorCenter = anchor.left + anchor.width() / 2
+                    left = anchorCenter - view.width() / 2
+                    right = left + view.width()
+                }
+                DialogAnchorAlignment.End -> {
+                    right = anchor.right
+                    left = anchor.right - view.width()
+                }
+            }
             top = anchor.top
-            right = anchor.left + view.width()
             bottom = anchor.top + view.height()
         }
 
@@ -778,24 +801,40 @@ object UiUtils {
     }
 
     @SuppressLint("SimpleDateFormat")
-    fun showDateDialog(
-        activity: FragmentActivity,
-        inputMode: Int = MaterialDatePicker.INPUT_MODE_CALENDAR,
+    fun showDateTimePickerDialog(
+        activity: AppCompatActivity,
+        dateFormat: String,
         onCancel: (() -> Unit)? = null,
         onPositive: (time: String) -> Unit
     ) {
-        MaterialDatePicker.Builder
-            .datePicker()
-            .setInputMode(inputMode)
-            .build().apply {
-                val dateFormat = SimpleDateFormat(("yyyy-MM-dd'T'HH:mm:ssZ")).apply {
-                    timeZone = TimeZone.getTimeZone("UTC")
-                }
-
-                addOnPositiveButtonClickListener { time -> onPositive.invoke(dateFormat.format(time)) }
-                addOnDismissListener { onCancel?.invoke() }
-                show(activity.supportFragmentManager, null)
+        if (isTimeOnlyFormat(dateFormat)) {
+            val clockFormat = if (dateFormat.contains("AM/PM", ignoreCase = true)) {
+                TimeFormat.CLOCK_12H
+            } else {
+                TimeFormat.CLOCK_24H
             }
+            MaterialTimePicker.Builder()
+                .setTimeFormat(clockFormat)
+                .build().apply {
+                    addOnPositiveButtonClickListener {
+                        val timeString = String.format(Locale.getDefault(), "0001-01-01T%02d:%02d:00+0000", hour, minute)
+                        onPositive.invoke(timeString)
+                    }
+                    addOnDismissListener { onCancel?.invoke() }
+                    show(activity.supportFragmentManager, null)
+                }
+        } else {
+            val format = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ").apply {
+                timeZone = TimeZone.getTimeZone("UTC")
+            }
+            MaterialDatePicker.Builder
+                .datePicker()
+                .build().apply {
+                    addOnPositiveButtonClickListener { time -> onPositive.invoke(format.format(time)) }
+                    addOnDismissListener { onCancel?.invoke() }
+                    show(activity.supportFragmentManager, null)
+                }
+        }
     }
 
     private fun EditText.requireNotEmpty(disableButton: Button) {

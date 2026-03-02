@@ -138,7 +138,8 @@ object ActionMenuItemsFactory {
             )
 
             // sort block
-            if (provider is PortalProvider.Storage) {
+            val notOneDrive = provider !is PortalProvider.Onedrive
+            if (provider is PortalProvider.Storage && notOneDrive) {
                 add(ActionMenuItem.Divider)
                 add(ActionMenuItem.Title.get(asc, sortBy))
             } else {
@@ -148,7 +149,7 @@ object ActionMenuItemsFactory {
                             ActionMenuItem.Title,
                             ActionMenuItem.Type,
                             ActionMenuItem.Size,
-                            ActionMenuItem.Author.takeIf { !section.isDevice },
+                            ActionMenuItem.Author.takeIf { !section.isDevice && notOneDrive },
                             ActionMenuItem.Date
                         ).map { it.get(asc, sortBy) }
                     )

@@ -36,6 +36,9 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.BasicTextField
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.LinearProgressIndicator
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.ModalBottomSheetDefaults
@@ -56,21 +59,24 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.focus.FocusManager
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.text.isDigitsOnly
-import androidx.navigation.compose.rememberNavController
 import app.documents.core.network.common.contracts.ApiContract
 import app.documents.core.network.manager.models.explorer.Lifetime
 import app.documents.core.network.manager.models.explorer.Watermark
@@ -94,6 +100,7 @@ import com.bumptech.glide.integration.compose.GlideImage
 import com.bumptech.glide.integration.compose.placeholder
 import kotlinx.coroutines.launch
 import lib.compose.ui.theme.ManagerTheme
+import lib.compose.ui.theme.colorTextPrimary
 import lib.compose.ui.theme.colorTextSecondary
 import lib.compose.ui.views.ActivityIndicatorView
 import lib.compose.ui.views.AnimatedVisibilityVerticalFade
@@ -126,6 +133,7 @@ fun RoomSettingsScreen(
     isRoomTypeEditable: Boolean,
     state: RoomSettingsState,
     loadingState: Boolean,
+    isClose: Boolean,
     watermarkState: RoomSettingsWatermarkState,
     logoState: RoomSettingsLogoState,
     onApply: () -> Unit,
@@ -202,7 +210,7 @@ fun RoomSettingsScreen(
                     title = if (isEdit)
                         stringResource(id = R.string.list_context_edit_room) else
                         stringResource(id = R.string.dialog_create_room),
-                    isClose = true,
+                    isClose = isClose,
                     actions = {
                         TextButton(
                             enabled = canApplyChanges,
@@ -901,16 +909,34 @@ private fun LifeTimeBlock(
     onSetAction: (Boolean) -> Unit
 ) {
     Column {
-        AppTextField(
-            modifier = Modifier.padding(start = 16.dp),
-            value = lifetime.value.toString(),
-            onValueChange = { value ->
-                if (!value.isDigitsOnly() || value.length > 3) return@AppTextField
-                val digitValue = if (value.isEmpty()) 0 else value.toInt()
-                onSetValue(digitValue)
-            },
-            keyboardType = KeyboardType.Number,
-            label = R.string.file_lifetime_hint,
+        AppListItem(
+            title = stringResource(R.string.file_lifetime_hint),
+            endContent = {
+                val keyboardController = LocalSoftwareKeyboardController.current
+                BasicTextField(
+                    value = lifetime.value.toString(),
+                    onValueChange = { value ->
+                        if (!value.isDigitsOnly() || value.length > 3) return@BasicTextField
+                        val digitValue = if (value.isEmpty()) 0 else value.toInt()
+                        onSetValue(digitValue)
+                    },
+                    keyboardOptions = KeyboardOptions(
+                        keyboardType = KeyboardType.Number,
+                        imeAction = ImeAction.Next
+                    ),
+                    keyboardActions = KeyboardActions{ keyboardController?.hide() },
+                    textStyle = MaterialTheme.typography.body1.copy(
+                        color = MaterialTheme.colors.colorTextPrimary,
+                        textAlign = TextAlign.End
+                    ),
+                    cursorBrush = SolidColor(MaterialTheme.colors.primary),
+                    decorationBox = { innerTextField ->
+                        Box(Modifier.padding(end = 8.dp)) {
+                            innerTextField()
+                        }
+                    }
+                )
+            }
         )
         AppListItem(
             title = stringResource(R.string.file_lifetime_time_period),
@@ -1090,6 +1116,7 @@ private fun MainScreenPreview() {
             canApplyChanges = true,
             isRoomTypeEditable = false,
             state = remember { RoomSettingsState(type = ApiContract.RoomType.VIRTUAL_ROOM) },
+            isClose = true,
             logoState = remember { RoomSettingsLogoState() },
             watermarkState = remember { RoomSettingsWatermarkState() },
             loadingState = remember { false },
@@ -1128,7 +1155,7 @@ private fun MainScreenPreview() {
 @Composable
 private fun SelectScreenPreview() {
     ManagerTheme {
-        RoomSettingsSelectRoomScreen(2, navController = rememberNavController()) {}
+        RoomSettingsSelectRoomScreen(2, isClose = false, onBack = {}) {}
     }
 }
 

@@ -818,20 +818,17 @@ Nous vous recommandons de passer au service gratuit ONLYOFFICE DocSpace Cloud.</
     <string name="rooms_invite_access_description">Les invités, les utilisateurs et les groupes ne peuvent pas être assignés en tant que responsables de salle. Seuls les administrateurs de salle et de DocSpace peuvent jouer ce rôle.</string>
     <string name="whats_new_title">Quoi de neuf ?</string>
     <string name="whats_new_next">Commencer !</string>
-    <string name="whats_new">Nouveautés de la v9.1</string>
-    <string name="whats_new_1">Nouvelles sections DocSpace</string>
-    <string name="whats_new_1_desc">Accédez plus rapidement à vos fichiers grâce aux sections dédiées de DocSpace : Partagés avec moi, Favoris et Récents.</string>
-    <string name="whats_new_2">Partage de fichiers amélioré dans DocSpace</string>
-    <string name="whats_new_2_desc">Partagez vos fichiers plus facilement et gérez les accès grâce aux flux de travail optimisés dans DocSpace 3.5.</string>
-    <string name="whats_new_3">Options de connexion via les réseaux sociaux</string>
-    <string name="whats_new_3_desc">Connectez-vous avec LinkedIn ou Zoom pour créer et accéder plus facilement à votre compte DocSpace.</string>
-    <string name="whats_new_4">Direction du texte et des cellules (RTL)</string>
-    <string name="whats_new_4_desc">Changez la direction des paragraphes et des cellules de tableau entre de droite à gauche et de gauche à droite dans tous les éditeurs.</string>
+    <string name="whats_new">Nouveautés de la v9.3</string>
+    <string name="whats_new_1">Mentions dans les commentaires</string>
+    <string name="whats_new_1_desc">Mentionnez vos collègues dans les commentaires pour les avertir et améliorer la collaboration</string>
+    <string name="whats_new_2">Compteur de mots dans les documents</string>
+    <string name="whats_new_2_desc">Suivez instantanément la longueur de vos documents grâce au compteur de mots intégré</string>
+    <string name="whats_new_3">Recherche améliorée dans les éditeurs</string>
+    <string name="whats_new_3_desc">Trouvez plus rapidement du texte dans vos documents, feuilles de calcul et présentations grâce à la recherche mise à jour dans l\'éditeur</string>
+    <string name="whats_new_4">Interface mise à jour</string>
+    <string name="whats_new_4_desc">Profitez d\'icônes d\'éditeur rafraîchies et d\'un menu contextuel repensé pour un look plus épuré et un accès plus rapide aux actions clés</string>
 
     <!-- Newly added translations (v9.0.0 - 2025-06-09) -->
-    <string name="access_members_me_and_title">Moi et %s</string>
-    <string name="access_members_me_subtitle">(Moi)</string>
-    <string name="access_members_me_users_groups_title">Moi, %1$s et %2$s</string>
     <string name="cloud_create_account">Créer un compte gratuit</string>
     <string name="context_menu_desc">Plus</string>
     <string name="desc_create_from_template">Créez une salle à partir d\'un modèle. Tous les paramètres, utilisateurs, dossiers et fichiers seront repris du modèle de salle sélectionné.</string>
@@ -960,14 +957,6 @@ Nous vous recommandons de passer au service gratuit ONLYOFFICE DocSpace Cloud.</
         <item quantity="one">Supprimer le modèle</item>
         <item quantity="other">Supprimer les modèles</item>
     </plurals>
-    <plurals name="access_members_users_title">
-        <item quantity="one">%d utilisateur</item>
-        <item quantity="other">%d utilisateurs</item>
-    </plurals>
-    <plurals name="access_members_groups_title">
-        <item quantity="one">%d groupe</item>
-        <item quantity="other">%d groupes</item>
-    </plurals>
 
     <!-- Newly added translations (v9.1.0 - 2025-10-24) -->
     <string name="dev_mode_system_logs">Journaux système</string>
@@ -1004,4 +993,43 @@ Nous vous recommandons de passer au service gratuit ONLYOFFICE DocSpace Cloud.</
     <string name="rooms_info_fill_form_desc">Cette salle est accessible à toute personne disposant du lien. Les utilisateurs externes auront la permission de remplir les formulaires pour tous les fichiers.</string>
     <string name="share_popup_access_editing">Modification</string>
     <string name="share_popup_access_remove">Supprimer</string>
+
+    <!-- Newly added translations (v9.3.0 - 2026-02-24) -->
+    <string name="placeholder_empty_folder">Aucun fichier ici pour le moment</string>
+    <string name="placeholder_empty_folder_common">Aucun document ici pour le moment</string>
+    <string name="placeholder_empty_folder_desc_creator">Créez ou téléchargez de nouveaux fichiers</string>
+    <string name="placeholder_empty_form_folder">Aucun formulaire ici pour le moment</string>
+    <string name="placeholder_empty_form_folder_viewer">Aucun formulaire dans ce dossier pour le moment</string>
+    <string name="placeholder_empty_form_done">Aucun formulaire terminé pour le moment</string>
+    <string name="placeholder_empty_form_subfolder">Aucun fichier dans ce dossier pour le moment</string>
+    <string name="placeholder_empty_form_in_progress">Rien ici pour le moment</string>
+    <string name="placeholder_empty_form_folder_desc">Télécharger un formulaire PDF prêt</string>
+    <string name="placeholder_empty_form_folder_viewer_desc">Les formulaires téléchargés par les administrateurs apparaîtront ici.</string>
+    <string name="placeholder_empty_form_done_desc">Cette section affichera tous les formulaires terminés.</string>
+    <string name="placeholder_empty_form_done_folder_desc">Vous trouverez ici les formulaires qui ont été entièrement remplis par d\'autres utilisateurs.</string>
+    <string name="placeholder_empty_form_in_progress_desc">Cette section affichera les formulaires en cours.</string>
+    <string name="placeholder_empty_form_in_progress_folder_desc">Vous trouverez ici les formulaires en cours, c\'est-à-dire les formulaires que les utilisateurs ont commencé à remplir mais n\'ont pas terminés.</string>
+    <string name="placeholder_empty_trash">Aucun élément ici pour le moment</string>
+    <string name="placeholder_empty_trash_desc">Les fichiers et dossiers supprimés vont dans la corbeille, où vous pouvez les restaurer ou les supprimer définitivement. Les éléments sont automatiquement supprimés après 30 jours et ne peuvent plus être récupérés une fois retirés de la corbeille.</string>
+    <string name="placeholder_no_rooms_desc">Créez votre première salle pour commencer.</string>
+    <string name="placeholder_no_rooms_visitor">Il n\'y a aucune salle ici pour le moment</string>
+    <string name="placeholder_no_rooms_visitor_desc">Les salles partagées apparaîtront ici.</string>
+    <string name="placeholder_empty_archive_desc">Archivez les salles inutilisées et restaurez-les à tout moment dans votre DocSpace, ou supprimez-les définitivement. Les salles archivées apparaîtront ici.</string>
+    <string name="placeholder_empty_archive_visitor_desc">Les salles qui ont été archivées apparaîtront ici.</string>
+    <string name="placeholder_empty_templates_folder_desc">Créer un modèle à partir d\'une salle dans la section Salles.</string>
+    <string name="placeholder_empty_from_template">Aucun modèle trouvé</string>
+    <string name="placeholder_empty_from_template_desc">Créez votre premier modèle de salle et vous pourrez ensuite créer de nouvelles salles basées sur celui-ci.</string>
+    <string name="placeholder_empty_recent_via_link_desc">Consultez ici les fichiers récemment ouverts partagés avec vous via des liens externes.</string>
+    <string name="operation_cancel_message">Opération annulée</string>
+    <string name="cloud_vpn_warning">Pour une meilleure expérience, essayez de désactiver le VPN. Certaines fonctionnalités du serveur peuvent ne pas fonctionner correctement.</string>
+    <string name="room_placeholder_public_room_creator_title">Bienvenue dans la salle publique</string>
+    <string name="room_placeholder_public_room_creator_subtitle">Créez ou téléchargez de nouveaux fichiers ou dossiers pour commencer.</string>
+    <string name="room_placeholder_empty_viewer_title">La salle est vide</string>
+    <string name="room_placeholder_empty_viewer_subtitle">Les fichiers et dossiers créés ou téléchargés par les administrateurs apparaîtront ici.</string>
+    <string name="room_placeholder_form_room_creator_subtitle">Téléchargez un formulaire PDF prêt pour commencer.</string>
+    <string name="room_placeholder_form_room_viewer_subtitle">Les formulaires PDF téléchargés par les administrateurs apparaîtront ici.</string>
+    <string name="room_placeholder_vdr_room_creator_title">Bienvenue dans la salle de données virtuelle</string>
+    <string name="room_placeholder_creator_subtitle">Créez ou téléchargez de nouveaux fichiers pour commencer.</string>
+    <string name="room_placeholder_collab_room_creator_title">Bienvenue dans la salle de collaboration</string>
+    <string name="room_placeholder_custom_room_creator_title">Bienvenue dans la salle personnalisée</string>
 </resources>

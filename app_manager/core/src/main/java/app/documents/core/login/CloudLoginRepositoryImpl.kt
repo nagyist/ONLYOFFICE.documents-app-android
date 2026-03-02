@@ -16,11 +16,13 @@ import app.documents.core.network.common.NetworkResult
 import app.documents.core.network.common.asResult
 import app.documents.core.network.common.contracts.ApiContract
 import app.documents.core.network.login.CloudLoginDataSource
+import app.documents.core.network.login.PasswordHashGenerator
 import app.documents.core.utils.displayNameFromHtml
 import com.google.firebase.messaging.FirebaseMessaging
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.emitAll
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.flowOn
@@ -81,13 +83,24 @@ internal class CloudLoginRepositoryImpl(
     }
 
     override suspend fun signInByEmail(email: String, password: String, code: String?): Flow<LoginResult> {
-        return signIn(
-            request = RequestSignIn(
-                userName = email,
-                password = password,
-                code = code.orEmpty()
-            )
-        )
+        return flow {
+            val passwordHashSettings = cloudLoginDataSource.getPasswordHashSettings()
+            val request = if (passwordHashSettings != null) {
+                val passwordHash = PasswordHashGenerator.generate(password, passwordHashSettings)
+                RequestSignIn(
+                    userName = email,
+                    passwordHash = passwordHash,
+                    code = code.orEmpty()
+                )
+            } else {
+                RequestSignIn(
+                    userName = email,
+                    password = password,
+                    code = code.orEmpty()
+                )
+            }
+            emitAll(signIn(request))
+        }.flowOn(Dispatchers.IO)
     }
 
     override suspend fun signInWithProvider(

@@ -886,9 +886,6 @@
     <string name="whats_new_next">إبدء الآن</string>
 
     <!-- Newly added translations (v9.0.0 - 2025-06-09) -->
-    <string name="access_members_me_and_title">أنا و%s</string>
-    <string name="access_members_me_subtitle">(أنا)</string>
-    <string name="access_members_me_users_groups_title">أنا، %1$s و %2$s</string>
     <string name="cloud_create_account">أنشئوا حسابًا مجانيًا</string>
     <string name="context_menu_desc">المزيد</string>
     <string name="desc_create_from_template">.أنشئوا غرفة استنادًا إلى قالب. سيتم نسخ جميع الإعدادات والمستخدمين والمجلدات والملفات من قالب الغرفة المحدد</string>
@@ -1125,22 +1122,6 @@
         <item quantity="many">محاولات كثيرة جدًا.\nحاول مرة أخرى بعد %d دقيقة</item>
         <item quantity="other">محاولات كثيرة جدًا.\nحاول مرة أخرى بعد %d دقيقة</item>
     </plurals>
-    <plurals name="access_members_users_title">
-        <item quantity="zero">%d مستخدم</item>
-        <item quantity="one">%d مستخدم</item>
-        <item quantity="two">%d مستخدمان</item>
-        <item quantity="few">%d مستخدمين</item>
-        <item quantity="many">%d مستخدمًا</item>
-        <item quantity="other">%d مستخدمين</item>
-    </plurals>
-    <plurals name="access_members_groups_title">
-        <item quantity="zero">%d مجموعة</item>
-        <item quantity="one">%d مجموعة</item>
-        <item quantity="two">%d مجموعتان</item>
-        <item quantity="few">%d مجموعات</item>
-        <item quantity="many">%d مجموعة</item>
-        <item quantity="other">%d مجموعات</item>
-    </plurals>
 
     <!-- Newly added translations (v9.1.0 - 2025-10-24) -->
     <string name="dev_mode_system_logs">سجلات النظام</string>
@@ -1178,4 +1159,43 @@
     <string name="rooms_info_fill_form_desc">هذه الغرفة متاحة لأي شخص لديه الرابط. سيحصل المستخدمون الخارجيون على صلاحية تعبئة النماذج لجميع الملفات.</string>
     <string name="share_popup_access_editing">التعديل</string>
     <string name="share_popup_access_remove">إزالة</string>
+
+    <!-- Newly added translations (v9.3.0 - 2026-02-24) -->
+    <string name="placeholder_empty_folder">لا توجد ملفات هنا بعد</string>
+    <string name="placeholder_empty_folder_common">لا توجد مستندات هنا بعد</string>
+    <string name="placeholder_empty_folder_desc_creator">أنشئوا ملفات جديدة أو قوموا بتحميلها</string>
+    <string name="placeholder_empty_form_folder">لا توجد نماذج هنا بعد</string>
+    <string name="placeholder_empty_form_folder_viewer">لا توجد نماذج في هذا المجلد بعد</string>
+    <string name="placeholder_empty_form_done">لا توجد نماذج مكتملة بعد</string>
+    <string name="placeholder_empty_form_subfolder">لا توجد ملفات في هذا المجلد بعد</string>
+    <string name="placeholder_empty_form_in_progress">لا يوجد شيء هنا بعد</string>
+    <string name="placeholder_empty_form_folder_desc">قوموا بتحميل نموذج PDF جاهز</string>
+    <string name="placeholder_empty_form_folder_viewer_desc">ستظهر هنا النماذج التي يقوم المسؤولون بتحميلها.</string>
+    <string name="placeholder_empty_form_done_desc">سيعرض هذا القسم جميع النماذج المكتملة.</string>
+    <string name="placeholder_empty_form_done_folder_desc">ستجدون هنا النماذج التي أكمل ملءها مستخدمون آخرون بالكامل.</string>
+    <string name="placeholder_empty_form_in_progress_desc">سيعرض هذا القسم النماذج قيد التقدم.</string>
+    <string name="placeholder_empty_form_in_progress_folder_desc">ستجدون هنا النماذج قيد التقدم، أي النماذج التي بدأ المستخدمون في ملئها ولم يُكملوها بعد.</string>
+    <string name="placeholder_empty_trash">لا توجد عناصر هنا بعد</string>
+    <string name="placeholder_empty_trash_desc">تُنقل الملفات والمجلدات المحذوفة إلى سلة المهملات، حيث يمكنكم استعادتها أو حذفها نهائيًا. تُحذف العناصر تلقائيًا بعد 30 يومًا ولا يمكن استردادها بعد إزالتها من سلة المهملات.</string>
+    <string name="placeholder_no_rooms_desc">أنشئوا غرفتكم الأولى للبدء.</string>
+    <string name="placeholder_no_rooms_visitor">لا توجد غرف هنا بعد</string>
+    <string name="placeholder_no_rooms_visitor_desc">ستظهر الغرف المشتركة هنا.</string>
+    <string name="placeholder_empty_archive_desc">أرشفوا الغرف غير المستخدمة واستعيدوها في أي وقت في DocSpace الخاص بكم، أو احذفوها نهائيًا. ستظهر الغرف المؤرشفة هنا.</string>
+    <string name="placeholder_empty_archive_visitor_desc">ستظهر هنا الغرف التي تمت أرشفتها.</string>
+    <string name="placeholder_empty_templates_folder_desc">أنشئوا قالبًا من غرفة في قسم الغرف.</string>
+    <string name="placeholder_empty_from_template">لم يتم العثور على قوالب</string>
+    <string name="placeholder_empty_from_template_desc">أنشئوا أول قالب غرفة لديكم، ثم يمكنكم إنشاء غرف جديدة بناءً عليه.</string>
+    <string name="placeholder_empty_recent_via_link_desc">اعرضوا هنا الملفات التي فتحتموها مؤخرًا والمشتركة معكم عبر روابط خارجية.</string>
+    <string name="operation_cancel_message">تم إلغاء العملية</string>
+    <string name="cloud_vpn_warning">للحصول على أفضل تجربة، جربوا إيقاف تشغيل VPN. قد لا تعمل بعض ميزات الخادم بشكل صحيح.</string>
+    <string name="room_placeholder_public_room_creator_title">مرحبًا بكم في الغرفة العامة</string>
+    <string name="room_placeholder_public_room_creator_subtitle">أنشئوا ملفات أو مجلدات جديدة أو قوموا بتحميلها للبدء.</string>
+    <string name="room_placeholder_empty_viewer_title">الغرفة فارغة</string>
+    <string name="room_placeholder_empty_viewer_subtitle">ستظهر هنا الملفات والمجلدات التي ينشئها المسؤولون أو يحملونها.</string>
+    <string name="room_placeholder_form_room_creator_subtitle">قوموا بتحميل نموذج PDF جاهز للبدء.</string>
+    <string name="room_placeholder_form_room_viewer_subtitle">ستظهر هنا نماذج PDF التي يحملها المسؤولون.</string>
+    <string name="room_placeholder_vdr_room_creator_title">مرحبًا بكم في غرفة البيانات الافتراضية</string>
+    <string name="room_placeholder_creator_subtitle">أنشئوا ملفات جديدة أو قوموا بتحميلها للبدء.</string>
+    <string name="room_placeholder_collab_room_creator_title">مرحبًا بكم في غرفة التعاون</string>
+    <string name="room_placeholder_custom_room_creator_title">مرحبًا بكم في الغرفة المخصصة</string>
 </resources>

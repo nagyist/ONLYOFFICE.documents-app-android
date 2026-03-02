@@ -9,7 +9,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.res.stringResource
-import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -34,27 +34,24 @@ class EditRoomFragment : ComposeDialogFragment() {
     companion object {
 
         private const val KEY_ROOM_ID = "key_room_id"
-        private const val TAG_RESULT = "edit_room_tag_result"
+        const val KEY_RESULT = "edit_room_tag_result"
 
         private val TAG: String = EditRoomFragment::class.java.simpleName
 
         private fun newInstance(roomId: String): EditRoomFragment =
             EditRoomFragment().putArgs(KEY_ROOM_ID to roomId)
 
-        fun show(activity: FragmentActivity, roomId: String, onResult: () -> Unit) {
-            activity.supportFragmentManager
-                .setFragmentResultListener(
-                    TAG_RESULT,
-                    activity,
-                ) { _, _ -> onResult() }
-
-            newInstance(roomId).show(activity.supportFragmentManager, TAG)
+        fun show(fragmentManager: FragmentManager, roomId: String) {
+            newInstance(roomId).show(fragmentManager, TAG)
         }
     }
 
     private enum class Screens {
         Main, ChangeOwner
     }
+
+    override val fragmentResultKey: String
+        get() = KEY_RESULT
 
     @Composable
     override fun Content() {
@@ -110,8 +107,8 @@ class EditRoomFragment : ComposeDialogFragment() {
                         }
 
                         is RoomSettingsEffect.Success -> {
-                            requireActivity().supportFragmentManager.setFragmentResult(
-                                TAG_RESULT,
+                            parentFragmentManager.setFragmentResult(
+                                KEY_RESULT,
                                 Bundle.EMPTY
                             )
                             dismiss()
@@ -208,6 +205,7 @@ class EditRoomFragment : ComposeDialogFragment() {
                                 it.copy(value = value)
                             }
                         },
+                        isClose = false,
                         onSetQuotaMeasurementUnit = { unit ->
                             viewModel.updateStorageQuota {
                                 it.copy(unit = unit)
@@ -232,8 +230,8 @@ class EditRoomFragment : ComposeDialogFragment() {
                         onSuccess = {
                             navController.popBackStackWhenResumed()
                             viewModel.setOwner(it)
-                            requireActivity().supportFragmentManager.setFragmentResult(
-                                TAG_RESULT,
+                            parentFragmentManager.setFragmentResult(
+                                KEY_RESULT,
                                 Bundle.EMPTY
                             )
                         }

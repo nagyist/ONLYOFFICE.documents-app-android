@@ -2,17 +2,17 @@
 <resources>
     <!-- Original strings for reference -->
 
-    <!-- Module: appmanager - 935 strings -->
-  <string name="app_name">Documents</string>
-  <string name="app_name_full">ONLYOFFICE Documents</string>
-  <string name="app_versions_title">Version 3.0 released</string>
-  <string name="app_versions_cancel">Later</string>
+    <!-- Module: appmanager - 960 strings -->
+    <string name="app_name">Documents</string>
+    <string name="app_name_full">ONLYOFFICE Documents</string>
+    <string name="app_versions_title">Version 3.0 released</string>
+    <string name="app_versions_cancel">Later</string>
     <string name="app_versions_without_release_accept">Install official app</string>
     <string name="app_versions_without_release_info">Thanks for beta testing! ONLYOFFICE Documents 3.0 is now released, and beta version is no longer supported. Switch to the official app to receive further updates.</string>
     <string name="app_versions_update_accept">Update official app</string>
-    <string name="app_versions_update_info">Thanks for beta testing! ONLYOFFICE Documents 3.0 is now released, and beta version is no longer supported. Please, switch to official app to receive further updates.</string>
+    <string name="app_versions_update_info">Thanks for beta testing! ONLYOFFICE Documents 3.0 is now released, and beta version is no longer supported. Please switch to official app to receive further updates.</string>
     <string name="app_versions_actual_release_accept">Open official app</string>
-    <string name="app_versions_actual_release_info">Thanks for beta testing! ONLYOFFICE Documents 3.0 is now released, and beta version is no longer supported. Please, switch to the official app.</string>
+    <string name="app_versions_actual_release_info">Thanks for beta testing! ONLYOFFICE Documents 3.0 is now released, and beta version is no longer supported. Please switch to the official app.</string>
     <string name="snackbar_copied">Copied</string>
     <string name="snackbar_undo">UNDO</string>
     <string name="about_title">About</string>
@@ -314,23 +314,41 @@
     <string name="placeholder_loading_users">Loading users…</string>
     <string name="placeholder_loading_groups">Loading groups…</string>
     <string name="placeholder_other_accounts">No other accounts here yet</string>
-    <string name="placeholder_empty_folder">No docs here yet</string>
-    <string name="placeholder_empty_trash_desc">All deleted files are moved to \'Trash\'. Restore files deleted by mistake or delete them permanently. Files in \'Trash\' are automatically deleted after 30 days. Please note, that the files deleted from the \'Trash\' cannot be restored any longer</string>
+    <string name="placeholder_empty_folder">No files here yet</string>
+    <string name="placeholder_empty_folder_common">No docs here yet</string>
+    <string name="placeholder_empty_folder_desc_creator">Create or upload new files</string>
+    <string name="placeholder_empty_form_folder">No forms here yet</string>
+    <string name="placeholder_empty_form_folder_viewer">No forms in this folder yet</string>
+    <string name="placeholder_empty_form_done">No finished forms yet</string>
+    <string name="placeholder_empty_form_subfolder">No files in this folder yet</string>
+    <string name="placeholder_empty_form_in_progress">Nothing here yet</string>
+    <string name="placeholder_empty_form_folder_desc">Upload a ready PDF form</string>
+    <string name="placeholder_empty_form_folder_viewer_desc">The forms uploaded by the administrators will be appeared here.</string>
+    <string name="placeholder_empty_form_done_desc">This section will display all forms that are complete.</string>
+    <string name="placeholder_empty_form_done_folder_desc">Here you will find forms which have been completely filled out by other users.</string>
+    <string name="placeholder_empty_form_in_progress_desc">This section will display the forms in progress.</string>
+    <string name="placeholder_empty_form_in_progress_folder_desc">Here you will find forms in progress, i.e., forms which users have started to fill out but haven\'t completed.</string>
+    <string name="placeholder_empty_trash">No items here yet</string>
+    <string name="placeholder_empty_trash_desc">Deleted files and folders go to Trash, where you can restore or permanently delete them. Items are auto-deleted after 30 days and cannot be recovered once removed from Trash.</string>
     <string name="placeholder_no_users_found">No users found</string>
     <string name="placeholder_no_users_found_desc">No users match your search. Please adjust your search parameters or clear the search field to view the full list of users</string>
     <string name="placeholder_no_members_found">No members found</string>
     <string name="placeholder_no_members_found_desc">You can add new team members manually or invite them via link</string>
     <string name="placeholder_no_rooms">Welcome to DocSpace!</string>
-    <string name="placeholder_no_rooms_desc">Please create the first room</string>
-    <string name="placeholder_no_rooms_visitor_desc">Rooms shared with you will appear here</string>
+    <string name="placeholder_no_rooms_desc">Create your first room to get started.</string>
+    <string name="placeholder_no_rooms_visitor">There are no rooms here yet</string>
+    <string name="placeholder_no_rooms_visitor_desc">The shared rooms will appear here.</string>
     <string name="placeholder_empty_archive">No archived rooms here yet</string>
-    <string name="placeholder_empty_archive_desc">You can archive rooms you don’t use and restore them in your DocSpace at any moment or delete them permanently. These rooms will appear here</string>
+    <string name="placeholder_empty_archive_desc">Archive unused rooms and restore them anytime in your DocSpace, or delete them permanently. Archived rooms will appear here.</string>
+    <string name="placeholder_empty_archive_visitor_desc">Rooms that have been archived will appear here.</string>
     <string name="placeholder_empty_templates_folder">No templates here yet</string>
-    <string name="placeholder_empty_templates_folder_desc">You can create a template from a room in the Room section</string>
+    <string name="placeholder_empty_templates_folder_desc">Create a template from a room in the Rooms section.</string>
+    <string name="placeholder_empty_from_template">No templates found</string>
+    <string name="placeholder_empty_from_template_desc">Create your first room template and then you can create new rooms based on it.</string>
     <string name="placeholder_no_search_result">No search result</string>
     <string name="placeholder_no_search_result_desc">No results matching your search could be found. Please try another phrase</string>
     <string name="placeholder_empty_room_visitor_desc">Files and folders uploaded by admins will appeared here</string>
-    <string name="placeholder_empty_recent_via_link_desc">Here you will find a list of the recently opened files shared with you via an external link</string>
+    <string name="placeholder_empty_recent_via_link_desc">View recently opened files shared with you via external links here.</string>
     <string name="placeholder_payment_required">Business subscription expired</string>
     <string name="placeholder_payment_required_desc">Your current tariff plan "Business" expired. Please renew your subscription in the account settings to be able to use your DocSpace. If you have any questions, please contact support</string>
     <string name="placeholder_payment_required_button">Renew Business plan</string>
@@ -408,6 +426,7 @@
     <string name="operation_select_room_title">Select room</string>
     <string name="operation_choose_section">Choose section</string>
     <string name="operation_complete_message">Operation complete</string>
+    <string name="operation_cancel_message">Operation canceled</string>
     <string name="operation_delete_impossible">Cannot delete file. File is opened on the portal.</string>
     <string name="operation_delete_multiple">. One or more files haven`t been deleted due to open on the portal</string>
     <string name="operation_panel_move_button">Move here</string>
@@ -522,10 +541,11 @@
     <string name="cloud_account_other_storages_button">Other storages</string>
     <string name="cloud_create_account">Create free account</string>
     <string name="cloud_only_office_description">Store documents in the cloud and collaborate on them</string>
+    <string name="cloud_vpn_warning">For the best experience, try turning off VPN. Some server features may not work properly.</string>
     <string name="cloud_accounts_title">Accounts</string>
     <string name="error_long_file_name">File name is too long</string>
     <string name="dialog_remove_account_title">Delete from device</string>
-    <string name="dialog_remove_account_description">User with %1$s from the %2$s portal will be logged out and removed from the account list. \n\nPlease, note: to log in, you\'ll need to enter portal address, email and password. All your files will be safe.</string>
+    <string name="dialog_remove_account_description">User with %1$s from the %2$s portal will be logged out and removed from the account list. \n\nPlease note: to log in, you\'ll need to enter portal address, email and password. All your files will be safe.</string>
     <string name="dialog_logout_account_title">Are you sure to log out?</string>
     <string name="dialog_logout_account_description">After you log out, you won\'t need to enter your portal address or email, only the password. Don\'t worry, all the files will be safe in the cloud.</string>
     <string name="profile_username_title">Username</string>
@@ -558,12 +578,7 @@
     <string name="app_internal_error">Internal error</string>
     <string name="app_fragment_crash_error">Please close this app and try again</string>
     <string name="item_owner_self">Me</string>
-    <string name="sign_in_terms_and_policy_text"><![CDATA[
- By proceeding, you agree to the
- <a href="%1$s">Privacy Policy</a>
- and the
- <a href="%2$s">Terms of Service</a>
- ]]></string>
+    <string name="sign_in_terms_and_policy_text"><![CDATA[ By proceeding, you agree to the <a href="%1$s">Privacy Policy</a> and the <a href="%2$s">Terms of Service</a> ]]></string>
     <string name="app_settings_color_theme">Theme</string>
     <string name="app_settings_follow_the_system">Same as system</string>
     <string name="app_settings_light_theme">Light theme</string>
@@ -622,10 +637,20 @@
     <string name="room_placeholder_created_room_title">Room created!</string>
     <string name="room_placeholder_created_template_title">Template created!</string>
     <string name="room_placeholder_created_room_subtitle">Create new folders to organize your files.</string>
-    <string name="room_placeholder_created_filling_form_room_title">Welcome to the Form filling room</string>
     <string name="room_placeholder_created_filling_form_room_subtitle">Upload a ready PDF form or create new folders to organize your files</string>
     <string name="room_placeholder_created_virtual_room_title">Welcome to the Virtual Data Room</string>
     <string name="room_placeholder_created_virtual_room_subtitle">Get started with quick actions:\nCreate a new file</string>
+    <string name="room_placeholder_public_room_creator_title">Welcome to the Public room</string>
+    <string name="room_placeholder_public_room_creator_subtitle">Create or upload new files or folders to get started.</string>
+    <string name="room_placeholder_empty_viewer_title">The room is empty</string>
+    <string name="room_placeholder_empty_viewer_subtitle">Files and folders created or uploaded by admins will show up here.</string>
+    <string name="room_placeholder_form_room_creator_title">Welcome to the Form filling room</string>
+    <string name="room_placeholder_form_room_creator_subtitle">Upload a ready PDF form to get started.</string>
+    <string name="room_placeholder_form_room_viewer_subtitle">PDF forms uploaded by admins will show up here.</string>
+    <string name="room_placeholder_vdr_room_creator_title">Welcome to the Virtual Data Room</string>
+    <string name="room_placeholder_creator_subtitle">Create or upload new files to get started.</string>
+    <string name="room_placeholder_collab_room_creator_title">Welcome to the Collaboration room</string>
+    <string name="room_placeholder_custom_room_creator_title">Welcome to the Custom room</string>
     <string name="room_recent_via_link">Accessible via link</string>
     <string name="room_access_via_link_title">Access via link</string>
     <string name="room_manage_room">Manage room</string>
@@ -863,9 +888,6 @@
     <string name="title_access_settings">Access settings</string>
     <string name="desc_create_from_template">Create a room based on a template. All settings, users, folders and files will be taken from the selected room template.</string>
     <string name="desc_info_template">Room template. Use this template to quickly create a new room.</string>
-    <string name="access_members_me_and_title">Me and %s</string>
-    <string name="access_members_me_users_groups_title">Me, %1$s and %2$s</string>
-    <string name="access_members_me_subtitle">(Me)</string>
     <string name="settings_saved_successfully">Template settings saved</string>
     <string name="template_created_successfully">Template «%s» saved</string>
     <string name="room_created_successfully">Room created successfully</string>
@@ -906,14 +928,14 @@
     <string name="dev_mode_system_logs">System logs</string>
     <string name="dev_mode_network_requests">Network requests</string>
     <string name="whats_new">What\'s new in v9.1</string>
-    <string name="whats_new_1">AI assistant in editors</string>
-    <string name="whats_new_1_desc">Work smarter in documents and spreadsheets with built-in AI. Connect models like OpenAI, Anthropic, Google, or Ollama.</string>
-    <string name="whats_new_2">Text direction options</string>
-    <string name="whats_new_2_desc">Easily switch between Right-to-left and Left-to-right text direction in all editors.</string>
-    <string name="whats_new_3">Role-based form filling in DocSpace</string>
-    <string name="whats_new_3_desc">Assign specific roles to participants when starting a form-filling process while connected to DocSpace.</string>
-    <string name="whats_new_4">Table of contents in documents</string>
-    <string name="whats_new_4_desc">Create and navigate through document sections with an automatic table of contents.</string>
+    <string name="whats_new_1">New DocSpace sections</string>
+    <string name="whats_new_1_desc">Access your files faster with dedicated DocSpace areas: Shared with me, Favorites, and Recent.</string>
+    <string name="whats_new_2">Enhanced file sharing in DocSpace</string>
+    <string name="whats_new_2_desc">Share files more easily and manage access with improved sharing workflows in DocSpace 3.5.</string>
+    <string name="whats_new_3">Social sign-in options</string>
+    <string name="whats_new_3_desc">Sign in with LinkedIn, or Zoom to create and access your DocSpace account more easily.</string>
+    <string name="whats_new_4">Paragraph and cell direction (RTL)</string>
+    <string name="whats_new_4_desc">Switch paragraph and table cell direction between Right-to-left and Left-to-right across all editors.</string>
     <string name="start_filling_title">Start filling</string>
     <string name="start_filling_start">Start</string>
     <string name="start_filling_desc">In this panel you can monitor the completion of the form in which you participate or in which you are the organizer of completion</string>
@@ -977,16 +999,8 @@
         <item quantity="one">All shared links in room will become active, and its contents will be available to everyone with the link. Do you want to restore room?</item>
                 <item quantity="other">All shared links in rooms will become active, and its contents will be available to everyone with the link. Do you want to restore rooms?</item>
     </plurals>
-    <plurals name="access_members_users_title">
-        <item quantity="one">%d user</item>
-                <item quantity="other">%d users</item>
-    </plurals>
-    <plurals name="access_members_groups_title">
-        <item quantity="one">%d group</item>
-                <item quantity="other">%d groups</item>
-    </plurals>
 
-    <!-- Module: libgcells - 199 strings -->
+    <!-- Module: libgcells - 217 strings -->
     <string name="cells_about_header">SPREADSHEET EDITOR</string>
     <string name="cells_title">Spreadsheets</string>
     <string name="cells_intent_title">ONLYOFFICE Spreadsheets</string>
@@ -1036,6 +1050,24 @@
     <string name="cells_settings_text_format_wrap">Wrap text</string>
     <string name="cells_settings_text_format_justified">Align justified</string>
     <string name="cells_setting_tab_color">Tab color</string>
+    <string name="cells_sheet_protect_locked_cells">Select Locked Cells</string>
+    <string name="cells_sheet_protect_unlocked_cells">Select Unlocked Cells</string>
+    <string name="cells_sheet_protect_format_cells">Format Cells</string>
+    <string name="cells_sheet_protect_format_columns">Format Columns</string>
+    <string name="cells_sheet_protect_format_rows">Format Rows</string>
+    <string name="cells_sheet_protect_insert_columns">Insert Columns</string>
+    <string name="cells_sheet_protect_insert_rows">Insert Rows</string>
+    <string name="cells_sheet_protect_insert_hyperlink">Insert Hyperlink</string>
+    <string name="cells_sheet_protect_delete_columns">Delete Columns</string>
+    <string name="cells_sheet_protect_delete_rows">Delete Rows</string>
+    <string name="cells_sheet_protect_sort">Sort</string>
+    <string name="cells_sheet_protect_use_autofilter">Use AutoFilter</string>
+    <string name="cells_sheet_protect_use_pivot">Use PivotTable and PivotChart</string>
+    <string name="cells_sheet_protect_edit_objects">Edit Objects</string>
+    <string name="cells_sheet_protect_edit_scenarios">Edit Scenarios</string>
+    <string name="cells_sheet_protect_desc">Prevent unwanted changes from others by limiting their ability to edit.</string>
+    <string name="cells_sheet_protect_options_desc">Allow all users of this sheet to</string>
+    <string name="cells_workbook_protect_desc">To prevent other users from viewing hidden worksheets, adding, moving, deleting, or hiding worksheets and renaming worksheets, you can protect the structure of your workbook with a password.</string>
     <string name="cells_settings_border_style_no">No borders</string>
     <string name="cells_settings_border_style_all">All borders</string>
     <string name="cells_settings_border_style_bottom">Bottom border</string>
@@ -1187,7 +1219,7 @@
     <string name="cells_formulas_description">Formula description</string>
     <string name="cells_sheet_right_to_left">Sheet Right to left</string>
 
-    <!-- Module: libgdocs - 236 strings -->
+    <!-- Module: libgdocs - 257 strings -->
     <string name="docs_title">Documents</string>
     <string name="docs_intent_title">ONLYOFFICE Documents</string>
     <string name="docs_open_format">DOCX format is needed</string>
@@ -1252,10 +1284,20 @@
     <string name="review_original">Original</string>
     <string name="review_original_desc">All changes rejected (Preview)</string>
     <string name="review_track_changes">Track changes</string>
+    <string name="review_track_changes_on_me">ON for me</string>
+    <string name="review_track_changes_off_me">OFF for me</string>
+    <string name="review_track_changes_on_everyone">ON for me &amp; everyone</string>
+    <string name="review_track_changes_off_everyone">OFF for me &amp; everyone</string>
+    <string name="review_track_changes_on_hint">The document is opened with the Track Changes mode enabled</string>
+    <string name="review_track_changes_dialog_title">Enable track changes for everyone?</string>
+    <string name="review_track_changes_dialog_text">Track Changes will be switched ON for all users with full access. The next time anyone opens the doc, Track Changes will remain enabled.</string>
+    <string name="review_track_changes_dialog_enable">Enable</string>
     <string name="review_changes">Review changes</string>
     <string name="review_accept_all">Accept all changes</string>
+    <string name="review_accept_change">Accept change</string>
     <string name="review_accept">Accept</string>
     <string name="review_reject_all">Reject all changes</string>
+    <string name="review_reject_change">Reject change</string>
     <string name="review_reject">Reject</string>
     <string name="review_viewing_changes">Viewing changes</string>
     <string name="review_empty">No changes</string>
@@ -1327,7 +1369,7 @@
     <string name="forms_choose_option">Choose an option</string>
     <string name="forms_choose_image">Choose an image</string>
     <string name="forms_signature_title">Signatures</string>
-    <string name="forms_signatures_empty_placeholder">Please, add new signature</string>
+    <string name="forms_signatures_empty_placeholder">Please add new signature</string>
     <string name="forms_signatures_error_placeholder">Failed to load signatures</string>
     <string name="forms_new_signature">New signature</string>
     <string name="forms_signature_draw_title">Draw</string>
@@ -1393,7 +1435,6 @@
     <string name="docs_toc_page_numbers">Page numbers</string>
     <string name="docs_toc_right_align">Right align</string>
     <string name="docs_toc_leader">Leader</string>
-    <string name="docs_toc_remove">Remove table of contents</string>
     <string name="docs_toc_structure">Structure</string>
     <string name="docs_toc_structure_levels_amount">Amount of levels</string>
     <string name="docs_toc_structure_levels">Levels</string>
@@ -1424,14 +1465,130 @@
     <string name="docs_margins_multiple_pages">Multiple Pages</string>
     <string name="docs_margins_mirror">Mirror margins</string>
     <string name="docs_filling_is_not_available">Form filling is in progress. File editing is not currently available.</string>
+    <string name="word_counter">Word counter</string>
+    <string name="docs_line_numbers_title">Line numbers</string>
+    <string name="docs_line_numbers_options">Options</string>
+    <string name="docs_line_numbers_type_none">None</string>
+    <string name="docs_line_numbers_type_continuous">Continuous</string>
+    <string name="docs_line_numbers_type_each_page">Restart each page</string>
+    <string name="docs_line_numbers_type_each_section">Restart each section</string>
+    <string name="docs_line_numbers_from_text">From text</string>
+    <string name="docs_line_numbers_count_by">Count by</string>
+    <string name="docs_line_numbers_suppress">Suppress line numbers</string>
+    <string name="docs_toc_delete">Delete Table of contents</string>
+    <plurals name="word_counter_words">
+        <item quantity="one">%d word</item>
+                <item quantity="other">%d words</item>
+    </plurals>
 
-    <!-- Module: libgeditors - 574 strings -->
+    <!-- Module: libgeditors - 704 strings -->
     <string name="app_name_editors">Editors</string>
     <string name="error_internal_unknown">Unknown internal error :(</string>
     <string name="error_connection">Connection lost. The viewer mode is enabled</string>
     <string name="error_write_export">Error write to file (File not found), please select other place</string>
     <string name="error_protection_edit">You are not allowed to edit this selection because it is protected</string>
     <string name="error_convertation_limit">The file size exceeds the limitation set for your server. Please contact your Document Server administrator for details.</string>
+    <string name="error_protection_sheet">Sheet is protected, changes are blocked. Unlock the sheet to edit.</string>
+    <string name="error_formula_argument">Found an error in the formula entered. Invalid number of arguments.</string>
+    <string name="error_form_field_format">The value entered does not match the format of the field.</string>
+    <string name="error_unknown">Unknown error.</string>
+    <string name="error_code">Error code: %1$d</string>
+    <string name="error_convertation_timeout">Conversion timeout exceeded.</string>
+    <string name="error_convertation_open">An error has occurred while opening the file</string>
+    <string name="error_convertation_save">An error has occurred while saving the file</string>
+    <string name="error_download">Download failed.</string>
+    <string name="error_upload_image_size">Maximum image size limit exceeded.</string>
+    <string name="error_upload_image_ext">Unknown image format.</string>
+    <string name="error_upload_image_file_count">No images uploaded.</string>
+    <string name="error_paste_in_merge_area">Cannot change part of a merged cell</string>
+    <string name="error_wrong_brackets_count">Found an error in the formula entered.\nWrong count of brackets.</string>
+    <string name="error_wrong_operator">An error in the entered formula. Wrong operator is used.\nPlease correct the error or cancel the formula editing.</string>
+    <string name="error_count_arg_exceed">Found an error in the formula entered.\nCount of arguments exceeded.</string>
+    <string name="error_formula_name">Found an error in the formula entered.\nIncorrect formula name.</string>
+    <string name="error_formula_parsing">Internal error while the formula parsing.</string>
+    <string name="error_args_range">Found an error in the formula entered.\nIncorrect arguments range.</string>
+    <string name="error_operand_expected">The entered function syntax is not correct. Please check if you are missing one of the parentheses - \'(\' or \')\'.</string>
+    <string name="error_frml_wrong_references">The function refers to a sheet that does not exist.\nPlease check the data and try again.</string>
+    <string name="error_unexpected_guid">External error.\nUnexpected Guid. Please contact support.</string>
+    <string name="error_database_connection">External error.\nDatabase connection error. Please contact support.</string>
+    <string name="error_file_request">External error.\nFile Request. Please contact support.</string>
+    <string name="error_file_vkey">External error.\nIncorrect security key. Please contact support.</string>
+    <string name="error_stock_chart">Incorrect row order. To build a stock chart place the data on the sheet in the following order:\nopening price, max price, min price, closing price.</string>
+    <string name="error_max_data_series">ERROR! The maximum number of data series per chart is 255.</string>
+    <string name="error_combo_series">To create a combination chart, select at least two series of data.</string>
+    <string name="error_data_range">Incorrect data range.</string>
+    <string name="error_max_points">The maximum number of points in series per chart is 4096.</string>
+    <string name="error_token">The document security token is not correctly formed.\nPlease contact your Document Server administrator.</string>
+    <string name="error_token_expire">The document security token has expired.\nPlease contact your Document Server administrator.</string>
+    <string name="error_users_exceed">Count of users was exceeded</string>
+    <string name="error_move_range">Can\'t change a part of merged cell</string>
+    <string name="error_bad_image_url">Image url is incorrect</string>
+    <string name="error_viewer_disconnect">Connection is lost. You can still view the document,\nbut will not be able to download or print until the connection is restored and page is reloaded.</string>
+    <string name="error_file_pass_protect">The file is password protected and cannot be opened.</string>
+    <string name="error_auto_filter_data_range">The operation could not be done for the selected range of cells.\nSelect a uniform data range inside or outside the table and try again.</string>
+    <string name="error_auto_filter_change_format_table">The operation could not be done for the selected cells as you cannot move a part of the table.\nSelect another data range so that the whole table was shifted and try again.</string>
+    <string name="error_auto_filter_change">The operation is not allowed, as it is attempting to shift cells in a table on your worksheet.</string>
+    <string name="error_auto_filter_hidden_range">The operation cannot be performed because the area contains filtered cells.\nPlease unhide the filtered elements and try again.</string>
+    <string name="error_fill_range">Could not fill the selected range of cells.\nAll the merged cells need to be the same size.</string>
+    <string name="error_user_drop">The file cannot be accessed right now.</string>
+    <string name="error_invalid_ref">Enter a correct name for the selection or a valid reference to go to.</string>
+    <string name="error_create_def_name">The existing named ranges cannot be edited and the new ones cannot be created\nat the moment as some of them are being edited.</string>
+    <string name="error_paste_max_range">The copy and paste area does not match. Please select an area with the same size or click the first cell in a row to paste the copied cells.</string>
+    <string name="error_locked_all">The operation could not be done as the sheet has been locked by another user.</string>
+    <string name="error_connect_to_server">The document could not be saved. Please check connection settings or contact your administrator.\nWhen you click the \"OK\" button, you will be prompted to download the document.</string>
+    <string name="error_locked_worksheet_rename">The sheet cannot be renamed at the moment as it is being renamed by another user</string>
+    <string name="error_open_warning">The length of one of the formulas in the file exceeded\nthe allowed number of characters and it was removed.</string>
+    <string name="error_copy_multiselect_area">This command cannot be used with multiple selections.\nSelect a single range and try again.</string>
+    <string name="error_print_max_pages_count">Unfortunately, it\'s not possible to print more than 1500 pages at once in the current version of the program.\nThis restriction will be eliminated in upcoming releases.</string>
+    <string name="error_session_absolute">The document editing session has expired. Please reload the page.</string>
+    <string name="error_session_idle">The document has not been edited for quite a long time. Please reload the page.</string>
+    <string name="error_session_token">The connection to the server has been interrupted. Please reload the page.</string>
+    <string name="error_access_deny">You are trying to perform an action you do not have rights for.\nPlease contact your Document Server administrator.</string>
+    <string name="error_locked_cell_pivot">You cannot change data inside a pivot table.</string>
+    <string name="error_labeled_columns_pivot">To create a pivot table report, you must use data that is organized as a list with labeled columns.</string>
+    <string name="error_pivot_overlap">A pivot table report cannot overlap a table.</string>
+    <string name="error_force_save">An error occurred while saving the file. Please use the \"Download as\" option to save the file to your computer hard drive or try again later.</string>
+    <string name="error_submit">Submit failed.</string>
+    <string name="error_data_encrypted">Encrypted changes have been received, they cannot be deciphered.</string>
+    <string name="error_editing_downloadas">An error occurred during the work with the document.\nUse the \"Download as…\" option to save the file backup copy to your computer hard drive.</string>
+    <string name="error_change_array">You cannot change part of an array.</string>
+    <string name="error_multi_cell_formula">Multi-cell array formulas are not allowed in tables.</string>
+    <string name="error_email_client">No email client could be found</string>
+    <string name="error_no_data_to_parse">No data was selected to parse.</string>
+    <string name="error_cannot_ungroup">Cannot ungroup. To start an outline, select the detail rows or columns and group them.</string>
+    <string name="error_frml_max_text_length">Text values in formulas are limited to 255 characters.\nUse the CONCATENATE function or concatenation operator (&amp;)</string>
+    <string name="error_frml_max_reference">You cannot enter this formula because it has too many values,\ncell references, and/or names.</string>
+    <string name="error_data_validate">The value you entered is not valid.\nA user has restricted values that can be entered into this cell.</string>
+    <string name="error_update_version_on_disconnect">Connection has been restored, and the file version has been changed.\nBefore you can continue working, you need to download the file or copy its content to make sure nothing is lost, and then reload this page.</string>
+    <string name="error_ft_change_table_range">Operation could not be completed for the selected cell range.\nSelect a range so that the first table row was on the same row and the resulting table overlapped the current one.</string>
+    <string name="error_ft_range_included_other_tables">Operation could not be completed for the selected cell range.\nSelect a range which does not include other tables.</string>
+    <string name="error_paste_slicer">Table slicers cannot be copied from one workbook to another.</string>
+    <string name="error_no_duplicates">No duplicate values found.</string>
+    <string name="error_frml_max_length">You cannot add this formula as its length exceeded the allowed number of characters.\nPlease edit it and try again.</string>
+    <string name="error_move_slicer">Table slicers cannot be copied from one workbook to another.\nTry again by selecting the entire table and the slicers.</string>
+    <string name="error_edit_view">The existing sheet view cannot be edited and the new ones cannot be created at the moment as some of them are being edited.</string>
+    <string name="error_change_filtered_range">This will change a filtered range on your worksheet.\nTo complete this task, please remove AutoFilters.</string>
+    <string name="error_set_password">Password could not be set.</string>
+    <string name="error_empty_toc">Start creating a table of contents by applying a heading style from the Styles gallery to the selected text.</string>
+    <string name="error_no_toc">There\'s no table of contents to update. You can insert one from the References tab.</string>
+    <string name="error_secondary_axis">The selected chart type requires the secondary axis that an existing chart is using. Select another chart type.</string>
+    <string name="error_pivot_group">Cannot group that selection.</string>
+    <string name="error_paste_multi_select">This action cannot be done on a multiple range selection.\nSelect a single range and try again.</string>
+    <string name="error_pivot_without_underlying">The Pivot Table report was saved without the underlying data.\nUse the \"Refresh\" button to update the report.</string>
+    <string name="error_change_on_protected_sheet">The cell or chart you are trying to change is on a protected sheet.\nTo make a change, unprotect the sheet. You might be requested to enter a password.</string>
+    <string name="error_single_column_or_row">Location reference is not valid because the cells are not all in the same column or row.\nSelect cells that are all in a single column or row.</string>
+    <string name="error_location_or_data_range">The reference for the location or data range is not valid.</string>
+    <string name="error_password_is_not_correct">The password you supplied is not correct.\nVerify that the CAPS LOCK key is off and be sure to use the correct capitalization.</string>
+    <string name="error_upload_doc_size">Maximum document size limit exceeded.</string>
+    <string name="error_upload_doc_ext">Unknown document format.</string>
+    <string name="error_upload_doc_file_count">No documents uploaded.</string>
+    <string name="error_delete_column_contains_locked_cell">You are trying to delete a column that contains a locked cell. Locked cells cannot be deleted while the worksheet is protected.\nTo delete a locked cell, unprotect the sheet. You might be requested to enter a password.</string>
+    <string name="error_delete_row_contains_locked_cell">You are trying to delete a row that contains a locked cell. Locked cells cannot be deleted while the worksheet is protected.\nTo delete a locked cell, unprotect the sheet. You might be requested to enter a password.</string>
+    <string name="error_loading_font">Fonts are not loaded.\nPlease contact your Document Server administrator.</string>
+    <string name="error_fill_all_rows_warning">Formula filled only first %1$d rows by memory save reason. Other rows in this sheet don\'t have data.</string>
+    <string name="error_cannot_use_command_protected_sheet">You cannot use this command on a protected sheet. To use this command, unprotect the sheet.\nYou might be requested to enter a password.</string>
+    <string name="error_direct_url">Please verify the link to the document.\nThis link must be a direct link to the file for downloading.</string>
+    <string name="error_inconsistent_ext">An error has occurred while opening the file.\nThe file content does not match the file extension.</string>
     <string name="about_version">Version %1$s</string>
     <string name="chooser_file">Choose file</string>
     <string name="chooser_folder">Choose folder</string>
@@ -1461,7 +1618,7 @@
     <string name="context_protection_required">Required</string>
     <string name="context_protection_verify">Verify</string>
     <string name="context_protection_warning">If the password is forgotten or lost, it cannot be recovered.</string>
-    <string name="context_protection_password_not_match">Passwords don’t match</string>
+    <string name="context_protection_password_not_match">Passwords don\'t match</string>
     <string name="dialog_edit_header">Protected file</string>
     <string name="dialog_edit_title">Once you enter the password and open the file, the current file password will be reset</string>
     <string name="dialog_edit_hint">Password</string>
@@ -1595,9 +1752,7 @@
     <string name="settings_link_external">External link</string>
     <string name="settings_hyperlink">Link</string>
     <string name="settings_edit_link">Save link</string>
-    <string name="settings_remove_link">Remove link</string>
     <string name="settings_style">Style</string>
-    <string name="settings_table_remove">Remove table</string>
     <string name="settings_table_options">Table Options</string>
     <string name="settings_table_style_option">Style Options</string>
     <string name="settings_table_wrap">Wrap</string>
@@ -1641,7 +1796,6 @@
     <string name="setting_context_delete_row">Delete row</string>
     <string name="editors_dialog_save">Want to save your changes to %1$s?</string>
     <string name="editors_dialog_save_as">Want to save as %1$s?</string>
-    <string name="settings_shape_remove_shape">Remove shape</string>
     <string name="settings_shape_wrap_style">Wrapping style</string>
     <string name="settings_shape_text_wrapping">Text wrapping</string>
     <string name="settings_shape_arrange">Arrange</string>
@@ -1682,7 +1836,6 @@
     <string name="settings_text_orientation_rotate_up">Rotate text up</string>
     <string name="settings_text_orientation_rotate_down">Rotate text down</string>
     <string name="settings_chart">Chart</string>
-    <string name="settings_remove_chart">Remove chart</string>
     <string name="settings_chart_design">Design</string>
     <string name="settings_chart_layout">Layout</string>
     <string name="settings_chart_vertical_axis">Vertical axis</string>
@@ -1765,7 +1918,6 @@
     <string name="shape_fill_image_url_title">Link settings</string>
     <string name="shape_fill_image_photo_title">Make photo</string>
     <string name="shape_fill_image_insert_title">Insert from…</string>
-    <string name="shape_fill_image_remove_title">Remove</string>
     <string name="gradient_thumb_popup_copy">Duplicate</string>
     <string name="gradient_thumb_popup_edit_color">Edit color</string>
     <string name="base_diagram_title">Diagram title</string>
@@ -1802,6 +1954,8 @@
     <string name="collaboration_no_users">No users</string>
     <string name="collaboration_comments">Comments</string>
     <string name="collaboration_reviews">Reviews</string>
+    <string name="collaboration_track_changes">Track Changes</string>
+    <string name="collaboration_display_mode">Display Mode</string>
     <string name="collaboration_user_info">Users editing document:</string>
     <string name="collaboration_empty_comments">Empty comments</string>
     <string name="collaboration_edit_comment">Edit comment</string>
@@ -1874,12 +2028,22 @@
     <string name="custom_fonts_need_restart">To make the fonts visible, you need to restart the editor.</string>
     <string name="custom_fonts_restart">Restart</string>
     <string name="settings_mobile_view">Mobile View</string>
+    <string name="context_protection_header_protect">Protect</string>
+    <string name="context_protection_protect_workbook">Protect Workbook</string>
+    <string name="context_protection_protect_sheet">Protect Sheet</string>
+    <string name="context_protection_unprotect_workbook">Unprotect Workbook</string>
+    <string name="context_protection_unprotect_sheet">Unprotect Sheet</string>
+    <string name="context_protection_locked_cell">Locked Cell</string>
+    <string name="context_protection_hidden_formulas">Hidden Formulas</string>
+    <string name="context_protection_shape_locked">Shape Locked</string>
+    <string name="context_protection_lock_text">Lock Text</string>
     <string name="context_protection_protect_document">Protect document</string>
     <string name="context_protection_unprotect_document">Unprotect</string>
     <string name="context_protection_encrpyt_file">Encrypt file</string>
     <string name="context_protection_require_password">Require Password</string>
     <string name="context_protection_password_dialog">Unprotect document</string>
     <string name="context_protection_turn_off">Protect turn off</string>
+    <string name="context_protection_turn_off_failed">Failed to disable protection</string>
     <string name="context_protection_password_incorrect">Password incorrect</string>
     <string name="context_protection_change_password">Change password</string>
     <string name="context_protection_new_password">New password</string>
@@ -1991,15 +2155,37 @@
     <string name="ai_prompt_error_cancelled">Request was cancelled</string>
     <string name="ai_prompt_error_unexpected">Unexpected error: %1$s</string>
     <string name="ai_tooltip_title">Try the new AI mode</string>
-    <string name="ai_tooltip_message">Edit, analyze, and create content with ease. To get started — connect a model.</string>
+    <string name="ai_tooltip_start_message">Edit, analyze, and create content with ease. To get started — connect a model.</string>
     <string name="ai_tooltip_input_message">Use quick prompts or enter your own request. AI will generate results directly in your document.</string>
     <string name="ai_profile_default_name">%1$s Profile</string>
     <string name="ai_profile_saved_successfully">Profile saved successfully</string>
     <string name="ai_profile_deleted_successfully">Profile deleted successfully</string>
+    <string name="dialog_search_select_whole_words">Whole words</string>
     <string name="text_direction_title">Text direction</string>
     <string name="text_direction_ltr">Left to right</string>
     <string name="text_direction_rtl">Right to left</string>
+    <string name="popup_edit_table">Edit table</string>
+    <string name="popup_edit_text">Edit text</string>
     <string name="text_direction_context">Context</string>
+    <string name="ai_tooltip_settings_title">AI settings</string>
+    <string name="ai_tooltip_settings_message">Here you can adjust settings or add new AI models anytime.</string>
+    <string name="ai_tooltip_action_text">Got it</string>
+    <string name="ai_hide_title">AI Assistant</string>
+    <string name="settings_delete_shape">Delete Shape</string>
+    <string name="settings_delete_link">Delete Link</string>
+    <string name="settings_delete_chart">Delete Chart</string>
+    <string name="settings_delete">Delete</string>
+    <string name="comment_add_label">Comment or mention with + or @</string>
+    <string name="charts_group_recommended">Recommended</string>
+    <string name="charts_group_column">Column</string>
+    <string name="charts_group_line">Line</string>
+    <string name="charts_group_pie">Pie</string>
+    <string name="charts_group_bar">Bar</string>
+    <string name="charts_group_area">Area</string>
+    <string name="charts_group_stock">Stock</string>
+    <string name="charts_group_scatter">XY (Scatter)</string>
+    <string name="charts_group_radar">Radar</string>
+    <string name="charts_group_combo">Combo</string>
 
     <!-- Module: libgslides - 88 strings -->
     <string name="slides_title">Presentations</string>
@@ -2091,7 +2277,18 @@
     <string name="slides_plate">%1$d of %2$d</string>
     <string name="slides_slide_show_count">Slide %1$d of %2$d</string>
 
-    <!-- Module: libtoolkit - 28 strings -->
+    <!-- Module: libtoolkit - 33 strings -->
+    <string name="access_members_me_and_title">Me and %s</string>
+    <string name="access_members_me_users_groups_title">Me, %1$s and %2$s</string>
+    <string name="access_members_me_subtitle">(Me)</string>
+    <plurals name="access_members_users_title">
+        <item quantity="one">%d user</item>
+                <item quantity="other">%d users</item>
+    </plurals>
+    <plurals name="access_members_groups_title">
+        <item quantity="one">%d group</item>
+                <item quantity="other">%d groups</item>
+    </plurals>
     <string name="dialogs_edit_forbidden_symbols">Do not use these symbols\u0020</string>
     <string name="dialogs_edit_forbidden_name">Invalid name</string>
     <string name="sizes_bytes">Bytes</string>
