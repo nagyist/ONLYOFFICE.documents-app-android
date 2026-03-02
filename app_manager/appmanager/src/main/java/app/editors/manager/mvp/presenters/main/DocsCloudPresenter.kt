@@ -39,7 +39,6 @@ import app.editors.manager.managers.receivers.UploadReceiver
 import app.editors.manager.managers.receivers.UploadReceiver.OnUploadListener
 import app.editors.manager.managers.utils.FirebaseUtils
 import app.editors.manager.managers.works.RoomDuplicateWork
-import app.editors.manager.mvp.models.filter.Filter
 import app.editors.manager.mvp.models.list.Templates
 import app.editors.manager.mvp.models.states.OperationsState
 import app.editors.manager.mvp.models.ui.SharingType
@@ -498,15 +497,14 @@ class DocsCloudPresenter(private val account: CloudAccount) : DocsBasePresenter<
         if (!isSelectionMode && !isFilteringMode){
             if ((currentFolder?.isTemplate == true || isTemplatesFolder)) resetFilters()
             cancelThumbnailsJobs()
-            val backStackResult =  super.getBackStack()
+            val backStackResult = super.getBackStack()
+            if (modelExplorerStack.last()?.filterType != filterManager.getFilter(currentSectionType).type.filterVal) {
+                refresh()
+            }
             updateThumbnails()
             return backStackResult
         }
-        val backStackResult = super.getBackStack()
-        if (modelExplorerStack.last()?.filterType != preferenceTool.filter.type.filterVal) {
-            refresh()
-        }
-        return backStackResult
+        return super.getBackStack()
     }
 
     override fun openFolder(id: String?, position: Int, roomType: Int?) {
@@ -746,7 +744,7 @@ class DocsCloudPresenter(private val account: CloudAccount) : DocsBasePresenter<
     }
 
     private fun resetFilters() {
-        preferenceTool.filter = Filter()
+        filterManager.clearFilter(currentSectionType)
         viewState.onStateUpdateFilterMenu()
     }
 
