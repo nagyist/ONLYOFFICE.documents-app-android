@@ -39,8 +39,6 @@ import app.editors.manager.managers.receivers.UploadReceiver
 import app.editors.manager.managers.receivers.UploadReceiver.OnUploadListener
 import app.editors.manager.managers.utils.FirebaseUtils
 import app.editors.manager.managers.works.RoomDuplicateWork
-import app.editors.manager.mvp.models.list.RecentViaLink
-import app.editors.manager.mvp.models.filter.Filter
 import app.editors.manager.mvp.models.list.Templates
 import app.editors.manager.mvp.models.states.OperationsState
 import app.editors.manager.mvp.models.ui.SharingType
