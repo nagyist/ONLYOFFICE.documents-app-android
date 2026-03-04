@@ -110,7 +110,7 @@ class DocsCloudPresenter(private val account: CloudAccount) : DocsBasePresenter<
 
                 override fun isRoomRoot(id: String?): Boolean {
                     val parts = modelExplorerStack.last()?.pathParts.orEmpty()
-                    return if (parts.isNotEmpty()) isRoom && parts[0].id == id else false
+                    return if (parts.isNotEmpty()) isRoom && parts[0].id == id else isArchive()
                 }
 
                 override fun isArchive(): Boolean = ApiContract.SectionType.isArchive(currentSectionType)

@@ -526,6 +526,7 @@ open class DocsCloudFragment : DocsBaseFragment(), DocsCloudView {
 
     private fun init() {
         explorerAdapter?.sectionType = section
+        presenter.setSectionType(section)
         presenter.checkBackStack()
     }
 
