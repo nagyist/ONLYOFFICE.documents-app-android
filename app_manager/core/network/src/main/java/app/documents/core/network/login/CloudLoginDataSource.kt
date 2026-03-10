@@ -40,7 +40,7 @@ interface CloudLoginDataSource {
 
     suspend fun getUserInfo(token: String): User
 
-    suspend fun forgotPassword(url: String, email: String): String
+    suspend fun forgotPassword(email: String, recaptchaResponse: String): String
 
     suspend fun registerDevice(token: String, deviceToken: String)
 

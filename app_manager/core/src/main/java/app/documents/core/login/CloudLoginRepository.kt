@@ -72,7 +72,7 @@ interface CloudLoginRepository : LoginRepository {
 
     suspend fun sendSms(userName: String, password: String, accessToken: String, provider: String): Flow<NetworkResult<*>>
 
-    suspend fun passwordRecovery(portal: String, email: String): Flow<NetworkResult<*>>
+    suspend fun passwordRecovery(email: String, recaptchaResponse: String): Flow<NetworkResult<*>>
 
     suspend fun changeNumber(requestNumber: RequestNumber): Flow<NetworkResult<*>>
 

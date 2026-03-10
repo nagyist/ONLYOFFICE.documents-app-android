@@ -5,12 +5,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
+import androidx.core.view.isVisible
+import app.editors.manager.BuildConfig
 import app.editors.manager.R
 import app.editors.manager.databinding.FragmentLoginPasswordRecoveryBinding
 import app.editors.manager.mvp.presenters.login.PasswordRecoveryPresenter
 import app.editors.manager.mvp.views.login.PasswordRecoveryView
 import app.editors.manager.ui.fragments.base.BaseAppFragment
 import app.editors.manager.ui.views.edits.BaseWatcher
+import com.hcaptcha.sdk.HCaptcha
+import com.hcaptcha.sdk.HCaptchaConfig
+import lib.toolkit.base.managers.utils.StringUtils.isEmailValid
 import lib.toolkit.base.managers.utils.putArgs
 import moxy.presenter.InjectPresenter
 
@@ -20,13 +25,13 @@ class PasswordRecoveryFragment : BaseAppFragment(), PasswordRecoveryView {
         var TAG: String = PasswordRecoveryFragment::class.java.simpleName
 
         private const val KEY_EMAIL = "KEY_EMAIL"
-        private const val KEY_PERSONAL = "KEY_PERSONAL"
+        private const val KEY_PORTAL = "KEY_PORTAL"
         private const val KEY_LDAP = "KEY_LDAP"
 
-        fun newInstance(email: String?, isPersonal: Boolean?, ldap: Boolean = false): PasswordRecoveryFragment {
+        fun newInstance(email: String?, portal: String?, ldap: Boolean = false): PasswordRecoveryFragment {
             return PasswordRecoveryFragment().putArgs(
                 KEY_EMAIL to email,
-                KEY_PERSONAL to isPersonal,
+                KEY_PORTAL to portal,
                 KEY_LDAP to ldap
             )
         }
@@ -36,8 +41,6 @@ class PasswordRecoveryFragment : BaseAppFragment(), PasswordRecoveryView {
     lateinit var presenter: PasswordRecoveryPresenter
 
     private var viewBinding: FragmentLoginPasswordRecoveryBinding? = null
-
-    private var isPasswordRecovered = false
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -74,35 +77,58 @@ class PasswordRecoveryFragment : BaseAppFragment(), PasswordRecoveryView {
                     onRecoverButtonClick()
                 }
             }
+            loginPasswordReturnButton.setOnClickListener { activity?.onBackPressed() }
         }
         setActionBarTitle(context?.getString(R.string.login_password_recovery_toolbar_title))
     }
 
     private fun onRecoverButtonClick() {
-        if (!isPasswordRecovered) {
-            arguments?.getBoolean(
-                KEY_PERSONAL
-            )?.let {
-                presenter.recoverPassword(
-                    viewBinding?.loginPasswordRecoveryEmailEdit?.text.toString().trim { it <= ' ' },
-                    it
-                )
-            }
-        } else {
-            activity?.onBackPressed()
+        val email = viewBinding?.loginPasswordRecoveryEmailEdit?.text.toString().trim()
+
+        if (!isEmailValid(email)) {
+            onEmailError()
+            return
         }
+
+        verifyWithHCaptcha(email)
+    }
+
+    private fun verifyWithHCaptcha(email: String) {
+        val hCaptcha = HCaptcha.getClient(requireActivity())
+
+        hCaptcha
+            .addOnSuccessListener { result ->
+                if (!result.tokenResult.isNullOrEmpty()) {
+                    presenter.recoverPassword(email, result.tokenResult)
+                } else {
+                    onError(getString(R.string.errors_unknown_error))
+                }
+            }
+            .addOnFailureListener { error ->
+                onError(error.message)
+            }
+
+        val siteKey = if (arguments?.getString(KEY_PORTAL)?.endsWith(".info") == true) {
+            BuildConfig.CAPTCHA_PUBLIC_KEY_INFO
+        } else {
+            BuildConfig.CAPTCHA_PUBLIC_KEY_COM
+        }
+
+        val config = HCaptchaConfig.builder()
+            .siteKey(siteKey)
+            .loading(true)
+            .build()
+
+        hCaptcha.setup(config).verifyWithHCaptcha()
     }
 
     override fun onPasswordRecoverySuccess(email: String) {
-        isPasswordRecovered = true
         viewBinding?.apply {
             loginPasswordRecoveryEmailLayout.visibility = View.INVISIBLE
             loginPasswordRecoveryHint.text = getString(R.string.login_password_recovery_success_hint, email)
-            loginPasswordRecoveryImage.visibility = View.VISIBLE
-            loginPasswordRecoveryButton.apply {
-                visibility = View.VISIBLE
-                text = context?.getString(R.string.login_password_recovery_button_text)
-            }
+            loginPasswordRecoveryImage.isVisible = true
+            loginPasswordRecoveryButton.isVisible = false
+            loginPasswordReturnButton.isVisible = true
         }
     }
 

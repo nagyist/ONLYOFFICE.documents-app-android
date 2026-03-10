@@ -197,8 +197,14 @@ internal class CloudLoginRepositoryImpl(
             .asResult()
     }
 
-    override suspend fun passwordRecovery(portal: String, email: String): Flow<NetworkResult<*>> {
-        return flowOf(cloudLoginDataSource.forgotPassword(portal, email))
+    override suspend fun passwordRecovery(
+        email: String,
+        recaptchaResponse: String
+    ): Flow<NetworkResult<String>> {
+        return flow {
+            val result = cloudLoginDataSource.forgotPassword(email, recaptchaResponse)
+            emit(result)
+        }
             .flowOn(Dispatchers.IO)
             .asResult()
     }

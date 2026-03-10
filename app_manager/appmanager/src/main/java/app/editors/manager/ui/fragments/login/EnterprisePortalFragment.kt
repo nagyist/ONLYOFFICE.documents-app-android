@@ -91,7 +91,12 @@ class EnterprisePortalFragment : BaseAppFragment(),
 
     private fun onSuccessPortal() {
         hideDialog()
-        SignInActivity.showPortalSignIn(requireContext(), "", "", emptyArray())
+        SignInActivity.showPortalSignIn(
+            context = requireContext(),
+            portal = viewBinding?.loginEnterprisePortalEdit?.text?.toString().orEmpty(),
+            login = "",
+            providers = emptyArray()
+        )
     }
 
     private fun onHttpPortal() {

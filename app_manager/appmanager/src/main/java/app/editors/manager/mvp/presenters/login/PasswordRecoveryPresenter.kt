@@ -1,12 +1,9 @@
 package app.editors.manager.mvp.presenters.login
 
 import app.documents.core.network.common.NetworkResult
-import app.documents.core.network.common.contracts.ApiContract
 import app.editors.manager.app.App
-import app.editors.manager.app.accountOnline
 import app.editors.manager.mvp.views.login.PasswordRecoveryView
 import kotlinx.coroutines.launch
-import lib.toolkit.base.managers.utils.StringUtils.isEmailValid
 import moxy.InjectViewState
 import moxy.presenterScope
 
@@ -21,20 +18,9 @@ class PasswordRecoveryPresenter : BaseLoginPresenter<PasswordRecoveryView>() {
         App.getApp().appComponent.inject(this)
     }
 
-    fun recoverPassword(email: String, isPersonal: Boolean) {
-        if (!isEmailValid(email)) {
-            viewState.onEmailError()
-        } else {
-            sendEmailNotification(email, isPersonal)
-        }
-    }
-
-    private fun sendEmailNotification(email: String, isPersonal: Boolean) {
+    fun recoverPassword(email: String, recaptchaResponse: String) {
         signInJob = presenterScope.launch {
-            loginRepository.passwordRecovery(
-                portal = if (isPersonal) ApiContract.PERSONAL_HOST else context.accountOnline?.portalUrl.orEmpty(),
-                email = email
-            ).collect { result ->
+            loginRepository.passwordRecovery(email, recaptchaResponse).collect { result ->
                 when (result) {
                     is NetworkResult.Success -> viewState.onPasswordRecoverySuccess(email)
                     is NetworkResult.Error -> fetchError(result.exception)
