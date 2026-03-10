@@ -265,6 +265,12 @@ class DocsWebDavPresenter : DocsBasePresenter<DocsWebDavView, WebDavFileProvider
     }
 
     override fun createDocs(title: String) {
+        if (isRoot && (context.accountOnline?.portal?.provider as? PortalProvider.Webdav)
+                ?.provider is WebdavProvider.KDrive
+        ) {
+            viewState.onError(context.getString(R.string.errors_create_local_file))
+            return
+        }
         modelExplorerStack.currentId?.let { folderId ->
             disposable.add(
                 fileProvider.createFile(
