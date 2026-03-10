@@ -8,3 +8,6 @@ data class DriveItemFolder(
     val childCount: String = "",
     val view: DriveItemView? = null
 )
+
+@Serializable
+object DriveItemNewFolder

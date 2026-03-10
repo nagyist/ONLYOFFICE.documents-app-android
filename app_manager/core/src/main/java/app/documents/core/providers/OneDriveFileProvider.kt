@@ -15,7 +15,6 @@ import app.documents.core.network.storages.IStorageHelper
 import app.documents.core.network.storages.onedrive.api.OneDriveProvider
 import app.documents.core.network.storages.onedrive.api.OneDriveResponse
 import app.documents.core.network.storages.onedrive.models.explorer.DriveItemCloudTree
-import app.documents.core.network.storages.onedrive.models.explorer.DriveItemFolder
 import app.documents.core.network.storages.onedrive.models.explorer.DriveItemParentReference
 import app.documents.core.network.storages.onedrive.models.explorer.DriveItemValue
 import app.documents.core.network.storages.onedrive.models.request.CopyItemRequest
@@ -235,7 +234,6 @@ class OneDriveFileProvider(
     override fun createFolder(folderId: String, body: RequestCreate): Observable<CloudFolder> {
         val request = CreateFolderRequest(
             name = body.title,
-            folder = DriveItemFolder(),
             conflictBehavior = OneDriveUtils.VAL_CONFLICT_BEHAVIOR_RENAME
         )
         return Observable.fromCallable { api.createFolder(folderId, request).blockingGet() }
