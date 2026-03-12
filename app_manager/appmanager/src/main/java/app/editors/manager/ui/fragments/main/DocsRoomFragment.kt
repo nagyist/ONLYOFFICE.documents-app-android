@@ -162,7 +162,7 @@ class DocsRoomFragment : DocsCloudFragment() {
 
     override fun getFilters(): Boolean {
         return if (isRoom || presenter.isTemplatesFolder) {
-            val filter = presenter.preferenceTool.filter
+            val filter = presenter.filterManager.getFilter(section)
             filter.roomType != RoomFilterType.None ||
                     filter.author.id.isNotEmpty() ||
                     filter.tags.isNotEmpty() ||

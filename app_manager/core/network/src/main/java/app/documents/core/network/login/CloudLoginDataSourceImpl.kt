@@ -231,8 +231,8 @@ internal class CloudLoginDataSourceImpl(
         return api.getUserInfo(token).response
     }
 
-    override suspend fun forgotPassword(url: String, email: String): String {
-        return api.forgotPassword(RequestPassword(url, email)).response
+    override suspend fun forgotPassword(email: String, recaptchaResponse: String): String {
+        return api.forgotPassword(RequestPassword(email, recaptchaResponse)).response
     }
 
     override suspend fun registerDevice(token: String, deviceToken: String) {

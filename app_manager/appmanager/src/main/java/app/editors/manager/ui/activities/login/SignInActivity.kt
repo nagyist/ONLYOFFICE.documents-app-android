@@ -179,8 +179,13 @@ class SignInActivity : BaseAppActivity() {
                     TAG_PERSONAL_SIGN_UP -> showFragment(PersonalSignUpFragment.newInstance(), null)
                     TAG_SMS -> showFragment(EnterpriseSmsFragment.newInstance(false, intent.getStringExtra(TAG_REQUEST)), null)
                     TAG_PHONE -> showFragment(EnterprisePhoneFragment.newInstance(intent.getStringExtra(TAG_REQUEST)), null)
-                    TAG_PASSWORD_RECOVERY -> showFragment(PasswordRecoveryFragment.newInstance(intent.getStringExtra(
-                        KEY_EMAIL_RECOVERY), true), null)
+                    TAG_PASSWORD_RECOVERY -> showFragment(
+                        PasswordRecoveryFragment.newInstance(
+                            email = intent.getStringExtra(KEY_EMAIL_RECOVERY),
+                            portal = intent.getStringExtra(KEY_PORTAL)
+                        ),
+                        null
+                    )
                 }
             }
         }

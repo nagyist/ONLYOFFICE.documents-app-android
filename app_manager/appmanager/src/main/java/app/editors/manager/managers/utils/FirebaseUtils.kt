@@ -134,7 +134,8 @@ object FirebaseUtils {
                 return@getSdk
             }
 
-            if (webSdk.isEmpty()) {
+            val cleanWebSdk = webSdk.replace(".", "")
+            if (cleanWebSdk.isEmpty()) {
                 onResult(false)
                 return@getSdk
             }
@@ -153,7 +154,7 @@ object FirebaseUtils {
             }
 
             for (i in 0..maxVersionIndex) {
-                if (webSdk[i] != localSdk[i]) {
+                if (cleanWebSdk[i] != localSdk[i]) {
                     onResult(false)
                     return@getSdk
                 }

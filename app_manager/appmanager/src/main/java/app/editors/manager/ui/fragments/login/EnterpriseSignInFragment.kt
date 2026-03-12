@@ -14,12 +14,12 @@ import androidx.core.net.toUri
 import androidx.core.view.isVisible
 import app.documents.core.model.cloud.CloudPortal
 import app.documents.core.network.common.contracts.ApiContract
-import app.editors.manager.managers.utils.SocialSignIn
 import app.editors.manager.BuildConfig
 import app.editors.manager.R
 import app.editors.manager.app.App
 import app.editors.manager.app.accountOnline
 import app.editors.manager.databinding.FragmentLoginEnterpriseSigninBinding
+import app.editors.manager.managers.utils.SocialSignIn
 import app.editors.manager.mvp.presenters.login.EnterpriseLoginPresenter
 import app.editors.manager.mvp.views.login.CommonSignInView
 import app.editors.manager.ui.activities.login.AuthAppActivity
@@ -201,7 +201,7 @@ class EnterpriseSignInFragment : BaseAppFragment(), CommonSignInView, CommonDial
         showFragment(
             PasswordRecoveryFragment.newInstance(
                 viewBinding?.loginEnterprisePortalEmailEdit?.text.toString(),
-                false,
+                arguments?.getString(SignInActivity.KEY_PORTAL),
                 presenter.useLdap
             ), PasswordRecoveryFragment.TAG, false
         )
